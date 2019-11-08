@@ -17,6 +17,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //UserServices.getAllUsers { errorMessage, user in
+        
+        // Aqui é bom criar uma camada a mais, no caso o userServices, mas só para testes colocamos DAO direto
+        
         UserDAO.findAll { (errorMessage, user) in
             if user != nil {
                 self.users = user

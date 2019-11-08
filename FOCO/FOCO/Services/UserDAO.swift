@@ -25,7 +25,7 @@ class UserDAO {
     static func findAll (_ completion: @escaping (_ error: Error?, _ user: User?) -> Void) {
         
         if let url = address {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
 
                 if let data = data {
                     do {
@@ -40,6 +40,8 @@ class UserDAO {
                 
             }
             
+            // resume faz o request acontecer
+            task.resume()
         }
         
     }
