@@ -1,10 +1,10 @@
-//
-//  ViewController.swift
-//  FOCO
-//
-//  Created by Ivo Dutra on 08/11/19.
-//  Copyright © 2019 arbovirosis. All rights reserved.
-//
+/*
+Copyright © 2019 arbovirosis. All rights reserved.
+
+Abstract:
+
+ 
+*/
 
 import UIKit
 
