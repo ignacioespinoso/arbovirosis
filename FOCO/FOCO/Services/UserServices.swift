@@ -20,6 +20,7 @@ class UserServices {
             
             if error != nil {
                 //Handle errors
+                print(error.debugDescription)
             } else {
                 completion(nil,user)
             }

@@ -17,7 +17,8 @@ import Foundation
 
 class UserDAO {
     
-    static let address = URL(string: "https://api.myjson.com/bins/11dc1g")
+    static let address = URL(string: "https://api.myjson.com/bins/17gduc")
+    // https://safe-peak-03441.herokuapp.com/diseases
     
     // MARK: -  functions
     
@@ -33,6 +34,7 @@ class UserDAO {
                         completion(nil, user)
                     } catch let error {
                         completion(error, nil)
+                        print(error.localizedDescription)
                     }
                 }
                 
@@ -46,7 +48,8 @@ class UserDAO {
     
 }
 
-/*
+/*  PARA TRATAMENTO DOS ERROS
+ 
  if error != nil || data == nil {
      print("Client error!")
      completion(error, nil)
