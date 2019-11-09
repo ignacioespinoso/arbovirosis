@@ -34,7 +34,4 @@ enum Errors : Error {
      print("Erro 2 com valor \"\(value)\" e contagem \(count)")
  }
 
- 
- 
- 
  */

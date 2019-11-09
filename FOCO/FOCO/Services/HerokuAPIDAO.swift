@@ -10,6 +10,11 @@ Because its Asynchronous, escaping completion blocks are used
 
 import Foundation
 
+
+
+
+
+
 class UserDAO {
     
     static let address = URL(string: "https://api.myjson.com/bins/6i9o2")
@@ -44,26 +49,3 @@ class UserDAO {
     
     
 }
-
-/*  PARA TRATAMENTO DOS ERROS
- 
- if error != nil || data == nil {
-     print("Client error!")
-     completion(error, nil)
-     return
- }
-
- guard let response = response as? HTTPURLResponse,
-           (200...299).contains(response.statusCode)
- else {
-     print("Server error!")
-     completion(error, nil)
-     return
- }
-
- guard let mime = response.mimeType, mime == "application/json" else {
-     print("Wrong MIME type!")
-     completion(error, nil)
-     return
- }
- */

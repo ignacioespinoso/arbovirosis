@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5AF7D8423776E4400635447 /* DiseaseOccurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */; };
+		C5AF7D8623777DD100635447 /* HerokuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8523777DD100635447 /* HerokuAPI.swift */; };
+		C5AF7D8823777EFE00635447 /* HerokuAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */; };
+		C5AF7D8A23777F0900635447 /* HerokuAPIDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8923777F0900635447 /* HerokuAPIDAO.swift */; };
 		C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */; };
 		C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */; };
 		C5CAD7002375B21C00B5BBA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FF2375B21C00B5BBA2 /* ViewController.swift */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurance.swift; sourceTree = "<group>"; };
+		C5AF7D8523777DD100635447 /* HerokuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPI.swift; sourceTree = "<group>"; };
+		C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPIServices.swift; sourceTree = "<group>"; };
+		C5AF7D8923777F0900635447 /* HerokuAPIDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPIDAO.swift; sourceTree = "<group>"; };
 		C5CAD6F82375B21C00B5BBA2 /* FOCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +91,8 @@
 			children = (
 				C5CAD7142375B35000B5BBA2 /* User.swift */,
 				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
+				C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */,
+				C5AF7D8523777DD100635447 /* HerokuAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +119,8 @@
 			children = (
 				C5CAD7162375B48900B5BBA2 /* UserServices.swift */,
 				C5CAD7182375B49100B5BBA2 /* UserDAO.swift */,
+				C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */,
+				C5AF7D8923777F0900635447 /* HerokuAPIDAO.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -185,7 +197,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CAD7152375B35000B5BBA2 /* User.swift in Sources */,
+				C5AF7D8A23777F0900635447 /* HerokuAPIDAO.swift in Sources */,
 				C5CAD7192375B49100B5BBA2 /* UserDAO.swift in Sources */,
+				C5AF7D8623777DD100635447 /* HerokuAPI.swift in Sources */,
+				C5AF7D8423776E4400635447 /* DiseaseOccurance.swift in Sources */,
+				C5AF7D8823777EFE00635447 /* HerokuAPIServices.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ViewController.swift in Sources */,
 				C5CAD7172375B48900B5BBA2 /* UserServices.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,

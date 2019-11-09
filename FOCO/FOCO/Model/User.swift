@@ -14,12 +14,17 @@ class User: Codable {
     
     let id: Int
     let login: String
-//    let pass: String
-//    let name: String
-//    let profession: String
-//    let bio: String
-//    let picture: String
-//    let member_since: String
+
+    
+
+//    ai deixar igual api do herolu
+//    deixar o coding keys
+//    E AI FAZER A CAMADA DE SERVICES PRA CIMA É ISSO. VRAU.
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id_teste"
+        case login = "log"
+    }
     
 }
 

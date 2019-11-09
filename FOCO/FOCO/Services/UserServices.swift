@@ -12,7 +12,7 @@ import UIKit
 
 class UserServices {
 
-    static func getAllUsers(_ completion: @escaping (_ errorMessage: Error?, _ user: User?) -> Void) {
+    static func getAllUsers(_ completion: @escaping (_ errorMessage: Error?, _ user: [User]?) -> Void) {
         
         // tratamento de erros?
         

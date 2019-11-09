@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var labelName: UILabel!
-    fileprivate var users: User?
+    fileprivate var users: [User]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         print(self.users)
         
         if let user = self.users {
-            self.labelName.text = user.login
+            self.labelName.text = user[0].login
         }
     }
     
