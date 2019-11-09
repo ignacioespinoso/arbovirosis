@@ -1,9 +1,32 @@
-//
-//  HerokuAPIServices.swift
-//  FOCO
-//
-//  Created by Ivo Dutra on 09/11/19.
-//  Copyright © 2019 arbovirosis. All rights reserved.
-//
+/*
+Copyright © 2019 arbovirosis. All rights reserved.
 
-import Foundation
+Abstract:
+Services Layer. Independent from adopted database
+ 
+Error Handling + doing aditional treatment to data
+ 
+*/
+
+import UIKit
+
+class HerokuAPIServices {
+
+    static func getAllHero(_ completion: @escaping (_ errorMessage: Error?, _ hero: [HerokuAPI]?) -> Void) {
+        
+        // tratamento de erros?
+        // Falta fazer - baixa prioridade
+        
+        HerokuAPIDAO.findAll { (error, hero) in
+            
+            if error != nil {
+                //Handle errors - mensagem mais amigável para usuário
+                print(error.debugDescription)
+            } else {
+                completion(nil,hero)
+            }
+        }
+        
+    }
+
+}

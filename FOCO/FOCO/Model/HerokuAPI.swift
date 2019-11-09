@@ -13,11 +13,13 @@ class HerokuAPI: Codable {
     
     let id: Int
     let name: String
-    let lat: Int
-    let lon: Int
+    let lat: Double
+    let lon: Double
 
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
         case lat = "latitude"
         case lon = "longitude"
     }

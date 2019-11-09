@@ -2,7 +2,7 @@
 Copyright © 2019 arbovirosis. All rights reserved.
 
 Abstract:
-
+Main ViewController
  
 */
 
@@ -11,21 +11,19 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var labelName: UILabel!
-    fileprivate var users: [User]?
+    fileprivate var points: [HerokuAPI]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //UserServices.getAllUsers { errorMessage, user in
         
-        // Aqui é bom criar uma camada a mais, no caso o userServices, mas só para testes colocamos DAO direto
-        
-        UserDAO.findAll { (errorMessage, user) in
-            if user != nil {
-                self.users = user
-            }else{
+        HerokuAPIServices.getAllHero { (errorMessage, points) in
+            if points != nil {
+                self.points = points
+            } else {
                 print(errorMessage.debugDescription)
             }
+            
         }
         
         
@@ -33,10 +31,10 @@ class ViewController: UIViewController {
 
     @IBAction func updateLabekl(_ sender: Any) {
         
-        print(self.users)
+        print(self.points)
         
-        if let user = self.users {
-            self.labelName.text = user[0].login
+        if let point = self.points {
+            self.labelName.text = point[0].name
         }
     }
     

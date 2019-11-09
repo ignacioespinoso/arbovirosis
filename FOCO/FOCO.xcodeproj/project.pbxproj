@@ -75,8 +75,8 @@
 			children = (
 				C5CAD71C2375C88C00B5BBA2 /* Teoria.md */,
 				C5CAD70F2375B29B00B5BBA2 /* Model */,
-				C5CAD7112375B2B500B5BBA2 /* Controller */,
 				C5CAD7102375B2AE00B5BBA2 /* View */,
+				C5CAD7112375B2B500B5BBA2 /* Controller */,
 				C5CAD7122375B2BC00B5BBA2 /* Services */,
 				C5CAD7042375B21E00B5BBA2 /* Assets.xcassets */,
 				C5CAD7092375B21E00B5BBA2 /* Info.plist */,
@@ -90,9 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				C5CAD7142375B35000B5BBA2 /* User.swift */,
-				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
-				C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */,
 				C5AF7D8523777DD100635447 /* HerokuAPI.swift */,
+				C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */,
+				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
