@@ -10,19 +10,20 @@ Error Handling + doing aditional treatment to data
 
 import UIKit
 
-class UserServices {
+class HerokuAPIServices {
 
-    static func getAllUsers(_ completion: @escaping (_ errorMessage: Error?, _ user: [User]?) -> Void) {
+    static func getAllHero(_ completion: @escaping (_ errorMessage: Error?, _ hero: [HerokuAPI]?) -> Void) {
         
         // tratamento de erros?
+        // Falta fazer - baixa prioridade
         
-        UserDAO.findAll { (error, user) in
+        HerokuAPIDAO.findAll { (error, hero) in
             
             if error != nil {
-                //Handle errors
+                //Handle errors - mensagem mais amigável para usuário
                 print(error.debugDescription)
             } else {
-                completion(nil,user)
+                completion(nil,hero)
             }
         }
         
