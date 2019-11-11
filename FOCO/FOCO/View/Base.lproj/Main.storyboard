@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Onb-vZ-VP5">
-                                <rect key="frame" x="16" y="654" width="382" height="55"/>
+                                <rect key="frame" x="16" y="638" width="382" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soa-KW-Srv">
                                         <rect key="frame" x="133" y="12.5" width="116" height="30"/>
@@ -79,7 +79,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Onb-vZ-VP5" firstAttribute="leading" secondItem="Lcv-ID-6fI" secondAttribute="leading" constant="16" id="77p-g4-LDN"/>
-                            <constraint firstItem="Lcv-ID-6fI" firstAttribute="bottom" secondItem="Onb-vZ-VP5" secondAttribute="bottom" constant="16" id="FAp-4T-DJu"/>
+                            <constraint firstItem="Lcv-ID-6fI" firstAttribute="bottom" secondItem="Onb-vZ-VP5" secondAttribute="bottom" constant="32" id="FAp-4T-DJu"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="trailing" secondItem="Onb-vZ-VP5" secondAttribute="trailing" constant="16" id="Zr9-gp-ExI"/>
                             <constraint firstItem="GVV-ei-tgV" firstAttribute="top" secondItem="SAi-lF-gRQ" secondAttribute="top" id="acy-ZK-3Kb"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="trailing" secondItem="GVV-ei-tgV" secondAttribute="trailing" id="fTP-wd-auR"/>
@@ -103,6 +103,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ky5-jK-8mw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7ca-wQ-Ev5">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.14509803921568626" green="0.24705882352941178" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

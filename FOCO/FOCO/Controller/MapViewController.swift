@@ -12,13 +12,13 @@ class MapViewController: UIViewController {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
     fileprivate var points: [DiseaseAnnotation]?
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 400
     
 // MARK: Initial Setup
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let initialLocation = CLLocation(latitude: 11.5, longitude: 12.5)
+        let initialLocation = CLLocation(latitude: -22.81696, longitude: -47.09542)
         loadInitialData()
         mapView.delegate = self
         centerMapOnLocation(location: initialLocation)
