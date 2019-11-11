@@ -15,23 +15,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQa-cb-4ZU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQa-cb-4ZU">
                                 <rect key="frame" x="53" y="185" width="274" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kem-DN-GaK">
-                                <rect key="frame" x="184" y="658" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kem-DN-GaK">
+                                <rect key="frame" x="184" y="632" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="updateLabekl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cUM-k5-ykG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCl-oE-bII">
+                                <rect key="frame" x="171" y="722" width="72" height="30"/>
+                                <state key="normal" title="Go to Map"/>
+                                <connections>
+                                    <segue destination="JdF-2O-hbJ" kind="show" id="2iI-Te-Vm1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kem-DN-GaK" secondAttribute="bottom" constant="200" id="5gO-PH-4W0"/>
+                            <constraint firstItem="kCl-oE-bII" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AwJ-cZ-BqH"/>
+                            <constraint firstItem="RQa-cb-4ZU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="141" id="H4e-vf-Sxy"/>
+                            <constraint firstItem="kem-DN-GaK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ITZ-ui-S09"/>
+                            <constraint firstItem="RQa-cb-4ZU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="sFf-0c-EDu"/>
+                            <constraint firstItem="kCl-oE-bII" firstAttribute="top" secondItem="kem-DN-GaK" secondAttribute="bottom" constant="60" id="v3r-qf-l6e"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
@@ -41,6 +54,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="AZE-K5-10K">
+            <objects>
+                <viewController id="JdF-2O-hbJ" customClass="MapViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SAi-lF-gRQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GVV-ei-tgV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GVV-ei-tgV" firstAttribute="top" secondItem="SAi-lF-gRQ" secondAttribute="top" id="acy-ZK-3Kb"/>
+                            <constraint firstItem="Lcv-ID-6fI" firstAttribute="trailing" secondItem="GVV-ei-tgV" secondAttribute="trailing" id="fTP-wd-auR"/>
+                            <constraint firstAttribute="bottom" secondItem="GVV-ei-tgV" secondAttribute="bottom" id="xlZ-nN-YS1"/>
+                            <constraint firstItem="GVV-ei-tgV" firstAttribute="leading" secondItem="Lcv-ID-6fI" secondAttribute="leading" id="zQk-Tq-7t1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lcv-ID-6fI"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="36M-sP-VJQ"/>
+                    <connections>
+                        <outlet property="mapView" destination="GVV-ei-tgV" id="OKd-Ni-nhj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xJu-9p-W7A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="131"/>
         </scene>
     </scenes>
 </document>

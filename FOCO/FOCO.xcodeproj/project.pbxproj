@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */; };
 		8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */; };
+		80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* MapViewController.swift */; };
+		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
 		C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */; };
 		C5AF7D8623777DD100635447 /* HerokuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8523777DD100635447 /* HerokuAPI.swift */; };
 		C5AF7D8823777EFE00635447 /* HerokuAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesServices.swift; sourceTree = "<group>"; };
 		8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesDAO.swift; sourceTree = "<group>"; };
+		80E8F3D12379AED800445DF8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
 		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
 		C5AF7D8523777DD100635447 /* HerokuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPI.swift; sourceTree = "<group>"; };
 		C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPIServices.swift; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 			path = DAO;
 			sourceTree = "<group>";
 		};
+		80E8F3D32379B24900445DF8 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
 		C5CAD6EF2375B21C00B5BBA2 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +115,7 @@
 		C5CAD70F2375B29B00B5BBA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80E8F3D32379B24900445DF8 /* Annotations */,
 				C5CAD7142375B35000B5BBA2 /* User.swift */,
 				C5AF7D8523777DD100635447 /* HerokuAPI.swift */,
 				C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */,
@@ -124,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				C5CAD6FF2375B21C00B5BBA2 /* ViewController.swift */,
+				80E8F3D12379AED800445DF8 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,6 +230,7 @@
 				C5AF7D8623777DD100635447 /* HerokuAPI.swift in Sources */,
 				C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */,
 				8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */,
+				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				C5AF7D8823777EFE00635447 /* HerokuAPIServices.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ViewController.swift in Sources */,
 				C5CAD7172375B48900B5BBA2 /* UserServices.swift in Sources */,
@@ -223,6 +238,7 @@
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
 				C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */,
 				8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */,
+				80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
