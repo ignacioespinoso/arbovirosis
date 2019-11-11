@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C5AF7D8423776E4400635447 /* DiseaseOccurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */; };
+		8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */; };
+		8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */; };
+		C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */; };
 		C5AF7D8623777DD100635447 /* HerokuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8523777DD100635447 /* HerokuAPI.swift */; };
 		C5AF7D8823777EFE00635447 /* HerokuAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */; };
 		C5AF7D8A23777F0900635447 /* HerokuAPIDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8923777F0900635447 /* HerokuAPIDAO.swift */; };
@@ -24,7 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurance.swift; sourceTree = "<group>"; };
+		8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesServices.swift; sourceTree = "<group>"; };
+		8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesDAO.swift; sourceTree = "<group>"; };
+		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
 		C5AF7D8523777DD100635447 /* HerokuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPI.swift; sourceTree = "<group>"; };
 		C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPIServices.swift; sourceTree = "<group>"; };
 		C5AF7D8923777F0900635447 /* HerokuAPIDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuAPIDAO.swift; sourceTree = "<group>"; };
@@ -54,6 +58,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8032ED592379924F00357465 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				C5CAD7182375B49100B5BBA2 /* UserDAO.swift */,
+				C5AF7D8923777F0900635447 /* HerokuAPIDAO.swift */,
+				8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
 		C5CAD6EF2375B21C00B5BBA2 = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +105,7 @@
 			children = (
 				C5CAD7142375B35000B5BBA2 /* User.swift */,
 				C5AF7D8523777DD100635447 /* HerokuAPI.swift */,
-				C5AF7D8323776E4400635447 /* DiseaseOccurance.swift */,
+				C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */,
 				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
 			);
 			path = Model;
@@ -117,10 +131,10 @@
 		C5CAD7122375B2BC00B5BBA2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8032ED592379924F00357465 /* DAO */,
 				C5CAD7162375B48900B5BBA2 /* UserServices.swift */,
-				C5CAD7182375B49100B5BBA2 /* UserDAO.swift */,
 				C5AF7D8723777EFE00635447 /* HerokuAPIServices.swift */,
-				C5AF7D8923777F0900635447 /* HerokuAPIDAO.swift */,
+				8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -200,13 +214,15 @@
 				C5AF7D8A23777F0900635447 /* HerokuAPIDAO.swift in Sources */,
 				C5CAD7192375B49100B5BBA2 /* UserDAO.swift in Sources */,
 				C5AF7D8623777DD100635447 /* HerokuAPI.swift in Sources */,
-				C5AF7D8423776E4400635447 /* DiseaseOccurance.swift in Sources */,
+				C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */,
+				8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */,
 				C5AF7D8823777EFE00635447 /* HerokuAPIServices.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ViewController.swift in Sources */,
 				C5CAD7172375B48900B5BBA2 /* UserServices.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
 				C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */,
+				8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8C3NFSJWVT;
+				DEVELOPMENT_TEAM = B73YH55T95;
 				INFOPLIST_FILE = FOCO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -369,7 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8C3NFSJWVT;
+				DEVELOPMENT_TEAM = B73YH55T95;
 				INFOPLIST_FILE = FOCO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

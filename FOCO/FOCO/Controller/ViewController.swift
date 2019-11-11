@@ -11,13 +11,13 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var labelName: UILabel!
-    fileprivate var points: [HerokuAPI]?
-
+    fileprivate var points: [DiseaseOccurrence]?
+    var iterator: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        HerokuAPIServices.getAllHero { (errorMessage, points) in
+        DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
             if points != nil {
                 self.points = points
             } else {
@@ -34,7 +34,10 @@ class ViewController: UIViewController {
         print(self.points)
         
         if let point = self.points {
-            self.labelName.text = point[0].name
+            if iterator < point.count {
+                self.labelName.text = point[iterator].diseaseName
+                iterator += 1
+            }
         }
     }
     

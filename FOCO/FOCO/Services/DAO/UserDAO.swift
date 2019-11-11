@@ -32,17 +32,11 @@ class UserDAO {
                         print(error.localizedDescription)
                     }
                 }
-                
             }
-            
             // resume faz o request acontecer
             task.resume()
         }
-        
     }
-        
-    
-    
 }
 
 /*  PARA TRATAMENTO DOS ERROS
