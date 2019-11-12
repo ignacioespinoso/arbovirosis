@@ -16,7 +16,7 @@ class DiseaseOccurrencesDAO {
     
     // MARK: -  functions
     
-    static func findAll (_ completion: @escaping (_ error: Error?, _ user: [DiseaseOccurrence]?) -> Void) {
+    static func findAll (_ completion: @escaping (_ error: Error?, _ occurrence: [DiseaseOccurrence]?) -> Void) {
         
         if let url = address {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -36,6 +36,50 @@ class DiseaseOccurrencesDAO {
             task.resume()
         }
     }
+
+    static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?, _ occurrence: [DiseaseOccurrence]?) -> Void) {
+
+        if let url = address {
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+
+            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+
+                if let data = data {
+                    do {
+                        let occurrence = try JSONDecoder().decode([DiseaseOccurrence].self, from: data)
+                        // único caso onde não há erro. Passo para frente a ocorrencia
+                        completion(nil, occurrence)
+                    } catch let error {
+                        completion(error, nil)
+                        print(error.localizedDescription)
+                    }
+                }
+
+            }
+            task.resume()
+
+        }
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 /*  PARA TRATAMENTO DOS ERROS
