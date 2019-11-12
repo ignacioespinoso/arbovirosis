@@ -1,10 +1,10 @@
-//
-//  MapViewController.swift
-//  FOCO
-//
-//  Created by Ignácio Espinoso Ribeiro on 11/11/19.
-//  Copyright © 2019 arbovirosis. All rights reserved.
-//
+/*
+Copyright © 2019 arbovirosis. All rights reserved.
+
+Abstract:
+ViewController for MapView
+
+*/
 
 import MapKit
 

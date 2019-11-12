@@ -10,7 +10,7 @@
         <!--Perfil-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ProfileViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Perfil" image="profileSymbol" selectedImage="profileSymbol" id="UsL-eM-ez6"/>
+                    <tabBarItem key="tabBarItem" title="Perfil" image="person.fill" catalog="system" id="UsL-eM-ez6"/>
                     <connections>
                         <outlet property="labelName" destination="RQa-cb-4ZU" id="RbZ-XA-7dD"/>
                     </connections>
@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="1232" y="510"/>
         </scene>
-        <!--Mapa-->
+        <!--Map View Controller-->
         <scene sceneID="AZE-K5-10K">
             <objects>
                 <viewController id="JdF-2O-hbJ" customClass="MapViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
@@ -88,7 +88,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lcv-ID-6fI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Mapa" id="36M-sP-VJQ"/>
+                    <navigationItem key="navigationItem" id="36M-sP-VJQ"/>
                     <connections>
                         <outlet property="mapView" destination="GVV-ei-tgV" id="OKd-Ni-nhj"/>
                     </connections>
@@ -122,7 +122,7 @@
         <scene sceneID="1kV-Ez-RQB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzG-kL-I6a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mapa" image="mapSymbol" selectedImage="mapSymbol" id="Zby-fs-di7"/>
+                    <tabBarItem key="tabBarItem" title="Mapa" image="map.fill" catalog="system" id="Zby-fs-di7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="eHQ-8q-Oku">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -143,7 +143,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mapSymbol" width="28" height="26"/>
-        <image name="profileSymbol" width="24" height="26"/>
+        <image name="map.fill" catalog="system" width="64" height="56"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

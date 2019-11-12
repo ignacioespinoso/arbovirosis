@@ -8,7 +8,7 @@ Main ViewController
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProfileViewController: UIViewController {
     
     @IBOutlet weak var labelName: UILabel!
     fileprivate var points: [DiseaseOccurrence]?
@@ -16,14 +16,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+
         DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
             if points != nil {
                 self.points = points
             } else {
                 print(errorMessage.debugDescription)
             }
-            
+
         }
         
         

@@ -1,10 +1,10 @@
-//
-//  DiseaseOccurrencesDAO.swift
-//  FOCO
-//
-//  Created by Ignácio Espinoso Ribeiro on 11/11/19.
-//  Copyright © 2019 arbovirosis. All rights reserved.
-//
+/*
+Copyright © 2019 arbovirosis. All rights reserved.
+
+Abstract:
+Data Access Object for URL request
+
+*/
 
 import Foundation
 
@@ -35,3 +35,26 @@ class DiseaseOccurrencesDAO {
         }
     }
 }
+
+/*  PARA TRATAMENTO DOS ERROS
+
+if error != nil || data == nil {
+    print("Client error!")
+    completion(error, nil)
+    return
+}
+
+guard let response = response as? HTTPURLResponse,
+          (200...299).contains(response.statusCode)
+else {
+    print("Server error!")
+    completion(error, nil)
+    return
+}
+
+guard let mime = response.mimeType, mime == "application/json" else {
+    print("Wrong MIME type!")
+    completion(error, nil)
+    return
+}
+*/
