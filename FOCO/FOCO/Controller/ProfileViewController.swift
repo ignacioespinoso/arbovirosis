@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
 
     @IBAction func updateLabekl(_ sender: Any) {
         
-        print(self.points)
+        print(self.points!)
         
         if let point = self.points {
             if iterator < point.count {
