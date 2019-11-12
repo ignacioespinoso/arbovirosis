@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
 
         }
         
-        
     }
 
     @IBAction func updateLabekl(_ sender: Any) {
