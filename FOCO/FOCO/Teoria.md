@@ -4,5 +4,20 @@ Quando tenho alguma coisa assícrona, minha completion block será executada só
 
 Logo por ser tudo assíncrono, passo tudo por closures. DAO -> SERVICES -> VIEWCONTROLLER.
 
-Services será utilizado para, por exemplo, formar o CLLocation a partir dos dois números.
+
+# Swift Lint
+* trailing white space: qnd der ENTER, a próxima linha começa com um tab. Swift lint não gosta disso e tem como tirar automaticamente. 
+* máximo espaço que pode dar entre uma coisa e outra é 1 enter.
+
+TERMINAL
+* swiftlint rules 
+    mostra todas as regras
+* swiftlint rules empty_parameters 
+    mostra em detalhes o que trigger uma regra
+    
+    // swiftlint:disable <rule1> 
+
+       YOUR CODE WHERE NO rule1 is applied
+
+    // swiftlint:enable <rule1>
 
