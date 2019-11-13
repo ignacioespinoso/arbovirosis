@@ -13,7 +13,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     fileprivate var points: [DiseaseAnnotation]?
     let regionRadius: CLLocationDistance = 400
-    
+
 // MARK: Initial Setup
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +23,14 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         centerMapOnLocation(location: initialLocation)
     }
-    
+
     // Centers map view on given location
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
-                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+                latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
       mapView.setRegion(coordinateRegion, animated: true)
     }
-    
+
     // Loads initial markers
     func loadInitialData() {
         // Loads disease occurences
@@ -38,7 +38,7 @@ class MapViewController: UIViewController {
             if let data = points {
                 // Maps occurrences to annotations
                 self.points = data.map { (diseaseOccurrence) -> DiseaseAnnotation in
-                    //The magic happens here
+                    // The magic happens here
                     let annotation = DiseaseAnnotation(disease: diseaseOccurrence)
                     return annotation
                 }
@@ -57,7 +57,7 @@ class MapViewController: UIViewController {
 
 // MARK: Map View Delegate
 extension MapViewController: MKMapViewDelegate {
-    
+
     // Reuses annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
@@ -78,11 +78,12 @@ extension MapViewController: MKMapViewDelegate {
         }
         return view
     }
-    
+
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
-        calloutAccessoryControlTapped control: UIControl) {
-      let location = view.annotation as! DiseaseAnnotation
-      let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-      location.mapItem().openInMaps(launchOptions: launchOptions)
+                 calloutAccessoryControlTapped control: UIControl) {
+        if let location = view.annotation as? DiseaseAnnotation {
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            location.mapItem().openInMaps(launchOptions: launchOptions)
+        }
     }
 }

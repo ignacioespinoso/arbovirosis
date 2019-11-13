@@ -14,21 +14,18 @@ import UIKit
 
 class DiseaseOccurrencesServices {
 
-    static func getAllDiseases(_ completion: @escaping (_ errorMessage: Error?, _ ocurrence: [DiseaseOccurrence]?) -> Void) {
-        
-        // tratamento de erros?
+    static func getAllDiseases(_ completion: @escaping (_ errorMessage: Error?,
+                                _ ocurrence: [DiseaseOccurrence]?) -> Void) {
+
         // Falta fazer - baixa prioridade
-        
         DiseaseOccurrencesDAO.findAll { (error, ocurrence) in
-            
+
             if error != nil {
-                //Handle errors - mensagem mais amigável para usuário
+                // Handle errors - mensagem mais amigável para usuário
                 print(error.debugDescription)
             } else {
                 completion(nil, ocurrence)
             }
         }
-        
     }
-
 }

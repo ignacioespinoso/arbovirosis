@@ -8,9 +8,8 @@ Contains the information about the point to be projected at the map
 
 import Foundation
 
-
 struct DiseaseOccurrence: Codable {
-    
+
     let id: CLong
     let diseaseName: String
     let latitude: Double

@@ -8,13 +8,11 @@ Error types
 
 import UIKit
 
-enum Errors : Error {
-    
+enum Errors: Error {
     case databaseFailure
     case clientFailure
     case serverError
 }
-
 
 /*
  

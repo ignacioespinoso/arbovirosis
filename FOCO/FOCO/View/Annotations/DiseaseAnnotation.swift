@@ -12,18 +12,17 @@ import Contacts
 class DiseaseAnnotation: NSObject, MKAnnotation {
     let disease: DiseaseOccurrence
     let coordinate: CLLocationCoordinate2D
-    
+
     init(disease: DiseaseOccurrence) {
         self.disease = disease
         self.coordinate = CLLocationCoordinate2D(latitude: disease.latitude, longitude: disease.longitude)
-        
         super.init()
     }
-    
+
     var title: String? {
         return disease.diseaseName
     }
-    
+
     var subtitle: String? {
         return String(disease.id)
     }
@@ -39,4 +38,3 @@ extension DiseaseAnnotation {
       return mapItem
     }
 }
-

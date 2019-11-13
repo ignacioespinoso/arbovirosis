@@ -11,15 +11,15 @@ Because its Asynchronous, escaping completion blocks are used
 import Foundation
 
 class DiseaseOccurrencesDAO {
-    
+
     static let address = URL(string: "https://safe-peak-03441.herokuapp.com/diseases")
-    
-    // MARK: -  functions
-    
-    static func findAll (_ completion: @escaping (_ error: Error?, _ occurrence: [DiseaseOccurrence]?) -> Void) {
-        
+
+// MARK: Functions
+    static func findAll (_ completion: @escaping (_ error: Error?,
+                                _ occurrence: [DiseaseOccurrence]?) -> Void) {
+
         if let url = address {
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
                 if let data = data {
                     do {
@@ -32,20 +32,20 @@ class DiseaseOccurrencesDAO {
                     }
                 }
             }
-            // resume faz o request acontecer
+            // Resume faz o request acontecer
             task.resume()
         }
     }
 
-    static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?, _ occurrence: [DiseaseOccurrence]?) -> Void) {
+    static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?,
+                                        _ occurrence: [DiseaseOccurrence]?) -> Void) {
 
         if let url = address {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-            
 
-            let task = URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-
+            let task = URLSession.shared.uploadTask(with: request,
+                                                    from: jsonData) { (data, _, error) in
                 if let data = data {
                     do {
                         let occurrence = try JSONDecoder().decode([DiseaseOccurrence].self, from: data)
@@ -56,30 +56,10 @@ class DiseaseOccurrencesDAO {
                         print(error.localizedDescription)
                     }
                 }
-
             }
             task.resume()
-
         }
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 /*  PARA TRATAMENTO DOS ERROS

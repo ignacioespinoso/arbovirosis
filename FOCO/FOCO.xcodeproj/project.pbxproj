@@ -145,6 +145,7 @@
 				C5CAD6F42375B21C00B5BBA2 /* Sources */,
 				C5CAD6F52375B21C00B5BBA2 /* Frameworks */,
 				C5CAD6F62375B21C00B5BBA2 /* Resources */,
+				80CF4E72237C42D20013234B /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -200,6 +201,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		80CF4E72237C42D20013234B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C5CAD6F42375B21C00B5BBA2 /* Sources */ = {
@@ -359,7 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2M7ZQ8AZ57;
+				DEVELOPMENT_TEAM = B73YH55T95;
 				INFOPLIST_FILE = FOCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -378,7 +400,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2M7ZQ8AZ57;
+				DEVELOPMENT_TEAM = B73YH55T95;
 				INFOPLIST_FILE = FOCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (

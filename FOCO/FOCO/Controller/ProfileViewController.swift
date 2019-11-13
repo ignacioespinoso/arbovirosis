@@ -9,13 +9,12 @@ Main ViewController
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
+
     @IBOutlet weak var labelName: UILabel!
     fileprivate var points: [DiseaseOccurrence]?
     var iterator: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
 //        DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
 //            if points != nil {
@@ -25,11 +24,10 @@ class ProfileViewController: UIViewController {
 //            }
 //
 //        }
-        
     }
 
     @IBAction func updateLabekl(_ sender: Any) {
-        
+
 //        print(self.points!)
 //
 //        if let point = self.points {
@@ -39,48 +37,29 @@ class ProfileViewController: UIViewController {
 //            }
 //        }
 
-
         let jsonObject: [String: Any] = [
             "id": 10,
-            "diseaseName":"POST",
-            "latitude":-22.81673,
-            "longitude":-47.09485
+            "diseaseName": "POST",
+            "latitude": -22.81673,
+            "longitude": -47.09485
         ]
 
        print(JSONSerialization.isValidJSONObject(jsonObject))
-        var jsonData: Data? = nil
+        var jsonData: Data?
 
        do {
-            jsonData = try NSKeyedArchiver.archivedData(withRootObject: jsonObject, requiringSecureCoding: false)
+            jsonData = try NSKeyedArchiver.archivedData(withRootObject: jsonObject,
+                                                        requiringSecureCoding: false)
         } catch let myJSONError {
             print(myJSONError)
         }
 
-
         DiseaseOccurrencesDAO.create(jsonData: jsonData, { (error, data) in
-
-
-                        if data != nil {
-                            self.points = data
-                        } else {
-                            print(error.debugDescription)
-                        }
-
-            
-            
-
+            if data != nil {
+                self.points = data
+            } else {
+                print(error.debugDescription)
+            }
         })
     }
-
-
-
-
-
-
-
-
-
-
-
 }
-
