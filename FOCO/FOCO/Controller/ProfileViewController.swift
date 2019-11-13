@@ -11,7 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var labelName: UILabel!
-    fileprivate var points: [DiseaseOccurrence]?
+    fileprivate var points: DiseaseOccurrence?
     var iterator: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,22 +37,26 @@ class ProfileViewController: UIViewController {
 //            }
 //        }
 
-        let jsonObject: [String: Any] = [
-            "id": 10,
-            "diseaseName": "POST",
-            "latitude": -22.81673,
-            "longitude": -47.09485
-        ]
+//        let jsonObject: [String: Any] = [
+//            "id": 122,
+//            "diseaseName": "POST",
+//            "latitude": -22.81673,
+//            "longitude": -47.09485
+//        ]
 
-       print(JSONSerialization.isValidJSONObject(jsonObject))
+        let jsonObject = DiseaseOccurrence(diseaseName: "vai", latitude: -10, longitude: 20)
+
         var jsonData: Data?
 
        do {
-            jsonData = try NSKeyedArchiver.archivedData(withRootObject: jsonObject,
-                                                        requiringSecureCoding: false)
+//            jsonData = try NSKeyedArchiver.archivedData(withRootObject: jsonObject,
+//                                                        requiringSecureCoding: false)
+            jsonData = try JSONEncoder().encode(jsonObject)
         } catch let myJSONError {
             print(myJSONError)
         }
+
+        print(jsonData)
 
         DiseaseOccurrencesDAO.create(jsonData: jsonData, { (error, data) in
             if data != nil {

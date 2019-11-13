@@ -38,18 +38,20 @@ class DiseaseOccurrencesDAO {
     }
 
     static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?,
-                                        _ occurrence: [DiseaseOccurrence]?) -> Void) {
+                                        _ occurrence: DiseaseOccurrence?) -> Void) {
 
         if let url = address {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
+            request.httpBody = jsonData
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-            let task = URLSession.shared.uploadTask(with: request,
-                                                    from: jsonData) { (data, _, error) in
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
                 if let data = data {
                     do {
-                        let occurrence = try JSONDecoder().decode([DiseaseOccurrence].self, from: data)
-                        // único caso onde não há erro. Passo para frente a ocorrencia
+                        let occurrence = try JSONDecoder().decode(DiseaseOccurrence.self, from: data)
+                        // Único caso onde não há erro. Passo para frente a ocorrencia
                         completion(nil, occurrence)
                     } catch let error {
                         completion(error, nil)
