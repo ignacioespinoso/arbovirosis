@@ -16,7 +16,7 @@ class DiseaseOccurrencesServices {
     // MARK: - Get
 
     static func getAllDiseases(_ completion: @escaping (_ errorMessage: Error?,
-                                _ ocurrence: [DiseaseOccurrence]?) -> Void) {
+                                                        _ ocurrence: [DiseaseOccurrence]?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
         DiseaseOccurrencesDAO.findAll { (error, ocurrence) in

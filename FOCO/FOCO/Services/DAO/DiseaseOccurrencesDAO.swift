@@ -15,7 +15,7 @@ class DiseaseOccurrencesDAO {
 
 // MARK: Functions
     static func findAll (_ completion: @escaping (_ error: Error?,
-                                _ occurrence: [DiseaseOccurrence]?) -> Void) {
+                                                  _ occurrence: [DiseaseOccurrence]?) -> Void) {
 
         if let url = address {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
