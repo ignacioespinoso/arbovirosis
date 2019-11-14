@@ -18,21 +18,26 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        BreedingSitesServices.getAllSites { (errorMessage, points) in
-            if points != nil {
-                self.points = points
-                print(points!)
-            } else {
-                print(errorMessage.debugDescription)
-            }
-        }
+//        BreedingSitesServices.getAllSites { (errorMessage, points) in
+//            if points != nil {
+//                self.points = points
+//                print(points!)
+//            } else {
+//                print(errorMessage.debugDescription)
+//            }
+//        }
     }
 
     // MARK: - Functions
 
     @IBAction func updateLabekl(_ sender: Any) {
 
-        let jsonObject = DiseaseOccurrence(diseaseName: "postTeste", latitude: -22.81552, longitude: -47.094)
+        let jsonObject = BreedingSite(title: "Pneuzin",
+                                      description: "vai que vai",
+                                      type: "Descarte",
+                                      created: "",
+                                      latitude: -22.81277,
+                                      longitude: -47.06107)
 
         var jsonData: Data?
 
@@ -44,16 +49,13 @@ class ProfileViewController: UIViewController {
 
         print(jsonData!)
 
-        DiseaseOccurrencesServices.createDisease(jsonData: jsonData, { (error) in
-
+        BreedingSitesServices.createSite(jsonData: jsonData, { (error) in
             if error == nil {
-                print("TUDO CERRTO@")
+                print("TUDO CERRTO")
             } else {
                 print(error!)
             }
-
         })
-
     }
 
 }

@@ -30,4 +30,21 @@ class BreedingSitesServices {
         }
     }
 
+    // MARK: - Post
+
+    // Apenas precisa checar erro, o objeto retornado é o próprio enviado.
+    // Checar http status
+    static func createSite (jsonData: Data?, _ completion: @escaping (_ error: Error?) -> Void) {
+
+        BreedingSitesDAO.create(jsonData: jsonData, { (error) in
+
+            if error != nil {
+                // Handle errors - mensagem mais amigável para usuário
+                print(error.debugDescription)
+            } else {
+                completion(error)
+            }
+        })
+    }
+
 }
