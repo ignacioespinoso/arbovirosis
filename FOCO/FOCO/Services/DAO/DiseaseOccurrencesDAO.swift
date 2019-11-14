@@ -37,8 +37,7 @@ class DiseaseOccurrencesDAO {
         }
     }
 
-    static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?,
-                                        _ occurrence: DiseaseOccurrence?) -> Void) {
+    static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?) -> Void) {
 
         if let url = address {
             var request = URLRequest(url: url)
@@ -50,14 +49,26 @@ class DiseaseOccurrencesDAO {
 
                 if let data = data {
                     do {
-                        let occurrence = try JSONDecoder().decode(DiseaseOccurrence.self, from: data)
-                        // Único caso onde não há erro. Passo para frente a ocorrencia
-                        completion(nil, occurrence)
+                        _ = try JSONDecoder().decode(DiseaseOccurrence.self, from: data)
+                        // Único caso onde não há erro. Não passo erro para frente
+                        completion(nil)
+                        print("Json Decoder post disease ok!")
                     } catch let error {
-                        completion(error, nil)
+                        completion(error)
                         print(error.localizedDescription)
                     }
                 }
+
+                guard let response = response as? HTTPURLResponse,
+                          (200...299).contains(response.statusCode)
+                else {
+                    print("Server error! Diesease")
+                    completion(error)
+                    return
+                }
+
+                print("Create Disease response status", response.statusCode)
+
             }
             task.resume()
         }

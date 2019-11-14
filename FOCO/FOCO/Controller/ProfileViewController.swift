@@ -24,46 +24,33 @@ class ProfileViewController: UIViewController {
 //            }
 //
 //        }
+
     }
 
     @IBAction func updateLabekl(_ sender: Any) {
 
-//        print(self.points!)
-//
-//        if let point = self.points {
-//            if iterator < point.count {
-//                self.labelName.text = point[iterator].diseaseName
-//                iterator += 1
-//            }
-//        }
-
-//        let jsonObject: [String: Any] = [
-//            "id": 122,
-//            "diseaseName": "POST",
-//            "latitude": -22.81673,
-//            "longitude": -47.09485
-//        ]
-
-        let jsonObject = DiseaseOccurrence(diseaseName: "vai", latitude: -10, longitude: 20)
+        let jsonObject = DiseaseOccurrence(diseaseName: "postTeste", latitude: -22.81552, longitude: -47.094)
 
         var jsonData: Data?
 
        do {
-//            jsonData = try NSKeyedArchiver.archivedData(withRootObject: jsonObject,
-//                                                        requiringSecureCoding: false)
             jsonData = try JSONEncoder().encode(jsonObject)
         } catch let myJSONError {
             print(myJSONError)
         }
 
-        print(jsonData)
+        print(jsonData!)
 
-        DiseaseOccurrencesDAO.create(jsonData: jsonData, { (error, data) in
-            if data != nil {
-                self.points = data
+        DiseaseOccurrencesServices.createDisease(jsonData: jsonData, { (error) in
+
+            if error == nil {
+                print("TUDO CERRTO@")
             } else {
-                print(error.debugDescription)
+                print(error!)
             }
+
         })
+
     }
+
 }

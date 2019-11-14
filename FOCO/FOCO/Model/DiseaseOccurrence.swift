@@ -15,19 +15,19 @@ struct DiseaseOccurrence: Codable {
     let latitude: Double
     let longitude: Double
 
-    init(diseaseName: String, latitude: Double, longitude: Double) {
-        // Para efeito de POST, o parâmetro id é irrelevante, mas para init precisa se não
-        // Enconder não funciona
-        self.id = 1
-        self.diseaseName = diseaseName
-        self.latitude = latitude
-        self.longitude = longitude
-    }
-
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case diseaseName = "diseaseName"
         case latitude = "latitude"
         case longitude = "longitude"
     }
+
+    init(diseaseName: String, latitude: Double, longitude: Double) {
+        // Para efeito de POST, o parâmetro id precisa ser 0
+        self.id = 0
+        self.diseaseName = diseaseName
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+
 }
