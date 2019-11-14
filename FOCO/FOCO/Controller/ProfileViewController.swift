@@ -11,21 +11,24 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var labelName: UILabel!
-    fileprivate var points: DiseaseOccurrence?
+    fileprivate var points: [BreedingSite]?
     var iterator: Int = 0
+
+    // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
-//            if points != nil {
-//                self.points = points
-//            } else {
-//                print(errorMessage.debugDescription)
-//            }
-//
-//        }
-
+        BreedingSitesServices.getAllSites { (errorMessage, points) in
+            if points != nil {
+                self.points = points
+                print(points!)
+            } else {
+                print(errorMessage.debugDescription)
+            }
+        }
     }
+
+    // MARK: - Functions
 
     @IBAction func updateLabekl(_ sender: Any) {
 

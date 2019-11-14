@@ -3,7 +3,6 @@ Copyright © 2019 arbovirosis. All rights reserved.
 
 Abstract:
 Services Layer. Independent from adopted database
-
 Error Handling + doing aditional treatment to data
 
 */

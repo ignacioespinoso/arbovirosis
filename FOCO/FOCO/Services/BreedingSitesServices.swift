@@ -1,0 +1,33 @@
+/*
+Copyright © 2019 arbovirosis. All rights reserved.
+
+Abstract:
+Services Layer. Independent from adopted database
+Error Handling + doing aditional treatment to data
+
+*/
+
+import Foundation
+
+import UIKit
+
+class BreedingSitesServices {
+
+    // MARK: - Get
+
+    static func getAllSites(_ completion: @escaping (_ errorMessage: Error?,
+                                                     _ site: [BreedingSite]?) -> Void) {
+
+        // Falta fazer tratamento de erros - baixa prioridade
+        BreedingSitesDAO.findAll { (error, site) in
+
+            if error != nil {
+                // Handle errors - mensagem mais amigável para usuário
+                print(error.debugDescription)
+            } else {
+                completion(nil, site)
+            }
+        }
+    }
+
+}

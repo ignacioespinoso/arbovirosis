@@ -3,7 +3,6 @@ Copyright © 2019 arbovirosis. All rights reserved.
 
 Abstract:
 Data access object. Perform the URL session
-
 Because its Asynchronous, escaping completion blocks are used
 
 */

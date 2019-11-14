@@ -12,6 +12,8 @@
 		80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* MapViewController.swift */; };
 		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
+		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
+		C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */; };
 		C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */; };
 		C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */; };
 		C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */; };
@@ -28,6 +30,8 @@
 		80E8F3D12379AED800445DF8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
+		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
+		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
 		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
 		C5CAD6F82375B21C00B5BBA2 /* FOCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */,
+				C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */,
+				C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */,
 				8032ED592379924F00357465 /* DAO */,
 			);
 			path = Services;
@@ -233,12 +239,14 @@
 			files = (
 				C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */,
 				8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */,
+				C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */,
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ProfileViewController.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
 				C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */,
 				8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */,
+				C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */,
 				C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */,
 				80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */,
 			);
