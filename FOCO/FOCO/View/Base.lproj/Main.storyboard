@@ -76,37 +76,54 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aviso" translatesAutoresizingMaskIntoConstraints="NO" id="j5S-Os-5Z1">
-                                <rect key="frame" x="16" y="60" width="382" height="90"/>
+                                <rect key="frame" x="16" y="60" width="382" height="105"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="aG3-g6-PRD"/>
+                                    <constraint firstAttribute="height" constant="105" id="aG3-g6-PRD"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="centeredLocation" translatesAutoresizingMaskIntoConstraints="NO" id="qLz-Es-3HC">
-                                <rect key="frame" x="339" y="150" width="59" height="64"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fullButtonFilled" translatesAutoresizingMaskIntoConstraints="NO" id="CYc-DV-Lux">
+                                <rect key="frame" x="348" y="181" width="50" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="uqX-le-9OX"/>
+                                    <constraint firstAttribute="width" constant="50" id="OAf-IT-qB2"/>
+                                    <constraint firstAttribute="height" constant="100" id="Tcz-wI-1te"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jt1-a0-MXB" userLabel="locationButton">
-                                <rect key="frame" x="348" y="158" width="41" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jt1-a0-MXB" userLabel="locationButton">
+                                <rect key="frame" x="348" y="231" width="50" height="50"/>
                                 <connections>
                                     <action selector="recenterClick:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="E5W-Ca-1OO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEs-GK-Fk6" userLabel="refreshButton">
+                                <rect key="frame" x="348" y="181" width="50" height="50"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshButton:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="pgs-1J-8jM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="jt1-a0-MXB" firstAttribute="width" secondItem="CYc-DV-Lux" secondAttribute="width" id="371-bl-dkR"/>
                             <constraint firstItem="Onb-vZ-VP5" firstAttribute="leading" secondItem="Lcv-ID-6fI" secondAttribute="leading" constant="16" id="77p-g4-LDN"/>
+                            <constraint firstItem="FEs-GK-Fk6" firstAttribute="height" secondItem="CYc-DV-Lux" secondAttribute="height" multiplier="0.5" id="EnF-nn-ixk"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="bottom" secondItem="Onb-vZ-VP5" secondAttribute="bottom" constant="32" id="FAp-4T-DJu"/>
+                            <constraint firstItem="FEs-GK-Fk6" firstAttribute="top" secondItem="CYc-DV-Lux" secondAttribute="top" id="Ksb-fZ-nEL"/>
+                            <constraint firstItem="FEs-GK-Fk6" firstAttribute="width" secondItem="CYc-DV-Lux" secondAttribute="width" id="LbJ-kH-y1x"/>
+                            <constraint firstItem="FEs-GK-Fk6" firstAttribute="centerX" secondItem="CYc-DV-Lux" secondAttribute="centerX" id="O6H-fm-SK8"/>
                             <constraint firstItem="j5S-Os-5Z1" firstAttribute="trailing" secondItem="Onb-vZ-VP5" secondAttribute="trailing" id="Q5u-02-Rd1"/>
-                            <constraint firstItem="qLz-Es-3HC" firstAttribute="top" secondItem="j5S-Os-5Z1" secondAttribute="bottom" id="ViW-TV-5zE"/>
                             <constraint firstItem="j5S-Os-5Z1" firstAttribute="leading" secondItem="Onb-vZ-VP5" secondAttribute="leading" id="Yf2-Un-IFc"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="trailing" secondItem="Onb-vZ-VP5" secondAttribute="trailing" constant="16" id="Zr9-gp-ExI"/>
                             <constraint firstItem="GVV-ei-tgV" firstAttribute="top" secondItem="SAi-lF-gRQ" secondAttribute="top" id="acy-ZK-3Kb"/>
+                            <constraint firstItem="CYc-DV-Lux" firstAttribute="trailing" secondItem="j5S-Os-5Z1" secondAttribute="trailing" id="cR7-LP-u1a"/>
+                            <constraint firstItem="jt1-a0-MXB" firstAttribute="height" secondItem="CYc-DV-Lux" secondAttribute="height" multiplier="0.5" id="cTg-mD-UZ9"/>
+                            <constraint firstItem="jt1-a0-MXB" firstAttribute="bottom" secondItem="CYc-DV-Lux" secondAttribute="bottom" id="cUQ-9n-kgj"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="trailing" secondItem="GVV-ei-tgV" secondAttribute="trailing" id="fTP-wd-auR"/>
                             <constraint firstItem="j5S-Os-5Z1" firstAttribute="top" secondItem="Lcv-ID-6fI" secondAttribute="top" constant="16" id="htW-iD-TGs"/>
-                            <constraint firstItem="qLz-Es-3HC" firstAttribute="trailing" secondItem="j5S-Os-5Z1" secondAttribute="trailing" id="km4-Y3-S6L"/>
+                            <constraint firstItem="jt1-a0-MXB" firstAttribute="centerX" secondItem="CYc-DV-Lux" secondAttribute="centerX" id="na4-fC-kh6"/>
+                            <constraint firstItem="CYc-DV-Lux" firstAttribute="top" secondItem="j5S-Os-5Z1" secondAttribute="bottom" constant="16" id="tlW-0e-W9n"/>
                             <constraint firstAttribute="bottom" secondItem="GVV-ei-tgV" secondAttribute="bottom" id="xlZ-nN-YS1"/>
                             <constraint firstItem="GVV-ei-tgV" firstAttribute="leading" secondItem="Lcv-ID-6fI" secondAttribute="leading" id="zQk-Tq-7t1"/>
                         </constraints>
@@ -115,7 +132,7 @@
                     <tabBarItem key="tabBarItem" title="Mapa" image="map.fill" catalog="system" id="kcw-id-jpy"/>
                     <navigationItem key="navigationItem" id="36M-sP-VJQ"/>
                     <connections>
-                        <outlet property="locationIcon" destination="qLz-Es-3HC" id="yCy-if-75l"/>
+                        <outlet property="locationIcon" destination="CYc-DV-Lux" id="KDL-Io-EaT"/>
                         <outlet property="mapView" destination="GVV-ei-tgV" id="OKd-Ni-nhj"/>
                         <outlet property="newInputButton" destination="Onb-vZ-VP5" id="eXx-cu-KzE"/>
                     </connections>
@@ -148,7 +165,7 @@
     </scenes>
     <resources>
         <image name="aviso" width="340" height="91"/>
-        <image name="centeredLocation" width="59" height="60"/>
+        <image name="fullButtonFilled" width="42" height="83"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>

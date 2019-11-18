@@ -76,13 +76,23 @@ class MapViewController: UIViewController {
             }
         }
     }
+    // MARK: Button Actions
+    @IBAction func refreshButton(_ sender: Any) {
+        // Code to reload data from server
+        // Needs fix: clicking fast, it loads twice.
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        self.dangerousAreas = []
+        self.diseaseMarkers = []
+        self.breedingMarkers = []
+        loadInitialData()
+    }
 
-// MARK: Button Actions
     @IBAction func recenterClick(_ sender: Any) {
         if let myLocation = locationManager.location {
             centerMapOnLocation(location: myLocation)
         }
-        locationIcon.image = UIImage(named: "centeredLocation")
+        locationIcon.image = UIImage(named: "fullButtonFilled")
     }
 }
 
@@ -109,7 +119,7 @@ extension MapViewController: MKMapViewDelegate {
             let centerLocation = CLLocation(latitude: mapCenter.latitude, longitude: mapCenter.longitude)
             let distance = myLocation.distance(from: centerLocation)
             if distance > 100 {
-                locationIcon.image = UIImage(named: "recenterButton")
+                locationIcon.image = UIImage(named: "fullButtonUnfilled")
             }
         }
     }
