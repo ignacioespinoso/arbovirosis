@@ -24,7 +24,8 @@ class DiseaseAnnotation: NSObject, MKAnnotation {
     }
 
     var subtitle: String? {
-        return String(disease.id)
+        // Future: return disease.initialSymptoms
+        return "Início dos sintomas: 23/mar"
     }
 }
 
