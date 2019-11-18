@@ -58,6 +58,17 @@ class MapViewController: UIViewController {
         }
     }
 
+// MARK: Button Actions
+    @IBAction func infoClick(_ sender: Any) {
+        alertUnderConstruction()
+    }
+
+    @IBAction func recenterClick(_ sender: Any) {
+        if let myLocation = locationManager.location {
+            centerMapOnLocation(location: myLocation)
+        }
+    }
+
     @IBAction func newInputClick(_ sender: Any) {
         alertUnderConstruction()
     }
@@ -82,9 +93,16 @@ extension MapViewController: MKMapViewDelegate {
     // Reuses annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
-        guard let annotation = annotation as? DiseaseAnnotation else { return nil }
+        var identifier = ""
 
-        let identifier = "diseaseMarker"
+        if annotation is DiseaseAnnotation {
+            identifier = "diseaseMarker"
+        } else {
+            // if let annotation = annotation as? BreedingAnnotation {
+                identifier = "breedinSiteMarker"
+            //}
+        }
+
         var view: MKMarkerAnnotationView
 
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
@@ -93,14 +111,26 @@ extension MapViewController: MKMapViewDelegate {
           view = dequeuedView
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.glyphImage = UIImage(named: "sick")
-            view.markerTintColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
+            customizeView(view: view)
             view.glyphTintColor = .black
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         return view
+    }
+
+    func customizeView(view: MKMarkerAnnotationView) {
+        switch view.reuseIdentifier {
+        case "diseaseMarker":
+            view.glyphImage = UIImage(named: "sick")
+            view.markerTintColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
+        case "breedingSiteMarker":
+            view.glyphImage = UIImage(named: "mosquito")
+            view.markerTintColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
+        default:
+            view.markerTintColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
+        }
     }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
@@ -137,19 +167,15 @@ extension MapViewController: CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        if let myLocation = locationManager.location {
+            centerMapOnLocation(location: myLocation)
+        }
     }
 
-    // Centers map view on given location
+    // Centers map view on a given location
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
                 latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         self.mapView.setRegion(coordinateRegion, animated: true)
     }
-
-    // Centers map on user's location after change on their location
-    // Future improvement: Change location only on first launch
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        centerMapOnLocation(location: manager.location!)
-    }
-
 }

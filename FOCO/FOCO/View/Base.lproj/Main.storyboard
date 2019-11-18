@@ -78,14 +78,45 @@
                                     <constraint firstItem="soa-KW-Srv" firstAttribute="centerX" secondItem="Onb-vZ-VP5" secondAttribute="centerX" id="zPl-31-CZH"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aviso" translatesAutoresizingMaskIntoConstraints="NO" id="j5S-Os-5Z1">
+                                <rect key="frame" x="16" y="60" width="382" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="aG3-g6-PRD"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="centerPointButton" translatesAutoresizingMaskIntoConstraints="NO" id="qLz-Es-3HC">
+                                <rect key="frame" x="339" y="150" width="59" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="uqX-le-9OX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jt1-a0-MXB" userLabel="locationButton">
+                                <rect key="frame" x="348" y="211" width="41" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="recenterClick:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="E5W-Ca-1OO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maj-RG-Vku" userLabel="infoButton">
+                                <rect key="frame" x="348" y="169" width="41" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="infoClick:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="8JQ-bU-8M8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Onb-vZ-VP5" firstAttribute="leading" secondItem="Lcv-ID-6fI" secondAttribute="leading" constant="16" id="77p-g4-LDN"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="bottom" secondItem="Onb-vZ-VP5" secondAttribute="bottom" constant="32" id="FAp-4T-DJu"/>
+                            <constraint firstItem="j5S-Os-5Z1" firstAttribute="trailing" secondItem="Onb-vZ-VP5" secondAttribute="trailing" id="Q5u-02-Rd1"/>
+                            <constraint firstItem="qLz-Es-3HC" firstAttribute="top" secondItem="j5S-Os-5Z1" secondAttribute="bottom" id="ViW-TV-5zE"/>
+                            <constraint firstItem="j5S-Os-5Z1" firstAttribute="leading" secondItem="Onb-vZ-VP5" secondAttribute="leading" id="Yf2-Un-IFc"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="trailing" secondItem="Onb-vZ-VP5" secondAttribute="trailing" constant="16" id="Zr9-gp-ExI"/>
                             <constraint firstItem="GVV-ei-tgV" firstAttribute="top" secondItem="SAi-lF-gRQ" secondAttribute="top" id="acy-ZK-3Kb"/>
                             <constraint firstItem="Lcv-ID-6fI" firstAttribute="trailing" secondItem="GVV-ei-tgV" secondAttribute="trailing" id="fTP-wd-auR"/>
+                            <constraint firstItem="j5S-Os-5Z1" firstAttribute="top" secondItem="Lcv-ID-6fI" secondAttribute="top" constant="16" id="htW-iD-TGs"/>
+                            <constraint firstItem="qLz-Es-3HC" firstAttribute="trailing" secondItem="j5S-Os-5Z1" secondAttribute="trailing" id="km4-Y3-S6L"/>
                             <constraint firstAttribute="bottom" secondItem="GVV-ei-tgV" secondAttribute="bottom" id="xlZ-nN-YS1"/>
                             <constraint firstItem="GVV-ei-tgV" firstAttribute="leading" secondItem="Lcv-ID-6fI" secondAttribute="leading" id="zQk-Tq-7t1"/>
                         </constraints>
@@ -100,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJu-9p-W7A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="-153"/>
+            <point key="canvasLocation" x="1266.6666666666667" y="-153.34821428571428"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qht-JN-bAT">
@@ -125,6 +156,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="aviso" width="340" height="91"/>
+        <image name="centerPointButton" width="59" height="101"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
