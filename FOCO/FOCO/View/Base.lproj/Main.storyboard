@@ -66,9 +66,6 @@
                                         <state key="normal" title="Quero colaborar!">
                                             <color key="titleColor" red="0.14509803921568626" green="0.24705882352941178" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="newInputClick:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="7Qf-Je-aLu"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.84705882349999995" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

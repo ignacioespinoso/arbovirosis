@@ -14,7 +14,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var newInputButton: UIView!
     @IBOutlet weak var locationIcon: UIImageView!
-    fileprivate var points: [DiseaseAnnotation]?
+    fileprivate var diseaseMarkers: [DiseaseAnnotation]?
+    fileprivate var breedingMarkers: [BreedingAnnotation]?
     var dangerousAreas: [MKOverlay] = [MKOverlay]()
     let regionRadius: CLLocationDistance = 400
     let locationManager = CLLocationManager()
@@ -39,7 +40,7 @@ class MapViewController: UIViewController {
         DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
             if let data = points {
                 // Maps occurrences to annotations
-                self.points = data.map { (diseaseOccurrence) -> DiseaseAnnotation in
+                self.diseaseMarkers = data.map { (diseaseOccurrence) -> DiseaseAnnotation in
                     // The magic happens here
                     let annotation = DiseaseAnnotation(disease: diseaseOccurrence)
                     self.dangerousAreas.append(MKCircle(center: annotation.coordinate, radius: 100))
@@ -48,9 +49,26 @@ class MapViewController: UIViewController {
 
                 // Adds annotations and overlays to map view
                 OperationQueue.main.addOperation {
-                    if let data = self.points {
+                    if let data = self.diseaseMarkers {
                         self.mapView.addAnnotations(data)
                         self.mapView.addOverlays(self.dangerousAreas)
+                    }
+                }
+            } else {
+                print(errorMessage.debugDescription)
+            }
+        }
+
+        // Loads breeding sites
+        BreedingSitesServices.getAllSites { (errorMessage, points) in
+            if let data = points {
+                self.breedingMarkers = data.map { (breedingSite) -> BreedingAnnotation in
+                    let annotation = BreedingAnnotation(breeding: breedingSite)
+                    return annotation
+                }
+                OperationQueue.main.addOperation {
+                    if let data = self.breedingMarkers {
+                        self.mapView.addAnnotations(data)
                     }
                 }
             } else {
@@ -65,10 +83,6 @@ class MapViewController: UIViewController {
             centerMapOnLocation(location: myLocation)
         }
         locationIcon.image = UIImage(named: "centeredLocation")
-    }
-
-    @IBAction func newInputClick(_ sender: Any) {
-        alertUnderConstruction()
     }
 }
 
@@ -109,8 +123,8 @@ extension MapViewController: MKMapViewDelegate {
         case is DiseaseAnnotation:
             identifier = "diseaseMarker"
         // This is suppose to be BreedingSite instead o "DiseaseOccurrence"
-        case is DiseaseOccurrence:
-            identifier = "breedinSiteMarker"
+        case is BreedingAnnotation:
+            identifier = "breedingMarker"
         // Nil return on default value is important for avoiding customization on user's location blue pin
         default:
             return nil
@@ -139,7 +153,7 @@ extension MapViewController: MKMapViewDelegate {
         case "diseaseMarker":
             view.glyphImage = UIImage(named: "sick")
             view.markerTintColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
-        case "breedingSiteMarker":
+        case "breedingMarker":
             view.glyphImage = UIImage(named: "mosquito")
             view.markerTintColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
         default:
@@ -157,8 +171,10 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
-// MARK: CoreLocation Delegate
+// MARK: CoreLocation Delegate & Settings
 extension MapViewController: CLLocationManagerDelegate {
+    
+    // Requests location permission and set Core Location
     func setupLocationServices() {
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
