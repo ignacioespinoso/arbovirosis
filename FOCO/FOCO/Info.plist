@@ -5,9 +5,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Vamos usar a sua localização para mostrar os casos e focos mais próximos de você!</string>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

@@ -67,7 +67,7 @@
                                             <color key="titleColor" red="0.14509803921568626" green="0.24705882352941178" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="newInputClick:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="kOT-q8-pE0"/>
+                                            <action selector="newInputClick:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="7Qf-Je-aLu"/>
                                         </connections>
                                     </button>
                                 </subviews>
