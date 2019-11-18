@@ -13,6 +13,7 @@ class MapViewController: UIViewController {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var newInputButton: UIView!
+    @IBOutlet weak var locationIcon: UIImageView!
     fileprivate var points: [DiseaseAnnotation]?
     var dangerousAreas: [MKOverlay] = [MKOverlay]()
     let regionRadius: CLLocationDistance = 400
@@ -59,14 +60,11 @@ class MapViewController: UIViewController {
     }
 
 // MARK: Button Actions
-    @IBAction func infoClick(_ sender: Any) {
-        alertUnderConstruction()
-    }
-
     @IBAction func recenterClick(_ sender: Any) {
         if let myLocation = locationManager.location {
             centerMapOnLocation(location: myLocation)
         }
+        locationIcon.image = UIImage(named: "centeredLocation")
     }
 
     @IBAction func newInputClick(_ sender: Any) {
@@ -90,17 +88,32 @@ extension MapViewController: MKMapViewDelegate {
         return MKPolylineRenderer()
     }
 
+    // Changes location button filling when map is dragged over 100 meters away from current location.
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        let mapCenter = mapView.centerCoordinate
+        if let myLocation = locationManager.location {
+            let centerLocation = CLLocation(latitude: mapCenter.latitude, longitude: mapCenter.longitude)
+            let distance = myLocation.distance(from: centerLocation)
+            if distance > 100 {
+                locationIcon.image = UIImage(named: "recenterButton")
+            }
+        }
+    }
+
     // Reuses annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         var identifier = ""
 
-        if annotation is DiseaseAnnotation {
+        switch annotation {
+        case is DiseaseAnnotation:
             identifier = "diseaseMarker"
-        } else {
-            // if let annotation = annotation as? BreedingAnnotation {
-                identifier = "breedinSiteMarker"
-            //}
+        // This is suppose to be BreedingSite instead o "DiseaseOccurrence"
+        case is DiseaseOccurrence:
+            identifier = "breedinSiteMarker"
+        // Nil return on default value is important for avoiding customization on user's location blue pin
+        default:
+            return nil
         }
 
         var view: MKMarkerAnnotationView
@@ -113,7 +126,8 @@ extension MapViewController: MKMapViewDelegate {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             customizeView(view: view)
             view.glyphTintColor = .black
-            view.canShowCallout = true
+            // We are not currently showing callout because we haven't implemented "More Info" screen.
+            view.canShowCallout = false
             view.calloutOffset = CGPoint(x: -5, y: 5)
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
@@ -129,31 +143,17 @@ extension MapViewController: MKMapViewDelegate {
             view.glyphImage = UIImage(named: "mosquito")
             view.markerTintColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
         default:
-            view.markerTintColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
+            print("Not Implemented.")
         }
     }
 
+    // Future performSegue() to "More Info" screen.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
 //        if let location = view.annotation as? DiseaseAnnotation {
 //            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
 //            location.mapItem().openInMaps(launchOptions: launchOptions)
 //        }
-        alertUnderConstruction()
-    }
-
-    func alertUnderConstruction() {
-        let alert = UIAlertController(title: "Soon!", message: "Under construction.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style {
-            case .default:
-                print("default")
-            case .cancel:
-                print("cancel")
-            case .destructive:
-                print("destructive")
-        }}))
-        self.present(alert, animated: true, completion: nil)
     }
 }
 
