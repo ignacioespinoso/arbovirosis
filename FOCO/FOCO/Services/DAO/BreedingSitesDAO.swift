@@ -3,28 +3,28 @@ Copyright © 2019 arbovirosis. All rights reserved.
 
 Abstract:
 Data access object. Perform the URL session
-Because its Asynchronous, escaping completion blocks are used
 
 */
 
 import Foundation
 
-class DiseaseOccurrencesDAO {
+class BreedingSitesDAO {
 
-    static let address = URL(string: "https://safe-peak-03441.herokuapp.com/diseases")
+    static let address = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/")
 
-// MARK: Functions
+    // MARK: - Find
+
     static func findAll (_ completion: @escaping (_ error: Error?,
-                                                  _ occurrence: [DiseaseOccurrence]?) -> Void) {
+                                                  _ site: [BreedingSite]?) -> Void) {
 
         if let url = address {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
                 if let data = data {
                     do {
-                        let occurrence = try JSONDecoder().decode([DiseaseOccurrence].self, from: data)
+                        let site = try JSONDecoder().decode([BreedingSite].self, from: data)
                         // único caso onde não há erro. Passo para frente a ocorrencia
-                        completion(nil, occurrence)
+                        completion(nil, site)
                     } catch let error {
                         completion(error, nil)
                         print(error.localizedDescription)
@@ -35,6 +35,8 @@ class DiseaseOccurrencesDAO {
             task.resume()
         }
     }
+
+    // MARK: - Create
 
     static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?) -> Void) {
 
@@ -57,40 +59,21 @@ class DiseaseOccurrencesDAO {
 
                 if let data = data {
                     do {
-                        _ = try JSONDecoder().decode(DiseaseOccurrence.self, from: data)
+                        _ = try JSONDecoder().decode(BreedingSite.self, from: data)
                         // Único caso onde não há erro. Não passo erro para frente
                         completion(nil)
-                        print("Json Decoder post disease ok!")
+                        print("Json Decoder post Site ok!")
                     } catch let error {
                         completion(error)
                         print(error.localizedDescription)
                     }
                 }
+
+                
+
             }
             task.resume()
         }
     }
-}
 
-/*  PARA TRATAMENTO DOS ERROS
-
-if error != nil || data == nil {
-    print("Client error!")
-    completion(error, nil)
-    return
 }
-
-guard let response = response as? HTTPURLResponse,
-          (200...299).contains(response.statusCode)
-else {
-    print("Server error!")
-    completion(error, nil)
-    return
-}
-
-guard let mime = response.mimeType, mime == "application/json" else {
-    print("Wrong MIME type!")
-    completion(error, nil)
-    return
-}
-*/

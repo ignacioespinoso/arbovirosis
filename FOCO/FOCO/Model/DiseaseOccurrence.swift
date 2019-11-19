@@ -21,4 +21,13 @@ struct DiseaseOccurrence: Codable {
         case latitude = "latitude"
         case longitude = "longitude"
     }
+
+    init(diseaseName: String, latitude: Double, longitude: Double) {
+        // Para efeito de POST, o parâmetro id precisa ser 0
+        self.id = 0
+        self.diseaseName = diseaseName
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+
 }

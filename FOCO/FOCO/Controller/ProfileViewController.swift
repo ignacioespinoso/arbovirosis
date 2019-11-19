@@ -11,55 +11,51 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var labelName: UILabel!
-    fileprivate var points: [DiseaseOccurrence]?
+    fileprivate var points: [BreedingSite]?
     var iterator: Int = 0
+
+    // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
+//        BreedingSitesServices.getAllSites { (errorMessage, points) in
 //            if points != nil {
 //                self.points = points
+//                print(points!)
 //            } else {
 //                print(errorMessage.debugDescription)
 //            }
-//
 //        }
     }
 
+    // MARK: - Functions
+
     @IBAction func updateLabekl(_ sender: Any) {
 
-//        print(self.points!)
-//
-//        if let point = self.points {
-//            if iterator < point.count {
-//                self.labelName.text = point[iterator].diseaseName
-//                iterator += 1
-//            }
-//        }
+        let jsonObject = BreedingSite(title: "Pneuzin",
+                                      description: "vai que vai",
+                                      type: "Descarte",
+                                      created: "",
+                                      latitude: -22.81277,
+                                      longitude: -47.06107)
 
-        let jsonObject: [String: Any] = [
-            "id": 10,
-            "diseaseName": "POST",
-            "latitude": -22.81673,
-            "longitude": -47.09485
-        ]
-
-       print(JSONSerialization.isValidJSONObject(jsonObject))
         var jsonData: Data?
 
        do {
-            jsonData = try NSKeyedArchiver.archivedData(withRootObject: jsonObject,
-                                                        requiringSecureCoding: false)
+            jsonData = try JSONEncoder().encode(jsonObject)
         } catch let myJSONError {
             print(myJSONError)
         }
 
-        DiseaseOccurrencesDAO.create(jsonData: jsonData, { (error, data) in
-            if data != nil {
-                self.points = data
+        print(jsonData!)
+
+        BreedingSitesServices.createSite(jsonData: jsonData, { (error) in
+            if error == nil {
+                print("TUDO CERRTO")
             } else {
-                print(error.debugDescription)
+                print(error!)
             }
         })
     }
+
 }
