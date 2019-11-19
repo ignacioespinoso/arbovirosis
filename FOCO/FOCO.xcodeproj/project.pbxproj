@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */; };
 		8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */; };
+		804A2E612384410500214A90 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E602384410500214A90 /* CustomCells.swift */; };
+		804A2E66238460FE00214A90 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E65238460FE00214A90 /* FloatLabelTextField.swift */; };
 		809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809369E323841DD300C794BB /* NewOccurrenceViewController.swift */; };
-		80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* MapViewController.swift */; };
+		80E8F3D22379AED800445DF8 /* NavigatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* NavigatorController.swift */; };
 		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
 		B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36279AD23831C060067C663 /* BreedingAnnotation.swift */; };
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
@@ -32,8 +34,10 @@
 		8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesServices.swift; sourceTree = "<group>"; };
 		8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesDAO.swift; sourceTree = "<group>"; };
 		80448A3A4B8F0EB1181A3478 /* Pods-FOCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOCO.release.xcconfig"; path = "Target Support Files/Pods-FOCO/Pods-FOCO.release.xcconfig"; sourceTree = "<group>"; };
+		804A2E602384410500214A90 /* CustomCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
+		804A2E65238460FE00214A90 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		809369E323841DD300C794BB /* NewOccurrenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOccurrenceViewController.swift; sourceTree = "<group>"; };
-		80E8F3D12379AED800445DF8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		80E8F3D12379AED800445DF8 /* NavigatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorController.swift; sourceTree = "<group>"; };
 		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
 		B36279AD23831C060067C663 /* BreedingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingAnnotation.swift; sourceTree = "<group>"; };
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
@@ -103,7 +107,6 @@
 		C5CAD6EF2375B21C00B5BBA2 = {
 			isa = PBXGroup;
 			children = (
-				80E353362384155100F587D8 /* Podfile */,
 				C5CAD6FA2375B21C00B5BBA2 /* FOCO */,
 				C5CAD6F92375B21C00B5BBA2 /* Products */,
 				05CE0FCE9F84AE5EF6B34799 /* Frameworks */,
@@ -151,6 +154,8 @@
 				80E8F3D32379B24900445DF8 /* Annotations */,
 				C5CAD7012375B21C00B5BBA2 /* Main.storyboard */,
 				C5CAD7062375B21E00B5BBA2 /* LaunchScreen.storyboard */,
+				804A2E602384410500214A90 /* CustomCells.swift */,
+				804A2E65238460FE00214A90 /* FloatLabelTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,7 +163,7 @@
 		C5CAD7112375B2B500B5BBA2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				80E8F3D12379AED800445DF8 /* MapViewController.swift */,
+				80E8F3D12379AED800445DF8 /* NavigatorController.swift */,
 				C5CAD6FF2375B21C00B5BBA2 /* ProfileViewController.swift */,
 				809369E323841DD300C794BB /* NewOccurrenceViewController.swift */,
 			);
@@ -173,16 +178,6 @@
 				8032ED592379924F00357465 /* DAO */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		DF3616558E452263F49B6700 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				77188B326C3BA16CB09265A3 /* Pods-FOCO.debug.xcconfig */,
-				84AFA0A965BA91FADBDD6760 /* Pods-FOCO.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,7 +243,6 @@
 			files = (
 				C5CAD7082375B21E00B5BBA2 /* LaunchScreen.storyboard in Resources */,
 				C5CAD7052375B21E00B5BBA2 /* Assets.xcassets in Resources */,
-				80E353372384155100F587D8 /* Podfile in Resources */,
 				C5CAD7032375B21C00B5BBA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,7 +305,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -323,17 +317,19 @@
 				C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */,
 				8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */,
 				C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */,
+				804A2E66238460FE00214A90 /* FloatLabelTextField.swift in Sources */,
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ProfileViewController.swift in Sources */,
 				B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,
+				804A2E612384410500214A90 /* CustomCells.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
 				C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */,
 				8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */,
 				809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */,
 				C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */,
 				C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */,
-				80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */,
+				80E8F3D22379AED800445DF8 /* NavigatorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

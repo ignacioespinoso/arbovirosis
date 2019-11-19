@@ -68,9 +68,6 @@ class BreedingSitesDAO {
                         print(error.localizedDescription)
                     }
                 }
-
-                
-
             }
             task.resume()
         }
