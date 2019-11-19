@@ -103,7 +103,6 @@
 		C5CAD6EF2375B21C00B5BBA2 = {
 			isa = PBXGroup;
 			children = (
-				80E353362384155100F587D8 /* Podfile */,
 				C5CAD6FA2375B21C00B5BBA2 /* FOCO */,
 				C5CAD6F92375B21C00B5BBA2 /* Products */,
 				05CE0FCE9F84AE5EF6B34799 /* Frameworks */,
@@ -175,16 +174,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		DF3616558E452263F49B6700 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				77188B326C3BA16CB09265A3 /* Pods-FOCO.debug.xcconfig */,
-				84AFA0A965BA91FADBDD6760 /* Pods-FOCO.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,7 +237,6 @@
 			files = (
 				C5CAD7082375B21E00B5BBA2 /* LaunchScreen.storyboard in Resources */,
 				C5CAD7052375B21E00B5BBA2 /* Assets.xcassets in Resources */,
-				80E353372384155100F587D8 /* Podfile in Resources */,
 				C5CAD7032375B21C00B5BBA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,7 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B73YH55T95;
+				DEVELOPMENT_TEAM = 2M7ZQ8AZ57;
 				INFOPLIST_FILE = FOCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -499,7 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B73YH55T95;
+				DEVELOPMENT_TEAM = 2M7ZQ8AZ57;
 				INFOPLIST_FILE = FOCO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
