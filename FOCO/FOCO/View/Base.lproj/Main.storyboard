@@ -66,9 +66,6 @@
                                 <state key="normal" title="Quero Colaborar!">
                                     <color key="titleColor" red="0.11372549019607843" green="0.25490196078431371" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="sqi-EX-XfJ" kind="presentation" modalPresentationStyle="fullScreen" id="cJc-5c-uxc"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aviso" translatesAutoresizingMaskIntoConstraints="NO" id="j5S-Os-5Z1">
                                 <rect key="frame" x="16" y="60" width="382" height="105"/>
@@ -130,11 +127,28 @@
                         <outlet property="collaborateButton" destination="tzk-Ps-XnA" id="3RC-wM-DJr"/>
                         <outlet property="locationIcon" destination="CYc-DV-Lux" id="KDL-Io-EaT"/>
                         <outlet property="mapView" destination="GVV-ei-tgV" id="OKd-Ni-nhj"/>
+                        <segue destination="sqi-EX-XfJ" kind="presentation" identifier="newOccurrence" modalPresentationStyle="fullScreen" id="nD0-PT-5QW"/>
+                        <segue destination="Ab3-ze-rfa" kind="presentation" identifier="newSite" modalPresentationStyle="fullScreen" id="T6t-9z-XOU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJu-9p-W7A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266.6666666666667" y="-153.34821428571428"/>
+            <point key="canvasLocation" x="1283" y="-149"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SMh-DQ-JJe">
+            <objects>
+                <viewController id="Ab3-ze-rfa" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L1j-6Z-Yfe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="VP0-na-Ggf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZa-mx-y4l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2238" y="-553"/>
         </scene>
         <!--New Occurrence View Controller-->
         <scene sceneID="sLj-BY-5jE">
@@ -146,11 +160,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="93E-12-4GK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gwH-xU-cOQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVC-4G-mmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2342" y="-157"/>
+            <point key="canvasLocation" x="2238" y="135"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qht-JN-bAT">

@@ -9,7 +9,7 @@ ViewController for MapView
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UIActionSheetDelegate {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collaborateButton: UIButton!
@@ -21,19 +21,19 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     let maxSpan = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
     let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-    
+
 // MARK: Initial Setup
     override func viewDidLoad() {
         super.viewDidLoad()
         loadInitialData()
         mapView.delegate = self
         self.setupLocationServices()
-        
+
         collaborateButton.layer.cornerRadius = 10
         collaborateButton.clipsToBounds = true
         collaborateButton.backgroundColor = UIColor(red: 241/255, green: 216/255, blue: 109/255, alpha: 1)
         collaborateButton.tintColor = UIColor(red: 30/255, green: 64/255, blue: 103/255, alpha: 1)
-        
+        collaborateButton.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
     }
 
     // Loads initial markers
@@ -78,6 +78,7 @@ class MapViewController: UIViewController {
             }
         }
     }
+
     // MARK: Button Actions
     @IBAction func refreshButton(_ sender: Any) {
         // Code to reload data from server
@@ -204,5 +205,34 @@ extension MapViewController: CLLocationManagerDelegate {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
                 latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         self.mapView.setRegion(coordinateRegion, animated: true)
+    }
+}
+
+// MARK: Action Sheet Configuration
+struct Option {
+    var name: String
+    var segueIdentifier: String
+}
+
+extension MapViewController {
+    func configureActionSheet(options: Option...) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(cancel)
+        
+        for option in options {
+            let currentOption = UIAlertAction(title: option.name, style: .default) { (action) in
+                self.performSegue(withIdentifier: option.segueIdentifier, sender: self)
+            }
+            actionSheet.addAction(currentOption)
+        }
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    @objc func showOptions() {
+        let option1 = Option(name: "Novo caso", segueIdentifier: "newSite")
+        let option2 = Option(name: "Nova ocorrência", segueIdentifier: "newOccurrence")
+        
+        self.configureActionSheet(options: option1, option2)
     }
 }
