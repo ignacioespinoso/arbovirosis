@@ -88,7 +88,7 @@ class MapViewController: UIViewController, UIActionSheetDelegate {
         self.diseaseMarkers = []
         self.breedingMarkers = []
         loadInitialData()
-    } 
+    }
 
     @IBAction func recenterClick(_ sender: Any) {
         if let myLocation = locationManager.location {
@@ -218,7 +218,7 @@ extension MapViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         actionSheet.addAction(cancel)
-        
+
         for option in options {
             let currentOption = UIAlertAction(title: option.name, style: .default) { (action) in
                 self.performSegue(withIdentifier: option.segueIdentifier, sender: self)
@@ -227,11 +227,11 @@ extension MapViewController {
         }
         self.present(actionSheet, animated: true, completion: nil)
     }
-    
+
     @objc func showOptions() {
         let option1 = Option(name: "Novo caso", segueIdentifier: "newSite")
         let option2 = Option(name: "Nova ocorrência", segueIdentifier: "newOccurrence")
-        
+
         self.configureActionSheet(options: option1, option2)
     }
 }
