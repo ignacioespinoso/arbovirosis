@@ -12,22 +12,36 @@ struct DiseaseOccurrence: Codable {
 
     let id: CLong
     let diseaseName: String
+    let confirmationStatus: Bool
+    let initialSymptoms: String
+    let created: String
     let latitude: Double
     let longitude: Double
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case diseaseName = "diseaseName"
+        case confirmationStatus = "confirmationStatus"
+        case initialSymptoms = "initialSymptoms"
+        case created = "created"
         case latitude = "latitude"
         case longitude = "longitude"
     }
 
-    init(diseaseName: String, latitude: Double, longitude: Double) {
+    init(diseaseName: String, initialSymptoms: String, confirmationStatus: Bool, created: String, latitude: Double, longitude: Double) {
         // Para efeito de POST, o parâmetro id precisa ser 0
         self.id = 0
         self.diseaseName = diseaseName
+        self.confirmationStatus = confirmationStatus
+        self.initialSymptoms = initialSymptoms
+        self.created = created
         self.latitude = latitude
         self.longitude = longitude
     }
 
+    func getDate(stringDate: String) -> Date {
+        let dateFormatter =  DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: stringDate)!
+    }
 }
