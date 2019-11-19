@@ -46,6 +46,15 @@ class DiseaseOccurrencesDAO {
 
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
 
+                guard let response = response as? HTTPURLResponse,
+                          (200...299).contains(response.statusCode)
+                else {
+                    print("Server error! Breeding Site")
+                    completion(error)
+                    return
+                }
+                print("Create Site response status", response.statusCode)
+
                 if let data = data {
                     do {
                         _ = try JSONDecoder().decode(DiseaseOccurrence.self, from: data)
@@ -57,17 +66,6 @@ class DiseaseOccurrencesDAO {
                         print(error.localizedDescription)
                     }
                 }
-
-                guard let response = response as? HTTPURLResponse,
-                          (200...299).contains(response.statusCode)
-                else {
-                    print("Server error! Diesease")
-                    completion(error)
-                    return
-                }
-
-                print("Create Disease response status", response.statusCode)
-
             }
             task.resume()
         }

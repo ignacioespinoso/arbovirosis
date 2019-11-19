@@ -39,5 +39,4 @@ struct BreedingSite: Codable {
         self.latitude = latitude
         self.longitude = longitude
     }
-
 }

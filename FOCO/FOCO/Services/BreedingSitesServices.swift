@@ -40,6 +40,7 @@ class BreedingSitesServices {
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
+                print("DEU RUIMMM")
                 print(error.debugDescription)
             } else {
                 completion(error)
