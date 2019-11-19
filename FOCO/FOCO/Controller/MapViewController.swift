@@ -9,10 +9,10 @@ ViewController for MapView
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UIActionSheetDelegate {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var newInputButton: UIView!
+    @IBOutlet weak var collaborateButton: UIButton!
     @IBOutlet weak var locationIcon: UIImageView!
     fileprivate var diseaseMarkers: [DiseaseAnnotation]?
     fileprivate var breedingMarkers: [BreedingAnnotation]?
@@ -29,9 +29,11 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         self.setupLocationServices()
 
-        // Creates rounded button
-        newInputButton.layer.cornerRadius = 10
-        newInputButton.clipsToBounds = true
+        collaborateButton.layer.cornerRadius = 10
+        collaborateButton.clipsToBounds = true
+        collaborateButton.backgroundColor = UIColor(red: 241/255, green: 216/255, blue: 109/255, alpha: 1)
+        collaborateButton.tintColor = UIColor(red: 30/255, green: 64/255, blue: 103/255, alpha: 1)
+        collaborateButton.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
     }
 
     // Loads initial markers
@@ -86,7 +88,7 @@ class MapViewController: UIViewController {
         self.diseaseMarkers = []
         self.breedingMarkers = []
         loadInitialData()
-    }
+    } 
 
     @IBAction func recenterClick(_ sender: Any) {
         if let myLocation = locationManager.location {
@@ -183,7 +185,6 @@ extension MapViewController: MKMapViewDelegate {
 
 // MARK: CoreLocation Delegate & Settings
 extension MapViewController: CLLocationManagerDelegate {
-    
     // Requests location permission and set Core Location
     func setupLocationServices() {
         self.locationManager.delegate = self
@@ -203,5 +204,34 @@ extension MapViewController: CLLocationManagerDelegate {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
                 latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         self.mapView.setRegion(coordinateRegion, animated: true)
+    }
+}
+
+// MARK: Action Sheet Configuration
+struct Option {
+    var name: String
+    var segueIdentifier: String
+}
+
+extension MapViewController {
+    func configureActionSheet(options: Option...) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(cancel)
+        
+        for option in options {
+            let currentOption = UIAlertAction(title: option.name, style: .default) { (action) in
+                self.performSegue(withIdentifier: option.segueIdentifier, sender: self)
+            }
+            actionSheet.addAction(currentOption)
+        }
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    @objc func showOptions() {
+        let option1 = Option(name: "Novo caso", segueIdentifier: "newSite")
+        let option2 = Option(name: "Nova ocorrência", segueIdentifier: "newOccurrence")
+        
+        self.configureActionSheet(options: option1, option2)
     }
 }
