@@ -88,19 +88,7 @@ class MapViewController: UIViewController, UIActionSheetDelegate {
         self.diseaseMarkers = []
         self.breedingMarkers = []
         loadInitialData()
-    }
-
-    // MARK: Button Actions
-    @IBAction func refreshButton(_ sender: Any) {
-        // Code to reload data from server
-        // Needs fix: clicking fast, it loads twice.
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.removeOverlays(mapView.overlays)
-        self.dangerousAreas = []
-        self.diseaseMarkers = []
-        self.breedingMarkers = []
-        loadInitialData()
-    }
+    } 
 
     @IBAction func recenterClick(_ sender: Any) {
         if let myLocation = locationManager.location {
