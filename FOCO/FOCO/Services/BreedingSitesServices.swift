@@ -11,21 +11,21 @@ import Foundation
 
 import UIKit
 
-class DiseaseOccurrencesServices {
+class BreedingSitesServices {
 
     // MARK: - Get
 
-    static func getAllDiseases(_ completion: @escaping (_ errorMessage: Error?,
-                                                        _ ocurrence: [DiseaseOccurrence]?) -> Void) {
+    static func getAllSites(_ completion: @escaping (_ errorMessage: Error?,
+                                                     _ site: [BreedingSite]?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        DiseaseOccurrencesDAO.findAll { (error, ocurrence) in
+        BreedingSitesDAO.findAll { (error, site) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
                 print(error.debugDescription)
             } else {
-                completion(nil, ocurrence)
+                completion(nil, site)
             }
         }
     }
@@ -34,17 +34,18 @@ class DiseaseOccurrencesServices {
 
     // Apenas precisa checar erro, o objeto retornado é o próprio enviado.
     // Checar http status
-    static func createDisease (jsonData: Data?, _ completion: @escaping (_ error: Error?) -> Void) {
+    static func createSite (jsonData: Data?, _ completion: @escaping (_ error: Error?) -> Void) {
 
-        DiseaseOccurrencesDAO.create(jsonData: jsonData, { (error) in
+        BreedingSitesDAO.create(jsonData: jsonData, { (error) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
+                print("DEU RUIMMM")
                 print(error.debugDescription)
             } else {
                 completion(error)
             }
-
         })
     }
+
 }

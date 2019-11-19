@@ -3,14 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */; };
 		8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */; };
+		809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809369E323841DD300C794BB /* NewOccurrenceViewController.swift */; };
 		80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* MapViewController.swift */; };
 		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
+		B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36279AD23831C060067C663 /* BreedingAnnotation.swift */; };
+		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
+		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
+		C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */; };
 		C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */; };
 		C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */; };
 		C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */; };
@@ -19,13 +24,21 @@
 		C5CAD7052375B21E00B5BBA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5CAD7042375B21E00B5BBA2 /* Assets.xcassets */; };
 		C5CAD7082375B21E00B5BBA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5CAD7062375B21E00B5BBA2 /* LaunchScreen.storyboard */; };
 		C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD71A2375B62000B5BBA2 /* Errors.swift */; };
+		F2776A034AE436BDAEE62BF2 /* Pods_FOCO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 206A6212520C8711925DF2CB /* Pods_FOCO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		206A6212520C8711925DF2CB /* Pods_FOCO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FOCO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesServices.swift; sourceTree = "<group>"; };
 		8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesDAO.swift; sourceTree = "<group>"; };
+		80448A3A4B8F0EB1181A3478 /* Pods-FOCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOCO.release.xcconfig"; path = "Target Support Files/Pods-FOCO/Pods-FOCO.release.xcconfig"; sourceTree = "<group>"; };
+		809369E323841DD300C794BB /* NewOccurrenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOccurrenceViewController.swift; sourceTree = "<group>"; };
 		80E8F3D12379AED800445DF8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
+		B36279AD23831C060067C663 /* BreedingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingAnnotation.swift; sourceTree = "<group>"; };
+		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
+		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
+		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
 		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
 		C5CAD6F82375B21C00B5BBA2 /* FOCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +50,7 @@
 		C5CAD7092375B21E00B5BBA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5CAD71A2375B62000B5BBA2 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		C5CAD71C2375C88C00B5BBA2 /* Teoria.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Teoria.md; sourceTree = "<group>"; };
+		E609BDD25CC2F68FFD318F5D /* Pods-FOCO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOCO.debug.xcconfig"; path = "Target Support Files/Pods-FOCO/Pods-FOCO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,16 +58,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2776A034AE436BDAEE62BF2 /* Pods_FOCO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05CE0FCE9F84AE5EF6B34799 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				206A6212520C8711925DF2CB /* Pods_FOCO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8032ED592379924F00357465 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
 				8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */,
+				C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -62,8 +86,18 @@
 			isa = PBXGroup;
 			children = (
 				80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */,
+				B36279AD23831C060067C663 /* BreedingAnnotation.swift */,
 			);
 			path = Annotations;
+			sourceTree = "<group>";
+		};
+		B0F824AA7E1FD6791CF8DC79 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E609BDD25CC2F68FFD318F5D /* Pods-FOCO.debug.xcconfig */,
+				80448A3A4B8F0EB1181A3478 /* Pods-FOCO.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		C5CAD6EF2375B21C00B5BBA2 = {
@@ -71,6 +105,8 @@
 			children = (
 				C5CAD6FA2375B21C00B5BBA2 /* FOCO */,
 				C5CAD6F92375B21C00B5BBA2 /* Products */,
+				05CE0FCE9F84AE5EF6B34799 /* Frameworks */,
+				B0F824AA7E1FD6791CF8DC79 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */,
+				C577DD51237DA7B6007E8C6B /* BreedingSite.swift */,
 				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
 			);
 			path = Model;
@@ -122,6 +159,7 @@
 			children = (
 				80E8F3D12379AED800445DF8 /* MapViewController.swift */,
 				C5CAD6FF2375B21C00B5BBA2 /* ProfileViewController.swift */,
+				809369E323841DD300C794BB /* NewOccurrenceViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -130,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */,
+				C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */,
 				8032ED592379924F00357465 /* DAO */,
 			);
 			path = Services;
@@ -142,10 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5CAD70C2375B21E00B5BBA2 /* Build configuration list for PBXNativeTarget "FOCO" */;
 			buildPhases = (
+				1AE31600E0CABDEFC28C3A38 /* [CP] Check Pods Manifest.lock */,
 				C5CAD6F42375B21C00B5BBA2 /* Sources */,
 				C5CAD6F52375B21C00B5BBA2 /* Frameworks */,
 				C5CAD6F62375B21C00B5BBA2 /* Resources */,
 				80CF4E72237C42D20013234B /* SwiftLint */,
+				54547C922DA8256336598B03 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,6 +244,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1AE31600E0CABDEFC28C3A38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FOCO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54547C922DA8256336598B03 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FOCO/Pods-FOCO-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FOCO/Pods-FOCO-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FOCO/Pods-FOCO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		80CF4E72237C42D20013234B /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,12 +310,17 @@
 			files = (
 				C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */,
 				8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */,
+				C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */,
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ProfileViewController.swift in Sources */,
+				B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
 				C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */,
 				8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */,
+				809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */,
+				C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */,
+				C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */,
 				80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +463,7 @@
 		};
 		C5CAD70D2375B21E00B5BBA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E609BDD25CC2F68FFD318F5D /* Pods-FOCO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -397,6 +483,7 @@
 		};
 		C5CAD70E2375B21E00B5BBA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80448A3A4B8F0EB1181A3478 /* Pods-FOCO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
