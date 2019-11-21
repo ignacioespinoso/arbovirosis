@@ -20,16 +20,15 @@ class DiseaseAnnotation: NSObject, MKAnnotation {
     }
 
     var title: String? {
-        return disease.diseaseName
+        if disease.confirmationStatus {
+            return disease.diseaseName + " - Confirmado"
+        } else {
+            return disease.diseaseName + " - Suspeita"
+        }
     }
 
     var subtitle: String? {
-        // Future: return disease.initialSymptoms
-        if disease.confirmationStatus {
-            return "Confirmado"
-        } else {
-            return "Suspeita"
-        }
+        return "Início dos Sintomas: " + Utils.fixDateFormat(inputDate: disease.initialSymptoms)
     }
 }
 

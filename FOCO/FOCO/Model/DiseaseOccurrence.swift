@@ -17,6 +17,16 @@ struct DiseaseOccurrence: Codable {
     let created: String
     let latitude: Double
     let longitude: Double
+//    var initialSymptomsDate: Date? {
+//        let dateFormatter =  DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        return dateFormatter.date(from: initialSymptoms)
+//    }
+//    var createdDate: Date? {
+//        let dateFormatter =  DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        return dateFormatter.date(from: created)
+//    }
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -28,7 +38,8 @@ struct DiseaseOccurrence: Codable {
         case longitude = "longitude"
     }
 
-    init(diseaseName: String, initialSymptoms: String, confirmationStatus: Bool, created: String, latitude: Double, longitude: Double) {
+    init(diseaseName: String, initialSymptoms: String, confirmationStatus: Bool,
+         created: String, latitude: Double, longitude: Double) {
         // Para efeito de POST, o parâmetro id precisa ser 0
         self.id = 0
         self.diseaseName = diseaseName
@@ -39,9 +50,4 @@ struct DiseaseOccurrence: Codable {
         self.longitude = longitude
     }
 
-    func getDate(stringDate: String) -> Date {
-        let dateFormatter =  DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.date(from: stringDate)!
-    }
 }
