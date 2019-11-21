@@ -13,8 +13,8 @@
 		80E8F3D22379AED800445DF8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* MapViewController.swift */; };
 		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
 		B34AF8912386E28D00B61F2C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34AF8902386E28D00B61F2C /* Utils.swift */; };
+		B34AF89323871EED00B61F2C /* BreedingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34AF89223871EED00B61F2C /* BreedingViewController.swift */; };
 		B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36279AD23831C060067C663 /* BreedingAnnotation.swift */; };
-		B36279B023843DF60067C663 /* DiseaseDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36279AF23843DF60067C663 /* DiseaseDetailController.swift */; };
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
 		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
 		C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */; };
@@ -38,8 +38,8 @@
 		80E8F3D12379AED800445DF8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
 		B34AF8902386E28D00B61F2C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B34AF89223871EED00B61F2C /* BreedingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingViewController.swift; sourceTree = "<group>"; };
 		B36279AD23831C060067C663 /* BreedingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingAnnotation.swift; sourceTree = "<group>"; };
-		B36279AF23843DF60067C663 /* DiseaseDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseDetailController.swift; sourceTree = "<group>"; };
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
 		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 				80E8F3D12379AED800445DF8 /* MapViewController.swift */,
 				C5CAD6FF2375B21C00B5BBA2 /* ProfileViewController.swift */,
 				809369E323841DD300C794BB /* NewOccurrenceViewController.swift */,
-				B36279AF23843DF60067C663 /* DiseaseDetailController.swift */,
+				B34AF89223871EED00B61F2C /* BreedingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -319,8 +319,8 @@
 				C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */,
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ProfileViewController.swift in Sources */,
-				B36279B023843DF60067C663 /* DiseaseDetailController.swift in Sources */,
 				B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */,
+				B34AF89323871EED00B61F2C /* BreedingViewController.swift in Sources */,
 				B34AF8912386E28D00B61F2C /* Utils.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
