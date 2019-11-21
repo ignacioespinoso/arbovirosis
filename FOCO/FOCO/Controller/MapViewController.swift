@@ -21,6 +21,7 @@ class MapViewController: UIViewController, UIActionSheetDelegate {
     let locationManager = CLLocationManager()
     let maxSpan = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
     let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    var selectedBreeedingSite: BreedingSite?
 
 // MARK: Initial Setup
     override func viewDidLoad() {
@@ -130,13 +131,16 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         var identifier = ""
+        var calloutImage = ""
 
         switch annotation {
         case is DiseaseAnnotation:
             identifier = "diseaseMarker"
+            calloutImage = "sick"
         // This is suppose to be BreedingSite instead o "DiseaseOccurrence"
         case is BreedingAnnotation:
             identifier = "breedingMarker"
+            calloutImage = "mosquito"
         // Nil return on default value is important for avoiding customization on user's location blue pin
         default:
             return nil
@@ -152,10 +156,26 @@ extension MapViewController: MKMapViewDelegate {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             customizeView(view: view)
             view.glyphTintColor = .black
-            // We are not currently showing callout because we haven't implemented "More Info" screen.
-            view.canShowCallout = false
+            view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+
+            // Setting image for the callout
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0,
+                                                      width: view.frame.height, height: view.frame.height))
+            imageView.image = UIImage(named: calloutImage)
+            imageView.contentMode = .scaleAspectFit
+            view.leftCalloutAccessoryView = imageView
+
+            if annotation is BreedingAnnotation {
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }
+
+            // Allowing multiple lines on subtitle
+            let subtitleView = UILabel()
+            subtitleView.font = subtitleView.font.withSize(12)
+            subtitleView.numberOfLines = 0
+            subtitleView.text = annotation.subtitle!
+            view.detailCalloutAccessoryView = subtitleView
         }
         return view
     }
@@ -176,10 +196,18 @@ extension MapViewController: MKMapViewDelegate {
     // Future performSegue() to "More Info" screen.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-//        if let location = view.annotation as? DiseaseAnnotation {
-//            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-//            location.mapItem().openInMaps(launchOptions: launchOptions)
-//        }
+        if let breedingAnnotation = view.annotation as? BreedingAnnotation {
+            selectedBreeedingSite = breedingAnnotation.breeding
+            performSegue(withIdentifier: "showBreedingDetail", sender: nil)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showBreedingDetail" {
+            if let vc = segue.destination as? BreedingViewController {
+                vc.breeding = selectedBreeedingSite
+            }
+        }
     }
 }
 
