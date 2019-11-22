@@ -229,7 +229,7 @@ extension NavigatorController {
     }
 
     @objc func showOptions() {
-        let option1 = Option(name: "Novo caso", segueIdentifier: "newSite")
+        let option1 = Option(name: "Novo foco", segueIdentifier: "newSite")
         let option2 = Option(name: "Nova ocorrência", segueIdentifier: "newOccurrence")
 
         self.configureActionSheet(options: option1, option2)

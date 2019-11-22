@@ -12,6 +12,7 @@
 		804A2E612384410500214A90 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E602384410500214A90 /* CustomCells.swift */; };
 		804A2E66238460FE00214A90 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E65238460FE00214A90 /* FloatLabelTextField.swift */; };
 		809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809369E323841DD300C794BB /* NewOccurrenceViewController.swift */; };
+		80E2B151238823DD004894A5 /* NewBreedingSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */; };
 		80E8F3D22379AED800445DF8 /* NavigatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* NavigatorController.swift */; };
 		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
 		B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36279AD23831C060067C663 /* BreedingAnnotation.swift */; };
@@ -37,6 +38,7 @@
 		804A2E602384410500214A90 /* CustomCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		804A2E65238460FE00214A90 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		809369E323841DD300C794BB /* NewOccurrenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOccurrenceViewController.swift; sourceTree = "<group>"; };
+		80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBreedingSiteViewController.swift; sourceTree = "<group>"; };
 		80E8F3D12379AED800445DF8 /* NavigatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorController.swift; sourceTree = "<group>"; };
 		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
 		B36279AD23831C060067C663 /* BreedingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingAnnotation.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				80E8F3D12379AED800445DF8 /* NavigatorController.swift */,
 				C5CAD6FF2375B21C00B5BBA2 /* ProfileViewController.swift */,
 				809369E323841DD300C794BB /* NewOccurrenceViewController.swift */,
+				80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				804A2E612384410500214A90 /* CustomCells.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
 				C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */,
+				80E2B151238823DD004894A5 /* NewBreedingSiteViewController.swift in Sources */,
 				8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */,
 				809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */,
 				C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */,
