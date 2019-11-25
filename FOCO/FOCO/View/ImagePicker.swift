@@ -14,8 +14,7 @@ public protocol ImagePickerDelegate: class {
 }
 
 open class ImagePicker: NSObject {
-    
-    
+
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
     private weak var delegate: ImagePickerDelegate?
@@ -32,7 +31,7 @@ open class ImagePicker: NSObject {
         self.pickerController.allowsEditing = true
         self.pickerController.mediaTypes = ["public.image"]
     }
-    
+
     // Sets possible actions for image picking
     private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
         guard UIImagePickerController.isSourceTypeAvailable(type) else {
@@ -44,7 +43,7 @@ open class ImagePicker: NSObject {
             self.presentationController?.present(self.pickerController, animated: true)
         }
     }
-    
+
     // Presents alert controller to choose image source
     public func present(from sourceView: UIView) {
 
