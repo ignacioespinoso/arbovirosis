@@ -16,6 +16,8 @@
 		80E2B151238823DD004894A5 /* NewBreedingSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */; };
 		80E8F3D22379AED800445DF8 /* NavigatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* NavigatorController.swift */; };
 		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
+		B34AF8912386E28D00B61F2C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34AF8902386E28D00B61F2C /* Utils.swift */; };
+		B34AF89323871EED00B61F2C /* BreedingSiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34AF89223871EED00B61F2C /* BreedingSiteDetailViewController.swift */; };
 		B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36279AD23831C060067C663 /* BreedingAnnotation.swift */; };
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
 		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
@@ -43,6 +45,8 @@
 		80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBreedingSiteViewController.swift; sourceTree = "<group>"; };
 		80E8F3D12379AED800445DF8 /* NavigatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorController.swift; sourceTree = "<group>"; };
 		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
+		B34AF8902386E28D00B61F2C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B34AF89223871EED00B61F2C /* BreedingSiteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSiteDetailViewController.swift; sourceTree = "<group>"; };
 		B36279AD23831C060067C663 /* BreedingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingAnnotation.swift; sourceTree = "<group>"; };
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
 		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */,
 				C577DD51237DA7B6007E8C6B /* BreedingSite.swift */,
 				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
+				B34AF8902386E28D00B61F2C /* Utils.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				C5CAD6FF2375B21C00B5BBA2 /* ProfileViewController.swift */,
 				809369E323841DD300C794BB /* NewOccurrenceViewController.swift */,
 				80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */,
+				B34AF89223871EED00B61F2C /* BreedingSiteDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -328,6 +334,8 @@
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ProfileViewController.swift in Sources */,
 				B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */,
+				B34AF89323871EED00B61F2C /* BreedingSiteDetailViewController.swift in Sources */,
+				B34AF8912386E28D00B61F2C /* Utils.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,
 				804A2E612384410500214A90 /* CustomCells.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,

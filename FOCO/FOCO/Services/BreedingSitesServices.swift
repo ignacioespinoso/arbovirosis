@@ -30,6 +30,22 @@ class BreedingSitesServices {
         }
     }
 
+    // MARK: - Get Breeding Image
+    static func getImageByID(breedingID: CLong, _ completion: @escaping (_ error: Error?,
+                                                        _ image: [UInt8]?) -> Void) {
+
+        // Falta fazer tratamento de erros - baixa prioridade
+        BreedingSitesDAO.getImageByID(breedingID: breedingID, { (error, image) in
+            if error != nil {
+                // Handle errors - mensagem mais amigável para usuário
+                print(error.debugDescription)
+            } else {
+                completion(nil, image)
+            }
+
+        })
+    }
+
     // MARK: - Post
 
     // Apenas precisa checar erro, o objeto retornado é o próprio enviado.

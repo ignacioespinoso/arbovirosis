@@ -1,7 +1,8 @@
 disabled_rules: # rule identifiers to exclude from running
   - identifier_name
   - redundant_string_enum_value
-opt_in_rul.es: # some rules are only opt-in
+  - todo
+opt_in_rules: # some rules are only opt-in
   - empty_count # pode ser que tenha que desativar essa regra em alguns casos
   - colon
   - comma

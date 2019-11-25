@@ -24,8 +24,12 @@ class DiseaseAnnotation: NSObject, MKAnnotation {
     }
 
     var subtitle: String? {
-        // Future: return disease.initialSymptoms
-        return "Início dos sintomas: 23/mar"
+        if disease.confirmationStatus {
+            return "- Confirmado \n- Início em " + Utils.fixDateFormat(inputDate: disease.initialSymptoms)
+        } else {
+            return "- Suspeita \n- Início em " + Utils.fixDateFormat(inputDate: disease.initialSymptoms)
+        }
+        
     }
 }
 

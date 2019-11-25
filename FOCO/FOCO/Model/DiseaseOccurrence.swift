@@ -17,6 +17,16 @@ struct DiseaseOccurrence: Codable {
     let created: String?
     let latitude: Double
     let longitude: Double
+//    var initialSymptomsDate: Date? {
+//        let dateFormatter =  DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        return dateFormatter.date(from: initialSymptoms)
+//    }
+//    var createdDate: Date? {
+//        let dateFormatter =  DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        return dateFormatter.date(from: created)
+//    }
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
