@@ -79,10 +79,19 @@ class BreedingSitesDAO {
                     completion(error)
                     return
                 }
+
+                // Checking if error is empty
+                if let error = error {
+                    print("Error!")
+                    completion(error)
+                    return
+                }
+
                 print("Create Site response status", response.statusCode)
 
                 if let data = data {
                     do {
+                        print("data=\(String(data: data, encoding: .utf8))")
                         _ = try JSONDecoder().decode(BreedingSite.self, from: data)
                         // Único caso onde não há erro. Não passo erro para frente
                         completion(nil)
