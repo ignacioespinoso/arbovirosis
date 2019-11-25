@@ -20,6 +20,8 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - FOCO/AppDelegate.swift
   - FOCO/SceneDelegate.swift
+  - FOCO/View/CustomCells.swift
+  - FOCO/View/FloatLabelTextField.swift
 analyzer_rules: # Rules run by `swiftlint analyze` (experimental)
   - explicit_self
 

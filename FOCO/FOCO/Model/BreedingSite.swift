@@ -12,11 +12,12 @@ struct BreedingSite: Codable {
 
     let id: CLong
     let title: String
-    let description: String
+    let description: String?
     let type: String
-    let created: String
+    let created: String?
     let latitude: Double
     let longitude: Double
+    let pictureUrl: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -26,17 +27,19 @@ struct BreedingSite: Codable {
         case created = "created"
         case latitude = "latitude"
         case longitude = "longitude"
+        case pictureUrl = "pictureUrl"
     }
 
-    init(title: String, description: String, type: String, created: String,
+    init(title: String, description: String?, type: String,
          latitude: Double, longitude: Double) {
         // Para efeito de POST, o parâmetro id precisa ser 0
         self.id = 0
         self.title = title
         self.description = description
         self.type = type
-        self.created = created
+        self.created = nil
         self.latitude = latitude
         self.longitude = longitude
+        self.pictureUrl = nil
     }
 }

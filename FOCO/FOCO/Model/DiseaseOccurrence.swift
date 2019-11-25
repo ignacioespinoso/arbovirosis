@@ -11,10 +11,10 @@ import Foundation
 struct DiseaseOccurrence: Codable {
 
     let id: CLong
-    let diseaseName: String
+    let diseaseName: String?
     let confirmationStatus: Bool
     let initialSymptoms: String
-    let created: String
+    let created: String?
     let latitude: Double
     let longitude: Double
 //    var initialSymptomsDate: Date? {
@@ -38,14 +38,14 @@ struct DiseaseOccurrence: Codable {
         case longitude = "longitude"
     }
 
-    init(diseaseName: String, initialSymptoms: String, confirmationStatus: Bool,
-         created: String, latitude: Double, longitude: Double) {
+    init(diseaseName: String?, confirmationStatus: Bool, initialSymptoms: String,
+         latitude: Double, longitude: Double) {
         // Para efeito de POST, o parâmetro id precisa ser 0
         self.id = 0
         self.diseaseName = diseaseName
         self.confirmationStatus = confirmationStatus
         self.initialSymptoms = initialSymptoms
-        self.created = created
+        self.created = nil
         self.latitude = latitude
         self.longitude = longitude
     }

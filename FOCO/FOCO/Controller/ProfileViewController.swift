@@ -35,7 +35,6 @@ class ProfileViewController: UIViewController {
         let jsonObject = BreedingSite(title: "Pneuzin",
                                       description: "vai que vai",
                                       type: "Descarte",
-                                      created: "",
                                       latitude: -22.81277,
                                       longitude: -47.06107)
 

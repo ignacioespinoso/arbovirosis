@@ -8,7 +8,7 @@
 
 import MapKit
 
-class BreedingViewController: UIViewController {
+class BreedingSiteDetailViewController: UIViewController {
 
     var breeding: BreedingSite?
     var imageByte: [UInt8]?
@@ -23,7 +23,8 @@ class BreedingViewController: UIViewController {
         name.text = breeding?.title
         commentary.text = breeding?.description
         type.text = breeding?.type
-        creationDate.text = Utils.fixDateFormat(inputDate: breeding!.created)
+        // TODO: Handle Optionals
+// creationDate.text = Utils.fixDateFormat(inputDate: breeding!.created!)
     }
 
     override func viewWillAppear(_ animated: Bool) {

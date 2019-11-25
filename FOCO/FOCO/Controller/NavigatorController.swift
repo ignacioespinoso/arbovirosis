@@ -9,7 +9,7 @@ ViewController for MapView
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, UIActionSheetDelegate {
+class NavigatorController: UIViewController, UIActionSheetDelegate {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collaborateButton: UIButton!
@@ -100,7 +100,7 @@ class MapViewController: UIViewController, UIActionSheetDelegate {
 }
 
 // MARK: Map View Delegate
-extension MapViewController: MKMapViewDelegate {
+extension NavigatorController: MKMapViewDelegate {
 
     // Renders Map overlays
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -204,7 +204,7 @@ extension MapViewController: MKMapViewDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showBreedingDetail" {
-            if let vc = segue.destination as? BreedingViewController {
+            if let vc = segue.destination as? BreedingSiteDetailViewController {
                 vc.breeding = selectedBreeedingSite
             }
         }
@@ -212,7 +212,7 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 // MARK: CoreLocation Delegate & Settings
-extension MapViewController: CLLocationManagerDelegate {
+extension NavigatorController: CLLocationManagerDelegate {
     // Requests location permission and set Core Location
     func setupLocationServices() {
         self.locationManager.delegate = self
@@ -241,14 +241,14 @@ struct Option {
     var segueIdentifier: String
 }
 
-extension MapViewController {
+extension NavigatorController {
     func configureActionSheet(options: Option...) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         actionSheet.addAction(cancel)
 
         for option in options {
-            let currentOption = UIAlertAction(title: option.name, style: .default) { (action) in
+            let currentOption = UIAlertAction(title: option.name, style: .default) { (_) in
                 self.performSegue(withIdentifier: option.segueIdentifier, sender: self)
             }
             actionSheet.addAction(currentOption)
@@ -257,9 +257,11 @@ extension MapViewController {
     }
 
     @objc func showOptions() {
-        let option1 = Option(name: "Novo caso", segueIdentifier: "newSite")
+        let option1 = Option(name: "Novo foco", segueIdentifier: "newSite")
         let option2 = Option(name: "Nova ocorrência", segueIdentifier: "newOccurrence")
 
         self.configureActionSheet(options: option1, option2)
     }
+
+    @IBAction func unwindToMap(segue: UIStoryboardSegue) { }
 }
