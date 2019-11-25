@@ -7,4 +7,6 @@ target 'FOCO' do
 
   # Pods for FOCO
   pod 'Eureka'
+  pod 'AlamofireImage'
+  pod 'Alamofire'
 end

@@ -9,6 +9,8 @@
 import UIKit
 import Eureka
 import CoreLocation
+import Alamofire
+import AlamofireImage
 
 class NewBreedingSiteViewController: FormViewController {
 

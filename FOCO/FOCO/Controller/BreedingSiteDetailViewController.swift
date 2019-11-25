@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import AlamofireImage
 
 class BreedingSiteDetailViewController: UIViewController {
 
@@ -27,18 +28,26 @@ class BreedingSiteDetailViewController: UIViewController {
 // creationDate.text = Utils.fixDateFormat(inputDate: breeding!.created!)
     }
 
+//    override func viewWillAppear(_ animated: Bool) {
+//        BreedingSitesServices.getImageByID(breedingID: breeding!.id) { (error, image) in
+//            if error == nil && image != nil {
+//                DispatchQueue.main.async {
+//                    self.imageByte = image
+//                    let data = NSData(bytes: self.imageByte, length: self.imageByte?.count ?? 0)
+//                    let myImage = UIImage(data: data as Data)
+//                    self.breedingImage.image = myImage
+//                }
+//            } else {
+//                print(error?.localizedDescription as Any)
+//            }
+//        }
+//    }
+
     override func viewWillAppear(_ animated: Bool) {
-        BreedingSitesServices.getImageByID(breedingID: breeding!.id) { (error, image) in
-            if error == nil && image != nil {
-                DispatchQueue.main.async {
-                    self.imageByte = image
-                    let data = NSData(bytes: self.imageByte, length: self.imageByte?.count ?? 0)
-                    let myImage = UIImage(data: data as Data)
-                    self.breedingImage.image = myImage
-                }
-            } else {
-                print(error?.localizedDescription as Any)
-            }
+        super.viewWillAppear(animated)
+
+        if let breedingPic = breeding?.imageURL {
+            breedingImage.af_setImage(withURL: breedingPic)
         }
     }
 }
