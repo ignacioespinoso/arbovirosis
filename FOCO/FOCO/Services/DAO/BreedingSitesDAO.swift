@@ -37,14 +37,14 @@ class BreedingSitesDAO {
     }
 
     // MARK: - Find Image By ID
-    
+
     static func getImageByID (breedingID: CLong, _ completion: @escaping (_ error: Error?,
                                                   _ image: [UInt8]?) -> Void) {
 
         if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingID)/pic") {
-            
+
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
-                
+
                 if error != nil {
                     completion(error, nil)
                     print(error?.localizedDescription as Any)
@@ -52,12 +52,13 @@ class BreedingSitesDAO {
                     let array = [UInt8](data)
                     completion(nil, array)
                 }
-                
+
             }
-            
+
             task.resume()
         }
     }
+
 
     // MARK: - Create
 
@@ -95,5 +96,4 @@ class BreedingSitesDAO {
             task.resume()
         }
     }
-
 }

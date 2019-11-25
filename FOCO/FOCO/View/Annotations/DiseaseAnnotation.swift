@@ -29,7 +29,7 @@ class DiseaseAnnotation: NSObject, MKAnnotation {
         } else {
             return "- Suspeita \n- Início em " + Utils.fixDateFormat(inputDate: disease.initialSymptoms)
         }
-        
+
     }
 }
 
