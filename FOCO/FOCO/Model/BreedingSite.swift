@@ -17,6 +17,7 @@ struct BreedingSite: Codable {
     let created: String?
     let latitude: Double
     let longitude: Double
+    let pictureUrl: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -26,6 +27,7 @@ struct BreedingSite: Codable {
         case created = "created"
         case latitude = "latitude"
         case longitude = "longitude"
+        case pictureUrl = "pictureUrl"
     }
 
     init(title: String, description: String?, type: String,
@@ -38,5 +40,6 @@ struct BreedingSite: Codable {
         self.created = nil
         self.latitude = latitude
         self.longitude = longitude
+        self.pictureUrl = nil
     }
 }

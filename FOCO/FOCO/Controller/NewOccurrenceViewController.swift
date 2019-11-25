@@ -29,9 +29,9 @@ class NewOccurrenceViewController: FormViewController {
         form +++ Section("Dados do Paciente")
             <<< DateRow("symptomsStart") { row in
                 row.title = "Início dos sintomas*"
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "pt_BR")
-                row.dateFormatter = formatter
+//                let formatter = DateFormatter()
+//                formatter.locale = Locale(identifier: "pt_BR")
+//                row.dateFormatter = formatter
             }.cellSetup({ (cell, _) in
                 cell.datePicker.locale = Locale(identifier: "pt_BR")
             })
@@ -43,7 +43,9 @@ class NewOccurrenceViewController: FormViewController {
             }
             <<< SwitchRow("confirmed") { row in
                 row.title = "Confirmado por médico*"
-            }
+            }.cellSetup({ (cell, _) in
+                cell.switchControl.setOn(false, animated: false)
+            })
             <<< LocationRow("location") {
                 $0.title = "Localização*"
                 $0.value = locationManager.location
@@ -55,26 +57,69 @@ class NewOccurrenceViewController: FormViewController {
     }
 
     @objc func saveOccurrence() {
-//        let symptomsStartForm: TextRow? = self.form.rowBy(tag: "symptomsStart")
+        let symptomsStartForm: DateRow? = self.form.rowBy(tag: "symptomsStart")
         let diseaseNameForm: TextRow? = self.form.rowBy(tag: "diseaseName")
-//        let confirmedForm: TextRow? = self.form.rowBy(tag: "confirmed")
+        let confirmedForm: SwitchRow? = self.form.rowBy(tag: "confirmed")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
 
-        if let location = locationForm?.value as? CLLocation, let name = diseaseNameForm?.value as? String {
-            let latitude = location.coordinate.latitude
-            let longitude = location.coordinate.longitude
+        if let location: CLLocation = locationForm?.value as? CLLocation,
+            let initialSymptoms: Date = symptomsStartForm?.value as? Date {
 
-//            let symptomsStart = symptomsStartForm?.value as? Date
-//            let confirmed = confirmedForm?.value as? Bool
+            let dateString = getIso8601Date(from: initialSymptoms)
 
-            let newOccurrence = DiseaseOccurrence(diseaseName: name, latitude: latitude, longitude: longitude)
+            let latitude: Double = location.coordinate.latitude
+            let longitude: Double = location.coordinate.longitude
+            let diseaseName: String? = diseaseNameForm?.value
+            var confirmed: Bool = false
+            if let confirmedFormValue = confirmedForm?.value {
+                confirmed = confirmedFormValue
+            }
 
-            print(newOccurrence)
+            let newOccurrence = DiseaseOccurrence(diseaseName: diseaseName,
+                                                  confirmationStatus: confirmed,
+                                                  initialSymptoms: dateString,
+                                                  latitude: latitude,
+                                                  longitude: longitude)
+            var jsonData: Data?
+            do {
+                 jsonData = try JSONEncoder().encode(newOccurrence)
+             } catch let myJSONError {
+                 print(myJSONError)
+             }
+
+             print(jsonData!)
+
+             DiseaseOccurrencesServices.createDisease(jsonData: jsonData, { (error) in
+                 if error == nil {
+                     print("TUDO CERRTO")
+                 } else {
+                     print(error!)
+                 }
+             })
             performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
         } else {
-            let alert = UIAlertController(title: "Erro", message: "Preencha os campos obrigatórios", preferredStyle: .alert)
+            if locationForm?.value == nil {
+                print("no location set")
+            }
+            if symptomsStartForm?.value == nil {
+                print("no start set")
+            }
+            let alert = UIAlertController(title: "Erro",
+                                          message: "Preencha os campos obrigatórios",
+                                          preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
+}
+
+func getIso8601Date(from date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.calendar = Calendar(identifier: .iso8601)
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+
+    let dateString = formatter.string(from: date)
+    return dateString
 }
