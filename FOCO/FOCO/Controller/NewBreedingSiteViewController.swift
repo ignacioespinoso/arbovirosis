@@ -82,6 +82,7 @@ class NewBreedingSiteViewController: FormViewController {
                                                longitude: longitude)
             print(newBreedingSite)
 
+            // TODO: This code should be on DAO/Services layers [Guga]
             var jsonData: Data?
 
             do {
@@ -90,6 +91,8 @@ class NewBreedingSiteViewController: FormViewController {
                  print(myJSONError)
              }
 
+            // TODO: Create Site should pass BreedingSite object instead of a Data object [Guga]
+
              BreedingSitesServices.createSite(jsonData: jsonData, { (error) in
                  if error == nil {
                     self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
@@ -97,6 +100,13 @@ class NewBreedingSiteViewController: FormViewController {
                      print(error!)
                  }
              })
+
+            // TODO: Get ID from createSite responde (probably on DAO, not here) and create Patch Request
+            // Tests for ID  5 only -- didn't work
+//            let image = breedingSiteImage.image?.pngData()
+//            let params = ["file": image ]
+//            Alamofire.request("https://safe-peak-03441.herokuapp.com/breeding-sites/5/?file", method: .patch, parameters: params as Parameters)
+
         } else {
             let alert = UIAlertController(title: "Erro",
                                           message: "Preencha os campos obrigatórios",
