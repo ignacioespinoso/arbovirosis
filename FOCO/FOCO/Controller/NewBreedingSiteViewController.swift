@@ -74,13 +74,27 @@ class NewBreedingSiteViewController: FormViewController {
             let longitude = location.coordinate.longitude
 
             let newBreedingSite = BreedingSite(title: title,
-                                               description: "",
+                                               description: self.form.rowBy(tag: "description")?.value,
                                                type: accessType,
-                                               created: "",
                                                latitude: latitude,
                                                longitude: longitude)
             print(newBreedingSite)
-            performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
+
+            var jsonData: Data?
+
+            do {
+                 jsonData = try JSONEncoder().encode(newBreedingSite)
+             } catch let myJSONError {
+                 print(myJSONError)
+             }
+
+             BreedingSitesServices.createSite(jsonData: jsonData, { (error) in
+                 if error == nil {
+                    self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
+                 } else {
+                     print(error!)
+                 }
+             })
         } else {
             let alert = UIAlertController(title: "Erro",
                                           message: "Preencha os campos obrigatórios",
