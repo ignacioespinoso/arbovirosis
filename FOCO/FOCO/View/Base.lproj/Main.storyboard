@@ -142,13 +142,50 @@
                     <view key="view" contentMode="scaleToFill" id="L1j-6Z-Yfe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zwa-zf-vs3">
+                                <rect key="frame" x="0.0" y="184" width="414" height="624"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qkf-qa-s8Z">
+                                <rect key="frame" x="0.0" y="56" width="414" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="scC-WR-bhV"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzv-a0-GTx">
+                                <rect key="frame" x="374" y="144" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="XyB-Rz-8wH"/>
+                                    <constraint firstAttribute="width" constant="32" id="gui-kH-Qki"/>
+                                </constraints>
+                                <state key="normal" image="photo" catalog="system"/>
+                                <connections>
+                                    <action selector="showImagePicker:" destination="Ab3-ze-rfa" eventType="touchUpInside" id="s9p-up-aMd"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qkf-qa-s8Z" firstAttribute="width" secondItem="L1j-6Z-Yfe" secondAttribute="width" id="Evy-SJ-sgf"/>
+                            <constraint firstItem="qkf-qa-s8Z" firstAttribute="centerX" secondItem="VP0-na-Ggf" secondAttribute="centerX" id="FmH-8G-dgI"/>
+                            <constraint firstItem="zwa-zf-vs3" firstAttribute="leading" secondItem="VP0-na-Ggf" secondAttribute="leading" id="HBv-ni-Zca"/>
+                            <constraint firstItem="VP0-na-Ggf" firstAttribute="bottom" secondItem="zwa-zf-vs3" secondAttribute="bottom" id="Ngz-iY-o0V"/>
+                            <constraint firstItem="zwa-zf-vs3" firstAttribute="trailing" secondItem="VP0-na-Ggf" secondAttribute="trailing" id="VsN-Pv-VF9"/>
+                            <constraint firstItem="zwa-zf-vs3" firstAttribute="top" secondItem="qkf-qa-s8Z" secondAttribute="bottom" id="WHm-IO-vaT"/>
+                            <constraint firstItem="Nzv-a0-GTx" firstAttribute="top" secondItem="qkf-qa-s8Z" secondAttribute="bottom" constant="-40" id="dg1-0x-e1M"/>
+                            <constraint firstItem="qkf-qa-s8Z" firstAttribute="top" secondItem="VP0-na-Ggf" secondAttribute="top" id="emF-Dd-zAU"/>
+                            <constraint firstItem="zwa-zf-vs3" firstAttribute="centerX" secondItem="VP0-na-Ggf" secondAttribute="centerX" id="qx1-sD-gzC"/>
+                            <constraint firstItem="Nzv-a0-GTx" firstAttribute="leading" secondItem="qkf-qa-s8Z" secondAttribute="trailing" constant="-40" id="wnp-X9-qya"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VP0-na-Ggf"/>
                     </view>
                     <navigationItem key="navigationItem" id="6Ht-xl-Cez">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Lng-QO-HMk"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="breedingSiteImage" destination="qkf-qa-s8Z" id="7WW-SJ-lzp"/>
+                        <outlet property="tableView" destination="zwa-zf-vs3" id="fhT-Wz-afQ"/>
                         <segue destination="QQg-EG-0cy" kind="unwind" identifier="unwindToMapFromBreedingSite" unwindAction="unwindToMapWithSegue:" id="ClA-6R-PE3"/>
                     </connections>
                 </viewController>
@@ -240,5 +277,6 @@
         <image name="fullButtonFilled" width="42" height="83"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="photo" catalog="system" width="64" height="46"/>
     </resources>
 </document>
