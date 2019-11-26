@@ -23,9 +23,9 @@ class BreedingSiteDetailViewController: UIViewController {
     override func viewDidLoad() {
         name.text = breeding?.title
         commentary.text = breeding?.description
-        type.text = breeding?.type
+        type.text = "Tipo de foco: " + breeding!.type
         // TODO: Handle Optionals
-        creationDate.text = Utils.fixDateFormat(inputDate: breeding!.created!)
+        creationDate.text = "Criado em: " + Utils.fixDateFormat(inputDate: breeding!.created!)
     }
 
 //    override func viewWillAppear(_ animated: Bool) {
