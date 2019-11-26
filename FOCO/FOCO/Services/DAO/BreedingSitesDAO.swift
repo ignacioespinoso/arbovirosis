@@ -8,6 +8,7 @@ Data access object. Perform the URL session
 
 import Foundation
 import UIKit
+import Alamofire
 
 class BreedingSitesDAO {
 
@@ -83,51 +84,31 @@ class BreedingSitesDAO {
     static func uploadImageById (breedingId: Int,
                                  image: UIImage,
                                  _ completion: @escaping (_ error: Error?) -> Void) {
-
         if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingId)") {
-            var request = URLRequest(url: url)
-            request.httpMethod = "PATCH"
-            request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
-            request.setValue("breeding-site-image", forHTTPHeaderField: "X-FileName")
-            let jpgImage = image.jpegData(compressionQuality: 1.0)
-            if let jpgData = jpgImage {
-                request.httpBodyStream = InputStream(data: jpgData)
-                // TODO: ERROR PERFORMING UPLOAD TASK
-                let task = URLSession.shared.uploadTask(with: request,
-                                                        from: jpgData) { (data, response, error) in
-
-                    guard let response = response as? HTTPURLResponse,
-                              (200...299).contains(response.statusCode)
-                    else {
-                        print("Server error! Breeding Site")
-                        completion(error)
-                        return
-                    }
-
-                    // Checking if error is empty
-                    if let error = error {
-                        print("Error!")
-                        completion(error)
-                        return
-                    }
-
-                    print("Create Site response status", response.statusCode)
-
-                    if let data = data {
-                        do {
-                            print("data=\(String(data: data, encoding: .utf8))")
-                            _ = try JSONDecoder().decode(BreedingSite.self, from: data)
-                            // Único caso onde não há erro. Não passo erro para frente
-                            completion(nil)
-                            print("Json Decoder post Site ok!")
-                        } catch let error {
-                            completion(error)
-                            print(error.localizedDescription)
+            Alamofire.upload(multipartFormData: { MultipartFormData in
+                if let imageData = image.jpegData(compressionQuality: 1.0) {
+                    MultipartFormData.append(imageData,
+                                             withName: "file",
+                                             fileName: "file.jpg",
+                                             mimeType: "image/jpeg")
+                }
+            }, to: url,
+               method: .patch,
+               headers: ["Content-Type": "multipart/form-data"]) { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        guard response.result.isSuccess else {
+                            print(response.error?.localizedDescription ?? "Error while requesting")
+                            return
+                        }
+                        if let value = response.result.value {
+                            print(value)
                         }
                     }
+                case .failure(let encodingError):
+                    print(encodingError)
                 }
-
-                task.resume()
             }
         }
     }
