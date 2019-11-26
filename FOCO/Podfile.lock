@@ -1,16 +1,25 @@
 PODS:
+  - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
   - Eureka (5.1.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
   - Eureka
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireImage
     - Eureka
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   Eureka: 18a5076dcf0c41f9cd9748aa1c42f4d11434bdae
 
-PODFILE CHECKSUM: ae62ddbb06d2bb0400173281c6632aa920251e13
+PODFILE CHECKSUM: 4ba2c75aad42292e7ddf65953efcaa12da1b5312
 
 COCOAPODS: 1.8.4

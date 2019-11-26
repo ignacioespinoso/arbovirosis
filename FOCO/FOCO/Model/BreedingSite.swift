@@ -18,6 +18,13 @@ struct BreedingSite: Codable {
     let latitude: Double
     let longitude: Double
     let pictureUrl: String?
+    var imageURL: URL? {
+        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(self.id)/pic") {
+            return url
+        } else {
+            return nil
+        }
+    }
 
     enum CodingKeys: String, CodingKey {
         case id = "id"

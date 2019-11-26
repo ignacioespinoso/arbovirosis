@@ -9,6 +9,8 @@
 import UIKit
 import Eureka
 import CoreLocation
+import Alamofire
+import AlamofireImage
 
 class NewBreedingSiteViewController: FormViewController {
 
@@ -66,9 +68,9 @@ class NewBreedingSiteViewController: FormViewController {
         let accessTypeForm: TextRow? = self.form.rowBy(tag: "accessType")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
 
-        if let location = locationForm?.value as? CLLocation,
-            let title = titleForm?.value as? String,
-            let accessType = accessTypeForm?.value as? String {
+        if let location = locationForm?.value,
+            let title = titleForm?.value,
+            let accessType = accessTypeForm?.value {
 
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
@@ -80,21 +82,24 @@ class NewBreedingSiteViewController: FormViewController {
                                                longitude: longitude)
             print(newBreedingSite)
 
-            var jsonData: Data?
+            // TODO: Create Site should pass BreedingSite object instead of a Data object [Guga]
 
-            do {
-                 jsonData = try JSONEncoder().encode(newBreedingSite)
-             } catch let myJSONError {
-                 print(myJSONError)
-             }
-
-             BreedingSitesServices.createSite(jsonData: jsonData, { (error) in
+            BreedingSitesServices.createSite(breedingSite: newBreedingSite,
+                                             image: self.breedingSiteImage.image, { (error) in
                  if error == nil {
-                    self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
+                    print("Created breeding site successfully.")
                  } else {
                      print(error!)
                  }
-             })
+            })
+            self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
+
+            // TODO: Get ID from createSite responde (probably on DAO, not here) and create Patch Request
+            // Tests for ID  5 only -- didn't work
+//            let image = breedingSiteImage.image?.pngData()
+//            let params = ["file": image ]
+//            Alamofire.request("https://safe-peak-03441.herokuapp.com/breeding-sites/5/?file", method: .patch, parameters: params as Parameters)
+
         } else {
             let alert = UIAlertController(title: "Erro",
                                           message: "Preencha os campos obrigatórios",

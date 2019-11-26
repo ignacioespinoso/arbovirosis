@@ -38,17 +38,7 @@ class ProfileViewController: UIViewController {
                                       latitude: -22.81277,
                                       longitude: -47.06107)
 
-        var jsonData: Data?
-
-       do {
-            jsonData = try JSONEncoder().encode(jsonObject)
-        } catch let myJSONError {
-            print(myJSONError)
-        }
-
-        print(jsonData!)
-
-        BreedingSitesServices.createSite(jsonData: jsonData, { (error) in
+        BreedingSitesServices.createSite(breedingSite: jsonObject, image: nil, { (error) in
             if error == nil {
                 print("TUDO CERRTO")
             } else {

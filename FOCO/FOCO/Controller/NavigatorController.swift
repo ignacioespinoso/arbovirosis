@@ -37,58 +37,11 @@ class NavigatorController: UIViewController, UIActionSheetDelegate {
         collaborateButton.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
     }
 
-    // Loads initial markers
-    func loadInitialData() {
-        // Loads disease occurences and coverage area
-        DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
-            if let data = points {
-                // Maps occurrences to annotations
-                self.diseaseMarkers = data.map { (diseaseOccurrence) -> DiseaseAnnotation in
-                    // The magic happens here
-                    let annotation = DiseaseAnnotation(disease: diseaseOccurrence)
-                    self.dangerousAreas.append(MKCircle(center: annotation.coordinate, radius: 100))
-                    return annotation
-                }
-
-                // Adds annotations and overlays to map view
-                OperationQueue.main.addOperation {
-                    if let data = self.diseaseMarkers {
-                        self.mapView.addAnnotations(data)
-                        self.mapView.addOverlays(self.dangerousAreas)
-                    }
-                }
-            } else {
-                print(errorMessage.debugDescription)
-            }
-        }
-
-        // Loads breeding sites
-        BreedingSitesServices.getAllSites { (errorMessage, points) in
-            if let data = points {
-                self.breedingMarkers = data.map { (breedingSite) -> BreedingAnnotation in
-                    let annotation = BreedingAnnotation(breeding: breedingSite)
-                    return annotation
-                }
-                OperationQueue.main.addOperation {
-                    if let data = self.breedingMarkers {
-                        self.mapView.addAnnotations(data)
-                    }
-                }
-            } else {
-                print(errorMessage.debugDescription)
-            }
-        }
-    }
     // MARK: Button Actions
     @IBAction func refreshButton(_ sender: Any) {
         // Code to reload data from server
         // Needs fix: clicking fast, it loads twice.
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.removeOverlays(mapView.overlays)
-        self.dangerousAreas = []
-        self.diseaseMarkers = []
-        self.breedingMarkers = []
-        loadInitialData()
+        reloadData()
     }
 
     @IBAction func recenterClick(_ sender: Any) {
@@ -257,11 +210,69 @@ extension NavigatorController {
     }
 
     @objc func showOptions() {
-        let option1 = Option(name: "Novo foco", segueIdentifier: "newSite")
-        let option2 = Option(name: "Nova ocorrência", segueIdentifier: "newOccurrence")
+        let option1 = Option(name: "Registrar um possível criadouro.", segueIdentifier: "newSite")
+        let option2 = Option(name: "Incluir um caso de contágio.", segueIdentifier: "newOccurrence")
 
         self.configureActionSheet(options: option1, option2)
     }
 
-    @IBAction func unwindToMap(segue: UIStoryboardSegue) { }
+    @IBAction func unwindToMap(segue: UIStoryboardSegue) {
+        self.reloadData()
+    }
+}
+
+// MARK: Private Methods
+extension NavigatorController {
+
+    // Loads initial markers
+    func loadInitialData() {
+        // Loads disease occurences and coverage area
+        DiseaseOccurrencesServices.getAllDiseases { (errorMessage, points) in
+            if let data = points {
+                // Maps occurrences to annotations
+                self.diseaseMarkers = data.map { (diseaseOccurrence) -> DiseaseAnnotation in
+                    // The magic happens here
+                    let annotation = DiseaseAnnotation(disease: diseaseOccurrence)
+                    self.dangerousAreas.append(MKCircle(center: annotation.coordinate, radius: 100))
+                    return annotation
+                }
+
+                // Adds annotations and overlays to map view
+                OperationQueue.main.addOperation {
+                    if let data = self.diseaseMarkers {
+                        self.mapView.addAnnotations(data)
+                        self.mapView.addOverlays(self.dangerousAreas)
+                    }
+                }
+            } else {
+                print(errorMessage.debugDescription)
+            }
+        }
+
+        // Loads breeding sites
+        BreedingSitesServices.getAllSites { (errorMessage, points) in
+            if let data = points {
+                self.breedingMarkers = data.map { (breedingSite) -> BreedingAnnotation in
+                    let annotation = BreedingAnnotation(breeding: breedingSite)
+                    return annotation
+                }
+                OperationQueue.main.addOperation {
+                    if let data = self.breedingMarkers {
+                        self.mapView.addAnnotations(data)
+                    }
+                }
+            } else {
+                print(errorMessage.debugDescription)
+            }
+        }
+    }
+
+    func reloadData() {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        self.dangerousAreas = []
+        self.diseaseMarkers = []
+        self.breedingMarkers = []
+        loadInitialData()
+    }
 }

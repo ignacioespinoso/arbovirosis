@@ -9,7 +9,7 @@
 import Foundation
 
 class Utils: NSObject {
-    
+
     static func fixDateFormat(inputDate: String) -> String {
         let dateFormatter =  DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
