@@ -92,7 +92,7 @@ class BreedingSitesDAO {
             let jpgImage = image.jpegData(compressionQuality: 1.0)
             if let jpgData = jpgImage {
                 request.httpBodyStream = InputStream(data: jpgData)
-                // ERROR PERFORMING UPLOAD TASK
+                // TODO: ERROR PERFORMING UPLOAD TASK
                 let task = URLSession.shared.uploadTask(with: request,
                                                         from: jpgData) { (data, response, error) in
 
