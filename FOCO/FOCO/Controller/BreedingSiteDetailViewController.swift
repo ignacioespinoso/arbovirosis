@@ -25,7 +25,7 @@ class BreedingSiteDetailViewController: UIViewController {
         commentary.text = breeding?.description
         type.text = breeding?.type
         // TODO: Handle Optionals
-// creationDate.text = Utils.fixDateFormat(inputDate: breeding!.created!)
+        creationDate.text = Utils.fixDateFormat(inputDate: breeding!.created!)
     }
 
 //    override func viewWillAppear(_ animated: Bool) {
