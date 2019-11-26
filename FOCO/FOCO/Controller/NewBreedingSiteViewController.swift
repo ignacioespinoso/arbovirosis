@@ -68,9 +68,9 @@ class NewBreedingSiteViewController: FormViewController {
         let accessTypeForm: TextRow? = self.form.rowBy(tag: "accessType")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
 
-        if let location = locationForm?.value as? CLLocation,
-            let title = titleForm?.value as? String,
-            let accessType = accessTypeForm?.value as? String {
+        if let location = locationForm?.value,
+            let title = titleForm?.value,
+            let accessType = accessTypeForm?.value {
 
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
@@ -82,24 +82,17 @@ class NewBreedingSiteViewController: FormViewController {
                                                longitude: longitude)
             print(newBreedingSite)
 
-            // TODO: This code should be on DAO/Services layers [Guga]
-            var jsonData: Data?
-
-            do {
-                 jsonData = try JSONEncoder().encode(newBreedingSite)
-             } catch let myJSONError {
-                 print(myJSONError)
-             }
-
             // TODO: Create Site should pass BreedingSite object instead of a Data object [Guga]
 
-             BreedingSitesServices.createSite(jsonData: jsonData, { (error) in
+            BreedingSitesServices.createSite(breedingSite: newBreedingSite,
+                                             image: self.breedingSiteImage.image, { (error) in
                  if error == nil {
-                    self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
+                    print("Created breeding site successfully.")
                  } else {
                      print(error!)
                  }
-             })
+            })
+            self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
 
             // TODO: Get ID from createSite responde (probably on DAO, not here) and create Patch Request
             // Tests for ID  5 only -- didn't work
