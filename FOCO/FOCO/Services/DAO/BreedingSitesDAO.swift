@@ -7,6 +7,7 @@ Data access object. Perform the URL session
 */
 
 import Foundation
+import UIKit
 
 class BreedingSitesDAO {
 
@@ -36,12 +37,33 @@ class BreedingSitesDAO {
         }
     }
 
-    // MARK: - Find Image By ID
+    static func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+                                                  _ site: BreedingSite?) -> Void) {
+        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingId)") {
+            let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
-    static func getImageByID (breedingID: CLong, _ completion: @escaping (_ error: Error?,
+                if let data = data {
+                    do {
+                        let site = try JSONDecoder().decode(BreedingSite.self, from: data)
+                        // único caso onde não há erro. Passo para frente a ocorrencia
+                        completion(nil, site)
+                    } catch let error {
+                        completion(error, nil)
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            // Resume faz o request acontecer
+            task.resume()
+        }
+    }
+
+    // MARK: - Find Image By Id
+
+    static func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ image: [UInt8]?) -> Void) {
 
-        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingID)/pic") {
+        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingId)/pic") {
 
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
@@ -52,17 +74,67 @@ class BreedingSitesDAO {
                     let array = [UInt8](data)
                     completion(nil, array)
                 }
-
             }
-
             task.resume()
         }
     }
 
+    // MARK: - Upload Image
+    static func uploadImageById (breedingId: Int,
+                                 image: UIImage,
+                                 _ completion: @escaping (_ error: Error?) -> Void) {
 
+        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingId)") {
+            var request = URLRequest(url: url)
+            request.httpMethod = "PATCH"
+            request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+            request.setValue("breeding-site-image", forHTTPHeaderField: "X-FileName")
+            let jpgImage = image.jpegData(compressionQuality: 1.0)
+            if let jpgData = jpgImage {
+                request.httpBodyStream = InputStream(data: jpgData)
+                // ERROR PERFORMING UPLOAD TASK
+                let task = URLSession.shared.uploadTask(with: request,
+                                                        from: jpgData) { (data, response, error) in
+
+                    guard let response = response as? HTTPURLResponse,
+                              (200...299).contains(response.statusCode)
+                    else {
+                        print("Server error! Breeding Site")
+                        completion(error)
+                        return
+                    }
+
+                    // Checking if error is empty
+                    if let error = error {
+                        print("Error!")
+                        completion(error)
+                        return
+                    }
+
+                    print("Create Site response status", response.statusCode)
+
+                    if let data = data {
+                        do {
+                            print("data=\(String(data: data, encoding: .utf8))")
+                            _ = try JSONDecoder().decode(BreedingSite.self, from: data)
+                            // Único caso onde não há erro. Não passo erro para frente
+                            completion(nil)
+                            print("Json Decoder post Site ok!")
+                        } catch let error {
+                            completion(error)
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+
+                task.resume()
+            }
+        }
+    }
     // MARK: - Create
 
-    static func create (jsonData: Data?, _ completion: @escaping (_ error: Error?) -> Void) {
+    static func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?,
+                                                                            _ siteId: Int?) -> Void) {
 
         if let url = address {
             var request = URLRequest(url: url)
@@ -76,30 +148,33 @@ class BreedingSitesDAO {
                           (200...299).contains(response.statusCode)
                 else {
                     print("Server error! Breeding Site")
-                    completion(error)
+                    completion(error, nil)
                     return
                 }
 
                 // Checking if error is empty
                 if let error = error {
                     print("Error!")
-                    completion(error)
+                    completion(error, nil)
                     return
                 }
 
                 print("Create Site response status", response.statusCode)
 
                 if let data = data {
-                    do {
+//                    do {
                         print("data=\(String(data: data, encoding: .utf8))")
-                        _ = try JSONDecoder().decode(BreedingSite.self, from: data)
+//                        _ = try JSONDecoder().decode(BreedingSite.self, from: data)
                         // Único caso onde não há erro. Não passo erro para frente
-                        completion(nil)
+                        let stringInt = String.init(data: data, encoding: String.Encoding.utf8)
+                        let siteId = Int.init(stringInt ?? "")
+                        completion(nil, siteId)
                         print("Json Decoder post Site ok!")
-                    } catch let error {
-                        completion(error)
-                        print(error.localizedDescription)
-                    }
+//                    }
+//                    catch let error {
+//                        completion(error, nil)
+//                        print(error.localizedDescription)
+//                    }
                 }
             }
             task.resume()
