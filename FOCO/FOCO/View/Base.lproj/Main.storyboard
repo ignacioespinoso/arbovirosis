@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JdF-2O-hbJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -155,29 +155,36 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzv-a0-GTx">
-                                <rect key="frame" x="374" y="144" width="32" height="32"/>
+                                <rect key="frame" x="354" y="124" width="48" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="XyB-Rz-8wH"/>
-                                    <constraint firstAttribute="width" constant="32" id="gui-kH-Qki"/>
+                                    <constraint firstAttribute="height" constant="48" id="XyB-Rz-8wH"/>
+                                    <constraint firstAttribute="width" constant="48" id="gui-kH-Qki"/>
                                 </constraints>
                                 <state key="normal" image="photo" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kId-AT-XQK">
+                                <rect key="frame" x="0.0" y="56" width="414" height="128"/>
                                 <connections>
-                                    <action selector="showImagePicker:" destination="Ab3-ze-rfa" eventType="touchUpInside" id="s9p-up-aMd"/>
+                                    <action selector="showImagePicker:" destination="Ab3-ze-rfa" eventType="touchUpInside" id="NcG-gp-EzX"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="kId-AT-XQK" firstAttribute="width" secondItem="qkf-qa-s8Z" secondAttribute="width" id="2Ys-GR-3Uf"/>
                             <constraint firstItem="qkf-qa-s8Z" firstAttribute="width" secondItem="L1j-6Z-Yfe" secondAttribute="width" id="Evy-SJ-sgf"/>
                             <constraint firstItem="qkf-qa-s8Z" firstAttribute="centerX" secondItem="VP0-na-Ggf" secondAttribute="centerX" id="FmH-8G-dgI"/>
                             <constraint firstItem="zwa-zf-vs3" firstAttribute="leading" secondItem="VP0-na-Ggf" secondAttribute="leading" id="HBv-ni-Zca"/>
                             <constraint firstItem="VP0-na-Ggf" firstAttribute="bottom" secondItem="zwa-zf-vs3" secondAttribute="bottom" id="Ngz-iY-o0V"/>
+                            <constraint firstItem="kId-AT-XQK" firstAttribute="centerY" secondItem="qkf-qa-s8Z" secondAttribute="centerY" id="OFb-pZ-q5M"/>
+                            <constraint firstItem="kId-AT-XQK" firstAttribute="centerX" secondItem="qkf-qa-s8Z" secondAttribute="centerX" id="P4k-v2-R5x"/>
                             <constraint firstItem="zwa-zf-vs3" firstAttribute="trailing" secondItem="VP0-na-Ggf" secondAttribute="trailing" id="VsN-Pv-VF9"/>
                             <constraint firstItem="zwa-zf-vs3" firstAttribute="top" secondItem="qkf-qa-s8Z" secondAttribute="bottom" id="WHm-IO-vaT"/>
-                            <constraint firstItem="Nzv-a0-GTx" firstAttribute="top" secondItem="qkf-qa-s8Z" secondAttribute="bottom" constant="-40" id="dg1-0x-e1M"/>
+                            <constraint firstItem="Nzv-a0-GTx" firstAttribute="top" secondItem="qkf-qa-s8Z" secondAttribute="bottom" constant="-60" id="dg1-0x-e1M"/>
                             <constraint firstItem="qkf-qa-s8Z" firstAttribute="top" secondItem="VP0-na-Ggf" secondAttribute="top" id="emF-Dd-zAU"/>
+                            <constraint firstItem="kId-AT-XQK" firstAttribute="height" secondItem="qkf-qa-s8Z" secondAttribute="height" id="okd-Hl-LAv"/>
                             <constraint firstItem="zwa-zf-vs3" firstAttribute="centerX" secondItem="VP0-na-Ggf" secondAttribute="centerX" id="qx1-sD-gzC"/>
-                            <constraint firstItem="Nzv-a0-GTx" firstAttribute="leading" secondItem="qkf-qa-s8Z" secondAttribute="trailing" constant="-40" id="wnp-X9-qya"/>
+                            <constraint firstItem="Nzv-a0-GTx" firstAttribute="leading" secondItem="qkf-qa-s8Z" secondAttribute="trailing" constant="-60" id="wnp-X9-qya"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VP0-na-Ggf"/>
                     </view>
@@ -186,6 +193,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="breedingSiteImage" destination="qkf-qa-s8Z" id="7WW-SJ-lzp"/>
+                        <outlet property="portraitButton" destination="Nzv-a0-GTx" id="5f2-c9-bMw"/>
                         <outlet property="tableView" destination="zwa-zf-vs3" id="fhT-Wz-afQ"/>
                         <segue destination="QQg-EG-0cy" kind="unwind" identifier="unwindToMapFromBreedingSite" unwindAction="unwindToMapWithSegue:" id="ClA-6R-PE3"/>
                     </connections>
