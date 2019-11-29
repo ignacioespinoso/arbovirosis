@@ -19,6 +19,7 @@ class NewBreedingSiteViewController: FormViewController {
     @IBOutlet weak var breedingSiteImage: UIImageView!
     var imagePicker: ImagePicker!
 
+    @IBOutlet weak var portraitButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -50,12 +51,16 @@ class NewBreedingSiteViewController: FormViewController {
                 $0.value = locationManager.location
             }
 
-        +++ Section("Descrição")
+        +++ Section("")
             <<< TextAreaRow("description") { row in
-                row.title = ""
+                row.title = "Descrição"
+                row.placeholder = "Descrição"
             }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     @IBAction func showImagePicker(_ sender: UIButton) {
         self.imagePicker.present(from: sender)
     }
@@ -113,5 +118,10 @@ class NewBreedingSiteViewController: FormViewController {
 extension NewBreedingSiteViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         self.breedingSiteImage.image = image
+        if breedingSiteImage.image != nil {
+            portraitButton.isHidden = true
+        } else {
+            portraitButton.isHidden = false
+        }
     }
 }

@@ -37,14 +37,13 @@ class ProfileViewController: UIViewController {
                                       type: "Descarte",
                                       latitude: -22.81277,
                                       longitude: -47.06107)
-
-        BreedingSitesServices.createSite(breedingSite: jsonObject, image: nil, { (error) in
+        BreedingSitesServices.createSite(breedingSite: jsonObject, image: nil) { (error) in
             if error == nil {
                 print("TUDO CERRTO")
             } else {
                 print(error!)
             }
-        })
+        }
     }
 
 }
