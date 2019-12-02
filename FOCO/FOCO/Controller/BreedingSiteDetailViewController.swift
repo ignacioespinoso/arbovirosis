@@ -21,6 +21,7 @@ class BreedingSiteDetailViewController: UIViewController {
     @IBOutlet weak var breedingImage: UIImageView!
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         name.text = breeding?.title
         commentary.text = breeding?.description
         type.text = "Tipo de foco: " + breeding!.type
@@ -48,6 +49,15 @@ class BreedingSiteDetailViewController: UIViewController {
 
         if let breedingPic = breeding?.imageURL {
             breedingImage.af_setImage(withURL: breedingPic)
+        }
+
+        let breedingLocation = CLLocation(latitude: breeding?.latitude ?? 0, longitude: breeding?.longitude ?? 0)
+        Utils.getAddressText(coordinate: breedingLocation) { (addressTxt, error) in
+            if error == nil {
+                self.address.text = addressTxt
+            } else {
+                print(error as Any)
+            }
         }
     }
 }
