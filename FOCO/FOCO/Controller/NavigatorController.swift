@@ -84,16 +84,19 @@ extension NavigatorController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         var identifier = ""
-        var calloutImage = ""
+        var calloutImage: UIImage?
+        var calloutColor: UIColor?
 
         switch annotation {
         case is DiseaseAnnotation:
             identifier = "diseaseMarker"
-            calloutImage = "sick"
+            calloutImage = UIImage(named: "sick")
+            calloutColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
         // This is suppose to be BreedingSite instead o "DiseaseOccurrence"
         case is BreedingAnnotation:
             identifier = "breedingMarker"
-            calloutImage = "mosquito"
+            calloutImage = UIImage(named: "mosquito")
+            calloutColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
         // Nil return on default value is important for avoiding customization on user's location blue pin
         default:
             return nil
@@ -107,15 +110,17 @@ extension NavigatorController: MKMapViewDelegate {
           view = dequeuedView
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            customizeView(view: view)
             view.glyphTintColor = .black
+            view.glyphImage = calloutImage
+            view.markerTintColor = calloutColor
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
 
             // Setting image for the callout
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0,
                                                       width: view.frame.height, height: view.frame.height))
-            imageView.image = UIImage(named: calloutImage)
+            imageView.image = calloutImage
+            imageView.tintColor = calloutColor
             imageView.contentMode = .scaleAspectFit
             view.leftCalloutAccessoryView = imageView
 
@@ -131,19 +136,6 @@ extension NavigatorController: MKMapViewDelegate {
             view.detailCalloutAccessoryView = subtitleView
         }
         return view
-    }
-
-    func customizeView(view: MKMarkerAnnotationView) {
-        switch view.reuseIdentifier {
-        case "diseaseMarker":
-            view.glyphImage = UIImage(named: "sick")
-            view.markerTintColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
-        case "breedingMarker":
-            view.glyphImage = UIImage(named: "mosquito")
-            view.markerTintColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
-        default:
-            print("Not Implemented.")
-        }
     }
 
     // Future performSegue() to "More Info" screen.
