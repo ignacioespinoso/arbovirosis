@@ -94,7 +94,7 @@ class BreedingSitesDAO {
                 }
             }, to: url,
                method: .patch,
-               headers: ["Content-Type": "multipart/form-data"]) { (result) in
+               headers: ["Content-Type": "multipart/form-data"]) { result in
                 switch result {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
