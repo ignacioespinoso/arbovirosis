@@ -25,7 +25,7 @@ class NewBreedingSiteViewController: FormViewController {
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         let backButton = UIBarButtonItem(title: "Novo Foco", style: .plain,
                                          target: self, action: #selector(back(sender:)))
-
+        breedingSiteImage.backgroundColor = UIColor.lightGray
         self.navigationItem.backBarButtonItem = backButton
 
         tableView?.frame = CGRect(x: (self.tableView?.frame.origin.x)!,
@@ -38,28 +38,27 @@ class NewBreedingSiteViewController: FormViewController {
 
         self.navigationItem.rightBarButtonItem = doneButton
         self.title = "Novo Foco"
-        form +++ Section(header: "Dados do Foco",
-                         footer: "* - Obrigatório")
+        form +++ Section("Dados do Foco")
             <<< TextRow("title") { row in
-                row.title = "Título*"
+                row.title = "Título"
             }
             <<< PickerInputRow<String>("accessType") {
                 // Sets disease options
-                $0.title = "Tipo de Acesso*"
+                $0.title = "Tipo de Acesso"
                 $0.options = []
                 $0.options.append("Público")
                 $0.options.append("Privado")
                 $0.options.append("Outro")
             }
             <<< LocationRow("location") {
-                $0.title = "Localização*"
+                $0.title = "Localização"
                 $0.value = locationManager.location
             }
 
-        +++ Section("")
+        +++ Section("Descrição (opcional)")
             <<< TextAreaRow("description") { row in
                 row.title = "Descrição"
-                row.placeholder = "Descrição"
+                row.placeholder = "Conte para nós mais detalhes"
             }
     }
 
