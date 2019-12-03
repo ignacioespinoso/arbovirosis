@@ -33,7 +33,9 @@ class NewOccurrenceViewController: FormViewController {
                 row.title = "Início dos sintomas*"
             }.cellSetup({ (cell, _) in
                 cell.datePicker.locale = Locale(identifier: "pt_BR")
-            })
+            }).cellUpdate { (cell, _) in
+                cell.datePicker.maximumDate = Date()
+            }
 
         +++ Section(header: "Informações do Caso",
                     footer: "Informe para diferenciarmos suspeitas de casos confirmados.\n\n* - Obrigatório")
