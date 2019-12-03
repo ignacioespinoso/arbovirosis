@@ -26,20 +26,28 @@ class NewOccurrenceViewController: FormViewController {
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.rightBarButtonItem = doneButton
         self.title = "Nova Ocorrência"
+
+        // Defines form row and cells
         form +++ Section("Dados do Paciente")
             <<< DateRow("symptomsStart") { row in
                 row.title = "Início dos sintomas*"
-//                let formatter = DateFormatter()
-//                formatter.locale = Locale(identifier: "pt_BR")
-//                row.dateFormatter = formatter
             }.cellSetup({ (cell, _) in
                 cell.datePicker.locale = Locale(identifier: "pt_BR")
-            })
+            }).cellUpdate { (cell, _) in
+                cell.datePicker.maximumDate = Date()
+            }
 
         +++ Section(header: "Informações do Caso",
                     footer: "Informe para diferenciarmos suspeitas de casos confirmados.\n\n* - Obrigatório")
-            <<< TextRow("diseaseName") { row in
-                row.title = "Doença"
+            <<< PickerInputRow<String>("diseaseName") {
+                // Sets disease options
+                $0.title = "Doença"
+                $0.options = []
+                $0.options.append("Dengue")
+                $0.options.append("Chikungunya")
+                $0.options.append("Zika")
+                $0.options.append("Outra")
+                $0.value = $0.options.first
             }
             <<< SwitchRow("confirmed") { row in
                 row.title = "Confirmado por médico*"
@@ -57,13 +65,14 @@ class NewOccurrenceViewController: FormViewController {
     }
 
     @objc func saveOccurrence() {
+        // Get values from form
         let symptomsStartForm: DateRow? = self.form.rowBy(tag: "symptomsStart")
-        let diseaseNameForm: TextRow? = self.form.rowBy(tag: "diseaseName")
+        let diseaseNameForm: PickerInputRow<String>? = self.form.rowBy(tag: "diseaseName")
         let confirmedForm: SwitchRow? = self.form.rowBy(tag: "confirmed")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
 
-        if let location: CLLocation = locationForm?.value as? CLLocation,
-            let initialSymptoms: Date = symptomsStartForm?.value as? Date {
+        if let location: CLLocation = locationForm?.value,
+            let initialSymptoms: Date = symptomsStartForm?.value {
 
             let dateString = getIso8601Date(from: initialSymptoms)
 
@@ -75,11 +84,13 @@ class NewOccurrenceViewController: FormViewController {
                 confirmed = confirmedFormValue
             }
 
+            // Create new disease occurrence based on form content
             let newOccurrence = DiseaseOccurrence(diseaseName: diseaseName,
                                                   confirmationStatus: confirmed,
                                                   initialSymptoms: dateString,
                                                   latitude: latitude,
                                                   longitude: longitude)
+            // Upload to the API
             var jsonData: Data?
             do {
                  jsonData = try JSONEncoder().encode(newOccurrence)

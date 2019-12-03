@@ -43,8 +43,13 @@ class NewBreedingSiteViewController: FormViewController {
             <<< TextRow("title") { row in
                 row.title = "Título*"
             }
-            <<< TextRow("accessType") { row in
-                row.title = "Tipo de Acesso*"
+            <<< PickerInputRow<String>("accessType") {
+                // Sets disease options
+                $0.title = "Tipo de Acesso*"
+                $0.options = []
+                $0.options.append("Público")
+                $0.options.append("Privado")
+                $0.options.append("Outro")
             }
             <<< LocationRow("location") {
                 $0.title = "Localização*"
@@ -70,7 +75,7 @@ class NewBreedingSiteViewController: FormViewController {
 
     @objc func saveOccurrence() {
         let titleForm: TextRow? = self.form.rowBy(tag: "title")
-        let accessTypeForm: TextRow? = self.form.rowBy(tag: "accessType")
+        let accessTypeForm: PickerInputRow<String>? = self.form.rowBy(tag: "accessType")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
 
         if let location = locationForm?.value,

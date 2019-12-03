@@ -1,0 +1,33 @@
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "Lng-QO-HMk"; */
+"Lng-QO-HMk.title" = "Back";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RQa-cb-4ZU"; */
+"RQa-cb-4ZU.text" = "Label";
+
+/* Class = "UILabel"; text = "Tipo"; ObjectID = "Syl-kv-1dr"; */
+"Syl-kv-1dr.text" = "Tipo";
+
+/* Class = "UITabBarItem"; title = "Perfil"; ObjectID = "UsL-eM-ez6"; */
+"UsL-eM-ez6.title" = "Perfil";
+
+/* Class = "UILabel"; text = "Titulo"; ObjectID = "VDs-1D-46U"; */
+"VDs-1D-46U.text" = "Titulo";
+
+/* Class = "UILabel"; text = "Descrição"; ObjectID = "Z8J-ya-PY2"; */
+"Z8J-ya-PY2.text" = "Descrição";
+
+/* Class = "UILabel"; text = "Data de Criação"; ObjectID = "dnZ-la-oK6"; */
+"dnZ-la-oK6.text" = "Data de Criação";
+
+/* Class = "UILabel"; text = "Av. Alan Turing, 275 - Cidade Universitária, Campinas - SP, 13083-898"; ObjectID = "eEr-Wz-g9J"; */
+"eEr-Wz-g9J.text" = "Av. Alan Turing, 275 - Cidade Universitária, Campinas - SP, 13083-898";
+
+/* Class = "UITabBarItem"; title = "Explorar"; ObjectID = "kcw-id-jpy"; */
+"kcw-id-jpy.title" = "Explorar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kem-DN-GaK"; */
+"kem-DN-GaK.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Quero Colaborar!"; ObjectID = "tzk-Ps-XnA"; */
+"tzk-Ps-XnA.normalTitle" = "Quero Colaborar!";
