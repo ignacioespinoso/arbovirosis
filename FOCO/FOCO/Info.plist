@@ -20,8 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Precisamos de acesso à camera para tirar fotos.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Vamos usar a sua localização para mostrar os casos e focos mais próximos de você!</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Precisamos de acesso à galeria.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -64,9 +68,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Precisamos de acesso à camera para tirar fotos.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Precisamos de acesso à galeria.</string>
 </dict>
 </plist>
