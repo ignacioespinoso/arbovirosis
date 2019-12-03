@@ -54,7 +54,7 @@
 		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
 		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
-		C5CAD6F82375B21C00B5BBA2 /* FOCO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOCO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5CAD6F82375B21C00B5BBA2 /* Nosso Bairro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nosso Bairro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C5CAD6FF2375B21C00B5BBA2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		C5CAD6F92375B21C00B5BBA2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5CAD6F82375B21C00B5BBA2 /* FOCO.app */,
+				C5CAD6F82375B21C00B5BBA2 /* Nosso Bairro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,7 +214,7 @@
 			);
 			name = FOCO;
 			productName = FOCO;
-			productReference = C5CAD6F82375B21C00B5BBA2 /* FOCO.app */;
+			productReference = C5CAD6F82375B21C00B5BBA2 /* Nosso Bairro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -431,6 +431,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Nosso Bairro";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -485,6 +486,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "Nosso Bairro";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -506,7 +508,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = challenge.FOCO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nosso Bairro";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -526,7 +528,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = challenge.FOCO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nosso Bairro";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
