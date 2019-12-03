@@ -30,7 +30,7 @@ class NewOccurrenceViewController: FormViewController {
         // Defines form row and cells
         form +++ Section("Dados do Paciente")
             <<< DateRow("symptomsStart") { row in
-                row.title = "Início dos sintomas*"
+                row.title = "Início dos sintomas"
             }.cellSetup({ (cell, _) in
                 cell.datePicker.locale = Locale(identifier: "pt_BR")
             }).cellUpdate { (cell, _) in
@@ -38,24 +38,24 @@ class NewOccurrenceViewController: FormViewController {
             }
 
         +++ Section(header: "Informações do Caso",
-                    footer: "Informe para diferenciarmos suspeitas de casos confirmados.\n\n* - Obrigatório")
+                    footer: "Informe para diferenciarmos suspeitas de casos confirmados.")
             <<< PickerInputRow<String>("diseaseName") {
                 // Sets disease options
-                $0.title = "Doença"
+                $0.title = "Doença (opcional)"
                 $0.options = []
                 $0.options.append("Dengue")
                 $0.options.append("Chikungunya")
                 $0.options.append("Zika")
                 $0.options.append("Outra")
-                $0.value = $0.options.first
+//                $0.value = $0.options.first
             }
             <<< SwitchRow("confirmed") { row in
-                row.title = "Confirmado por médico*"
+                row.title = "Confirmado por médico"
             }.cellSetup({ (cell, _) in
                 cell.switchControl.setOn(false, animated: false)
             })
             <<< LocationRow("location") {
-                $0.title = "Localização*"
+                $0.title = "Localização"
                 $0.value = locationManager.location
             }
     }
