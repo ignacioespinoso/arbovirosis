@@ -69,8 +69,8 @@ class NewOccurrenceViewController: FormViewController {
         let confirmedForm: SwitchRow? = self.form.rowBy(tag: "confirmed")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
 
-        if let location: CLLocation = locationForm?.value as? CLLocation,
-            let initialSymptoms: Date = symptomsStartForm?.value as? Date {
+        if let location: CLLocation = locationForm?.value,
+            let initialSymptoms: Date = symptomsStartForm?.value {
 
             let dateString = getIso8601Date(from: initialSymptoms)
 
