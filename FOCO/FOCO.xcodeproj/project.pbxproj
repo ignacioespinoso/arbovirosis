@@ -19,6 +19,10 @@
 		B34AF8912386E28D00B61F2C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34AF8902386E28D00B61F2C /* Utils.swift */; };
 		B34AF89323871EED00B61F2C /* BreedingSiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34AF89223871EED00B61F2C /* BreedingSiteDetailViewController.swift */; };
 		B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36279AD23831C060067C663 /* BreedingAnnotation.swift */; };
+		C545CDDC2396F0B400EB713E /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDDB2396F0B400EB713E /* DetailController.swift */; };
+		C545CDDE2396F23F00EB713E /* DetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C545CDDD2396F23F00EB713E /* DetailHeaderCell.xib */; };
+		C545CDE02396F27000EB713E /* DetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDDF2396F27000EB713E /* DetailHeaderCell.swift */; };
+		C545CDE22396F76700EB713E /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDE12396F76700EB713E /* Extention.swift */; };
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
 		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
 		C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */; };
@@ -49,6 +53,10 @@
 		B34AF8902386E28D00B61F2C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B34AF89223871EED00B61F2C /* BreedingSiteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSiteDetailViewController.swift; sourceTree = "<group>"; };
 		B36279AD23831C060067C663 /* BreedingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingAnnotation.swift; sourceTree = "<group>"; };
+		C545CDDB2396F0B400EB713E /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		C545CDDD2396F23F00EB713E /* DetailHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderCell.xib; sourceTree = "<group>"; };
+		C545CDDF2396F27000EB713E /* DetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderCell.swift; sourceTree = "<group>"; };
+		C545CDE12396F76700EB713E /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
 		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
@@ -112,6 +120,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C545CDDA2396F08D00EB713E /* Detail Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C545CDDD2396F23F00EB713E /* DetailHeaderCell.xib */,
+				C545CDDF2396F27000EB713E /* DetailHeaderCell.swift */,
+			);
+			path = "Detail Cells";
+			sourceTree = "<group>";
+		};
 		C5CAD6EF2375B21C00B5BBA2 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +170,7 @@
 				C577DD51237DA7B6007E8C6B /* BreedingSite.swift */,
 				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
 				B34AF8902386E28D00B61F2C /* Utils.swift */,
+				C545CDE12396F76700EB713E /* Extention.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +178,7 @@
 		C5CAD7102375B2AE00B5BBA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C545CDDA2396F08D00EB713E /* Detail Cells */,
 				80E8F3D32379B24900445DF8 /* Annotations */,
 				C5CAD7012375B21C00B5BBA2 /* Main.storyboard */,
 				C5CAD7062375B21E00B5BBA2 /* LaunchScreen.storyboard */,
@@ -177,6 +196,7 @@
 				809369E323841DD300C794BB /* NewOccurrenceViewController.swift */,
 				80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */,
 				B34AF89223871EED00B61F2C /* BreedingSiteDetailViewController.swift */,
+				C545CDDB2396F0B400EB713E /* DetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -254,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CAD7082375B21E00B5BBA2 /* LaunchScreen.storyboard in Resources */,
+				C545CDDE2396F23F00EB713E /* DetailHeaderCell.xib in Resources */,
 				C5CAD7052375B21E00B5BBA2 /* Assets.xcassets in Resources */,
 				C5CAD7032375B21C00B5BBA2 /* Main.storyboard in Resources */,
 			);
@@ -334,8 +355,10 @@
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */,
 				B34AF89323871EED00B61F2C /* BreedingSiteDetailViewController.swift in Sources */,
+				C545CDDC2396F0B400EB713E /* DetailController.swift in Sources */,
 				B34AF8912386E28D00B61F2C /* Utils.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,
+				C545CDE02396F27000EB713E /* DetailHeaderCell.swift in Sources */,
 				804A2E612384410500214A90 /* CustomCells.swift in Sources */,
 				C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */,
 				C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */,
@@ -344,6 +367,7 @@
 				809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */,
 				C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */,
 				C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */,
+				C545CDE22396F76700EB713E /* Extention.swift in Sources */,
 				80E8F3D22379AED800445DF8 /* NavigatorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JdF-2O-hbJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ce2-nM-obN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -7,6 +7,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Detail Controler-->
+        <scene sceneID="cMY-Nh-spR">
+            <objects>
+                <viewController id="ce2-nM-obN" customClass="DetailControler" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="imw-Bm-PCE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ruo-N8-PP4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ruo-N8-PP4" firstAttribute="leading" secondItem="gej-M9-Rxl" secondAttribute="leading" id="1Ls-1Z-NxF"/>
+                            <constraint firstItem="gej-M9-Rxl" firstAttribute="bottom" secondItem="ruo-N8-PP4" secondAttribute="bottom" id="Lq1-8p-r8A"/>
+                            <constraint firstItem="gej-M9-Rxl" firstAttribute="trailing" secondItem="ruo-N8-PP4" secondAttribute="trailing" id="VWE-eC-SUB"/>
+                            <constraint firstItem="ruo-N8-PP4" firstAttribute="top" secondItem="gej-M9-Rxl" secondAttribute="top" id="nn3-ea-XJk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gej-M9-Rxl"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ruo-N8-PP4" id="4Ti-G0-aeK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbP-ha-DG3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-27" y="-1239"/>
+        </scene>
         <!--Explorar-->
         <scene sceneID="AZE-K5-10K">
             <objects>
