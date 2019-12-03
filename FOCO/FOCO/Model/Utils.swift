@@ -16,7 +16,9 @@ class Utils: NSObject {
         let dateFormatter =  DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         guard let date = dateFormatter.date(from: inputDate) else {
-            preconditionFailure("Your input format is unexpected. Please follow the format: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+            preconditionFailure(
+                "Your input format is unexpected. Please follow the format: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'"
+            )
         }
         dateFormatter.dateFormat = "dd-MM-yyyy"
         let fixedDate = dateFormatter.string(from: date)

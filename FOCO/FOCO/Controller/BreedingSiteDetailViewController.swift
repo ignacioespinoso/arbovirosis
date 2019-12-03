@@ -51,7 +51,8 @@ class BreedingSiteDetailViewController: UIViewController {
             breedingImage.af_setImage(withURL: breedingPic)
         }
 
-        let breedingLocation = CLLocation(latitude: breeding?.latitude ?? 0, longitude: breeding?.longitude ?? 0)
+        let breedingLocation = CLLocation(latitude: breeding?.latitude ?? 0,
+                                          longitude: breeding?.longitude ?? 0)
         Utils.getAddressText(coordinate: breedingLocation) { (addressTxt, error) in
             if error == nil {
                 self.address.text = addressTxt
