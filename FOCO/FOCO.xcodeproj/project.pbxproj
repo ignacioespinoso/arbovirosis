@@ -13,6 +13,8 @@
 		804A2E66238460FE00214A90 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E65238460FE00214A90 /* FloatLabelTextField.swift */; };
 		809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809369E323841DD300C794BB /* NewOccurrenceViewController.swift */; };
 		80973082238C0C0A007D6419 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80973081238C0C0A007D6419 /* ImagePicker.swift */; };
+		80CFFB522397EF0D00BB3A7C /* NewCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CFFB512397EF0D00BB3A7C /* NewCommentViewController.swift */; };
+		80CFFB552397FD3900BB3A7C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CFFB542397FD3900BB3A7C /* ColorExtension.swift */; };
 		80E2B151238823DD004894A5 /* NewBreedingSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */; };
 		80E8F3D22379AED800445DF8 /* NavigatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D12379AED800445DF8 /* NavigatorController.swift */; };
 		80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */; };
@@ -44,6 +46,8 @@
 		805FCF342396B08200B295B4 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		809369E323841DD300C794BB /* NewOccurrenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOccurrenceViewController.swift; sourceTree = "<group>"; };
 		80973081238C0C0A007D6419 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		80CFFB512397EF0D00BB3A7C /* NewCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCommentViewController.swift; sourceTree = "<group>"; };
+		80CFFB542397FD3900BB3A7C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBreedingSiteViewController.swift; sourceTree = "<group>"; };
 		80E8F3D12379AED800445DF8 /* NavigatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorController.swift; sourceTree = "<group>"; };
 		80E8F3D42379B26C00445DF8 /* DiseaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseAnnotation.swift; sourceTree = "<group>"; };
@@ -96,6 +100,15 @@
 			path = DAO;
 			sourceTree = "<group>";
 		};
+		80CFFB532397FCAF00BB3A7C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80973081238C0C0A007D6419 /* ImagePicker.swift */,
+				80CFFB542397FD3900BB3A7C /* ColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		80E8F3D32379B24900445DF8 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +154,7 @@
 				C5CAD7112375B2B500B5BBA2 /* Controller */,
 				C5CAD7122375B2BC00B5BBA2 /* Services */,
 				C5CAD7042375B21E00B5BBA2 /* Assets.xcassets */,
+				80CFFB532397FCAF00BB3A7C /* Extensions */,
 				C5CAD7092375B21E00B5BBA2 /* Info.plist */,
 				C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */,
 				C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */,
@@ -167,7 +181,6 @@
 				C5CAD7062375B21E00B5BBA2 /* LaunchScreen.storyboard */,
 				804A2E602384410500214A90 /* CustomCells.swift */,
 				804A2E65238460FE00214A90 /* FloatLabelTextField.swift */,
-				80973081238C0C0A007D6419 /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +193,7 @@
 				809369E323841DD300C794BB /* NewOccurrenceViewController.swift */,
 				80E2B150238823DD004894A5 /* NewBreedingSiteViewController.swift */,
 				B34AF89223871EED00B61F2C /* BreedingSiteDetailViewController.swift */,
+				80CFFB512397EF0D00BB3A7C /* NewCommentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -337,6 +351,8 @@
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
 				C5CAD7002375B21C00B5BBA2 /* ProfileViewController.swift in Sources */,
 				B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */,
+				80CFFB522397EF0D00BB3A7C /* NewCommentViewController.swift in Sources */,
+				80CFFB552397FD3900BB3A7C /* ColorExtension.swift in Sources */,
 				B34AF89323871EED00B61F2C /* BreedingSiteDetailViewController.swift in Sources */,
 				B34AF8912386E28D00B61F2C /* Utils.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JdF-2O-hbJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C2X-lz-6c0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -10,7 +10,7 @@
         <!--Perfil-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ProfileViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ProfileViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
         <!--Explorar-->
         <scene sceneID="AZE-K5-10K">
             <objects>
-                <viewController id="JdF-2O-hbJ" customClass="NavigatorController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JdF-2O-hbJ" customClass="NavigatorController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SAi-lF-gRQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,7 +139,7 @@
         <!--New Breeding Site View Controller-->
         <scene sceneID="SMh-DQ-JJe">
             <objects>
-                <viewController id="Ab3-ze-rfa" customClass="NewBreedingSiteViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ab3-ze-rfa" customClass="NewBreedingSiteViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L1j-6Z-Yfe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,10 +203,52 @@
             </objects>
             <point key="canvasLocation" x="3147.826086956522" y="-553.125"/>
         </scene>
+        <!--New Comment View Controller-->
+        <scene sceneID="igP-vo-Fdc">
+            <objects>
+                <viewController id="C2X-lz-6c0" customClass="NewCommentViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ad-Od-CDb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y2A-7p-IWG">
+                                <rect key="frame" x="16" y="90" width="374" height="717"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novo Comentário" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-Aj-XsP">
+                                <rect key="frame" x="16" y="56" width="167" height="26"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Y2A-7p-IWG" firstAttribute="height" secondItem="7ad-Od-CDb" secondAttribute="height" multiplier="0.8" id="8Km-OI-TnG"/>
+                            <constraint firstItem="Y2A-7p-IWG" firstAttribute="top" secondItem="V2T-Aj-XsP" secondAttribute="bottom" constant="8" id="Rq3-z9-8CC"/>
+                            <constraint firstItem="Y2A-7p-IWG" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="VK1-3t-UdB"/>
+                            <constraint firstItem="V2T-Aj-XsP" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="Vpf-QF-aLw"/>
+                            <constraint firstItem="V2T-Aj-XsP" firstAttribute="top" secondItem="3GI-Mt-ATB" secondAttribute="top" constant="12" id="Ydo-kw-aeW"/>
+                            <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="Y2A-7p-IWG" secondAttribute="trailing" constant="24" id="jch-UK-KSK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3GI-Mt-ATB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ebu-iq-peX"/>
+                    <connections>
+                        <outlet property="commentView" destination="Y2A-7p-IWG" id="jEQ-WD-7yl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGS-QD-NzR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4942.0289855072469" y="-553.125"/>
+        </scene>
         <!--New Occurrence View Controller-->
         <scene sceneID="sLj-BY-5jE">
             <objects>
-                <viewController id="sqi-EX-XfJ" customClass="NewOccurrenceViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sqi-EX-XfJ" customClass="NewOccurrenceViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HLq-Rn-QfY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,7 +325,7 @@
         <!--Breeding Site Detail View Controller-->
         <scene sceneID="sZ4-Jn-wL8">
             <objects>
-                <viewController id="nhH-3n-ERo" customClass="BreedingSiteDetailViewController" customModule="FOCO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nhH-3n-ERo" customClass="BreedingSiteDetailViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U35-Op-3EG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
