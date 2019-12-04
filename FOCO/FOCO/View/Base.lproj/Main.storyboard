@@ -192,6 +192,7 @@ casas 2 e 3…</string>
                                         <connections>
                                             <outlet property="addCommentBtn" destination="eFh-wJ-zQe" id="Bgd-UQ-Ltp"/>
                                             <outlet property="reportSiteBtn" destination="GuE-K6-Vth" id="WB5-TM-0hU"/>
+                                            <outlet property="siteAccessType" destination="Ks9-gZ-bfp" id="X7o-Fk-HMS"/>
                                             <outlet property="siteAddress" destination="ht6-Cn-Yde" id="cKl-ln-OD5"/>
                                             <outlet property="siteDescription" destination="RTm-N9-V7v" id="E3m-c6-TyA"/>
                                             <outlet property="siteImage" destination="Akm-ef-xZu" id="epx-SD-Xlv"/>

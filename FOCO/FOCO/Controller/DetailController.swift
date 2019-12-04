@@ -56,10 +56,7 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.identifier) as? DetailCell
 
             if let detailCell = cell as? DetailCell {
-
-//                detailCell.lblAddress.text =
-//                "Praça Sérgio Buarque de Holanda, 421\n Cidade Universitária \n CaAFDASDSADA"
-
+                detailCell.setLabels(withSite: self.site!)
             }
 
         } else {
