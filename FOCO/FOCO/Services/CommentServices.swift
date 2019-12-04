@@ -55,4 +55,26 @@ class CommentServices {
             }
         }
     }
+
+    // MARK: - Report Comment
+
+    static func reportComment (breedingSiteId: Int,
+                               commentId: Int,
+                               _ completion: @escaping (_ error: Error?) -> Void ) {
+
+        CommentDAO.reportComment(breedingSiteId: breedingSiteId, commentId: commentId) { (error, reports) in
+
+            if error != nil {
+                // Handle errors
+                print("Unable to report comment")
+                print(error.debugDescription)
+                completion(error)
+            } else {
+                if let amountReport = reports {
+                    print("Comment reported. This is the \(amountReport)nd report.")
+                    completion(nil)
+                }
+            }
+        }
+    }
 }
