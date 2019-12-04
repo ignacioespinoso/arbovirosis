@@ -10,6 +10,8 @@ import UIKit
 
 class NewCommentViewController: UIViewController, UITextViewDelegate {
 
+    var breedingSiteId: Int?
+
     @IBOutlet weak var commentView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,9 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
         bar.sizeToFit()
         commentView.inputAccessoryView = bar
 
+        // Mocking for tests
+        breedingSiteId = 6
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +55,19 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
     @objc func doneTapped() {
         if let content = commentView.text {
             print(content)
+            // TODO: Alert is not appearing yet
+            CommentServices.createComment(breedingSiteId: self.breedingSiteId ?? 0, comment: Comment(content: content)) { (error) in
+                if error == nil {
+                    let alert =  UIAlertController()
+                    alert.title = "Parabéns!"
+                    alert.message = "Seu comentário foi adicionado com sucesso!"
+                    let okButton = UIAlertAction(title: "Continuar colaborando!", style: .default, handler: nil)
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true, completion: nil)
+                }  else {
+                    print("Some error")
+                }
+            }
         }
     }
 }
