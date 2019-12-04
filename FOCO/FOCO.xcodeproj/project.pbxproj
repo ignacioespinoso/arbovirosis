@@ -23,6 +23,9 @@
 		C545CDDE2396F23F00EB713E /* DetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C545CDDD2396F23F00EB713E /* DetailHeaderView.xib */; };
 		C545CDE22396F76700EB713E /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDE12396F76700EB713E /* Extention.swift */; };
 		C545CDE623974B4B00EB713E /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDE523974B4B00EB713E /* DetailHeaderView.swift */; };
+		C545CDEB23975E3C00EB713E /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C545CDE923975E3B00EB713E /* SF-Pro-Text-Regular.otf */; };
+		C545CDEC23975E3C00EB713E /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C545CDEA23975E3C00EB713E /* SF-Pro-Text-Semibold.otf */; };
+		C545CDEE23975F7D00EB713E /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C545CDED23975F7C00EB713E /* SF-Pro-Text-Medium.otf */; };
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
 		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
 		C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */; };
@@ -58,6 +61,9 @@
 		C545CDE12396F76700EB713E /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		C545CDE523974B4B00EB713E /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		C545CDE723974E0300EB713E /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		C545CDE923975E3B00EB713E /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		C545CDEA23975E3C00EB713E /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		C545CDED23975F7C00EB713E /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
 		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
@@ -130,6 +136,16 @@
 			path = "Detail Cells";
 			sourceTree = "<group>";
 		};
+		C545CDE823975DD800EB713E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C545CDED23975F7C00EB713E /* SF-Pro-Text-Medium.otf */,
+				C545CDE923975E3B00EB713E /* SF-Pro-Text-Regular.otf */,
+				C545CDEA23975E3C00EB713E /* SF-Pro-Text-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		C5CAD6EF2375B21C00B5BBA2 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +174,7 @@
 				C5CAD7112375B2B500B5BBA2 /* Controller */,
 				C5CAD7122375B2BC00B5BBA2 /* Services */,
 				C5CAD7042375B21E00B5BBA2 /* Assets.xcassets */,
+				C545CDE823975DD800EB713E /* Fonts */,
 				C5CAD7092375B21E00B5BBA2 /* Info.plist */,
 				C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */,
 				C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */,
@@ -275,9 +292,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C545CDEC23975E3C00EB713E /* SF-Pro-Text-Semibold.otf in Resources */,
 				C5CAD7082375B21E00B5BBA2 /* LaunchScreen.storyboard in Resources */,
+				C545CDEB23975E3C00EB713E /* SF-Pro-Text-Regular.otf in Resources */,
 				C545CDDE2396F23F00EB713E /* DetailHeaderView.xib in Resources */,
 				C5CAD7052375B21E00B5BBA2 /* Assets.xcassets in Resources */,
+				C545CDEE23975F7D00EB713E /* SF-Pro-Text-Medium.otf in Resources */,
 				C5CAD7032375B21C00B5BBA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
