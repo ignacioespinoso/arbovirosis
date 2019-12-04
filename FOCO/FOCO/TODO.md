@@ -5,6 +5,8 @@
     
     2. BUTTOM : https://stackoverflow.com/questions/20655060/get-button-click-inside-uitableviewcell
     
+    3. ESSE AQUI FOCO TA LONGO TA CROPANDO A DESCRICAO
+    
     
 
 ## Header

@@ -15,6 +15,8 @@ class DetailCell: UITableViewCell {
     // MARK: - Outlets
 
     @IBOutlet weak private var siteImage: UIImageView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+
     @IBOutlet weak private var siteAddress: UILabel!
     @IBOutlet weak private var siteAccessType: UILabel!
     @IBOutlet weak private var siteDescription: UILabel!
@@ -54,8 +56,23 @@ class DetailCell: UITableViewCell {
     }
 
     func getImage(fromSite site: BreedingSite) {
+
+        self.loadingIndicator.isHidden = false
+        self.loadingIndicator.startAnimating()
+
         if let breedingPic = site.imageURL {
-            siteImage.af_setImage(withURL: breedingPic)
+//            siteImage.af_setImage(withURL: breedingPic)
+            siteImage.af_setImage(withURL: breedingPic,
+                                  placeholderImage: nil,
+                                  filter: nil,
+                                  progress: nil,
+                                  progressQueue: DispatchQueue.main,
+                                  imageTransition: UIImageView.ImageTransition.noTransition,
+                                  runImageTransitionIfCached: false,
+                                  completion: { _ in // response
+                                    self.loadingIndicator.stopAnimating()
+                                    self.loadingIndicator.isHidden = true
+            })
         }
     }
 

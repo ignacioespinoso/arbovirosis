@@ -1,64 +1,90 @@
-//
-//  BreedingViewController.swift
-//  FOCO
-//
-//  Created by Beatriz Viseu Linhares on 21/11/19.
-//  Copyright © 2019 arbovirosis. All rights reserved.
-//
+/*
+Copyright © 2019 arbovirosis. All rights reserved.
 
-import MapKit
-import AlamofireImage
+Abstract:
+Controller from the Breeding Site Detail Overlay Card
+
+*/
+
+import UIKit
 
 class BreedingSiteDetailViewController: UIViewController {
 
-    var breeding: BreedingSite?
-    var imageByte: [UInt8]?
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var commentary: UILabel!
-    @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var creationDate: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var breedingImage: UIImageView!
+    // MARK: - Outlets
+
+    @IBOutlet weak var tableView: UITableView!
+
+    // MARK: - Variables
+
+    // Populated from perfomSegue
+    var site: BreedingSite?
+
+    // MARK: - ViewController Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        name.text = breeding?.title
-        commentary.text = breeding?.description
-        type.text = "Tipo de foco: " + breeding!.type
-        // TODO: Handle Optionals
-        creationDate.text = "Criado em: " + Utils.fixDateFormat(inputDate: breeding!.created!)
+
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        // Header Nib Cell
+        let nib = UINib.init(nibName: DetailHeaderView.identifier, bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: DetailHeaderView.identifier)
+
+//        // Detail Cell
+//        let nib2 = UINib.init(nibName: DetailCell.identifier, bundle: nil)
+//        tableView.register(nib2, forCellReuseIdentifier: DetailCell.identifier)
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 500
     }
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        BreedingSitesServices.getImageByID(breedingID: breeding!.id) { (error, image) in
-//            if error == nil && image != nil {
-//                DispatchQueue.main.async {
-//                    self.imageByte = image
-//                    let data = NSData(bytes: self.imageByte, length: self.imageByte?.count ?? 0)
-//                    let myImage = UIImage(data: data as Data)
-//                    self.breedingImage.image = myImage
-//                }
-//            } else {
-//                print(error?.localizedDescription as Any)
-//            }
-//        }
-//    }
+}
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+// MARK: - TableView Delegate
 
-        if let breedingPic = breeding?.imageURL {
-            breedingImage.af_setImage(withURL: breedingPic)
-        }
+extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
-        let breedingLocation = CLLocation(latitude: breeding?.latitude ?? 0,
-                                          longitude: breeding?.longitude ?? 0)
-        Utils.getAddressText(coordinate: breedingLocation) { (addressTxt, error) in
-            if error == nil {
-                self.address.text = addressTxt
-            } else {
-                print(error as Any)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell?
+
+        if indexPath.row == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.identifier) as? DetailCell
+
+            if let detailCell = cell as? DetailCell {
+                detailCell.setLabels(withSite: self.site!)
             }
+
+        } else {
+//            cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default,
+//                                                                                            reuseIdentifier: "cell")
+//            cell?.textLabel?.text = "Row \(indexPath.row)"
+//            cell?.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         }
+
+        return cell ?? UITableViewCell()
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        // Dequeue with the reuse identifier
+        let header = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailHeaderView.identifier)
+            as? DetailHeaderView
+
+        // Remove Optional
+        if let breedingSite = site {
+            header?.setLabels(withSite: breedingSite)
+        }
+
+        return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
+    }
+
 }

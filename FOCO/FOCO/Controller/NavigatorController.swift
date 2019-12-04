@@ -157,7 +157,7 @@ extension NavigatorController: MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showBreedingDetail":
-                if let vc = segue.destination as? DetailControler {
+                if let vc = segue.destination as? BreedingSiteDetailViewController {
                     vc.site = selectedBreeedingSite
                 }
         case "newSite":
