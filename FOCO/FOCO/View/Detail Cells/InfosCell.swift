@@ -2,7 +2,9 @@
 Copyright © 2019 arbovirosis. All rights reserved.
 
 Abstract:
-Detail Cell
+Breeding Site Infos Cell
+
+Prototype Cell direct in Storyboard
 
 */
 
@@ -10,7 +12,7 @@ import UIKit
 import MapKit
 import AlamofireImage
 
-class DetailCell: UITableViewCell {
+class InfosCell: UITableViewCell {
 
     // MARK: - Outlets
 

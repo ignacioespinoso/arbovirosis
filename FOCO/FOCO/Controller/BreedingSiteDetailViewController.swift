@@ -31,9 +31,9 @@ class BreedingSiteDetailViewController: UIViewController {
         let nib = UINib.init(nibName: DetailHeaderView.identifier, bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: DetailHeaderView.identifier)
 
-//        // Detail Cell
-//        let nib2 = UINib.init(nibName: DetailCell.identifier, bundle: nil)
-//        tableView.register(nib2, forCellReuseIdentifier: DetailCell.identifier)
+        // Comment Nib
+        let nib2 = UINib.init(nibName: CommentsCell.identifier, bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: CommentsCell.identifier)
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
@@ -53,9 +53,9 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         var cell: UITableViewCell?
 
         if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.identifier) as? DetailCell
+            cell = tableView.dequeueReusableCell(withIdentifier: InfosCell.identifier) as? InfosCell
 
-            if let detailCell = cell as? DetailCell {
+            if let detailCell = cell as? InfosCell {
                 detailCell.setLabels(withSite: self.site!)
             }
 
