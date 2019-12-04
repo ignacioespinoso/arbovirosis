@@ -12,8 +12,8 @@ class CommentsCell: UITableViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var commentContent: UILabel!
-    @IBOutlet weak var commentCreatedDate: UILabel!
+    @IBOutlet weak private var commentContent: UILabel!
+    @IBOutlet weak private var commentCreatedDate: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +25,12 @@ class CommentsCell: UITableViewCell {
 
     // MARK: - SetUps
 
+    func setLabels(forComment comment: Comment?) {
 
+        if let message = comment {
+            self.commentContent.text = message.content
+            self.commentCreatedDate.text = message.created
+        }
+    }
 
 }

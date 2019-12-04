@@ -18,6 +18,7 @@ class BreedingSiteDetailViewController: UIViewController {
 
     // Populated from perfomSegue
     var site: BreedingSite?
+    var comments: [Comment] = []
 
     // MARK: - ViewController Life Cycle
 
@@ -37,6 +38,9 @@ class BreedingSiteDetailViewController: UIViewController {
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
+
+        let antevere = Comment(content: "oooooo")
+        self.comments.append(antevere)
     }
 
 }
@@ -46,24 +50,30 @@ class BreedingSiteDetailViewController: UIViewController {
 extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return (self.comments.count + 1)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
 
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: InfosCell.identifier) as? InfosCell
 
             if let detailCell = cell as? InfosCell {
                 detailCell.setLabels(withSite: self.site!)
             }
 
-        } else {
-//            cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default,
-//                                                                                            reuseIdentifier: "cell")
-//            cell?.textLabel?.text = "Row \(indexPath.row)"
-//            cell?.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        case 1...self.comments.count:
+            cell = tableView.dequeueReusableCell(withIdentifier: CommentsCell.identifier) as? CommentsCell
+
+            if let commentCell = cell as? CommentsCell {
+                // IndexPath for this array starts at 1
+                commentCell.setLabels(forComment: self.comments[indexPath.row - 1])
+            }
+
+        default:
+            fatalError("Could Not Find Row")
         }
 
         return cell ?? UITableViewCell()
