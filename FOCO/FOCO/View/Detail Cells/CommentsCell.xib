@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="lVb-fR-jtQ" customClass="CommentsCell" customModule="Nosso_Bairro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="415" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lVb-fR-jtQ" id="NYh-sw-ZYn">
+                <rect key="frame" x="0.0" y="0.0" width="415" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llV-Pd-3fb">
+                        <rect key="frame" x="0.0" y="0.0" width="415" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXz-Jx-S1g">
+                                <rect key="frame" x="20" y="10" width="375" height="19.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNd-0F-Q68">
+                                <rect key="frame" x="20" y="32.5" width="33.5" height="18"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oXz-Jx-S1g" secondAttribute="trailing" constant="20" id="4d7-lh-Ut6"/>
+                            <constraint firstItem="oXz-Jx-S1g" firstAttribute="leading" secondItem="llV-Pd-3fb" secondAttribute="leading" constant="20" id="HB0-zV-pCZ"/>
+                            <constraint firstAttribute="bottom" secondItem="FNd-0F-Q68" secondAttribute="bottom" constant="9.5" id="LVY-aH-RPi"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="eO4-Wx-kBb"/>
+                            <constraint firstItem="FNd-0F-Q68" firstAttribute="top" secondItem="oXz-Jx-S1g" secondAttribute="bottom" constant="3" id="fDH-QA-tGG"/>
+                            <constraint firstItem="oXz-Jx-S1g" firstAttribute="top" secondItem="llV-Pd-3fb" secondAttribute="top" constant="10" id="uBi-Af-m7h"/>
+                            <constraint firstItem="FNd-0F-Q68" firstAttribute="leading" secondItem="llV-Pd-3fb" secondAttribute="leading" constant="20" id="yYk-s5-quM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="llV-Pd-3fb" firstAttribute="leading" secondItem="NYh-sw-ZYn" secondAttribute="leading" id="J0j-9Z-VI4"/>
+                    <constraint firstAttribute="trailing" secondItem="llV-Pd-3fb" secondAttribute="trailing" id="MiA-mW-Kem"/>
+                    <constraint firstItem="llV-Pd-3fb" firstAttribute="top" secondItem="NYh-sw-ZYn" secondAttribute="top" id="UgL-Qo-9H4"/>
+                    <constraint firstAttribute="bottom" secondItem="llV-Pd-3fb" secondAttribute="bottom" id="iFk-U6-a4E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="commentContent" destination="oXz-Jx-S1g" id="j06-qb-JXN"/>
+                <outlet property="commentCreatedDate" destination="FNd-0F-Q68" id="IXb-TG-QWH"/>
+            </connections>
+            <point key="canvasLocation" x="145.6521739130435" y="158.03571428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

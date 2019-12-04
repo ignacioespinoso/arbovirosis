@@ -15,6 +15,7 @@ import AlamofireImage
 class NewBreedingSiteViewController: FormViewController {
 
     let locationManager = CLLocationManager()
+    var defaultLocation: CLLocation?
 
     @IBOutlet weak var breedingSiteImage: UIImageView!
     var imagePicker: ImagePicker!
@@ -52,7 +53,7 @@ class NewBreedingSiteViewController: FormViewController {
             }
             <<< LocationRow("location") {
                 $0.title = "Localização"
-                $0.value = locationManager.location
+                $0.value = defaultLocation
             }
 
         +++ Section("Descrição (opcional)")
@@ -107,7 +108,8 @@ class NewBreedingSiteViewController: FormViewController {
             // Tests for ID  5 only -- didn't work
 //            let image = breedingSiteImage.image?.pngData()
 //            let params = ["file": image ]
-//            Alamofire.request("https://safe-peak-03441.herokuapp.com/breeding-sites/5/?file", method: .patch, parameters: params as Parameters)
+//            Alamofire.request("https://safe-peak-03441.herokuapp.com/breeding-sites/5/?file",
+//            method: .patch, parameters: params as Parameters)
 
         } else {
             let alert = UIAlertController(title: "Erro",

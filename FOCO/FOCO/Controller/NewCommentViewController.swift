@@ -52,7 +52,7 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
         // Activate editing when entering the view
         commentView.becomeFirstResponder()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }

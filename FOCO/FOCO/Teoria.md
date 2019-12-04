@@ -26,3 +26,6 @@ if which swiftlint >/dev/null; then
 else
   echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
 fi
+
+# XIB
+Colocar classe no file owner e na classe, mas se certificar que o outlet está para A CÉLULA e não para o file Owner

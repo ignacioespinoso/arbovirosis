@@ -144,7 +144,9 @@ class BreedingSitesDAO {
 
                 if let data = data {
 //                    do {
-                        print("data=\(String(data: data, encoding: .utf8))")
+                        print(
+                            "data=\(String(data: data, encoding: .utf8) ?? "String interpolation did not work")"
+                    )
 //                        _ = try JSONDecoder().decode(BreedingSite.self, from: data)
                         // Único caso onde não há erro. Não passo erro para frente
                         let stringInt = String.init(data: data, encoding: String.Encoding.utf8)
