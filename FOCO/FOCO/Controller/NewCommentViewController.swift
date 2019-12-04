@@ -13,6 +13,7 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
     var breedingSiteId: Int?
 
     @IBOutlet weak var commentView: UITextView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -51,24 +52,75 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
         // Activate editing when entering the view
         commentView.becomeFirstResponder()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 
     @objc func doneTapped() {
         if let content = commentView.text {
             print(content)
             // TODO: Alert is not appearing yet
-            CommentServices.createComment(breedingSiteId: self.breedingSiteId ?? 0, comment: Comment(content: content)) { (error) in
+            CommentServices.createComment(breedingSiteId: self.breedingSiteId ?? 0,
+                                          comment: Comment(content: content)) { (error) in
                 if error == nil {
-                    let alert =  UIAlertController()
-                    alert.title = "Parabéns!"
-                    alert.message = "Seu comentário foi adicionado com sucesso!"
-                    let okButton = UIAlertAction(title: "Continuar colaborando!", style: .default, handler: nil)
-                    alert.addAction(okButton)
-                    self.present(alert, animated: true, completion: nil)
-                }  else {
-                    print("Some error")
+                    DispatchQueue.main.async {
+                        self.setupAlertController()
+                    }
+                } else {
+                    print(error!.localizedDescription)
                 }
             }
         }
+    }
+
+    func setupAlertController() {
+        let alert = UIAlertController(title: "Seu comentário foi adicionado com sucesso!",
+                                      message: "\n\n\n",
+                                      preferredStyle: .alert)
+
+        let image = UIImageView(image: UIImage(systemName: "checkmark.circle"))
+        alert.view.addSubview(image)
+        setupAlertControllerConstraints(alert: alert, image: image)
+        self.present(alert, animated: true, completion: nil)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+          alert.dismiss(animated: true, completion: nil)
+        })
+    }
+
+    func setupAlertControllerConstraints(alert: UIAlertController, image: UIImageView) {
+        // Defines Constraints for image
+        alert.view.translatesAutoresizingMaskIntoConstraints = false
+        image.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .centerX,
+                                                   relatedBy: .equal,
+                                                   toItem: alert.view,
+                                                   attribute: .centerX,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .bottom,
+                                                   relatedBy: .equal,
+                                                   toItem: alert.view,
+                                                   attribute: .bottom,
+                                                   multiplier: 1,
+                                                   constant: -8))
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1.0,
+                                                   constant: 64.0))
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .height,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1.0,
+                                                   constant: 64.0))
     }
 }
 
