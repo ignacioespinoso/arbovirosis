@@ -10,9 +10,14 @@ import UIKit
 
 class DetailControler: UIViewController {
 
-    // MARK: - Variables
+    // MARK: - Outlets
 
     @IBOutlet weak var tableView: UITableView!
+
+    // MARK: - Variables
+
+    // Populated from perfomSegue
+    var site: BreedingSite?
 
     // MARK: - ViewController Life Cycle
 
@@ -52,16 +57,16 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
 
             if let detailCell = cell as? DetailCell {
 
-                detailCell.lblAddress.text =
-                "Praça Sérgio Buarque de Holanda, 421\n Cidade Universitária \n CaAFDASDSADA"
+//                detailCell.lblAddress.text =
+//                "Praça Sérgio Buarque de Holanda, 421\n Cidade Universitária \n CaAFDASDSADA"
 
             }
 
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default,
-                                                                                            reuseIdentifier: "cell")
-            cell?.textLabel?.text = "Row \(indexPath.row)"
-            cell?.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+//            cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default,
+//                                                                                            reuseIdentifier: "cell")
+//            cell?.textLabel?.text = "Row \(indexPath.row)"
+//            cell?.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         }
 
         return cell ?? UITableViewCell()
@@ -73,7 +78,11 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
         let header = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailHeaderView.identifier)
             as? DetailHeaderView
 
-        header?.title.text = "Guga"
+        // Remove Optional
+        if let breedingSite = site {
+            header?.setLabels(withSite: breedingSite)
+        }
+
         return header
     }
 

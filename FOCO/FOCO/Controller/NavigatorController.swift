@@ -157,8 +157,8 @@ extension NavigatorController: MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showBreedingDetail":
-                if let vc = segue.destination as? BreedingSiteDetailViewController {
-                    vc.breeding = selectedBreeedingSite
+                if let vc = segue.destination as? DetailControler {
+                    vc.site = selectedBreeedingSite
                 }
         case "newSite":
             if let vc = segue.destination as? UINavigationController,
@@ -303,7 +303,7 @@ extension NavigatorController {
             // Creating annotation
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            //Set title and subtitle if you want
+            // Set title and subtitle if you want
             annotation.title = "Novo item"
             annotation.subtitle = "Contribua!"
             self.mapView.addAnnotation(annotation)
