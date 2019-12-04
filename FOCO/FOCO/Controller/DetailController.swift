@@ -26,12 +26,12 @@ class DetailControler: UIViewController {
         let nib = UINib.init(nibName: DetailHeaderView.identifier, bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: DetailHeaderView.identifier)
 
-        // Detail Cell
-        let nib2 = UINib.init(nibName: DetailCell.identifier, bundle: nil)
-        tableView.register(nib2, forCellReuseIdentifier: DetailCell.identifier)
+//        // Detail Cell
+//        let nib2 = UINib.init(nibName: DetailCell.identifier, bundle: nil)
+//        tableView.register(nib2, forCellReuseIdentifier: DetailCell.identifier)
 
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 500
     }
 
 }
@@ -50,6 +50,11 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.identifier) as? DetailCell
 
+            if let detailCell = cell as? DetailCell {
+
+                detailCell.lblAddress.text = "teste"
+            }
+
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default,
                                                                                             reuseIdentifier: "cell")
@@ -66,11 +71,12 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
         let header = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailHeaderView.identifier)
             as? DetailHeaderView
 
+        header?.title.text = "Guga"
         return header
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 100
     }
 
 }

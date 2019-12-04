@@ -6,6 +6,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Detail Controler-->
         <scene sceneID="cMY-Nh-spR">
@@ -15,9 +23,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ruo-N8-PP4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="500" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ruo-N8-PP4">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="432" id="09Y-46-d1T" customClass="DetailCell" customModule="Nosso_Bairro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="432"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="09Y-46-d1T" id="9h7-5T-e2F">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="432"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-fR-m53" userLabel="FrameView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="432"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="Akm-ef-xZu">
+                                                            <rect key="frame" x="20" y="20" width="374" height="180"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="180" id="njV-vd-5Uy"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vin-rl-MTm" userLabel="Address">
+                                                            <rect key="frame" x="20" y="220" width="374" height="75.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTm-ga-q2J">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
+                                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ht6-Cn-Yde">
+                                                                    <rect key="frame" x="0.0" y="18" width="374" height="57.5"/>
+                                                                    <string key="text">Praça Sérgio Buarque de Holanda, 421
+Cidade Universitária
+Campinas - SP</string>
+                                                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Separator" translatesAutoresizingMaskIntoConstraints="NO" id="dYq-cq-Odp">
+                                                            <rect key="frame" x="20" y="308" width="374" height="3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="3" id="tPE-Sn-vDo"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-fv-Abj" userLabel="Description">
+                                                            <rect key="frame" x="62" y="383" width="291" height="56.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-Lz-f5p">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="18"/>
+                                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTm-N9-V7v">
+                                                                    <rect key="frame" x="0.0" y="18" width="291" height="38.5"/>
+                                                                    <string key="text">Água acumulada em pneu ao lado das
+casas 2 e 3…</string>
+                                                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="dYq-cq-Odp" firstAttribute="top" secondItem="vin-rl-MTm" secondAttribute="bottom" constant="12.5" id="1yl-rv-ZOi"/>
+                                                        <constraint firstItem="dYq-cq-Odp" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="7QH-dN-pcF"/>
+                                                        <constraint firstItem="Akm-ef-xZu" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="BmQ-zA-aIE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="vin-rl-MTm" secondAttribute="trailing" constant="20" id="Cl5-SC-VnJ"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="432" id="J9o-88-1n4"/>
+                                                        <constraint firstItem="vin-rl-MTm" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="Jo2-WI-bHV"/>
+                                                        <constraint firstItem="dYq-cq-Odp" firstAttribute="width" secondItem="faQ-fR-m53" secondAttribute="width" multiplier="0.903382" id="VHV-cT-vZd"/>
+                                                        <constraint firstItem="vin-rl-MTm" firstAttribute="top" secondItem="Akm-ef-xZu" secondAttribute="bottom" constant="20" id="aGn-8Q-icO"/>
+                                                        <constraint firstItem="Akm-ef-xZu" firstAttribute="top" secondItem="faQ-fR-m53" secondAttribute="top" constant="20" id="bCJ-tw-YRd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="dYq-cq-Odp" secondAttribute="trailing" constant="20" id="mg9-ZC-yNN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Akm-ef-xZu" secondAttribute="trailing" constant="20" id="ucN-8q-IO5"/>
+                                                        <constraint firstItem="Akm-ef-xZu" firstAttribute="width" secondItem="faQ-fR-m53" secondAttribute="width" multiplier="0.903382" id="wFi-4e-NFU"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="faQ-fR-m53" firstAttribute="leading" secondItem="9h7-5T-e2F" secondAttribute="leading" id="2NU-uA-wTS"/>
+                                                <constraint firstAttribute="trailing" secondItem="faQ-fR-m53" secondAttribute="trailing" id="k0K-ph-JZc"/>
+                                                <constraint firstAttribute="bottom" secondItem="faQ-fR-m53" secondAttribute="bottom" id="pBO-Q7-DQI"/>
+                                                <constraint firstItem="faQ-fR-m53" firstAttribute="top" secondItem="9h7-5T-e2F" secondAttribute="top" id="zEa-mI-6xO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblAddress" destination="ht6-Cn-Yde" id="vg3-Gb-aVN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -35,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbP-ha-DG3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-27" y="-1239"/>
+            <point key="canvasLocation" x="-27.536231884057973" y="-1239.5089285714284"/>
         </scene>
         <!--Explorar-->
         <scene sceneID="AZE-K5-10K">
@@ -404,10 +504,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Separator" width="375" height="1"/>
         <image name="aviso" width="340" height="91"/>
         <image name="fullButtonFilled" width="42" height="83"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>
         <image name="photo" catalog="system" width="64" height="46"/>
-        <image name="placeholderImg" width="375" height="263"/>
+        <image name="placeholderImg" width="906" height="678"/>
     </resources>
 </document>

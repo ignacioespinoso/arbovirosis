@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailHeaderView" customModule="Nosso_Bairro" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="INB-AR-g0Y" customClass="DetailHeaderView" customModule="Nosso_Bairro" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -37,7 +37,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="414" id="KLN-P4-hls"/>
                         <constraint firstItem="9dV-eM-03e" firstAttribute="leading" secondItem="4C4-fK-ICh" secondAttribute="leading" constant="20" id="YD6-pA-Swa"/>
@@ -57,6 +57,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="pJg-nr-LST"/>
+            <connections>
+                <outlet property="title" destination="9dV-eM-03e" id="6Ff-nL-PPJ"/>
+            </connections>
             <point key="canvasLocation" x="116.66666666666667" y="115.17857142857142"/>
         </view>
     </objects>
