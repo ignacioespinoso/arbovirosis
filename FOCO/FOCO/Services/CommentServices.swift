@@ -40,7 +40,8 @@ class CommentServices {
             print(myJSONError)
         }
 
-        CommentDAO.createComment(breedingSiteId: breedingSiteId, jsonData: jsonData) { (error, commendId) in
+        CommentDAO.createComment(breedingSiteId: breedingSiteId,
+                                 jsonData: jsonData) { (error, createdComment) in
 
             if error != nil {
                 // Handle errors
@@ -48,10 +49,10 @@ class CommentServices {
                 print(error.debugDescription)
                 completion(error)
             } else {
-                if let id = commendId {
-                    print("Comment ID \(id) created.")
-                    completion(nil)
+                if let comment = createdComment {
+                    print("Comment ID \(comment.id) created.")
                 }
+                completion(nil)
             }
         }
     }

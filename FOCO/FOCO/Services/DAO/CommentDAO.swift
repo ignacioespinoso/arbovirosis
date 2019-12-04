@@ -42,7 +42,7 @@ class CommentDAO {
     static func createComment (breedingSiteId: Int,
                                jsonData: Data?,
                                _ completion: @escaping (_ error: Error?,
-                                                        _ commentId: Int?) -> Void) {
+                                                        _ commentId: Comment?) -> Void) {
 
         let urlString = "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingSiteId)/comments"
 
@@ -73,10 +73,14 @@ class CommentDAO {
 
                 if let data = data {
                         print("data=\(String(data: data, encoding: .utf8))")
-                        let stringInt = String.init(data: data, encoding: String.Encoding.utf8)
-                        let commentId = Int.init(stringInt ?? "")
-                        completion(nil, commentId)
-                        print("Json Decoder post Comment ok!")
+                        do {
+                            let createdComment = try JSONDecoder().decode(Comment.self, from: data)
+                            // único caso onde não há erro. Passo para frente a ocorrencia
+                            print("Json Decoder post Comment ok!")
+                            completion(nil, createdComment)
+                        } catch let error {
+                            completion(error, nil)
+                        }
                 }
             }
             task.resume()
