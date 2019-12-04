@@ -15,6 +15,7 @@ import AlamofireImage
 class NewBreedingSiteViewController: FormViewController {
 
     let locationManager = CLLocationManager()
+    var defaultLocation: CLLocation?
 
     @IBOutlet weak var breedingSiteImage: UIImageView!
     var imagePicker: ImagePicker!
@@ -52,7 +53,7 @@ class NewBreedingSiteViewController: FormViewController {
             }
             <<< LocationRow("location") {
                 $0.title = "Localização"
-                $0.value = locationManager.location
+                $0.value = defaultLocation
             }
 
         +++ Section("Descrição (opcional)")

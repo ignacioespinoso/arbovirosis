@@ -13,6 +13,7 @@ import CoreLocation
 class NewOccurrenceViewController: FormViewController {
 
     let locationManager = CLLocationManager()
+    var defaultLocation: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class NewOccurrenceViewController: FormViewController {
             })
             <<< LocationRow("location") {
                 $0.title = "Localização"
-                $0.value = locationManager.location
+                $0.value = defaultLocation ?? locationManager.location
             }
     }
 
