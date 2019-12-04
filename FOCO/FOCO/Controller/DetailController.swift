@@ -10,7 +10,7 @@ import UIKit
 
 class DetailControler: UIViewController {
 
-    // MARK: - IboOutlets
+    // MARK: - Variables
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -22,9 +22,9 @@ class DetailControler: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        // Nib Cell
-        let nib = UINib.init(nibName: DetailHeaderCell.identifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: DetailHeaderCell.identifier)
+        // Header Nib Cell
+        let nib = UINib.init(nibName: DetailHeaderView.identifier, bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: DetailHeaderView.identifier)
     }
 
 }
@@ -34,14 +34,15 @@ class DetailControler: UIViewController {
 extension DetailControler: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 100
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
 
         if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: DetailHeaderCell.identifier) as? DetailHeaderCell
+//            cell = tableView.dequeueReusableCell(withIdentifier: DetailHeaderView.identifier) as? DetailHeaderView
+
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default,
                                                                                             reuseIdentifier: "cell")
@@ -49,16 +50,20 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
             cell?.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         }
 
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeaderCell.identifier)
-//                                                            as? DetailHeaderCell else {
-//            return UITableViewCell()
-//        }
-//
-//        if let detailCell = cell as? DetailHeaderCell {
-//
-//        }
-
         return cell ?? UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        // Dequeue with the reuse identifier
+        let header = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailHeaderView.identifier)
+            as? DetailHeaderView
+
+        return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
     }
 
 }

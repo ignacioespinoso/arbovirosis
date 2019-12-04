@@ -20,6 +20,7 @@ extension Reusable {
     }
 }
 
-extension UITableViewCell: Reusable {
+// E por tabela UITableViewCell
+extension UIView: Reusable {
 
 }
