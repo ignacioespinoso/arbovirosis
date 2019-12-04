@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C2X-lz-6c0">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -227,12 +227,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Y2A-7p-IWG" firstAttribute="height" secondItem="7ad-Od-CDb" secondAttribute="height" multiplier="0.8" id="8Km-OI-TnG"/>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="top" secondItem="V2T-Aj-XsP" secondAttribute="bottom" constant="8" id="Rq3-z9-8CC"/>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="VK1-3t-UdB"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="Vpf-QF-aLw"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="top" secondItem="3GI-Mt-ATB" secondAttribute="top" constant="12" id="Ydo-kw-aeW"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="Y2A-7p-IWG" secondAttribute="trailing" constant="24" id="jch-UK-KSK"/>
+                            <constraint firstItem="3GI-Mt-ATB" firstAttribute="bottom" secondItem="Y2A-7p-IWG" secondAttribute="bottom" constant="55" id="r2U-Fu-M5r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3GI-Mt-ATB"/>
                     </view>
@@ -337,34 +337,34 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qjs-tJ-QcU">
-                                <rect key="frame" x="16" y="239" width="382" height="163"/>
+                                <rect key="frame" x="16" y="239" width="382" height="162"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDs-1D-46U">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Av. Alan Turing, 275 - Cidade Universitária, Campinas - SP, 13083-898" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEr-Wz-g9J">
-                                        <rect key="frame" x="0.0" y="30.5" width="382" height="41"/>
+                                        <rect key="frame" x="0.0" y="30.333333333333311" width="382" height="40.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data de Criação" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-la-oK6">
-                                        <rect key="frame" x="0.0" y="81.5" width="382" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="81" width="382" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8J-ya-PY2">
-                                        <rect key="frame" x="0.0" y="112" width="382" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="111.33333333333331" width="382" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syl-kv-1dr">
-                                        <rect key="frame" x="0.0" y="142.5" width="382" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="141.66666666666669" width="382" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

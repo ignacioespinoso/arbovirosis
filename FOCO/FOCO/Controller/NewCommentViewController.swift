@@ -27,7 +27,7 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
         commentView.addGestureRecognizer(tap)
 
         // Adds done button above the keyboard
-        let bar = UIToolbar()
+        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done = UIBarButtonItem(title: "Postar",
                                    style: .plain,
