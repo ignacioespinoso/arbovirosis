@@ -9,7 +9,7 @@ ViewController for MapView
 import MapKit
 import CoreLocation
 
-class NavigatorController: UIViewController, UIActionSheetDelegate {
+class NavigatorController: UIViewController {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collaborateButton: UIButton!
@@ -22,6 +22,7 @@ class NavigatorController: UIViewController, UIActionSheetDelegate {
     let maxSpan = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
     let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     var selectedBreeedingSite: BreedingSite?
+    var selectedLocation: CLLocation?
 
 // MARK: Initial Setup
     override func viewDidLoad() {
@@ -35,6 +36,12 @@ class NavigatorController: UIViewController, UIActionSheetDelegate {
         collaborateButton.backgroundColor = UIColor(red: 241/255, green: 216/255, blue: 109/255, alpha: 1)
         collaborateButton.tintColor = UIColor(red: 30/255, green: 64/255, blue: 103/255, alpha: 1)
         collaborateButton.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
+
+        // Long Press Gesture for New Item
+        let longPressGesture = UILongPressGestureRecognizer(target: self,
+                                                            action: #selector(addAnnotationOnLongPress(gesture:)))
+        longPressGesture.minimumPressDuration = 1.0
+        self.mapView.addGestureRecognizer(longPressGesture)
     }
 
     // MARK: Button Actions
@@ -84,16 +91,19 @@ extension NavigatorController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         var identifier = ""
-        var calloutImage = ""
+        var calloutImage: UIImage?
+        var calloutColor: UIColor?
 
         switch annotation {
         case is DiseaseAnnotation:
             identifier = "diseaseMarker"
-            calloutImage = "sick"
+            calloutImage = UIImage(named: "sick")
+            calloutColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
         // This is suppose to be BreedingSite instead o "DiseaseOccurrence"
         case is BreedingAnnotation:
             identifier = "breedingMarker"
-            calloutImage = "mosquito"
+            calloutImage = UIImage(named: "mosquito")
+            calloutColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
         // Nil return on default value is important for avoiding customization on user's location blue pin
         default:
             return nil
@@ -107,15 +117,17 @@ extension NavigatorController: MKMapViewDelegate {
           view = dequeuedView
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            customizeView(view: view)
             view.glyphTintColor = .black
+            view.glyphImage = calloutImage
+            view.markerTintColor = calloutColor
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
 
             // Setting image for the callout
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0,
                                                       width: view.frame.height, height: view.frame.height))
-            imageView.image = UIImage(named: calloutImage)
+            imageView.image = calloutImage
+            imageView.tintColor = calloutColor
             imageView.contentMode = .scaleAspectFit
             view.leftCalloutAccessoryView = imageView
 
@@ -133,19 +145,6 @@ extension NavigatorController: MKMapViewDelegate {
         return view
     }
 
-    func customizeView(view: MKMarkerAnnotationView) {
-        switch view.reuseIdentifier {
-        case "diseaseMarker":
-            view.glyphImage = UIImage(named: "sick")
-            view.markerTintColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
-        case "breedingMarker":
-            view.glyphImage = UIImage(named: "mosquito")
-            view.markerTintColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
-        default:
-            print("Not Implemented.")
-        }
-    }
-
     // Future performSegue() to "More Info" screen.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
@@ -156,10 +155,23 @@ extension NavigatorController: MKMapViewDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showBreedingDetail" {
-            if let vc = segue.destination as? BreedingSiteDetailViewController {
-                vc.breeding = selectedBreeedingSite
+        switch segue.identifier {
+        case "showBreedingDetail":
+                if let vc = segue.destination as? BreedingSiteDetailViewController {
+                    vc.site = selectedBreeedingSite
+                }
+        case "newSite":
+            if let vc = segue.destination as? UINavigationController,
+                let dest = vc.viewControllers.first as? NewBreedingSiteViewController {
+                dest.defaultLocation = selectedLocation
             }
+        case "newOccurrence":
+            if let vc = segue.destination as? UINavigationController,
+                let dest = vc.viewControllers.first as? NewOccurrenceViewController {
+                dest.defaultLocation = selectedLocation
+            }
+        default:
+            print("None of those segues")
         }
     }
 }
@@ -197,7 +209,9 @@ struct Option {
 extension NavigatorController {
     func configureActionSheet(options: Option...) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            self.reloadData()
+        })
         actionSheet.addAction(cancel)
 
         for option in options {
@@ -210,13 +224,14 @@ extension NavigatorController {
     }
 
     @objc func showOptions() {
-        let option1 = Option(name: "Registrar um possível criadouro.", segueIdentifier: "newSite")
-        let option2 = Option(name: "Incluir um caso de contágio.", segueIdentifier: "newOccurrence")
+        let option1 = Option(name: "Foco de água parada", segueIdentifier: "newSite")
+        let option2 = Option(name: "Caso de doença", segueIdentifier: "newOccurrence")
 
         self.configureActionSheet(options: option1, option2)
     }
 
     @IBAction func unwindToMap(segue: UIStoryboardSegue) {
+        // Nunca passa por aqui
         self.reloadData()
     }
 }
@@ -274,5 +289,25 @@ extension NavigatorController {
         self.diseaseMarkers = []
         self.breedingMarkers = []
         loadInitialData()
+    }
+
+    @objc func addAnnotationOnLongPress(gesture: UILongPressGestureRecognizer) {
+
+        if gesture.state == .ended {
+            // Frame location
+            let point = gesture.location(in: self.mapView)
+            // Map location
+            let coordinate = self.mapView.convert(point, toCoordinateFrom: self.mapView)
+            self.selectedLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+
+            // Creating annotation
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            // Set title and subtitle if you want
+            annotation.title = "Novo item"
+            annotation.subtitle = "Contribua!"
+            self.mapView.addAnnotation(annotation)
+            self.showOptions()
+        }
     }
 }
