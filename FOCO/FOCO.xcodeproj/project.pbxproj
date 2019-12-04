@@ -29,6 +29,8 @@
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
 		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
 		C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */; };
+		C578223723976C160057F015 /* DetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C578223623976C160057F015 /* DetailCell.xib */; };
+		C578223923976C210057F015 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C578223823976C210057F015 /* DetailCell.swift */; };
 		C5AF7D8423776E4400635447 /* DiseaseOccurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */; };
 		C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */; };
 		C5CAD6FE2375B21C00B5BBA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */; };
@@ -67,6 +69,8 @@
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
 		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
+		C578223623976C160057F015 /* DetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCell.xib; sourceTree = "<group>"; };
+		C578223823976C210057F015 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
 		C5CAD6F82375B21C00B5BBA2 /* Nosso Bairro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nosso Bairro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 			children = (
 				C545CDDD2396F23F00EB713E /* DetailHeaderView.xib */,
 				C545CDE523974B4B00EB713E /* DetailHeaderView.swift */,
+				C578223623976C160057F015 /* DetailCell.xib */,
+				C578223823976C210057F015 /* DetailCell.swift */,
 			);
 			path = "Detail Cells";
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			files = (
 				C545CDEC23975E3C00EB713E /* SF-Pro-Text-Semibold.otf in Resources */,
 				C5CAD7082375B21E00B5BBA2 /* LaunchScreen.storyboard in Resources */,
+				C578223723976C160057F015 /* DetailCell.xib in Resources */,
 				C545CDEB23975E3C00EB713E /* SF-Pro-Text-Regular.otf in Resources */,
 				C545CDDE2396F23F00EB713E /* DetailHeaderView.xib in Resources */,
 				C5CAD7052375B21E00B5BBA2 /* Assets.xcassets in Resources */,
@@ -378,6 +385,7 @@
 				B36279AE23831C060067C663 /* BreedingAnnotation.swift in Sources */,
 				B34AF89323871EED00B61F2C /* BreedingSiteDetailViewController.swift in Sources */,
 				C545CDDC2396F0B400EB713E /* DetailController.swift in Sources */,
+				C578223923976C210057F015 /* DetailCell.swift in Sources */,
 				C545CDE623974B4B00EB713E /* DetailHeaderView.swift in Sources */,
 				B34AF8912386E28D00B61F2C /* Utils.swift in Sources */,
 				C5CAD6FC2375B21C00B5BBA2 /* AppDelegate.swift in Sources */,

@@ -1,6 +1,15 @@
 
 
+
+0. QUE QUE TA acontecendo com OUTLET?!
+
+-> HEADER: constrain ta em 100, metodo da table view coloquei height para 50, e ai ficou próximo a proporção da xib. não wntendi
+-> BACKGROUND: parece que ficou transparente mesmo assim.
+
+
 1. Setting the background color on UITableViewHeaderFooterView has been deprecated. Please set a custom UIView with your desired background color to the backgroundView property instead.
+
+
 
 2. Deixar a altura do header hardcoded ou não?? Tem como pegar do xib?
 apesar da altura do xib estar hardcoded..

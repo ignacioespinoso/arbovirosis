@@ -25,6 +25,13 @@ class DetailControler: UIViewController {
         // Header Nib Cell
         let nib = UINib.init(nibName: DetailHeaderView.identifier, bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: DetailHeaderView.identifier)
+
+        // Detail Cell
+        let nib2 = UINib.init(nibName: DetailCell.identifier, bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: DetailCell.identifier)
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
     }
 
 }
@@ -41,7 +48,7 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
         var cell: UITableViewCell?
 
         if indexPath.row == 0 {
-//            cell = tableView.dequeueReusableCell(withIdentifier: DetailHeaderView.identifier) as? DetailHeaderView
+            cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.identifier) as? DetailCell
 
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default,
@@ -63,7 +70,7 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return 50
     }
 
 }
