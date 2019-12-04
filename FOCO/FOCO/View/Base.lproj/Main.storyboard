@@ -27,24 +27,43 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="432" id="09Y-46-d1T" customClass="DetailCell" customModule="Nosso_Bairro" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="432"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="489" id="09Y-46-d1T" customClass="DetailCell" customModule="Nosso_Bairro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="489"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="09Y-46-d1T" id="9h7-5T-e2F">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="432"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="489"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-fR-m53" userLabel="FrameView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="432"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="489"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="Akm-ef-xZu">
-                                                            <rect key="frame" x="20" y="20" width="374" height="180"/>
+                                                            <rect key="frame" x="20" y="5" width="374" height="180"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="180" id="njV-vd-5Uy"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vin-rl-MTm" userLabel="Address">
-                                                            <rect key="frame" x="20" y="220" width="374" height="75.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-fv-Abj" userLabel="Description">
+                                                            <rect key="frame" x="20" y="311.5" width="374" height="59.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-Lz-f5p">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
+                                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTm-N9-V7v">
+                                                                    <rect key="frame" x="0.0" y="21" width="374" height="38.5"/>
+                                                                    <string key="text">Água acumulada em pneu ao lado das
+casas 2 e 3…</string>
+                                                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="vin-rl-MTm" userLabel="Address">
+                                                            <rect key="frame" x="20" y="205" width="374" height="78.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTm-ga-q2J">
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
@@ -53,7 +72,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ht6-Cn-Yde">
-                                                                    <rect key="frame" x="0.0" y="18" width="374" height="57.5"/>
+                                                                    <rect key="frame" x="0.0" y="21" width="374" height="57.5"/>
                                                                     <string key="text">Praça Sérgio Buarque de Holanda, 421
 Cidade Universitária
 Campinas - SP</string>
@@ -64,28 +83,45 @@ Campinas - SP</string>
                                                             </subviews>
                                                         </stackView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Separator" translatesAutoresizingMaskIntoConstraints="NO" id="dYq-cq-Odp">
-                                                            <rect key="frame" x="20" y="308" width="374" height="3"/>
+                                                            <rect key="frame" x="20" y="296" width="374" height="3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="3" id="tPE-Sn-vDo"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-fv-Abj" userLabel="Description">
-                                                            <rect key="frame" x="62" y="383" width="291" height="56.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8iw-mZ-JjE" userLabel="Buttons">
+                                                            <rect key="frame" x="20" y="391" width="374" height="52"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKH-Lz-f5p">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="18"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFh-wJ-zQe">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="52"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="eFh-wJ-zQe" secondAttribute="height" multiplier="7:2" id="tSS-Y0-feM"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="AddCommetn"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuE-K6-Vth">
+                                                                    <rect key="frame" x="192" y="0.0" width="182" height="52"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="GuE-K6-Vth" secondAttribute="height" multiplier="7:2" id="c9F-JS-isM"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="AddCommetn"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="icy-b5-s2L" userLabel="Comments">
+                                                            <rect key="frame" x="20" y="463" width="374" height="26"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que estão dizendo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-cK-bcD">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTm-N9-V7v">
-                                                                    <rect key="frame" x="0.0" y="18" width="291" height="38.5"/>
-                                                                    <string key="text">Água acumulada em pneu ao lado das
-casas 2 e 3…</string>
-                                                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Separator" translatesAutoresizingMaskIntoConstraints="NO" id="Y34-Uw-zXk">
+                                                                    <rect key="frame" x="0.0" y="23" width="374" height="3"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="3" id="pnL-Nc-WyS"/>
+                                                                    </constraints>
+                                                                </imageView>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
@@ -95,12 +131,22 @@ casas 2 e 3…</string>
                                                         <constraint firstItem="dYq-cq-Odp" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="7QH-dN-pcF"/>
                                                         <constraint firstItem="Akm-ef-xZu" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="BmQ-zA-aIE"/>
                                                         <constraint firstAttribute="trailing" secondItem="vin-rl-MTm" secondAttribute="trailing" constant="20" id="Cl5-SC-VnJ"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="432" id="J9o-88-1n4"/>
+                                                        <constraint firstItem="nKP-fv-Abj" firstAttribute="top" secondItem="dYq-cq-Odp" secondAttribute="bottom" constant="12.5" id="Fwz-BQ-FZO"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="450" id="J9o-88-1n4"/>
                                                         <constraint firstItem="vin-rl-MTm" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="Jo2-WI-bHV"/>
+                                                        <constraint firstItem="icy-b5-s2L" firstAttribute="top" secondItem="8iw-mZ-JjE" secondAttribute="bottom" constant="20" id="M2T-Zp-kDe"/>
+                                                        <constraint firstItem="nKP-fv-Abj" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="MqQ-Cm-IMc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="icy-b5-s2L" secondAttribute="trailing" constant="20" id="Q5l-vb-QNW"/>
+                                                        <constraint firstItem="8iw-mZ-JjE" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="Uog-Jp-1jH"/>
                                                         <constraint firstItem="dYq-cq-Odp" firstAttribute="width" secondItem="faQ-fR-m53" secondAttribute="width" multiplier="0.903382" id="VHV-cT-vZd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="icy-b5-s2L" secondAttribute="bottom" id="Xvw-NT-7Ev"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8iw-mZ-JjE" secondAttribute="trailing" constant="20" id="Z4L-Ui-0yC"/>
+                                                        <constraint firstItem="icy-b5-s2L" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="a4z-HX-dUO"/>
                                                         <constraint firstItem="vin-rl-MTm" firstAttribute="top" secondItem="Akm-ef-xZu" secondAttribute="bottom" constant="20" id="aGn-8Q-icO"/>
-                                                        <constraint firstItem="Akm-ef-xZu" firstAttribute="top" secondItem="faQ-fR-m53" secondAttribute="top" constant="20" id="bCJ-tw-YRd"/>
                                                         <constraint firstAttribute="trailing" secondItem="dYq-cq-Odp" secondAttribute="trailing" constant="20" id="mg9-ZC-yNN"/>
+                                                        <constraint firstItem="8iw-mZ-JjE" firstAttribute="top" secondItem="RTm-N9-V7v" secondAttribute="bottom" constant="20" id="oEf-RG-W3a"/>
+                                                        <constraint firstItem="Akm-ef-xZu" firstAttribute="top" secondItem="faQ-fR-m53" secondAttribute="top" constant="5" id="qah-i4-Cb3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nKP-fv-Abj" secondAttribute="trailing" constant="20" id="u7W-hN-zHP"/>
                                                         <constraint firstAttribute="trailing" secondItem="Akm-ef-xZu" secondAttribute="trailing" constant="20" id="ucN-8q-IO5"/>
                                                         <constraint firstItem="Akm-ef-xZu" firstAttribute="width" secondItem="faQ-fR-m53" secondAttribute="width" multiplier="0.903382" id="wFi-4e-NFU"/>
                                                     </constraints>
@@ -504,7 +550,8 @@ casas 2 e 3…</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Separator" width="375" height="1"/>
+        <image name="AddCommetn" width="182" height="52"/>
+        <image name="Separator" width="359" height="0.5"/>
         <image name="aviso" width="340" height="91"/>
         <image name="fullButtonFilled" width="42" height="83"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>

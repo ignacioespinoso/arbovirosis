@@ -38,7 +38,8 @@ class NavigatorController: UIViewController {
         collaborateButton.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
 
         // Long Press Gesture for New Item
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
+        let longPressGesture = UILongPressGestureRecognizer(target: self,
+                                                            action: #selector(addAnnotationOnLongPress(gesture:)))
         longPressGesture.minimumPressDuration = 1.0
         self.mapView.addGestureRecognizer(longPressGesture)
     }
@@ -160,11 +161,13 @@ extension NavigatorController: MKMapViewDelegate {
                     vc.breeding = selectedBreeedingSite
                 }
         case "newSite":
-            if let vc = segue.destination as? UINavigationController, let dest = vc.viewControllers.first as? NewBreedingSiteViewController {
+            if let vc = segue.destination as? UINavigationController,
+                let dest = vc.viewControllers.first as? NewBreedingSiteViewController {
                 dest.defaultLocation = selectedLocation
             }
         case "newOccurrence":
-            if let vc = segue.destination as? UINavigationController, let dest = vc.viewControllers.first as? NewOccurrenceViewController {
+            if let vc = segue.destination as? UINavigationController,
+                let dest = vc.viewControllers.first as? NewOccurrenceViewController {
                 dest.defaultLocation = selectedLocation
             }
         default:

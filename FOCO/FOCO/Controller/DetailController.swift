@@ -52,7 +52,9 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
 
             if let detailCell = cell as? DetailCell {
 
-                detailCell.lblAddress.text = "teste"
+                detailCell.lblAddress.text =
+                "Praça Sérgio Buarque de Holanda, 421\n Cidade Universitária \n CaAFDASDSADA"
+
             }
 
         } else {
@@ -76,7 +78,7 @@ extension DetailControler: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 80
     }
 
 }
