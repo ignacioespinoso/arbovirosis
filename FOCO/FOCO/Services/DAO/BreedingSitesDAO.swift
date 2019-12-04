@@ -161,4 +161,48 @@ class BreedingSitesDAO {
             task.resume()
         }
     }
+
+    // MARK: -  Report Breeding Site
+
+    static func reportSite (breedingSiteId: Int,
+                               _ completion: @escaping (_ error: Error?,
+                                                        _ reports: Int?) -> Void) {
+
+        let urlString = "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingSiteId)/report"
+
+        if let url = URL(string: urlString) {
+            var request = URLRequest(url: url)
+            request.httpMethod = "PATCH"
+
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+                guard let response = response as? HTTPURLResponse,
+                          (200...299).contains(response.statusCode)
+                else {
+                    print("Server error! Report Comment!")
+                    print(error.debugDescription)
+                    completion(error, nil)
+                    return
+                }
+
+                // Checking if error is empty
+                if let error = error {
+                    print("Error!")
+                    completion(error, nil)
+                    return
+                }
+
+                print("Report Site response status", response.statusCode)
+
+                if let data = data {
+                        print("data=\(String(data: data, encoding: .utf8))")
+                        let stringInt = String.init(data: data, encoding: String.Encoding.utf8)
+                        let reports = Int.init(stringInt ?? "")
+                        completion(nil, reports)
+                        print("Json Decoder Report Site ok!")
+                }
+            }
+            task.resume()
+        }
+    }
 }
