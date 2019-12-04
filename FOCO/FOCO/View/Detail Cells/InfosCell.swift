@@ -16,6 +16,7 @@ class InfosCell: UITableViewCell {
 
     // MARK: - Outlets
 
+    var siteId: Int = 0
     @IBOutlet weak private var siteImage: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
@@ -41,6 +42,17 @@ class InfosCell: UITableViewCell {
         getAddress(fromSite: site)
         self.siteAccessType.text = site.type
         self.siteDescription.text = site.description
+        self.siteId = site.id
+    }
+
+    @IBAction func reportSite(_ sender: Any) {
+        BreedingSitesServices.reportSite(breedingSiteId: siteId) { (error) in
+            if error == nil {
+                print("REPORTED: site reported ok!")
+            } else {
+                print("Could not report site")
+            }
+        }
     }
 
     // MARK: - Aux

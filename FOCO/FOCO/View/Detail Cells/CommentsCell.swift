@@ -29,7 +29,7 @@ class CommentsCell: UITableViewCell {
 
         if let message = comment {
             self.commentContent.text = message.content
-            self.commentCreatedDate.text = message.created
+            self.commentCreatedDate.text = Utils.fixDateFormat(inputDate: message.created!)
         }
     }
 

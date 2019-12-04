@@ -39,8 +39,25 @@ class BreedingSiteDetailViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
 
-        let antevere = Comment(content: "oooooo")
-        self.comments.append(antevere)
+        getComments()
+
+        self.tableView.separatorStyle = .none
+    }
+
+    func getComments() {
+        if let breedingSite = site {
+            CommentServices.findAllCommentsByBreedingSiteId(breedingSiteId: breedingSite.id) { (error, allComments) in
+                if error == nil, let messages = allComments {
+                    self.comments = messages
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    print("Error in Comments")
+                }
+            }
+        }
+
     }
 
 }
@@ -95,6 +112,23 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
+    }
+
+    // Report Actions
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+
+        if editingStyle == .delete {
+            CommentServices.reportComment(breedingSiteId: self.site!.id,
+                                          commentId: self.comments[indexPath.row - 1].id) { error in
+                                            if error == nil {
+                                                print("ALERTOU - denuncia comentario")
+                                            } else {
+                                                print("Comment report failed")
+                                            }
+            }
+        }
     }
 
 }
