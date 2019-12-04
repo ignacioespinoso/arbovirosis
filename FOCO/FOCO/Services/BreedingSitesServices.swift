@@ -117,4 +117,25 @@ class BreedingSitesServices {
             }
         })
     }
+
+    // MARK: - Report Site
+
+    static func reportSite (breedingSiteId: Int,
+                               _ completion: @escaping (_ error: Error?) -> Void ) {
+
+        BreedingSitesDAO.reportSite(breedingSiteId: breedingSiteId) { (error, reports) in
+
+            if error != nil {
+                // Handle errors
+                print("Unable to report site")
+                print(error.debugDescription)
+                completion(error)
+            } else {
+                if let amountReport = reports {
+                    print("Site reported. This is the \(amountReport)nd report.")
+                    completion(nil)
+                }
+            }
+        }
+    }
 }
