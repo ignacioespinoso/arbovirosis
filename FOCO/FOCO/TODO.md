@@ -7,7 +7,12 @@
     
     3. ESSE AQUI FOCO TA LONGO TA CROPANDO A DESCRICAO
     
+    4. FAZER ALERTA depois que reportat igual ignacio
     
+    5. tirar delete da primeira ROW + mudar texto para reportar
+    
+    
+    # onde dar reload data?
 
 ## Header
 

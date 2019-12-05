@@ -106,13 +106,13 @@ class NewBreedingSiteViewController: FormViewController {
             BreedingSitesServices.createSite(breedingSite: newBreedingSite,
                                              image: self.breedingSiteImage.image, { (error) in
                  if error == nil {
+                    self.showFeedbackAndUnwind(successful: true)
                     print("Created breeding site successfully.")
                  } else {
-                    // TODO: - Give user feedback when something wrong happened
+                    self.showFeedbackAndUnwind(successful: false)
                     print(error!)
                  }
             })
-            self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
 
         } else {
             // Shows user feedback that not every mandatory field was filled.
@@ -121,6 +121,35 @@ class NewBreedingSiteViewController: FormViewController {
                                           preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    // Shows an alert controller and dismiss it before unwinding.
+    private func showFeedbackAndUnwind(successful: Bool) {
+        if successful {
+            DispatchQueue.main.async {
+                Utils.setupAlertController(viewController: self,
+                                          message: "O foco foi informado com sucesso!",
+                                          systemImage: "checkmark.circle",
+                                          timer: 2.0,
+                                          completion: {
+                                            self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
+                                                              sender: self)
+                })
+            }
+            print("Created breeding site successfully.")
+        } else {
+           DispatchQueue.main.async {
+                Utils.setupAlertController(viewController: self,
+                                           message: "Erro ao adicionar foco",
+                                           systemImage: "xmark.octagon",
+                                           color: .appCoral,
+                                           timer: 2.0,
+                                           completion: {
+                                            self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
+                                                              sender: self)
+                })
+           }
         }
     }
 }
