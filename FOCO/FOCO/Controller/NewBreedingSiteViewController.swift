@@ -116,11 +116,41 @@ class NewBreedingSiteViewController: FormViewController {
 
         } else {
             // Shows user feedback that not every mandatory field was filled.
-            let alert = UIAlertController(title: "Erro",
-                                          message: "Preencha os campos obrigatórios",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if locationForm?.value == nil {
+                locationForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                locationForm?.reload()
+                print("No location was set")
+            }
+            if titleForm?.value == nil {
+                titleForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                titleForm?.reload()
+                print("No symptoms start was set")
+            }
+            if accessTypeForm?.value == nil {
+                accessTypeForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                accessTypeForm?.reload()
+                print("No access type was set")
+            }
+
+            let message = "Oops! Alguns campos obrigatórios não foram preenchidos."
+            Utils.setupAlertController(viewController: self,
+                                       message: message,
+                                       systemImage: "xmark.octagon",
+                                       color: .appCoral,
+                                       timer: nil,
+                                       completion: { })
         }
     }
 
