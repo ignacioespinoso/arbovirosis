@@ -142,7 +142,7 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
                                                                                timer: nil,
                                                                                completion: { })
                                                 }
-                                                print("ALERTOU - denuncia comentario")
+                                                print("Comment reported successfully")
                                             } else {
                                                 DispatchQueue.main.async {
                                                     Utils.setupAlertController(viewController: self,

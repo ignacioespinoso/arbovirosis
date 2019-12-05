@@ -27,7 +27,6 @@ class InfosCell: UITableViewCell {
     var siteId: Int = 0
     @IBOutlet weak private var siteImage: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-
     @IBOutlet weak private var siteAddress: UILabel!
     @IBOutlet weak private var siteAccessType: UILabel!
     @IBOutlet weak private var siteDescription: UILabel!
@@ -37,7 +36,11 @@ class InfosCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        self.label.font = self.label.font.withSize(14)
+        self.label.textColor = .systemGray
+        self.label.textAlignment = .left
+        self.label.text = "Não há imagem para esse foco :("
+        self.siteImage.addSubview(self.label)
         // This should make cell proper for auto-layout
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.translatesAutoresizingMaskIntoConstraints = true
@@ -46,8 +49,10 @@ class InfosCell: UITableViewCell {
     // MARK: - SetUps
 
     func setLabels(withSite site: BreedingSite) {
-
+        self.label.isHidden = true
         getImage(fromSite: site)
+        self.label.center.x = self.contentView.center.x
+        self.label.center.y = self.siteImage.center.y
         getAddress(fromSite: site)
         self.siteAccessType.text = site.type
         self.siteDescription.text = site.description
@@ -79,7 +84,7 @@ class InfosCell: UITableViewCell {
     }
 
     func getImage(fromSite site: BreedingSite) {
-
+        self.label.isHidden = true
         self.loadingIndicator.isHidden = false
         self.loadingIndicator.startAnimating()
 
@@ -94,14 +99,9 @@ class InfosCell: UITableViewCell {
                                   completion: { response in
                                     // If no breeding site has no image, adds a label.
                                     if response.value == nil {
-                                        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 21))
-                                        label.font = label.font.withSize(14)
-                                        label.textColor = .systemGray
-                                        label.textAlignment = .left
-                                        label.text = "Não há imagem para esse foco :("
-                                        label.center.x = self.contentView.center.x
-                                        label.center.y = self.siteImage.center.y
-                                        self.siteImage.addSubview(label)
+                                        self.label.isHidden = false
+                                    } else {
+                                        self.label.isHidden = true
                                     }
                                     self.loadingIndicator.stopAnimating()
                                     self.loadingIndicator.isHidden = true
