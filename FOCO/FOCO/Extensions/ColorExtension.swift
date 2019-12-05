@@ -30,5 +30,9 @@ extension UIColor {
     // Pin colors
     static let appHunterGreen = UIColor(red: 0.18, green: 0.35, blue: 0.22, alpha: 1.0)
     static let appDazzledBlue = UIColor(red: 0.17, green: 0.27, blue: 0.58, alpha: 1.0)
+    static let appGreenYellow = UIColor(red: 0.94, green: 0.96, blue: 0.36, alpha: 1.0)
+
+    // Circle color
+    static let appCoralTranparent = UIColor(red: 1.00, green: 0.47, blue: 0.32, alpha: 0.5)
 
 }

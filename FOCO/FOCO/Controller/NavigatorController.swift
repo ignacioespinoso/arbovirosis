@@ -33,8 +33,8 @@ class NavigatorController: UIViewController {
 
         collaborateButton.layer.cornerRadius = 10
         collaborateButton.clipsToBounds = true
-        collaborateButton.backgroundColor = UIColor(red: 241/255, green: 216/255, blue: 109/255, alpha: 1)
-        collaborateButton.tintColor = UIColor(red: 30/255, green: 64/255, blue: 103/255, alpha: 1)
+        collaborateButton.backgroundColor = .appOrangeYellow
+        collaborateButton.tintColor = .black
         collaborateButton.addTarget(self, action: #selector(showOptions), for: .touchUpInside)
 
         // Long Press Gesture for New Item
@@ -67,7 +67,7 @@ extension NavigatorController: MKMapViewDelegate {
 
         if overlay is MKCircle {
             let circleRender = MKCircleRenderer(overlay: overlay)
-            circleRender.fillColor = UIColor(hue: 9/360, saturation: 66/100, brightness: 92/100, alpha: 0.5)
+            circleRender.fillColor = .appCoralTranparent
             circleRender.lineWidth = 10
 
             return circleRender
@@ -98,12 +98,12 @@ extension NavigatorController: MKMapViewDelegate {
         case is DiseaseAnnotation:
             identifier = "diseaseMarker"
             calloutImage = UIImage(named: "sick")
-            calloutColor = UIColor(red: 249/255, green: 220/255, blue: 29/255, alpha: 1)
+            calloutColor = .appGreenYellow
         // This is suppose to be BreedingSite instead o "DiseaseOccurrence"
         case is BreedingAnnotation:
             identifier = "breedingMarker"
             calloutImage = UIImage(named: "mosquito")
-            calloutColor = UIColor(red: 70/255, green: 182/255, blue: 226/255, alpha: 1)
+            calloutColor = .appBlueJeans
         // Nil return on default value is important for avoiding customization on user's location blue pin
         default:
             return nil
@@ -209,10 +209,12 @@ struct Option {
 extension NavigatorController {
     func configureActionSheet(options: Option...) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in
             self.reloadData()
         })
         actionSheet.addAction(cancel)
+        actionSheet.view.tintColor = .appDarkImperialBlue
+        actionSheet.editButtonItem.tintColor = .appOrangeYellow
 
         for option in options {
             let currentOption = UIAlertAction(title: option.name, style: .default) { (_) in
@@ -224,8 +226,8 @@ extension NavigatorController {
     }
 
     @objc func showOptions() {
-        let option1 = Option(name: "Foco de água parada", segueIdentifier: "newSite")
-        let option2 = Option(name: "Caso de doença", segueIdentifier: "newOccurrence")
+        let option1 = Option(name: "Novo foco de água parada", segueIdentifier: "newSite")
+        let option2 = Option(name: "Novo caso de doença", segueIdentifier: "newOccurrence")
 
         self.configureActionSheet(options: option1, option2)
     }

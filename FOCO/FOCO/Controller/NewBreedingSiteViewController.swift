@@ -52,10 +52,10 @@ class NewBreedingSiteViewController: FormViewController {
             }
             <<< PickerInputRow<String>("accessType") {
                 // Sets disease options
-                $0.title = "Tipo de Acesso"
+                $0.title = "Forma de Acesso"
                 $0.options = []
-                $0.options.append("Público")
-                $0.options.append("Privado")
+                $0.options.append("Área Pública")
+                $0.options.append("Área Privada")
                 $0.options.append("Outro")
             }
             <<< LocationRow("location") {
@@ -63,10 +63,10 @@ class NewBreedingSiteViewController: FormViewController {
                 $0.value = defaultLocation
             }
 
-        +++ Section("Descrição (opcional)")
+        +++ Section("O que está acontecendo nesse local? (opcional)")
             <<< TextAreaRow("description") { row in
                 row.title = "Descrição"
-                row.placeholder = "Conte para nós mais detalhes"
+                row.placeholder = "Ex. Vi esses pneus jogados na praça e estão com muita água parada por conta da chuva."
             }
     }
 
