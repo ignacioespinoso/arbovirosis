@@ -1,5 +1,10 @@
 
 
+* autolayou: ta com ESPACO no que estao dizendo
+* autolayou com texto: suoper ok!
+
+
+
 0. QUE QUE TA acontecendo com OUTLET?!
     pq   tenho que colocar tanto no profile owner qnt na classe?
     

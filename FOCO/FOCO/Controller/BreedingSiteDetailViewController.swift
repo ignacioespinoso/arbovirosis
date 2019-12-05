@@ -125,39 +125,75 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 
     // MARK: TableView Report Actions
 
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        var allowEditing: Bool = true
 
-        if editingStyle == .delete {
-            let successMessage = "Agradecemos o aviso. Seu feedback melhora as nossas informações."
-            let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
-            CommentServices.reportComment(breedingSiteId: self.site!.id,
-                                          commentId: self.comments[indexPath.row - 1].id) { error in
-                                            if error == nil {
-                                                DispatchQueue.main.async {
-                                                    Utils.setupAlertController(viewController: self,
-                                                                               message: successMessage,
-                                                                               systemImage: "exclamationmark.bubble",
-                                                                               timer: nil,
-                                                                               completion: { })
-                                                }
-                                                print("Comment reported successfully")
-                                            } else {
-                                                DispatchQueue.main.async {
-                                                    Utils.setupAlertController(viewController: self,
-                                                                              message: failMessage,
-                                                                              systemImage: "xmark.octagon",
-                                                                              color: .appCoral,
-                                                                              timer: nil,
-                                                                              completion: { })
-                                                }
-                                                print("Comment report failed")
-                                            }
-            }
+        // First Info Detail Cell cannot be eddited
+        if indexPath.row == 0 {
+            allowEditing = false
         }
+
+        return allowEditing
     }
 
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        let successMessage = "Agradecemos o aviso. Seu feedback melhora as nossas informações."
+        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
+
+        let reportAction = UITableViewRowAction(style: .normal, title: "Reportar") { ( _, indexPath) in // RowAction
+            CommentServices.reportComment(breedingSiteId: self.site!.id,
+                                          commentId: self.comments[indexPath.row - 1].id) { error in
+                                if error == nil {
+                                    DispatchQueue.main.async {
+                                        Utils.setupAlertController(viewController: self,
+                                                                   message: successMessage,
+                                                                   systemImage: "exclamationmark.bubble",
+                                                                   timer: nil,
+                                                                   completion: { })
+                                    }
+                                    print("Comment reported successfully")
+                                } else {
+                                    DispatchQueue.main.async {
+                                        Utils.setupAlertController(viewController: self,
+                                                                  message: failMessage,
+                                                                  systemImage: "xmark.octagon",
+                                                                  color: .appCoral,
+                                                                  timer: nil,
+                                                                  completion: { })
+                                    }
+                                    print("Comment report failed")
+                                }
+            }
+        }
+
+        reportAction.backgroundColor = .red
+
+        return [reportAction]
+    }
+
+//    func tableView(_ tableView: UITableView,
+//                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+//      ->   UISwipeActionsConfiguration? {
+//
+//
+//      let title = "favorite"
+//
+//      let action = UIContextualAction(style: .normal, title: title,
+//        handler: { (action, view, completionHandler) in
+//      })
+//
+//      action.image = UIImage(systemName: "exclamationmark.bubble.fill")
+//        action.backgroundColor = .red
+//      let configuration = UISwipeActionsConfiguration(actions: [action])
+//      return configuration
+//    }
+//
+//    func tableView(_ tableView: UITableView,
+//      editingStyleForRowAt indexPath: IndexPath)
+//        -> UITableViewCell.EditingStyle {
+//      return .none
+//    }
 }
 
     // MARK: - Buttons Delegates
