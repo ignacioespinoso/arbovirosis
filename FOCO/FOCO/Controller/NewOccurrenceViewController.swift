@@ -42,7 +42,7 @@ class NewOccurrenceViewController: FormViewController {
                     footer: "Informe para diferenciarmos suspeitas de casos confirmados.")
             <<< PickerInputRow<String>("diseaseName") {
                 // Sets disease options
-                $0.title = "Doença (opcional)"
+                $0.title = "Doença"
                 $0.options = []
                 $0.options.append("Dengue")
                 $0.options.append("Chikungunya")
@@ -50,15 +50,15 @@ class NewOccurrenceViewController: FormViewController {
                 $0.options.append("Outra")
 //                $0.value = $0.options.first
             }
+            <<< LocationRow("location") {
+                $0.title = "Localização"
+                $0.value = defaultLocation ?? locationManager.location
+            }
             <<< SwitchRow("confirmed") { row in
                 row.title = "Confirmado por médico"
             }.cellSetup({ (cell, _) in
                 cell.switchControl.setOn(false, animated: false)
             })
-            <<< LocationRow("location") {
-                $0.title = "Localização"
-                $0.value = defaultLocation ?? locationManager.location
-            }
     }
 
     @objc func back(sender: UIBarButtonItem) {
@@ -73,13 +73,13 @@ class NewOccurrenceViewController: FormViewController {
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
 
         if let location: CLLocation = locationForm?.value,
-            let initialSymptoms: Date = symptomsStartForm?.value {
+            let initialSymptoms: Date = symptomsStartForm?.value,
+            let diseaseName: String = diseaseNameForm?.value {
 
             let dateString = getIso8601Date(from: initialSymptoms)
 
             let latitude: Double = location.coordinate.latitude
             let longitude: Double = location.coordinate.longitude
-            let diseaseName: String? = diseaseNameForm?.value
             var confirmed: Bool = false
             if let confirmedFormValue = confirmedForm?.value {
                 confirmed = confirmedFormValue
@@ -92,24 +92,14 @@ class NewOccurrenceViewController: FormViewController {
                                                   latitude: latitude,
                                                   longitude: longitude)
             // Upload to the API
-            var jsonData: Data?
-            do {
-                 jsonData = try JSONEncoder().encode(newOccurrence)
-             } catch let myJSONError {
-                 print(myJSONError)
-             }
-
-             print(jsonData!)
-
-             DiseaseOccurrencesServices.createDisease(jsonData: jsonData, { (error) in
+            DiseaseOccurrencesServices.createDisease(newOccurrence: newOccurrence, { (error) in
                  if error == nil {
-                     print("Created disease occurrence created successfully.")
+                    self.showFeedbackAndUnwind(successful: true)
                  } else {
-                    // TODO: - Give user feedback when something wrong happened
-                     print(error!)
+                    self.showFeedbackAndUnwind(successful: false)
+                    print(error!)
                  }
              })
-            performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
         } else {
             if locationForm?.value == nil {
                 print("No location was set")
@@ -117,12 +107,41 @@ class NewOccurrenceViewController: FormViewController {
             if symptomsStartForm?.value == nil {
                 print("No symptoms start was set")
             }
+            if diseaseNameForm?.value == nil {
+                print("No disease name was set")
+            }
             // Shows user feedback that not every mandatory field was filled.
             let alert = UIAlertController(title: "Erro",
                                           message: "Preencha os campos obrigatórios",
                                           preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    private func showFeedbackAndUnwind(successful: Bool) {
+        if successful {
+           DispatchQueue.main.async {
+               Utils.setupAlertController(viewController: self,
+                                          message: "O caso foi informado com sucesso!",
+                                          systemImage: "checkmark.circle",
+                                          timer: 2.0,
+                                          completion: {
+                                            self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
+               })
+           }
+           print("Created disease occurrence successfully.")
+        } else {
+           DispatchQueue.main.async {
+               Utils.setupAlertController(viewController: self,
+                                           message: "Erro ao adicionar caso de doença",
+                                           systemImage: "xmark.octagon",
+                                           color: .appCoral,
+                                           timer: 2.0,
+                                           completion: {
+                                            self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
+               })
+           }
         }
     }
 }
