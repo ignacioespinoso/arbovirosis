@@ -64,7 +64,7 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
                         Utils.setupAlertController(viewController: self,
                                                    message: "Seu comentário foi adicionado com sucesso!",
                                                    systemImage: "checkmark.circle",
-                                                   timer: 2.0,
+                                                   timer: 1.15,
                                                    completion: {
                                                     self.performSegue(withIdentifier: self.unwindToBreendingSiteDetails,
                                                                       sender: nil)
@@ -75,7 +75,7 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
                                                 message: "Erro ao adicionar o comentário",
                                                 systemImage: "xmark.octagon",
                                                 color: .red,
-                                                timer: 2.0,
+                                                timer: 1.15,
                                                 completion: {
                                                     self.performSegue(withIdentifier: self.unwindToBreendingSiteDetails,
                                                                       sender: nil)

@@ -125,7 +125,7 @@ class NewOccurrenceViewController: FormViewController {
                Utils.setupAlertController(viewController: self,
                                           message: "O caso foi informado com sucesso!",
                                           systemImage: "checkmark.circle",
-                                          timer: 2.0,
+                                          timer: 1.15,
                                           completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
                })
@@ -137,7 +137,7 @@ class NewOccurrenceViewController: FormViewController {
                                            message: "Erro ao adicionar caso de doença",
                                            systemImage: "xmark.octagon",
                                            color: .appCoral,
-                                           timer: 2.0,
+                                           timer: 1.15,
                                            completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
                })

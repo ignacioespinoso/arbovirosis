@@ -131,7 +131,7 @@ class NewBreedingSiteViewController: FormViewController {
                 Utils.setupAlertController(viewController: self,
                                           message: "O foco foi informado com sucesso!",
                                           systemImage: "checkmark.circle",
-                                          timer: 2.0,
+                                          timer: 1.15,
                                           completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
                                                               sender: self)
@@ -144,7 +144,7 @@ class NewBreedingSiteViewController: FormViewController {
                                            message: "Erro ao adicionar foco",
                                            systemImage: "xmark.octagon",
                                            color: .appCoral,
-                                           timer: 2.0,
+                                           timer: 1.15,
                                            completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
                                                               sender: self)
