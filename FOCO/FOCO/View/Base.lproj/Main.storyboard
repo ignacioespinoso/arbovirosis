@@ -155,7 +155,7 @@ casas 2 e 3…</string>
                                                                 </imageView>
                                                             </subviews>
                                                         </stackView>
-                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5E2-yw-QBa">
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5E2-yw-QBa">
                                                             <rect key="frame" x="197" y="85" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -492,7 +492,7 @@ casas 2 e 3…</string>
         <image name="AddComment" width="182" height="52"/>
         <image name="ReportComment" width="182" height="52"/>
         <image name="Separator" width="359" height="0.66666668653488159"/>
-        <image name="aguaParadaAlert" width="245" height="76"/>
+        <image name="aguaParadaAlert" width="245" height="75.666664123535156"/>
         <image name="fullButtonFilled" width="42" height="83"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>
         <image name="photo" catalog="system" width="64" height="46"/>
