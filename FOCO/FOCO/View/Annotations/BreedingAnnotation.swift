@@ -25,7 +25,11 @@ class BreedingAnnotation: NSObject, MKAnnotation {
 
     var subtitle: String? {
         // Future: return disease.initialSymptoms
-        return "Foco!"
+        if let date = breeding.created {
+            return "- Criado em " + Utils.fixDateFormat(inputDate: date)
+        } else {
+            return "- Foco de água parada"
+        }
     }
 }
 
