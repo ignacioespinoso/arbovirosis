@@ -138,12 +138,30 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
+        let successMessage = "Agradecemos o aviso. Seu feedback melhora as nossas informações."
+        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
+
         let reportAction = UITableViewRowAction(style: .normal, title: "Reportar") { ( _, indexPath) in // RowAction
             CommentServices.reportComment(breedingSiteId: self.site!.id,
                                           commentId: self.comments[indexPath.row - 1].id) { error in
                                 if error == nil {
-                                    print("ALERTOU - denuncia comentario")
+                                    DispatchQueue.main.async {
+                                        Utils.setupAlertController(viewController: self,
+                                                                   message: successMessage,
+                                                                   systemImage: "exclamationmark.bubble",
+                                                                   timer: nil,
+                                                                   completion: { })
+                                    }
+                                    print("Comment reported successfully")
                                 } else {
+                                    DispatchQueue.main.async {
+                                        Utils.setupAlertController(viewController: self,
+                                                                  message: failMessage,
+                                                                  systemImage: "xmark.octagon",
+                                                                  color: .appCoral,
+                                                                  timer: nil,
+                                                                  completion: { })
+                                    }
                                     print("Comment report failed")
                                 }
             }
