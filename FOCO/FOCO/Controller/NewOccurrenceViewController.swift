@@ -34,8 +34,11 @@ class NewOccurrenceViewController: FormViewController {
                 row.title = "Início dos sintomas"
             }.cellSetup({ (cell, _) in
                 cell.datePicker.locale = Locale(identifier: "pt_BR")
-            }).cellUpdate { (cell, _) in
                 cell.datePicker.maximumDate = Date()
+            }).cellUpdate { (cell, row) in
+                if row.value != nil {
+                    cell.textLabel?.textColor = .black
+                }
             }
 
         +++ Section(header: "Informações do Caso",
@@ -49,10 +52,18 @@ class NewOccurrenceViewController: FormViewController {
                 $0.options.append("Zika")
                 $0.options.append("Outra")
 //                $0.value = $0.options.first
+            }.cellUpdate { cell, row in
+                if row.value != nil {
+                    cell.textLabel?.textColor = .black
+                }
             }
             <<< LocationRow("location") {
                 $0.title = "Localização"
                 $0.value = defaultLocation ?? locationManager.location
+            }.cellUpdate { cell, row in
+                if row.value != nil {
+                    cell.textLabel?.textColor = .black
+                }
             }
             <<< SwitchRow("confirmed") { row in
                 row.title = "Confirmado por médico"
@@ -101,45 +112,68 @@ class NewOccurrenceViewController: FormViewController {
                  }
              })
         } else {
+            // Shows user feedback that not every mandatory field was filled.
             if locationForm?.value == nil {
+                locationForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                locationForm?.reload()
                 print("No location was set")
             }
             if symptomsStartForm?.value == nil {
+                symptomsStartForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                symptomsStartForm?.reload()
                 print("No symptoms start was set")
             }
             if diseaseNameForm?.value == nil {
+                diseaseNameForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                diseaseNameForm?.reload()
                 print("No disease name was set")
             }
-            // Shows user feedback that not every mandatory field was filled.
-            let alert = UIAlertController(title: "Erro",
-                                          message: "Preencha os campos obrigatórios",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+
+            let message = "Oops! Alguns campos obrigatórios não foram preenchidos."
+            Utils.setupAlertController(viewController: self,
+                                       message: message,
+                                       systemImage: "xmark.octagon",
+                                       color: .appCoral,
+                                       timer: nil,
+                                       completion: { })
         }
     }
 
     private func showFeedbackAndUnwind(successful: Bool) {
+        let successMessage = "Parabéns! O caso foi adicionado e vai contribuir no combate ao vírus!"
+        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
         if successful {
            DispatchQueue.main.async {
                Utils.setupAlertController(viewController: self,
-                                          message: "O caso foi informado com sucesso!",
+                                          message: successMessage,
                                           systemImage: "checkmark.circle",
-                                          timer: 2.0,
+                                          timer: nil,
                                           completion: {
-                                            self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
+                    self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
                })
            }
            print("Created disease occurrence successfully.")
         } else {
            DispatchQueue.main.async {
                Utils.setupAlertController(viewController: self,
-                                           message: "Erro ao adicionar caso de doença",
+                                           message: failMessage,
                                            systemImage: "xmark.octagon",
                                            color: .appCoral,
-                                           timer: 2.0,
+                                           timer: nil,
                                            completion: {
-                                            self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
+                    self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
                })
            }
         }

@@ -91,7 +91,18 @@ class InfosCell: UITableViewCell {
                                   progressQueue: DispatchQueue.main,
                                   imageTransition: UIImageView.ImageTransition.noTransition,
                                   runImageTransitionIfCached: false,
-                                  completion: { _ in // response
+                                  completion: { response in
+                                    // If no breeding site has no image, adds a label.
+                                    if response.value == nil {
+                                        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: 21))
+                                        label.font = label.font.withSize(14)
+                                        label.textColor = .systemGray
+                                        label.textAlignment = .left
+                                        label.text = "Não há imagem para esse foco :("
+                                        label.center.x = self.contentView.center.x
+                                        label.center.y = self.siteImage.center.y
+                                        self.siteImage.addSubview(label)
+                                    }
                                     self.loadingIndicator.stopAnimating()
                                     self.loadingIndicator.isHidden = true
             })
