@@ -116,22 +116,54 @@ class NewBreedingSiteViewController: FormViewController {
 
         } else {
             // Shows user feedback that not every mandatory field was filled.
-            let alert = UIAlertController(title: "Erro",
-                                          message: "Preencha os campos obrigatórios",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if locationForm?.value == nil {
+                locationForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                locationForm?.reload()
+                print("No location was set")
+            }
+            if titleForm?.value == nil {
+                titleForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                titleForm?.reload()
+                print("No symptoms start was set")
+            }
+            if accessTypeForm?.value == nil {
+                accessTypeForm?.cellUpdate { (cell, row) in
+                    if row.value == nil {
+                        cell.textLabel?.textColor = .appCoral
+                    }
+                }
+                accessTypeForm?.reload()
+                print("No access type was set")
+            }
+
+            let message = "Oops! Alguns campos obrigatórios não foram preenchidos."
+            Utils.setupAlertController(viewController: self,
+                                       message: message,
+                                       systemImage: "xmark.octagon",
+                                       color: .appCoral,
+                                       timer: nil,
+                                       completion: { })
         }
     }
 
     // Shows an alert controller and dismiss it before unwinding.
     private func showFeedbackAndUnwind(successful: Bool) {
+        let successMessage = "Parabéns! O foco foi adicionado e vai contribuir no combate ao vírus!"
+        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
         if successful {
             DispatchQueue.main.async {
                 Utils.setupAlertController(viewController: self,
-                                          message: "O foco foi informado com sucesso!",
+                                          message: successMessage,
                                           systemImage: "checkmark.circle",
-                                          timer: 1.15,
+                                          timer: nil,
                                           completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
                                                               sender: self)
@@ -141,10 +173,10 @@ class NewBreedingSiteViewController: FormViewController {
         } else {
            DispatchQueue.main.async {
                 Utils.setupAlertController(viewController: self,
-                                           message: "Erro ao adicionar foco",
+                                           message: failMessage,
                                            systemImage: "xmark.octagon",
                                            color: .appCoral,
-                                           timer: 1.15,
+                                           timer: nil,
                                            completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
                                                               sender: self)

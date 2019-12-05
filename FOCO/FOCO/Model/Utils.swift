@@ -58,7 +58,7 @@ class Utils: NSObject {
                                      message: String,
                                      systemImage: String,
                                      color: UIColor,
-                                     timer: Double,
+                                     timer: Double?,
                                      completion: @escaping () -> Void) {
         let alert = UIAlertController(title: message,
                                       message: "\n\n\n",
@@ -70,13 +70,23 @@ class Utils: NSObject {
             let iconView = UIImageView(image: coloredImage)
             iconView.contentMode = .scaleAspectFit
             alert.view.addSubview(iconView)
-            setupAlertControllerConstraints(alert: alert, image: iconView)
-            viewController.present(alert, animated: true, completion: nil)
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + timer, execute: {
-                alert.dismiss(animated: true, completion: nil)
-                completion()
-            })
+            if let countdown = timer {
+                setupAlertControllerConstraints(alert: alert, image: iconView, bottomConstraint: -8)
+                DispatchQueue.main.asyncAfter(deadline: .now() + countdown, execute: {
+                               alert.dismiss(animated: true, completion: nil)
+                               completion()
+                           })
+            } else {
+                setupAlertControllerConstraints(alert: alert, image: iconView, bottomConstraint: -48)
+                let okAction = UIAlertAction(title: "Ok", style: .default) { (_: UIAlertAction) in
+                    alert.dismiss(animated: true, completion: nil)
+                    completion()
+                }
+
+                alert.addAction(okAction)
+            }
+            viewController.present(alert, animated: true, completion: nil)
         } else {
             print("Invalid systemImage name")
         }
@@ -87,7 +97,7 @@ class Utils: NSObject {
     static func setupAlertController(viewController: UIViewController,
                                      message: String,
                                      systemImage: String,
-                                     timer: Double,
+                                     timer: Double?,
                                      completion: @escaping () -> Void) {
         let alert = UIAlertController(title: message,
                                       message: "\n\n\n",
@@ -96,19 +106,32 @@ class Utils: NSObject {
         if let image = UIImage(systemName: systemImage) {
             let iconView = UIImageView(image: image)
             alert.view.addSubview(iconView)
-            setupAlertControllerConstraints(alert: alert, image: iconView)
+
+            if let countdown = timer {
+                setupAlertControllerConstraints(alert: alert, image: iconView, bottomConstraint: -8)
+                DispatchQueue.main.asyncAfter(deadline: .now() + countdown, execute: {
+                               alert.dismiss(animated: true, completion: nil)
+                               completion()
+                           })
+            } else {
+                setupAlertControllerConstraints(alert: alert, image: iconView, bottomConstraint: -48)
+                let okAction = UIAlertAction(title: "Ok", style: .default) { (_: UIAlertAction) in
+                    alert.dismiss(animated: true, completion: nil)
+                    completion()
+                }
+
+                alert.addAction(okAction)
+            }
             viewController.present(alert, animated: true, completion: nil)
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + timer, execute: {
-                alert.dismiss(animated: true, completion: nil)
-                completion()
-            })
         } else {
             print("Invalid systemImage name")
         }
     }
 
-    static func setupAlertControllerConstraints(alert: UIAlertController, image: UIImageView) {
+    static func setupAlertControllerConstraints(alert: UIAlertController,
+                                                image: UIImageView,
+                                                bottomConstraint: CGFloat) {
         // Defines Constraints for image
         alert.view.translatesAutoresizingMaskIntoConstraints = false
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +148,7 @@ class Utils: NSObject {
                                                    toItem: alert.view,
                                                    attribute: .bottom,
                                                    multiplier: 1,
-                                                   constant: -8))
+                                                   constant: bottomConstraint))
         alert.view.addConstraint(NSLayoutConstraint(item: image,
                                                    attribute: .width,
                                                    relatedBy: .equal,
