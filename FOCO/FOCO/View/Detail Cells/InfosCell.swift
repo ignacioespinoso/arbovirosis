@@ -31,7 +31,6 @@ class InfosCell: UITableViewCell {
     @IBOutlet weak private var siteAccessType: UILabel!
     @IBOutlet weak private var siteDescription: UILabel!
 
-
     weak var reportDelegate: ReportBtnDelegate?
     weak var addNewCommentDelegate: AddNewCommentBtnDelegate?
 
@@ -87,7 +86,7 @@ class InfosCell: UITableViewCell {
                                   progressQueue: DispatchQueue.main,
                                   imageTransition: UIImageView.ImageTransition.noTransition,
                                   runImageTransitionIfCached: false,
-                                  completion: { response in
+                                  completion: { _ in // Response
                                     self.loadingIndicator.stopAnimating()
             })
         }
