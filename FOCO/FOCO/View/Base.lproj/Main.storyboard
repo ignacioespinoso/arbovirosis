@@ -138,7 +138,7 @@ casas 2 e 3…</string>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="icy-b5-s2L" userLabel="Comments">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="icy-b5-s2L" userLabel="Comments">
                                                             <rect key="frame" x="20" y="568.33333333333337" width="374" height="26"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que seus vizinhos disseram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-cK-bcD">
@@ -395,14 +395,14 @@ casas 2 e 3…</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y2A-7p-IWG">
-                                <rect key="frame" x="16" y="53.333333333333314" width="374" height="699.66666666666674"/>
+                                <rect key="frame" x="16" y="54" width="374" height="699"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que mais você sabe sobre o foco?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-Aj-XsP">
-                                <rect key="frame" x="16" y="56" width="343" height="26"/>
+                                <rect key="frame" x="20" y="20" width="374" height="26"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -413,9 +413,9 @@ casas 2 e 3…</string>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="top" secondItem="V2T-Aj-XsP" secondAttribute="bottom" constant="8" id="Rq3-z9-8CC"/>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="VK1-3t-UdB"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="20" id="Vpf-QF-aLw"/>
+                            <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="V2T-Aj-XsP" secondAttribute="trailing" constant="20" id="YDM-rU-kA6"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="top" secondItem="3GI-Mt-ATB" secondAttribute="top" constant="20" id="Ydo-kw-aeW"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="Y2A-7p-IWG" secondAttribute="trailing" constant="24" id="jch-UK-KSK"/>
-                            <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="V2T-Aj-XsP" secondAttribute="trailing" priority="750" constant="180" id="kP5-cN-O6Z"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="bottom" secondItem="Y2A-7p-IWG" secondAttribute="bottom" constant="55" id="r2U-Fu-M5r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3GI-Mt-ATB"/>
