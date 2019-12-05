@@ -57,7 +57,12 @@ class BreedingSiteDetailViewController: UIViewController {
                 }
             }
         }
+    }
 
+    // From New Comments
+    @IBAction func unwindToSiteDetail(_ unwindSegue: UIStoryboardSegue) {
+//        let sourceViewController = unwindSegue.source
+        self.tableView.reloadData()
     }
 
 }
@@ -98,7 +103,7 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         return cell ?? UITableViewCell()
     }
 
-    // MARK:  TableView Header
+    // MARK: TableView Header
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
@@ -118,7 +123,7 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         return 80
     }
 
-    // MARK:  TableView Report Actions
+    // MARK: TableView Report Actions
 
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
@@ -161,7 +166,7 @@ extension BreedingSiteDetailViewController: AddNewCommentBtnDelegate {
             if let vc = segue.destination as? NewCommentViewController {
                 vc.breedingSiteId = self.site?.id
             }
-            
+
         default:
             print("None of those segues")
         }

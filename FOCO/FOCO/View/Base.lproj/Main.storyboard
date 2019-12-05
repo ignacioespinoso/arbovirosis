@@ -413,6 +413,7 @@ casas 2 e 3…</string>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="VK1-3t-UdB"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="Vpf-QF-aLw"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="top" secondItem="3GI-Mt-ATB" secondAttribute="top" constant="12" id="Ydo-kw-aeW"/>
+                            <constraint firstItem="V2T-Aj-XsP" firstAttribute="width" secondItem="7ad-Od-CDb" secondAttribute="width" multiplier="0.403382" id="gfO-aE-p4j"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="Y2A-7p-IWG" secondAttribute="trailing" constant="24" id="jch-UK-KSK"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="bottom" secondItem="Y2A-7p-IWG" secondAttribute="bottom" constant="55" id="r2U-Fu-M5r"/>
                         </constraints>
@@ -421,9 +422,11 @@ casas 2 e 3…</string>
                     <navigationItem key="navigationItem" id="Ebu-iq-peX"/>
                     <connections>
                         <outlet property="commentView" destination="Y2A-7p-IWG" id="jEQ-WD-7yl"/>
+                        <segue destination="Lfk-Oo-Aee" kind="unwind" identifier="unwindToSiteDetail" unwindAction="unwindToSiteDetail:" id="F0R-Ei-iY0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGS-QD-NzR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Lfk-Oo-Aee" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3528" y="-1220"/>
         </scene>
