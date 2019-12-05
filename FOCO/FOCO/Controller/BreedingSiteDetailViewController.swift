@@ -61,7 +61,7 @@ class BreedingSiteDetailViewController: UIViewController {
 
     // From New Comments
     @IBAction func unwindToSiteDetail(_ unwindSegue: UIStoryboardSegue) {
-//        let sourceViewController = unwindSegue.source
+        self.getComments()
         self.tableView.reloadData()
     }
 
