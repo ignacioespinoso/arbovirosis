@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JdF-2O-hbJ">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -120,6 +120,9 @@ casas 2 e 3…</string>
                                                                         <constraint firstAttribute="width" secondItem="eFh-wJ-zQe" secondAttribute="height" multiplier="7:2" id="tSS-Y0-feM"/>
                                                                     </constraints>
                                                                     <state key="normal" image="AddCommetn"/>
+                                                                    <connections>
+                                                                        <action selector="addNewComment:" destination="09Y-46-d1T" eventType="touchUpInside" id="QXf-fv-woL"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuE-K6-Vth">
                                                                     <rect key="frame" x="192" y="0.0" width="182" height="52"/>
@@ -127,6 +130,9 @@ casas 2 e 3…</string>
                                                                         <constraint firstAttribute="width" secondItem="GuE-K6-Vth" secondAttribute="height" multiplier="7:2" id="c9F-JS-isM"/>
                                                                     </constraints>
                                                                     <state key="normal" image="AddCommetn"/>
+                                                                    <connections>
+                                                                        <action selector="reportSite:" destination="09Y-46-d1T" eventType="touchUpInside" id="Oov-mD-NcA"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -195,9 +201,7 @@ casas 2 e 3…</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addCommentBtn" destination="eFh-wJ-zQe" id="Bgd-UQ-Ltp"/>
                                             <outlet property="loadingIndicator" destination="5E2-yw-QBa" id="L89-nO-4Ct"/>
-                                            <outlet property="reportSiteBtn" destination="GuE-K6-Vth" id="WB5-TM-0hU"/>
                                             <outlet property="siteAccessType" destination="Ks9-gZ-bfp" id="X7o-Fk-HMS"/>
                                             <outlet property="siteAddress" destination="ht6-Cn-Yde" id="cKl-ln-OD5"/>
                                             <outlet property="siteDescription" destination="RTm-N9-V7v" id="E3m-c6-TyA"/>
@@ -218,6 +222,7 @@ casas 2 e 3…</string>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="ruo-N8-PP4" id="4Ti-G0-aeK"/>
+                        <segue destination="C2X-lz-6c0" kind="presentation" identifier="newComment" id="6zr-Z4-EdX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbP-ha-DG3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -385,18 +390,18 @@ casas 2 e 3…</string>
             <objects>
                 <viewController id="C2X-lz-6c0" customClass="NewCommentViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ad-Od-CDb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y2A-7p-IWG">
-                                <rect key="frame" x="16" y="90" width="374" height="717"/>
+                                <rect key="frame" x="16" y="46" width="374" height="707"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novo Comentário" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-Aj-XsP">
-                                <rect key="frame" x="16" y="56" width="167" height="26"/>
+                                <rect key="frame" x="16" y="12" width="167" height="26"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -408,6 +413,7 @@ casas 2 e 3…</string>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="VK1-3t-UdB"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="Vpf-QF-aLw"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="top" secondItem="3GI-Mt-ATB" secondAttribute="top" constant="12" id="Ydo-kw-aeW"/>
+                            <constraint firstItem="V2T-Aj-XsP" firstAttribute="width" secondItem="7ad-Od-CDb" secondAttribute="width" multiplier="0.403382" id="gfO-aE-p4j"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="Y2A-7p-IWG" secondAttribute="trailing" constant="24" id="jch-UK-KSK"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="bottom" secondItem="Y2A-7p-IWG" secondAttribute="bottom" constant="55" id="r2U-Fu-M5r"/>
                         </constraints>
@@ -416,11 +422,13 @@ casas 2 e 3…</string>
                     <navigationItem key="navigationItem" id="Ebu-iq-peX"/>
                     <connections>
                         <outlet property="commentView" destination="Y2A-7p-IWG" id="jEQ-WD-7yl"/>
+                        <segue destination="Lfk-Oo-Aee" kind="unwind" identifier="unwindToSiteDetail" unwindAction="unwindToSiteDetail:" id="F0R-Ei-iY0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGS-QD-NzR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Lfk-Oo-Aee" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3632" y="-1220"/>
+            <point key="canvasLocation" x="3528" y="-1220"/>
         </scene>
         <!--New Occurrence View Controller-->
         <scene sceneID="sLj-BY-5jE">
