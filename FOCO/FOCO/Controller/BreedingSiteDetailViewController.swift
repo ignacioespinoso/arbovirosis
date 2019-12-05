@@ -201,11 +201,30 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 extension BreedingSiteDetailViewController: ReportBtnDelegate {
 
     func reportBreedingSite(forId id: Int) {
+
+        let successMessage = "Agradecemos o aviso. Seu feedback melhora as nossas informações."
+        let failMessage = "Desculpe! Não foi possível acessar os dados. Por favor, tente novamente."
+
         BreedingSitesServices.reportSite(breedingSiteId: id) { (error) in
             if error == nil {
-                print("REPORTED: site reported ok!")
+                DispatchQueue.main.async {
+                    Utils.setupAlertController(viewController: self,
+                                               message: successMessage,
+                                               systemImage: "exclamationmark.bubble",
+                                               timer: nil,
+                                               completion: { })
+                }
+                print("Comment reported successfully")
             } else {
-                print("Could not report site")
+                DispatchQueue.main.async {
+                    Utils.setupAlertController(viewController: self,
+                                              message: failMessage,
+                                              systemImage: "xmark.octagon",
+                                              color: .appCoral,
+                                              timer: nil,
+                                              completion: { })
+                }
+                print("Comment report failed")
             }
         }
     }
