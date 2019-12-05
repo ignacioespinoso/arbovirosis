@@ -103,19 +103,21 @@ class NewOccurrenceViewController: FormViewController {
 
              DiseaseOccurrencesServices.createDisease(jsonData: jsonData, { (error) in
                  if error == nil {
-                     print("TUDO CERRTO")
+                     print("Created disease occurrence created successfully.")
                  } else {
+                    // TODO: - Give user feedback when something wrong happened
                      print(error!)
                  }
              })
             performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
         } else {
             if locationForm?.value == nil {
-                print("no location set")
+                print("No location was set")
             }
             if symptomsStartForm?.value == nil {
-                print("no start set")
+                print("No symptoms start was set")
             }
+            // Shows user feedback that not every mandatory field was filled.
             let alert = UIAlertController(title: "Erro",
                                           message: "Preencha os campos obrigatórios",
                                           preferredStyle: .alert)

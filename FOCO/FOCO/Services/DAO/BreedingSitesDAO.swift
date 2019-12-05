@@ -11,8 +11,8 @@ import UIKit
 import Alamofire
 
 class BreedingSitesDAO {
-
-    static let address = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/")
+    static let baseUrl = "https://safe-peak-03441.herokuapp.com/breeding-sites/"
+    static let address = URL(string: baseUrl)
 
     // MARK: - Find
 
@@ -40,7 +40,7 @@ class BreedingSitesDAO {
 
     static func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ site: BreedingSite?) -> Void) {
-        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingId)") {
+        if let url = URL(string: baseUrl + "\(breedingId)") {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
                 if let data = data {
@@ -64,7 +64,7 @@ class BreedingSitesDAO {
     static func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ image: [UInt8]?) -> Void) {
 
-        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingId)/pic") {
+        if let url = URL(string: baseUrl +  "\(breedingId)/pic") {
 
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
@@ -84,7 +84,7 @@ class BreedingSitesDAO {
     static func uploadImageById (breedingId: Int,
                                  image: UIImage,
                                  _ completion: @escaping (_ error: Error?) -> Void) {
-        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingId)") {
+        if let url = URL(string: baseUrl + "\(breedingId)") {
             Alamofire.upload(multipartFormData: { MultipartFormData in
                 if let imageData = image.jpegData(compressionQuality: 1.0) {
                     MultipartFormData.append(imageData,
@@ -164,13 +164,13 @@ class BreedingSitesDAO {
         }
     }
 
-    // MARK: -  Report Breeding Site
+    // MARK: - Report Breeding Site
 
     static func reportSite (breedingSiteId: Int,
-                               _ completion: @escaping (_ error: Error?,
+                            _ completion: @escaping (_ error: Error?,
                                                         _ reports: Int?) -> Void) {
 
-        let urlString = "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingSiteId)/report"
+        let urlString = baseUrl + "\(breedingSiteId)/report"
 
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
@@ -197,7 +197,7 @@ class BreedingSitesDAO {
                 print("Report Site response status", response.statusCode)
 
                 if let data = data {
-                        print("data=\(String(data: data, encoding: .utf8))")
+                    print("data=\(String(describing: String(data: data, encoding: .utf8)))")
                         let stringInt = String.init(data: data, encoding: String.Encoding.utf8)
                         let reports = Int.init(stringInt ?? "")
                         completion(nil, reports)
