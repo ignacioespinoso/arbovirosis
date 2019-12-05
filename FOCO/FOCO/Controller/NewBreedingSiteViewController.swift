@@ -38,7 +38,7 @@ class NewBreedingSiteViewController: FormViewController {
                                  y: (self.tableView?.frame.origin.y)!,
                                  width: (self.tableView?.frame.size.width)!,
                                  height: (self.tableView?.frame.size.height)! - 40)
-        
+
         // Adds done button
         let doneButton = UIBarButtonItem(title: "Pronto", style: .done,
                                          target: self, action: #selector(saveOccurrence))
@@ -86,7 +86,7 @@ class NewBreedingSiteViewController: FormViewController {
         let titleForm: TextRow? = self.form.rowBy(tag: "title")
         let accessTypeForm: PickerInputRow<String>? = self.form.rowBy(tag: "accessType")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
-        
+
         // Verifies if mandatory fields were filled
         if let location = locationForm?.value,
             let title = titleForm?.value,
@@ -125,7 +125,7 @@ class NewBreedingSiteViewController: FormViewController {
     }
 }
 
-// MARK - ImagePickerDelegate
+// MARK: - ImagePickerDelegate
 extension NewBreedingSiteViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         // Adjust placeholder content depending if an image was selected.

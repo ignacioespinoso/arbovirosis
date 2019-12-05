@@ -119,9 +119,8 @@ class BreedingSitesServices {
     }
 
     // MARK: - Report Site
-
     static func reportSite (breedingSiteId: Int,
-                               _ completion: @escaping (_ error: Error?) -> Void ) {
+                            _ completion: @escaping (_ error: Error?) -> Void ) {
 
         BreedingSitesDAO.reportSite(breedingSiteId: breedingSiteId) { (error, reports) in
 
