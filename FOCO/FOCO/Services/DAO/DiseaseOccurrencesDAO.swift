@@ -10,8 +10,8 @@ Because its Asynchronous, escaping completion blocks are used
 import Foundation
 
 class DiseaseOccurrencesDAO {
-
-    static let address = URL(string: "https://safe-peak-03441.herokuapp.com/diseases")
+    static let baseUrl = "https://safe-peak-03441.herokuapp.com/diseases"
+    static let address = URL(string: baseUrl)
 
 // MARK: Functions
     static func findAll (_ completion: @escaping (_ error: Error?,
@@ -71,26 +71,3 @@ class DiseaseOccurrencesDAO {
         }
     }
 }
-
-/*  PARA TRATAMENTO DOS ERROS
-
-if error != nil || data == nil {
-    print("Client error!")
-    completion(error, nil)
-    return
-}
-
-guard let response = response as? HTTPURLResponse,
-          (200...299).contains(response.statusCode)
-else {
-    print("Server error!")
-    completion(error, nil)
-    return
-}
-
-guard let mime = response.mimeType, mime == "application/json" else {
-    print("Wrong MIME type!")
-    completion(error, nil)
-    return
-}
-*/

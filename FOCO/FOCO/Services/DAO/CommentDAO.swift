@@ -9,14 +9,14 @@
 import Foundation
 
 class CommentDAO {
+    static let baseUrl = "https://safe-peak-03441.herokuapp.com/breeding-sites/"
 
     // MARK: - Get Comment Array
-
     static func findAllCommentsByBreedingSiteId (breedingSiteId: Int,
                                                  _ completion: @escaping (_ error: Error?,
                                                                             _ site: [Comment]?) -> Void) {
 
-        let urlString = "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingSiteId)/comments"
+        let urlString = baseUrl + "\(breedingSiteId)/comments"
 
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -38,13 +38,12 @@ class CommentDAO {
     }
 
     // MARK: - Post Comment
-
     static func createComment (breedingSiteId: Int,
                                jsonData: Data?,
                                _ completion: @escaping (_ error: Error?,
                                                         _ commentId: Comment?) -> Void) {
 
-        let urlString = "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingSiteId)/comments"
+        let urlString = baseUrl + "\(breedingSiteId)/comments"
 
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
@@ -72,7 +71,7 @@ class CommentDAO {
                 print("Create Comment response status", response.statusCode)
 
                 if let data = data {
-                        print("data=\(String(data: data, encoding: .utf8))")
+                    print("data=\(String(describing: String(data: data, encoding: .utf8)))")
                         do {
                             let createdComment = try JSONDecoder().decode(Comment.self, from: data)
                             // único caso onde não há erro. Passo para frente a ocorrencia
@@ -94,7 +93,7 @@ class CommentDAO {
                                _ completion: @escaping (_ error: Error?,
                                                         _ reports: Int?) -> Void) {
 
-        let urlString = "https://safe-peak-03441.herokuapp.com/breeding-sites/\(breedingSiteId)/comments/\(commentId)/report"
+        let urlString = baseUrl + "\(breedingSiteId)/comments/\(commentId)/report"
 
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
@@ -121,7 +120,7 @@ class CommentDAO {
                 print("Report Comment response status", response.statusCode)
 
                 if let data = data {
-                        print("data=\(String(data: data, encoding: .utf8))")
+                    print("data=\(String(describing: String(data: data, encoding: .utf8)))")
                         let stringInt = String.init(data: data, encoding: String.Encoding.utf8)
                         let reports = Int.init(stringInt ?? "")
                         completion(nil, reports)

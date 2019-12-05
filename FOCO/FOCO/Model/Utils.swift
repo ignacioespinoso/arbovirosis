@@ -61,7 +61,10 @@ class Utils: NSObject {
     // MARK: - Get Customized Feedback Alert
     // Sets up an alert controller at given view, showing a message and a system image below it
     // The alert is automatically dismissed after the timer passes
-    static func setupAlertController(viewController: UIViewController, message: String, systemImage: String, timer: Double) {
+    static func setupAlertController(viewController: UIViewController,
+                                     message: String,
+                                     systemImage: String,
+                                     timer: Double) {
         let alert = UIAlertController(title: "Seu comentário foi adicionado com sucesso!",
                                       message: "\n\n\n",
                                       preferredStyle: .alert)
