@@ -14,6 +14,10 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var commentView: UITextView!
 
+    // MARK: - Variables
+
+    let unwindToBreendingSiteDetails: String = "unwindToSiteDetail"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -61,7 +65,10 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
                                                    message: "Seu comentário foi adicionado com sucesso!",
                                                    systemImage: "checkmark.circle",
                                                    timer: 2.0,
-                                                   completion: { })
+                                                   completion: {
+                                                    self.performSegue(withIdentifier: self.unwindToBreendingSiteDetails,
+                                                                      sender: nil)
+                        })
                     }
                 } else {
                     Utils.setupAlertController(viewController: self,
@@ -69,7 +76,10 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
                                                 systemImage: "xmark.octagon",
                                                 color: .red,
                                                 timer: 2.0,
-                                                completion: { })
+                                                completion: {
+                                                    self.performSegue(withIdentifier: self.unwindToBreendingSiteDetails,
+                                                                      sender: nil)
+                    })
                     print(error!.localizedDescription)
                 }
             }

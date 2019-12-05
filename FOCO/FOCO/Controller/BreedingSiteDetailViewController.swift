@@ -39,8 +39,30 @@ class BreedingSiteDetailViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
 
-        let antevere = Comment(content: "oooooo")
-        self.comments.append(antevere)
+        getComments()
+
+        self.tableView.separatorStyle = .none
+    }
+
+    func getComments() {
+        if let breedingSite = site {
+            CommentServices.findAllCommentsByBreedingSiteId(breedingSiteId: breedingSite.id) { (error, allComments) in
+                if error == nil, let messages = allComments {
+                    self.comments = messages
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    print("Error in Comments")
+                }
+            }
+        }
+    }
+
+    // From New Comments
+    @IBAction func unwindToSiteDetail(_ unwindSegue: UIStoryboardSegue) {
+        self.getComments()
+        self.tableView.reloadData()
     }
 
 }
@@ -61,6 +83,8 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
             cell = tableView.dequeueReusableCell(withIdentifier: InfosCell.identifier) as? InfosCell
 
             if let detailCell = cell as? InfosCell {
+                detailCell.reportDelegate = self
+                detailCell.addNewCommentDelegate = self
                 detailCell.setLabels(withSite: self.site!)
             }
 
@@ -79,6 +103,8 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         return cell ?? UITableViewCell()
     }
 
+    // MARK: TableView Header
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         // Dequeue with the reuse identifier
@@ -95,6 +121,59 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
+    }
+
+    // MARK: TableView Report Actions
+
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+
+        if editingStyle == .delete {
+            CommentServices.reportComment(breedingSiteId: self.site!.id,
+                                          commentId: self.comments[indexPath.row - 1].id) { error in
+                                            if error == nil {
+                                                print("ALERTOU - denuncia comentario")
+                                            } else {
+                                                print("Comment report failed")
+                                            }
+            }
+        }
+    }
+
+}
+
+    // MARK: - Buttons Delegates
+
+extension BreedingSiteDetailViewController: ReportBtnDelegate {
+
+    func reportBreedingSite(forId id: Int) {
+        BreedingSitesServices.reportSite(breedingSiteId: id) { (error) in
+            if error == nil {
+                print("REPORTED: site reported ok!")
+            } else {
+                print("Could not report site")
+            }
+        }
+    }
+}
+
+extension BreedingSiteDetailViewController: AddNewCommentBtnDelegate {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "newComment":
+            if let vc = segue.destination as? NewCommentViewController {
+                vc.breedingSiteId = self.site?.id
+            }
+
+        default:
+            print("None of those segues")
+        }
+    }
+
+    func addNewComment(forSite siteId: Int) {
+        performSegue(withIdentifier: "newComment", sender: nil)
     }
 
 }

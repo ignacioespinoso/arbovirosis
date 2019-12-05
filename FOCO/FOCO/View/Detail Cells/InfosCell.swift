@@ -12,18 +12,28 @@ import UIKit
 import MapKit
 import AlamofireImage
 
+protocol ReportBtnDelegate: NSObjectProtocol {
+    func reportBreedingSite(forId id: Int)
+}
+
+protocol AddNewCommentBtnDelegate: NSObjectProtocol {
+    func addNewComment(forSite siteId: Int)
+}
+
 class InfosCell: UITableViewCell {
 
     // MARK: - Outlets
 
+    var siteId: Int = 0
     @IBOutlet weak private var siteImage: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
     @IBOutlet weak private var siteAddress: UILabel!
     @IBOutlet weak private var siteAccessType: UILabel!
     @IBOutlet weak private var siteDescription: UILabel!
-    @IBOutlet weak private var addCommentBtn: UIButton!
-    @IBOutlet weak private var reportSiteBtn: UIButton!
+
+    weak var reportDelegate: ReportBtnDelegate?
+    weak var addNewCommentDelegate: AddNewCommentBtnDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +51,17 @@ class InfosCell: UITableViewCell {
         getAddress(fromSite: site)
         self.siteAccessType.text = site.type
         self.siteDescription.text = site.description
+        self.siteId = site.id
+    }
+
+    // MARK: - Buttons
+
+    @IBAction func addNewComment(_ sender: Any) {
+        addNewCommentDelegate?.addNewComment(forSite: self.siteId)
+    }
+
+    @IBAction func reportSite(_ sender: UIButton) {
+        reportDelegate?.reportBreedingSite(forId: self.siteId)
     }
 
     // MARK: - Aux
@@ -63,7 +84,6 @@ class InfosCell: UITableViewCell {
         self.loadingIndicator.startAnimating()
 
         if let breedingPic = site.imageURL {
-//            siteImage.af_setImage(withURL: breedingPic)
             siteImage.af_setImage(withURL: breedingPic,
                                   placeholderImage: nil,
                                   filter: nil,
