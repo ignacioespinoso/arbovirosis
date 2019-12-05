@@ -17,11 +17,11 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Novo Comentário"
+        self.title = "O que mais você sabe sobre esse foco?"
         commentView.delegate = self
 
         // Sets placeholder
-        commentView.text = "O que mais você viu no foco?"
+        commentView.text = "Ex. Entrei em contato com a prefeitura, mas acho que devemos fazer um mutirão na área."
         commentView.textColor = UIColor.lightGray
 
         // Adds gesture recognizer to help manage keyboard behaviour
@@ -83,7 +83,7 @@ extension NewCommentViewController {
     func textViewDidEndEditing(_ textView: UITextView) {
         // Reset placeholder if necessary
         if textView.text.isEmpty {
-            textView.text = "O que mais você viu no foco?"
+            textView.text = "Ex. Entrei em contato com a prefeitura, mas acho que devemos fazer um mutirão na área."
             textView.textColor = UIColor.lightGray
         }
     }
