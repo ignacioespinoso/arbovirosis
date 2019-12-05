@@ -120,12 +120,14 @@ class NewOccurrenceViewController: FormViewController {
     }
 
     private func showFeedbackAndUnwind(successful: Bool) {
+        let successMessage = "Parabéns! O caso foi adicionado e vai contribuir no combate ao vírus!"
+        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
         if successful {
            DispatchQueue.main.async {
                Utils.setupAlertController(viewController: self,
-                                          message: "O caso foi informado com sucesso!",
+                                          message: successMessage,
                                           systemImage: "checkmark.circle",
-                                          timer: 2.0,
+                                          timer: nil,
                                           completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
                })
@@ -134,10 +136,10 @@ class NewOccurrenceViewController: FormViewController {
         } else {
            DispatchQueue.main.async {
                Utils.setupAlertController(viewController: self,
-                                           message: "Erro ao adicionar caso de doença",
+                                           message: failMessage,
                                            systemImage: "xmark.octagon",
                                            color: .appCoral,
-                                           timer: 2.0,
+                                           timer: nil,
                                            completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
                })

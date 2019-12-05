@@ -126,12 +126,14 @@ class NewBreedingSiteViewController: FormViewController {
 
     // Shows an alert controller and dismiss it before unwinding.
     private func showFeedbackAndUnwind(successful: Bool) {
+        let successMessage = "Parabéns! O foco foi adicionado e vai contribuir no combate ao vírus!"
+        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
         if successful {
             DispatchQueue.main.async {
                 Utils.setupAlertController(viewController: self,
-                                          message: "O foco foi informado com sucesso!",
+                                          message: successMessage,
                                           systemImage: "checkmark.circle",
-                                          timer: 2.0,
+                                          timer: nil,
                                           completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
                                                               sender: self)
@@ -141,10 +143,10 @@ class NewBreedingSiteViewController: FormViewController {
         } else {
            DispatchQueue.main.async {
                 Utils.setupAlertController(viewController: self,
-                                           message: "Erro ao adicionar foco",
+                                           message: failMessage,
                                            systemImage: "xmark.octagon",
                                            color: .appCoral,
-                                           timer: 2.0,
+                                           timer: nil,
                                            completion: {
                                             self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
                                                               sender: self)
