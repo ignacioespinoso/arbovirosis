@@ -21,6 +21,7 @@ class NewBreedingSiteViewController: FormViewController {
     var imagePicker: ImagePicker!
 
     @IBOutlet weak var portraitButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Sets up image picker view and placeholder image.
@@ -43,6 +44,8 @@ class NewBreedingSiteViewController: FormViewController {
                                          target: self, action: #selector(saveOccurrence))
         self.navigationItem.rightBarButtonItem = doneButton
         self.title = "Novo Foco"
+
+        // Implements form rows
         form +++ Section("Dados do Foco")
             <<< TextRow("title") { row in
                 row.title = "Título"
@@ -67,20 +70,24 @@ class NewBreedingSiteViewController: FormViewController {
             }
     }
 
-    
+    // Show image picker when button is pressed.
     @IBAction func showImagePicker(_ sender: UIButton) {
         self.imagePicker.present(from: sender)
     }
 
+    // Performs segue back to the navigator screen
     @objc func back(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
     }
 
+    // Saves breeding site occurrence
     @objc func saveOccurrence() {
+        // Retrieves data from the form
         let titleForm: TextRow? = self.form.rowBy(tag: "title")
         let accessTypeForm: PickerInputRow<String>? = self.form.rowBy(tag: "accessType")
         let locationForm: LocationRow? = self.form.rowBy(tag: "location")
-
+        
+        // Verifies if mandatory fields were filled
         if let location = locationForm?.value,
             let title = titleForm?.value,
             let accessType = accessTypeForm?.value {
@@ -88,33 +95,27 @@ class NewBreedingSiteViewController: FormViewController {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
 
+            // Instantiate new breeding site
             let newBreedingSite = BreedingSite(title: title,
                                                description: self.form.rowBy(tag: "description")?.value,
                                                type: accessType,
                                                latitude: latitude,
                                                longitude: longitude)
-            print(newBreedingSite)
 
-            // TODO: Create Site should pass BreedingSite object instead of a Data object [Guga]
-
+            // Upload breeding site to the API
             BreedingSitesServices.createSite(breedingSite: newBreedingSite,
                                              image: self.breedingSiteImage.image, { (error) in
                  if error == nil {
                     print("Created breeding site successfully.")
                  } else {
-                     print(error!)
+                    // TODO: - Give user feedback when something wrong happened
+                    print(error!)
                  }
             })
             self.performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
 
-            // TODO: Get ID from createSite responde (probably on DAO, not here) and create Patch Request
-            // Tests for ID  5 only -- didn't work
-//            let image = breedingSiteImage.image?.pngData()
-//            let params = ["file": image ]
-//            Alamofire.request("https://safe-peak-03441.herokuapp.com/breeding-sites/5/?file",
-//            method: .patch, parameters: params as Parameters)
-
         } else {
+            // Shows user feedback that not every mandatory field was filled.
             let alert = UIAlertController(title: "Erro",
                                           message: "Preencha os campos obrigatórios",
                                           preferredStyle: .alert)
@@ -124,8 +125,10 @@ class NewBreedingSiteViewController: FormViewController {
     }
 }
 
+// MARK - ImagePickerDelegate
 extension NewBreedingSiteViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
+        // Adjust placeholder content depending if an image was selected.
         self.breedingSiteImage.image = image
         if breedingSiteImage.image != nil {
             portraitButton.isHidden = true
