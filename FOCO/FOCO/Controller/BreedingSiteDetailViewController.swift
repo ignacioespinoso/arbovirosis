@@ -125,22 +125,57 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 
     // MARK: TableView Report Actions
 
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        var allowEditing: Bool = true
 
-        if editingStyle == .delete {
-            CommentServices.reportComment(breedingSiteId: self.site!.id,
-                                          commentId: self.comments[indexPath.row - 1].id) { error in
-                                            if error == nil {
-                                                print("ALERTOU - denuncia comentario")
-                                            } else {
-                                                print("Comment report failed")
-                                            }
-            }
+        // First Info Detail Cell cannot be eddited
+        if indexPath.row == 0 {
+            allowEditing = false
         }
+
+        return allowEditing
     }
 
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        let reportAction = UITableViewRowAction(style: .normal, title: "Reportar") { ( _, indexPath) in // RowAction
+            CommentServices.reportComment(breedingSiteId: self.site!.id,
+                                          commentId: self.comments[indexPath.row - 1].id) { error in
+                                if error == nil {
+                                    print("ALERTOU - denuncia comentario")
+                                } else {
+                                    print("Comment report failed")
+                                }
+            }
+        }
+
+        reportAction.backgroundColor = .red
+
+        return [reportAction]
+    }
+
+//    func tableView(_ tableView: UITableView,
+//                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+//      ->   UISwipeActionsConfiguration? {
+//
+//
+//      let title = "favorite"
+//
+//      let action = UIContextualAction(style: .normal, title: title,
+//        handler: { (action, view, completionHandler) in
+//      })
+//
+//      action.image = UIImage(systemName: "exclamationmark.bubble.fill")
+//        action.backgroundColor = .red
+//      let configuration = UISwipeActionsConfiguration(actions: [action])
+//      return configuration
+//    }
+//
+//    func tableView(_ tableView: UITableView,
+//      editingStyleForRowAt indexPath: IndexPath)
+//        -> UITableViewCell.EditingStyle {
+//      return .none
+//    }
 }
 
     // MARK: - Buttons Delegates
