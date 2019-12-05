@@ -167,7 +167,7 @@ class BreedingSitesDAO {
     // MARK: - Report Breeding Site
 
     static func reportSite (breedingSiteId: Int,
-                            _ completion: @escaping (_ error: Error?,
+                            completion: @escaping (_ error: Error?,
                                                         _ reports: Int?) -> Void) {
 
         let urlString = baseUrl + "\(breedingSiteId)/report"

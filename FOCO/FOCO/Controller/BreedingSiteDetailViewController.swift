@@ -78,6 +78,8 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
             cell = tableView.dequeueReusableCell(withIdentifier: InfosCell.identifier) as? InfosCell
 
             if let detailCell = cell as? InfosCell {
+                detailCell.reportDelegate = self
+                detailCell.addNewCommentDelegate = self
                 detailCell.setLabels(withSite: self.site!)
             }
 
@@ -95,6 +97,8 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 
         return cell ?? UITableViewCell()
     }
+
+    // MARK:  TableView Header
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
@@ -114,7 +118,8 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         return 80
     }
 
-    // Report Actions
+    // MARK:  TableView Report Actions
+
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
@@ -129,6 +134,41 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
                                             }
             }
         }
+    }
+
+}
+
+    // MARK: - Buttons Delegates
+
+extension BreedingSiteDetailViewController: ReportBtnDelegate {
+
+    func reportBreedingSite(forId id: Int) {
+        BreedingSitesServices.reportSite(breedingSiteId: id) { (error) in
+            if error == nil {
+                print("REPORTED: site reported ok!")
+            } else {
+                print("Could not report site")
+            }
+        }
+    }
+}
+
+extension BreedingSiteDetailViewController: AddNewCommentBtnDelegate {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "newComment":
+            if let vc = segue.destination as? NewCommentViewController {
+                vc.breedingSiteId = self.site?.id
+            }
+            
+        default:
+            print("None of those segues")
+        }
+    }
+
+    func addNewComment(forSite siteId: Int) {
+        performSegue(withIdentifier: "newComment", sender: nil)
     }
 
 }
