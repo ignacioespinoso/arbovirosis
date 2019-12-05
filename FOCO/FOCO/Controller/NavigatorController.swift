@@ -40,7 +40,7 @@ class NavigatorController: UIViewController {
         // Long Press Gesture for New Item
         let longPressGesture = UILongPressGestureRecognizer(target: self,
                                                             action: #selector(addAnnotationOnLongPress(gesture:)))
-        longPressGesture.minimumPressDuration = 1.0
+        longPressGesture.minimumPressDuration = 0.3
         self.mapView.addGestureRecognizer(longPressGesture)
     }
 
