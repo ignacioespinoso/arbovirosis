@@ -41,10 +41,6 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
         bar.items = [spacer, done, spacer]
         bar.sizeToFit()
         commentView.inputAccessoryView = bar
-
-        // Mocking for tests
-        breedingSiteId = 6
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,74 +49,24 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
         commentView.becomeFirstResponder()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
     @objc func doneTapped() {
         if let content = commentView.text {
-            print(content)
-            // TODO: Alert is not appearing yet
+            // Uploads comment to the API
             CommentServices.createComment(breedingSiteId: self.breedingSiteId ?? 0,
                                           comment: Comment(content: content)) { (error) in
                 if error == nil {
+                    // Show alert if comment was posted successfully
                     DispatchQueue.main.async {
-                        self.setupAlertController()
+                        Utils.setupAlertController(viewController: self,
+                                                   message: "Seu comentário foi adicionado com sucesso!",
+                                                   systemImage: "checkmark.circle",
+                                                   timer: 2.0)
                     }
                 } else {
                     print(error!.localizedDescription)
                 }
             }
         }
-    }
-
-    func setupAlertController() {
-        let alert = UIAlertController(title: "Seu comentário foi adicionado com sucesso!",
-                                      message: "\n\n\n",
-                                      preferredStyle: .alert)
-
-        let image = UIImageView(image: UIImage(systemName: "checkmark.circle"))
-        alert.view.addSubview(image)
-        setupAlertControllerConstraints(alert: alert, image: image)
-        self.present(alert, animated: true, completion: nil)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-          alert.dismiss(animated: true, completion: nil)
-        })
-    }
-
-    func setupAlertControllerConstraints(alert: UIAlertController, image: UIImageView) {
-        // Defines Constraints for image
-        alert.view.translatesAutoresizingMaskIntoConstraints = false
-        image.translatesAutoresizingMaskIntoConstraints = false
-        alert.view.addConstraint(NSLayoutConstraint(item: image,
-                                                   attribute: .centerX,
-                                                   relatedBy: .equal,
-                                                   toItem: alert.view,
-                                                   attribute: .centerX,
-                                                   multiplier: 1,
-                                                   constant: 0))
-        alert.view.addConstraint(NSLayoutConstraint(item: image,
-                                                   attribute: .bottom,
-                                                   relatedBy: .equal,
-                                                   toItem: alert.view,
-                                                   attribute: .bottom,
-                                                   multiplier: 1,
-                                                   constant: -8))
-        alert.view.addConstraint(NSLayoutConstraint(item: image,
-                                                   attribute: .width,
-                                                   relatedBy: .equal,
-                                                   toItem: nil,
-                                                   attribute: .notAnAttribute,
-                                                   multiplier: 1.0,
-                                                   constant: 64.0))
-        alert.view.addConstraint(NSLayoutConstraint(item: image,
-                                                   attribute: .height,
-                                                   relatedBy: .equal,
-                                                   toItem: nil,
-                                                   attribute: .notAnAttribute,
-                                                   multiplier: 1.0,
-                                                   constant: 64.0))
     }
 }
 
