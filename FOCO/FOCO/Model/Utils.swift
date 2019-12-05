@@ -12,19 +12,25 @@ import MapKit
 
 class Utils: NSObject {
 
+    // MARK: - Get Formatted Date String
     static func fixDateFormat(inputDate: String) -> String {
         let dateFormatter =  DateFormatter()
+        // Uses API format for dates.
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        // Checks if the input is indeed a date in the  expected format.
         guard let date = dateFormatter.date(from: inputDate) else {
             preconditionFailure(
                 "Your input format is unexpected. Please follow the format: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'"
             )
         }
+        // Choose output date format
         dateFormatter.dateFormat = "dd-MM-yyyy"
         let fixedDate = dateFormatter.string(from: date)
         return fixedDate
     }
 
+
+    // MARK: - Get Full Address From a Coordinate
     static func getAddressText(coordinate: CLLocation, completion: @escaping (String?, Error?) -> Void) {
 
         var addressTxt = ""
@@ -51,7 +57,8 @@ class Utils: NSObject {
         })
 
     }
-    
+
+    // MARK: - Get Customized Feedback Alert
     // Sets up an alert controller at given view, showing a message and a system image below it
     // The alert is automatically dismissed after the timer passes
     static func setupAlertController(viewController: UIViewController, message: String, systemImage: String, timer: Double) {

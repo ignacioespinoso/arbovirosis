@@ -45,9 +45,10 @@ class NavigatorController: UIViewController {
     }
 
     // MARK: Button Actions
+    //
     @IBAction func refreshButton(_ sender: Any) {
         // Code to reload data from server
-        // Needs fix: clicking fast, it loads twice.
+        // TODO: Lock button for prevent double-click
         reloadData()
     }
 
