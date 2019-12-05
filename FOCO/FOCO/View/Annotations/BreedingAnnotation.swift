@@ -25,7 +25,7 @@ class BreedingAnnotation: NSObject, MKAnnotation {
 
     var subtitle: String? {
         // Future: return disease.initialSymptoms
-        return "Foco!"
+        return "Entre para mais informações!"
     }
 }
 
