@@ -23,20 +23,24 @@ class NewBreedingSiteViewController: FormViewController {
     @IBOutlet weak var portraitButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Sets up image picker view and placeholder image.
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        breedingSiteImage.backgroundColor = UIColor.lightGray
+
+        // Sets back button
         let backButton = UIBarButtonItem(title: "Novo Foco", style: .plain,
                                          target: self, action: #selector(back(sender:)))
-        breedingSiteImage.backgroundColor = UIColor.lightGray
         self.navigationItem.backBarButtonItem = backButton
 
+        // Sets table view form below the image picker view.
         tableView?.frame = CGRect(x: (self.tableView?.frame.origin.x)!,
                                  y: (self.tableView?.frame.origin.y)!,
                                  width: (self.tableView?.frame.size.width)!,
                                  height: (self.tableView?.frame.size.height)! - 40)
-
+        
+        // Adds done button
         let doneButton = UIBarButtonItem(title: "Pronto", style: .done,
                                          target: self, action: #selector(saveOccurrence))
-
         self.navigationItem.rightBarButtonItem = doneButton
         self.title = "Novo Foco"
         form +++ Section("Dados do Foco")
@@ -63,12 +67,11 @@ class NewBreedingSiteViewController: FormViewController {
             }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+    
     @IBAction func showImagePicker(_ sender: UIButton) {
         self.imagePicker.present(from: sender)
     }
+
     @objc func back(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "unwindToMapFromBreedingSite", sender: self)
     }

@@ -50,4 +50,56 @@ class Utils: NSObject {
             }
         })
 
-    }}
+    }
+    
+    // Sets up an alert controller at given view, showing a message and a system image below it
+    // The alert is automatically dismissed after the timer passes
+    static func setupAlertController(viewController: UIViewController, message: String, systemImage: String, timer: Double) {
+        let alert = UIAlertController(title: "Seu comentário foi adicionado com sucesso!",
+                                      message: "\n\n\n",
+                                      preferredStyle: .alert)
+
+        let image = UIImageView(image: UIImage(systemName: "checkmark.circle"))
+        alert.view.addSubview(image)
+        setupAlertControllerConstraints(alert: alert, image: image)
+        viewController.present(alert, animated: true, completion: nil)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + timer, execute: {
+          alert.dismiss(animated: true, completion: nil)
+        })
+    }
+
+    static func setupAlertControllerConstraints(alert: UIAlertController, image: UIImageView) {
+        // Defines Constraints for image
+        alert.view.translatesAutoresizingMaskIntoConstraints = false
+        image.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .centerX,
+                                                   relatedBy: .equal,
+                                                   toItem: alert.view,
+                                                   attribute: .centerX,
+                                                   multiplier: 1,
+                                                   constant: 0))
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .bottom,
+                                                   relatedBy: .equal,
+                                                   toItem: alert.view,
+                                                   attribute: .bottom,
+                                                   multiplier: 1,
+                                                   constant: -8))
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .width,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1.0,
+                                                   constant: 64.0))
+        alert.view.addConstraint(NSLayoutConstraint(item: image,
+                                                   attribute: .height,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1.0,
+                                                   constant: 64.0))
+    }
+}
