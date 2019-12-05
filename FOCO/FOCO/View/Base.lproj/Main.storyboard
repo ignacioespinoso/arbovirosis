@@ -121,7 +121,7 @@ casas 2 e 3…</string>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="eFh-wJ-zQe" secondAttribute="height" multiplier="7:2" id="tSS-Y0-feM"/>
                                                                     </constraints>
-                                                                    <state key="normal" image="AddCommetn"/>
+                                                                    <state key="normal" image="AddComment"/>
                                                                     <connections>
                                                                         <action selector="addNewComment:" destination="09Y-46-d1T" eventType="touchUpInside" id="QXf-fv-woL"/>
                                                                     </connections>
@@ -131,7 +131,7 @@ casas 2 e 3…</string>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="GuE-K6-Vth" secondAttribute="height" multiplier="7:2" id="c9F-JS-isM"/>
                                                                     </constraints>
-                                                                    <state key="normal" image="AddCommetn"/>
+                                                                    <state key="normal" image="ReportComment"/>
                                                                     <connections>
                                                                         <action selector="reportSite:" destination="09Y-46-d1T" eventType="touchUpInside" id="Oov-mD-NcA"/>
                                                                     </connections>
@@ -163,7 +163,7 @@ casas 2 e 3…</string>
                                                     <constraints>
                                                         <constraint firstItem="89S-Sy-mf5" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="42a-Di-Z0u"/>
                                                         <constraint firstItem="dYq-cq-Odp" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="7QH-dN-pcF"/>
-                                                        <constraint firstItem="Akm-ef-xZu" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="BmQ-zA-aIE"/>
+                                                        <constraint firstItem="Akm-ef-xZu" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" identifier="imageLeading" id="BmQ-zA-aIE"/>
                                                         <constraint firstAttribute="trailing" secondItem="vin-rl-MTm" secondAttribute="trailing" constant="20" id="Cl5-SC-VnJ"/>
                                                         <constraint firstItem="VMu-Vk-eMi" firstAttribute="width" secondItem="faQ-fR-m53" secondAttribute="width" multiplier="0.903382" id="DEO-kx-TRn"/>
                                                         <constraint firstItem="VMu-Vk-eMi" firstAttribute="leading" secondItem="faQ-fR-m53" secondAttribute="leading" constant="20" id="FXr-5L-1hx"/>
@@ -188,7 +188,7 @@ casas 2 e 3…</string>
                                                         <constraint firstItem="Akm-ef-xZu" firstAttribute="top" secondItem="faQ-fR-m53" secondAttribute="top" constant="5" id="qah-i4-Cb3"/>
                                                         <constraint firstItem="icy-b5-s2L" firstAttribute="top" secondItem="8iw-mZ-JjE" secondAttribute="bottom" constant="20" id="rWj-Dh-cpJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="nKP-fv-Abj" secondAttribute="trailing" constant="20" id="u7W-hN-zHP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Akm-ef-xZu" secondAttribute="trailing" constant="20" id="ucN-8q-IO5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Akm-ef-xZu" secondAttribute="trailing" constant="20" identifier="imageTrailing" id="ucN-8q-IO5"/>
                                                         <constraint firstItem="89S-Sy-mf5" firstAttribute="top" secondItem="VMu-Vk-eMi" secondAttribute="bottom" constant="12.5" id="uvv-lf-ibF"/>
                                                         <constraint firstItem="Akm-ef-xZu" firstAttribute="width" secondItem="faQ-fR-m53" secondAttribute="width" multiplier="0.903382" id="wFi-4e-NFU"/>
                                                     </constraints>
@@ -490,7 +490,8 @@ casas 2 e 3…</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AddCommetn" width="182" height="52"/>
+        <image name="AddComment" width="182" height="52"/>
+        <image name="ReportComment" width="182" height="52"/>
         <image name="Separator" width="359" height="0.66666668653488159"/>
         <image name="aviso" width="340" height="91"/>
         <image name="fullButtonFilled" width="42" height="83"/>
