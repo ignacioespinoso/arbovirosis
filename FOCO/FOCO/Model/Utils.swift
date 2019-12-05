@@ -57,19 +57,55 @@ class Utils: NSObject {
     static func setupAlertController(viewController: UIViewController,
                                      message: String,
                                      systemImage: String,
-                                     timer: Double) {
-        let alert = UIAlertController(title: "Seu comentário foi adicionado com sucesso!",
+                                     color: UIColor,
+                                     timer: Double,
+                                     completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: message,
                                       message: "\n\n\n",
                                       preferredStyle: .alert)
 
-        let image = UIImageView(image: UIImage(systemName: "checkmark.circle"))
-        alert.view.addSubview(image)
-        setupAlertControllerConstraints(alert: alert, image: image)
-        viewController.present(alert, animated: true, completion: nil)
+        if let image = UIImage(systemName: systemImage) {
+            let coloredImage = image.withTintColor(color, renderingMode: .alwaysOriginal)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + timer, execute: {
-          alert.dismiss(animated: true, completion: nil)
-        })
+            let iconView = UIImageView(image: coloredImage)
+            iconView.contentMode = .scaleAspectFit
+            alert.view.addSubview(iconView)
+            setupAlertControllerConstraints(alert: alert, image: iconView)
+            viewController.present(alert, animated: true, completion: nil)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + timer, execute: {
+                alert.dismiss(animated: true, completion: nil)
+                completion()
+            })
+        } else {
+            print("Invalid systemImage name")
+        }
+    }
+
+    // Sets up an alert controller at given view, showing a message and a system image below it
+    // The alert is automatically dismissed after the timer passes
+    static func setupAlertController(viewController: UIViewController,
+                                     message: String,
+                                     systemImage: String,
+                                     timer: Double,
+                                     completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: message,
+                                      message: "\n\n\n",
+                                      preferredStyle: .alert)
+
+        if let image = UIImage(systemName: systemImage) {
+            let iconView = UIImageView(image: image)
+            alert.view.addSubview(iconView)
+            setupAlertControllerConstraints(alert: alert, image: iconView)
+            viewController.present(alert, animated: true, completion: nil)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + timer, execute: {
+                alert.dismiss(animated: true, completion: nil)
+                completion()
+            })
+        } else {
+            print("Invalid systemImage name")
+        }
     }
 
     static func setupAlertControllerConstraints(alert: UIAlertController, image: UIImageView) {
@@ -104,5 +140,10 @@ class Utils: NSObject {
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1.0,
                                                    constant: 64.0))
+    }
+
+    static func delay(_ delay: Double, closure: @escaping () -> Void) {
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
 }

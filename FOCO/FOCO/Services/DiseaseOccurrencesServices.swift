@@ -34,17 +34,20 @@ class DiseaseOccurrencesServices {
 
     // Apenas precisa checar erro, o objeto retornado é o próprio enviado.
     // Checar http status
-    static func createDisease (jsonData: Data?, _ completion: @escaping (_ error: Error?) -> Void) {
+    static func createDisease (newOccurrence: DiseaseOccurrence, _ completion: @escaping (_ error: Error?) -> Void) {
+        var jsonData: Data?
+        do {
+            jsonData = try JSONEncoder().encode(newOccurrence)
+        } catch let myJSONError {
+            completion(myJSONError)
+        }
 
         DiseaseOccurrencesDAO.create(jsonData: jsonData, { (error) in
-
             if error != nil {
-                // Handle errors - mensagem mais amigável para usuário
-                print(error.debugDescription)
-            } else {
                 completion(error)
+            } else {
+                completion(nil)
             }
-
         })
     }
 }
