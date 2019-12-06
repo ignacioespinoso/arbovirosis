@@ -27,11 +27,12 @@
 		C542FFA523983564001C7E0F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542FFA423983563001C7E0F /* Comment.swift */; };
 		C545CDDC2396F0B400EB713E /* BreedingSiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDDB2396F0B400EB713E /* BreedingSiteDetailViewController.swift */; };
 		C545CDDE2396F23F00EB713E /* DetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C545CDDD2396F23F00EB713E /* DetailHeaderView.xib */; };
-		C545CDE22396F76700EB713E /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDE12396F76700EB713E /* Extention.swift */; };
+		C545CDE22396F76700EB713E /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDE12396F76700EB713E /* ReusableProtocol.swift */; };
 		C545CDE623974B4B00EB713E /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C545CDE523974B4B00EB713E /* DetailHeaderView.swift */; };
 		C545CDEB23975E3C00EB713E /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C545CDE923975E3B00EB713E /* SF-Pro-Text-Regular.otf */; };
 		C545CDEC23975E3C00EB713E /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C545CDEA23975E3C00EB713E /* SF-Pro-Text-Semibold.otf */; };
 		C545CDEE23975F7D00EB713E /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C545CDED23975F7C00EB713E /* SF-Pro-Text-Medium.otf */; };
+		C55CE3462399E15A008EF192 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CE3452399E15A008EF192 /* Constants.swift */; };
 		C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD51237DA7B6007E8C6B /* BreedingSite.swift */; };
 		C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */; };
 		C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */; };
@@ -71,11 +72,12 @@
 		C542FFA423983563001C7E0F /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C545CDDB2396F0B400EB713E /* BreedingSiteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSiteDetailViewController.swift; sourceTree = "<group>"; };
 		C545CDDD2396F23F00EB713E /* DetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderView.xib; sourceTree = "<group>"; };
-		C545CDE12396F76700EB713E /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
+		C545CDE12396F76700EB713E /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		C545CDE523974B4B00EB713E /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		C545CDE923975E3B00EB713E /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		C545CDEA23975E3C00EB713E /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		C545CDED23975F7C00EB713E /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		C55CE3452399E15A008EF192 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C577DD51237DA7B6007E8C6B /* BreedingSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSite.swift; sourceTree = "<group>"; };
 		C577DD53237DA969007E8C6B /* BreedingSitesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesDAO.swift; sourceTree = "<group>"; };
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		80CFFB532397FCAF00BB3A7C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C545CDE12396F76700EB713E /* ReusableProtocol.swift */,
 				80973081238C0C0A007D6419 /* ImagePicker.swift */,
 				80CFFB542397FD3900BB3A7C /* ColorExtension.swift */,
 			);
@@ -198,7 +201,6 @@
 				C5CAD7122375B2BC00B5BBA2 /* Services */,
 				C5CAD7042375B21E00B5BBA2 /* Assets.xcassets */,
 				C545CDE823975DD800EB713E /* Fonts */,
-				80CFFB532397FCAF00BB3A7C /* Extensions */,
 				C5CAD7092375B21E00B5BBA2 /* Info.plist */,
 				C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */,
 				C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */,
@@ -214,7 +216,8 @@
 				C542FFA423983563001C7E0F /* Comment.swift */,
 				C5CAD71A2375B62000B5BBA2 /* Errors.swift */,
 				B34AF8902386E28D00B61F2C /* Utils.swift */,
-				C545CDE12396F76700EB713E /* Extention.swift */,
+				80CFFB532397FCAF00BB3A7C /* Extensions */,
+				C55CE3452399E15A008EF192 /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				B3BF54BE239809610055BC7E /* CommentServices.swift in Sources */,
 				8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */,
 				C577DD56237DAB13007E8C6B /* BreedingSitesServices.swift in Sources */,
+				C55CE3462399E15A008EF192 /* Constants.swift in Sources */,
 				80973082238C0C0A007D6419 /* ImagePicker.swift in Sources */,
 				804A2E66238460FE00214A90 /* FloatLabelTextField.swift in Sources */,
 				80E8F3D52379B26C00445DF8 /* DiseaseAnnotation.swift in Sources */,
@@ -421,7 +425,7 @@
 				C542FFA523983564001C7E0F /* Comment.swift in Sources */,
 				C577DD54237DA969007E8C6B /* BreedingSitesDAO.swift in Sources */,
 				C577DD52237DA7B6007E8C6B /* BreedingSite.swift in Sources */,
-				C545CDE22396F76700EB713E /* Extention.swift in Sources */,
+				C545CDE22396F76700EB713E /* ReusableProtocol.swift in Sources */,
 				80E8F3D22379AED800445DF8 /* NavigatorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
