@@ -136,64 +136,56 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         return allowEditing
     }
 
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
+        let title = "Reportar"
         let successMessage = "Agradecemos o aviso. Seu feedback melhora as nossas informações."
         let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
 
-        let reportAction = UITableViewRowAction(style: .normal, title: "Reportar") { ( _, indexPath) in // RowAction
+        let action = UIContextualAction(style: .normal,
+                                      title: title,
+                                      handler: { (_, _, completionHandler) in // action, sourceView
+
             CommentServices.reportComment(breedingSiteId: self.site!.id,
                                           commentId: self.comments[indexPath.row - 1].id) { error in
-                                if error == nil {
-                                    DispatchQueue.main.async {
-                                        Utils.setupAlertController(viewController: self,
-                                                                   message: successMessage,
-                                                                   systemImage: "exclamationmark.bubble",
-                                                                   timer: nil,
-                                                                   completion: { })
-                                    }
-                                    print("Comment reported successfully")
-                                } else {
-                                    DispatchQueue.main.async {
-                                        Utils.setupAlertController(viewController: self,
-                                                                  message: failMessage,
-                                                                  systemImage: "xmark.octagon",
-                                                                  color: .appCoral,
-                                                                  timer: nil,
-                                                                  completion: { })
-                                    }
-                                    print("Comment report failed")
-                                }
+                if error == nil {
+                    DispatchQueue.main.async {
+                        Utils.setupAlertController(viewController: self,
+                                                   message: successMessage,
+                                                   systemImage: "exclamationmark.bubble",
+                                                   timer: nil,
+                                                   completion: { })
+                    }
+                    print("Comment reported successfully")
+                } else {
+                    DispatchQueue.main.async {
+                        Utils.setupAlertController(viewController: self,
+                                                  message: failMessage,
+                                                  systemImage: "xmark.octagon",
+                                                  color: .appCoral,
+                                                  timer: nil,
+                                                  completion: { })
+                    }
+                    print("Comment report failed")
+                }
             }
-        }
 
-        reportAction.backgroundColor = .red
+            completionHandler(true)
 
-        return [reportAction]
+        })
+
+        action.image = UIImage(named: "Reportar+Symbol")
+        action.backgroundColor = .appOrangeYellow
+        let configuration = UISwipeActionsConfiguration(actions: [action])
+        return configuration
     }
 
-//    func tableView(_ tableView: UITableView,
-//                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
-//      ->   UISwipeActionsConfiguration? {
-//
-//
-//      let title = "favorite"
-//
-//      let action = UIContextualAction(style: .normal, title: title,
-//        handler: { (action, view, completionHandler) in
-//      })
-//
-//      action.image = UIImage(systemName: "exclamationmark.bubble.fill")
-//        action.backgroundColor = .red
-//      let configuration = UISwipeActionsConfiguration(actions: [action])
-//      return configuration
-//    }
-//
-//    func tableView(_ tableView: UITableView,
-//      editingStyleForRowAt indexPath: IndexPath)
-//        -> UITableViewCell.EditingStyle {
-//      return .none
-//    }
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+      return .none
+    }
+
 }
 
     // MARK: - Buttons Delegates
