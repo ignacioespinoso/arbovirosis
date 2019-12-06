@@ -12,7 +12,7 @@ import Alamofire
 
 class BreedingSitesDAO {
 
-    static let address = URL(string: devUrlBreedingSites)
+    static let address = URL(string: productionUrlBreedingSites)
 
     // MARK: - Find
 
@@ -40,7 +40,7 @@ class BreedingSitesDAO {
 
     static func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ site: BreedingSite?) -> Void) {
-        if let url = URL(string: devUrlBreedingSites + "\(breedingId)") {
+        if let url = URL(string: productionUrlBreedingSites + "\(breedingId)") {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
                 if let data = data {
@@ -64,7 +64,7 @@ class BreedingSitesDAO {
     static func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ image: [UInt8]?) -> Void) {
 
-        if let url = URL(string: devUrlBreedingSites +  "\(breedingId)/pic") {
+        if let url = URL(string: productionUrlBreedingSites +  "\(breedingId)/pic") {
 
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 
@@ -84,12 +84,12 @@ class BreedingSitesDAO {
     static func uploadImageById (breedingId: Int,
                                  image: UIImage,
                                  _ completion: @escaping (_ error: Error?) -> Void) {
-        if let url = URL(string: devUrlBreedingSites + "\(breedingId)") {
+        if let url = URL(string: productionUrlBreedingSites + "\(breedingId)") {
             Alamofire.upload(multipartFormData: { MultipartFormData in
                 if let imageData = image.jpegData(compressionQuality: 1.0) {
                     MultipartFormData.append(imageData,
                                              withName: "file",
-                                             fileName: devFirebaseFilename,
+                                             fileName: prodFirebaseFilename,
                                              mimeType: "image/jpeg")
                 }
             }, to: url,
@@ -161,7 +161,7 @@ class BreedingSitesDAO {
                             completion: @escaping (_ error: Error?,
                                                         _ reports: Int?) -> Void) {
 
-        let urlString = devUrlBreedingSites + "\(breedingSiteId)/report"
+        let urlString = productionUrlBreedingSites + "\(breedingSiteId)/report"
 
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
