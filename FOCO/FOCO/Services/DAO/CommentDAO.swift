@@ -15,7 +15,7 @@ class CommentDAO {
                                                  _ completion: @escaping (_ error: Error?,
                                                                             _ site: [Comment]?) -> Void) {
 
-        let urlString = productionUrlBreedingSites + "\(breedingSiteId)/comments"
+        let urlString = devUrlBreedingSites + "\(breedingSiteId)/comments"
 
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -42,7 +42,7 @@ class CommentDAO {
                                _ completion: @escaping (_ error: Error?,
                                                         _ commentId: Comment?) -> Void) {
 
-        let urlString = productionUrlBreedingSites + "\(breedingSiteId)/comments"
+        let urlString = devUrlBreedingSites + "\(breedingSiteId)/comments"
 
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
@@ -92,7 +92,7 @@ class CommentDAO {
                                _ completion: @escaping (_ error: Error?,
                                                         _ reports: Int?) -> Void) {
 
-        let urlString = productionUrlBreedingSites + "\(breedingSiteId)/comments/\(commentId)/report"
+        let urlString = devUrlBreedingSites + "\(breedingSiteId)/comments/\(commentId)/report"
 
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)

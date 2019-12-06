@@ -11,7 +11,7 @@ import Foundation
 
 class DiseaseOccurrencesDAO {
 
-    static let address = URL(string: productionUrlDiseaseOccurrences)
+    static let address = URL(string: devUrlDiseaseOccurrences)
 
 // MARK: Functions
     static func findAll (_ completion: @escaping (_ error: Error?,
