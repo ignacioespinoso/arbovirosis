@@ -19,7 +19,8 @@ struct BreedingSite: Codable {
     let longitude: Double
     let pictureUrl: String?
     var imageURL: URL? {
-        if let url = URL(string: "https://safe-peak-03441.herokuapp.com/breeding-sites/\(self.id)/pic") {
+        if let url = URL(string:
+            devUrlBreedingSites + "\(self.id)/pic") {
             return url
         } else {
             return nil
