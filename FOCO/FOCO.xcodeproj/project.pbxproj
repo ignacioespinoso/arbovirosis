@@ -83,7 +83,7 @@
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
 		C578223823976C210057F015 /* InfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosCell.swift; sourceTree = "<group>"; };
 		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
-		C5CAD6F82375B21C00B5BBA2 /* Nosso Bairro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nosso Bairro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5CAD6F82375B21C00B5BBA2 /* Vizoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vizoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C5CAD7022375B21C00B5BBA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		C5CAD6F92375B21C00B5BBA2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5CAD6F82375B21C00B5BBA2 /* Nosso Bairro.app */,
+				C5CAD6F82375B21C00B5BBA2 /* Vizoom.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,7 +278,7 @@
 			);
 			name = FOCO;
 			productName = FOCO;
-			productReference = C5CAD6F82375B21C00B5BBA2 /* Nosso Bairro.app */;
+			productReference = C5CAD6F82375B21C00B5BBA2 /* Vizoom.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -587,7 +587,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ignacioespinoso.FOCO;
-				PRODUCT_NAME = "Nosso Bairro";
+				PRODUCT_NAME = Vizoom;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -608,7 +608,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ignacioespinoso.FOCO;
-				PRODUCT_NAME = "Nosso Bairro";
+				PRODUCT_NAME = Vizoom;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

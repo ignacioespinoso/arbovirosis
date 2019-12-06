@@ -89,7 +89,7 @@ class BreedingSitesDAO {
                 if let imageData = image.jpegData(compressionQuality: 1.0) {
                     MultipartFormData.append(imageData,
                                              withName: "file",
-                                             fileName: "file.jpg",
+                                             fileName: prodFirebaseFilename,
                                              mimeType: "image/jpeg")
                 }
             }, to: url,
@@ -143,21 +143,12 @@ class BreedingSitesDAO {
                 print("Create Site response status", response.statusCode)
 
                 if let data = data {
-//                    do {
-                        print(
-                            "data=\(String(data: data, encoding: .utf8) ?? "String interpolation did not work")"
-                    )
-//                        _ = try JSONDecoder().decode(BreedingSite.self, from: data)
+                        print("data=\(String(data: data, encoding: .utf8) ?? "String interpolation did not work")")
                         // Único caso onde não há erro. Não passo erro para frente
                         let stringInt = String.init(data: data, encoding: String.Encoding.utf8)
                         let siteId = Int.init(stringInt ?? "")
                         completion(nil, siteId)
                         print("Json Decoder post Site ok!")
-//                    }
-//                    catch let error {
-//                        completion(error, nil)
-//                        print(error.localizedDescription)
-//                    }
                 }
             }
             task.resume()
