@@ -176,7 +176,7 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         })
 
         action.image = UIImage(named: "Reportar+Symbol")
-        action.backgroundColor = .appOrangeYellow
+        action.backgroundColor = .appCoral
         let configuration = UISwipeActionsConfiguration(actions: [action])
         return configuration
     }
