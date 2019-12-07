@@ -13,6 +13,7 @@ class NavigatorController: UIViewController {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collaborateButton: UIButton!
+    @IBOutlet weak var locationBtn: UIButton!
     @IBOutlet weak var locationIcon: UIImageView!
     fileprivate var diseaseMarkers: [DiseaseAnnotation]?
     fileprivate var breedingMarkers: [BreedingAnnotation]?
@@ -197,6 +198,14 @@ extension NavigatorController: CLLocationManagerDelegate {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
                 latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         self.mapView.setRegion(coordinateRegion, animated: true)
+    }
+
+    // If the user denied location, image will show location with a slash
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .denied {
+            locationIcon.image = UIImage(named: "fullButtonNotAllowedLocation")
+            locationBtn.isEnabled = false
+        }
     }
 }
 
