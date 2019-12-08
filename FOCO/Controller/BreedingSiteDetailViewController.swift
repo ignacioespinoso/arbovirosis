@@ -114,6 +114,7 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         // Remove Optional
         if let breedingSite = site {
             header?.setLabels(withSite: breedingSite)
+            header?.dismissDelegate = self
         }
 
         return header
@@ -238,6 +239,15 @@ extension BreedingSiteDetailViewController: AddNewCommentBtnDelegate {
 
     func addNewComment(forSite siteId: Int) {
         performSegue(withIdentifier: "newComment", sender: nil)
+    }
+
+}
+
+extension BreedingSiteDetailViewController: DismissBtnDelegate {
+
+    func dissmissViewController() {
+        self.dismiss(animated: true,
+                     completion: nil)
     }
 
 }
