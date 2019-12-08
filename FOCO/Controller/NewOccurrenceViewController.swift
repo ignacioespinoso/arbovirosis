@@ -18,7 +18,7 @@ class NewOccurrenceViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backButton = UIBarButtonItem(title: "Voltar",
+        let backButton = UIBarButtonItem(title: "Cancelar",
                                          style: .plain,
                                          target: self,
                                          action: #selector(back(sender:)))

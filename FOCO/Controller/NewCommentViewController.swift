@@ -43,7 +43,7 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
 
         done.tintColor = .appDarkImperialBlue
         done.setTitleTextAttributes([
-                                    NSAttributedString.Key.font: UIFont(name: "SFProText-Medium", size: 20)!,
+                                    NSAttributedString.Key.font: UIFont(name: "SFProText-Semibold", size: 18)!,
                                     NSAttributedString.Key.foregroundColor: UIColor.appDarkImperialBlue
                                     ],
                                     for: .normal)
