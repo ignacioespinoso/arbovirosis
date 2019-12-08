@@ -18,12 +18,20 @@ class NewOccurrenceViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backButton = UIBarButtonItem(title: "Voltar", style: .plain,
-                                         target: self, action: #selector(back(sender:)))
+        let backButton = UIBarButtonItem(title: "Voltar",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(back(sender:)))
 
         self.navigationItem.backBarButtonItem = backButton
-        let doneButton = UIBarButtonItem(title: "Pronto", style: .done,
-                                         target: self, action: #selector(saveOccurrence))
+        let doneButton = UIBarButtonItem(title: "Pronto",
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(saveOccurrence))
+
+        backButton.tintColor = .appDarkImperialBlue
+        doneButton.tintColor = .appDarkImperialBlue
+
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.rightBarButtonItem = doneButton
         self.title = "Nova Ocorrência"

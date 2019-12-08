@@ -40,7 +40,7 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
                                    style: .plain,
                                    target: self,
                                    action: #selector(doneTapped))
-        done.tintColor = .appCoral
+        done.tintColor = .appDarkImperialBlue
         bar.backgroundColor = .systemGray3
         bar.items = [spacer, done, spacer]
         bar.sizeToFit()
