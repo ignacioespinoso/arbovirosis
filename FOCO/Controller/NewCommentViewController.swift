@@ -40,8 +40,16 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
                                    style: .plain,
                                    target: self,
                                    action: #selector(doneTapped))
+
         done.tintColor = .appDarkImperialBlue
-        bar.backgroundColor = .systemGray3
+        done.setTitleTextAttributes([
+                                    NSAttributedString.Key.font: UIFont(name: "SFProText-Medium", size: 20)!,
+                                    NSAttributedString.Key.foregroundColor: UIColor.appDarkImperialBlue
+                                    ],
+                                    for: .normal)
+
+        bar.barTintColor = .systemActionSheetBackground
+
         bar.items = [spacer, done, spacer]
         bar.sizeToFit()
         commentView.inputAccessoryView = bar
@@ -85,6 +93,12 @@ class NewCommentViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
+
+    @IBAction func dismissBtn(_ sender: UIButton) {
+        self.dismiss(animated: true,
+                     completion: nil)
+    }
+
 }
 
 // MARK: UITextViewDelegate

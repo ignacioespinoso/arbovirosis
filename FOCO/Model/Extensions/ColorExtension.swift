@@ -18,6 +18,7 @@ extension UIColor {
     static let systemBlue = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
     static let systemPurple = UIColor(red: 88/255, green: 86/255, blue: 214/255, alpha: 1)
     static let systemPink = UIColor(red: 255/255, green: 45/255, blue: 85/255, alpha: 1)
+    static let systemActionSheetBackground = UIColor(hue: 0, saturation: 0, brightness: 0.84, alpha: 1)
 
     // App Color Palette
 
