@@ -60,6 +60,7 @@ open class ImagePicker: NSObject {
         }
 
         alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        alertController.view.tintColor = .appDarkImperialBlue
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController.popoverPresentationController?.sourceView = sourceView

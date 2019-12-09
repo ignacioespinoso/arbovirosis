@@ -114,6 +114,7 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
         // Remove Optional
         if let breedingSite = site {
             header?.setLabels(withSite: breedingSite)
+            header?.dismissDelegate = self
         }
 
         return header
@@ -139,37 +140,40 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
-        let title = "Reportar"
-        let successMessage = "Agradecemos o aviso. Seu feedback melhora as nossas informações."
-        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
-
         let action = UIContextualAction(style: .normal,
                                       title: title,
                                       handler: { (_, _, completionHandler) in // action, sourceView
 
-            CommentServices.reportComment(breedingSiteId: self.site!.id,
-                                          commentId: self.comments[indexPath.row - 1].id) { error in
-                if error == nil {
-                    DispatchQueue.main.async {
-                        Utils.setupAlertController(viewController: self,
-                                                   message: successMessage,
-                                                   systemImage: "exclamationmark.bubble",
-                                                   timer: nil,
-                                                   completion: { })
-                    }
-                    print("Comment reported successfully")
-                } else {
-                    DispatchQueue.main.async {
-                        Utils.setupAlertController(viewController: self,
-                                                  message: failMessage,
-                                                  systemImage: "xmark.octagon",
-                                                  color: .appCoral,
-                                                  timer: nil,
-                                                  completion: { })
-                    }
-                    print("Comment report failed")
-                }
-            }
+            Utils.setupReportAlertController(viewController: self,
+                                             isComment: true,
+                                             completion: {
+                                                CommentServices.reportComment(breedingSiteId: self.site!.id,
+                                                                              commentId: self.comments[indexPath.row - 1].id) { error in
+                                                    if error == nil {
+                                                        DispatchQueue.main.async {
+                                                            Utils.setupAlertControllerWithTitle(viewController: self,
+                                                                                                title: Messages.titleSucess,
+                                                                                                message: Messages.messageSucess,
+                                                                                                systemImage: "checkmark.circle",
+                                                                                                color: .appMediumElectricBlue,
+                                                                                                timer: nil,
+                                                                                                completion: {})
+                                                        }
+                                                        print("Comment reported successfully")
+                                                    } else {
+                                                        DispatchQueue.main.async {
+                                                            Utils.setupAlertControllerWithTitle(viewController: self,
+                                                                                                title: Messages.failTitle,
+                                                                                                message: Messages.failMessage,
+                                                                                                systemImage: "checkmark.circle",
+                                                                                                color: .appCoral,
+                                                                                                timer: nil,
+                                                                                                completion: {})
+                                                        }
+                                                        print("Comment report failed")
+                                                    }
+                                                }
+            })
 
             completionHandler(true)
 
@@ -192,34 +196,47 @@ extension BreedingSiteDetailViewController: UITableViewDelegate, UITableViewData
 
 extension BreedingSiteDetailViewController: ReportBtnDelegate {
 
+    // BreedingSitesServices only if user clicks on report
     func reportBreedingSite(forId id: Int) {
+        let titleSucess = "Agradecemos o aviso"
+        let messageSucess = "Seu feedback melhora as nossas informações."
 
-        let successMessage = "Agradecemos o aviso. Seu feedback melhora as nossas informações."
-        let failMessage = "Desculpe! Não foi possível acessar os dados. Por favor, tente novamente."
+        let failTitle = "Desculpe!"
+        let failMessage = "Não foi possível acessar os dados. Por favor, tente novamente."
 
-        BreedingSitesServices.reportSite(breedingSiteId: id) { (error) in
-            if error == nil {
-                DispatchQueue.main.async {
-                    Utils.setupAlertController(viewController: self,
-                                               message: successMessage,
-                                               systemImage: "exclamationmark.bubble",
-                                               timer: nil,
-                                               completion: { })
-                }
-                print("Comment reported successfully")
-            } else {
-                DispatchQueue.main.async {
-                    Utils.setupAlertController(viewController: self,
-                                              message: failMessage,
-                                              systemImage: "xmark.octagon",
-                                              color: .appCoral,
-                                              timer: nil,
-                                              completion: { })
-                }
-                print("Comment report failed")
-            }
-        }
+        Utils.setupReportAlertController(viewController: self,
+                                         isComment: false,
+                                         completion: {
+                                            BreedingSitesServices.reportSite(breedingSiteId: id) { (error) in
+                                                if error == nil {
+                                                    DispatchQueue.main.async {
+                                                        Utils.setupAlertControllerWithTitle(viewController: self,
+                                                                                            title: titleSucess,
+                                                                                            message: messageSucess,
+                                                                                            systemImage: "checkmark.circle",
+                                                                                            color: .appMediumElectricBlue,
+                                                                                            timer: nil,
+                                                                                            completion: {})
+
+                                                    }
+                                                    print("Comment reported successfully")
+                                                } else {
+                                                    DispatchQueue.main.async {
+                                                        Utils.setupAlertControllerWithTitle(viewController: self,
+                                                                                            title: failTitle,
+                                                                                            message: failMessage,
+                                                                                            systemImage: "xmark.octagon",
+                                                                                            color: .appCoral,
+                                                                                            timer: nil,
+                                                                                            completion: {})
+                                                    }
+                                                    print("Comment report failed")
+                                                }
+                                            }
+        })
+
     }
+
 }
 
 extension BreedingSiteDetailViewController: AddNewCommentBtnDelegate {
@@ -238,6 +255,15 @@ extension BreedingSiteDetailViewController: AddNewCommentBtnDelegate {
 
     func addNewComment(forSite siteId: Int) {
         performSegue(withIdentifier: "newComment", sender: nil)
+    }
+
+}
+
+extension BreedingSiteDetailViewController: DismissBtnDelegate {
+
+    func dissmissViewController() {
+        self.dismiss(animated: true,
+                     completion: nil)
     }
 
 }

@@ -29,8 +29,10 @@ class NewBreedingSiteViewController: FormViewController {
         breedingSiteImage.backgroundColor = UIColor.lightGray
 
         // Sets back button
-        let backButton = UIBarButtonItem(title: "Novo Foco", style: .plain,
-                                         target: self, action: #selector(back(sender:)))
+        let backButton = UIBarButtonItem(title: "Voltar",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(back(sender:)))
         self.navigationItem.backBarButtonItem = backButton
 
         // Sets table view form below the image picker view.
@@ -40,9 +42,16 @@ class NewBreedingSiteViewController: FormViewController {
                                  height: (self.tableView?.frame.size.height)! - 40)
 
         // Adds done button
-        let doneButton = UIBarButtonItem(title: "Pronto", style: .done,
-                                         target: self, action: #selector(saveOccurrence))
+        let doneButton = UIBarButtonItem(title: "Pronto",
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(saveOccurrence))
+
+        backButton.tintColor = .appDarkImperialBlue
+        doneButton.tintColor = .appDarkImperialBlue
+
         self.navigationItem.rightBarButtonItem = doneButton
+        self.navigationItem.leftBarButtonItem = backButton
         self.title = "Novo Foco"
 
         // Implements form rows

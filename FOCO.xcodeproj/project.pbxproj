@@ -44,6 +44,7 @@
 		C5CAD7052375B21E00B5BBA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5CAD7042375B21E00B5BBA2 /* Assets.xcassets */; };
 		C5CAD7082375B21E00B5BBA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5CAD7062375B21E00B5BBA2 /* LaunchScreen.storyboard */; };
 		C5CAD71B2375B62000B5BBA2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAD71A2375B62000B5BBA2 /* Errors.swift */; };
+		C5D9EE81239D9093002AC06A /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C5D9EE80239D9093002AC06A /* SF-Pro-Text-Bold.otf */; };
 		F2776A034AE436BDAEE62BF2 /* Pods_FOCO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 206A6212520C8711925DF2CB /* Pods_FOCO.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		C5CAD7072375B21E00B5BBA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5CAD7092375B21E00B5BBA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5CAD71A2375B62000B5BBA2 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		C5D9EE80239D9093002AC06A /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		E609BDD25CC2F68FFD318F5D /* Pods-FOCO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOCO.debug.xcconfig"; path = "Target Support Files/Pods-FOCO/Pods-FOCO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 				C545CDED23975F7C00EB713E /* SF-Pro-Text-Medium.otf */,
 				C545CDE923975E3B00EB713E /* SF-Pro-Text-Regular.otf */,
 				C545CDEA23975E3C00EB713E /* SF-Pro-Text-Semibold.otf */,
+				C5D9EE80239D9093002AC06A /* SF-Pro-Text-Bold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				C545CDEE23975F7D00EB713E /* SF-Pro-Text-Medium.otf in Resources */,
 				C5CAD7032375B21C00B5BBA2 /* Main.storyboard in Resources */,
 				C542FFA123983166001C7E0F /* CommentsCell.xib in Resources */,
+				C5D9EE81239D9093002AC06A /* SF-Pro-Text-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

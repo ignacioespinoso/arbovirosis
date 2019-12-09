@@ -15,9 +15,9 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailHeaderView" customModule="Nosso_Bairro" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailHeaderView" customModule="Vizoom" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="INB-AR-g0Y" customClass="DetailHeaderView" customModule="Nosso_Bairro" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="INB-AR-g0Y" customClass="DetailHeaderView" customModule="Vizoom" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -25,28 +25,52 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dV-eM-03e">
-                            <rect key="frame" x="20" y="20" width="59" height="26"/>
+                            <rect key="frame" x="20" y="20" width="59" height="25.5"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="21"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdi-gp-2Yk">
-                            <rect key="frame" x="20" y="51" width="48" height="18"/>
+                            <rect key="frame" x="20" y="50.5" width="48" height="18"/>
                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardDrag" translatesAutoresizingMaskIntoConstraints="NO" id="CK8-6K-QW3">
+                            <rect key="frame" x="183.5" y="4.5" width="47" height="5.5"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="od6-un-p2w">
+                            <rect key="frame" x="362" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="od6-un-p2w" secondAttribute="height" multiplier="1:1" id="LKb-Ri-Rch"/>
+                            </constraints>
+                            <state key="normal" image="grayDismiss"/>
+                            <connections>
+                                <action selector="dismissAction:" destination="-1" eventType="touchUpInside" id="vpF-7T-YnZ"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="qdi-gp-2Yk" firstAttribute="leading" secondItem="4C4-fK-ICh" secondAttribute="leading" constant="20" id="HZr-T6-e3W"/>
                         <constraint firstAttribute="width" constant="414" id="KLN-P4-hls"/>
+                        <constraint firstItem="od6-un-p2w" firstAttribute="top" secondItem="4C4-fK-ICh" secondAttribute="top" constant="8" id="MlT-WL-tVB"/>
+                        <constraint firstItem="CK8-6K-QW3" firstAttribute="centerX" secondItem="4C4-fK-ICh" secondAttribute="centerX" id="My9-hP-B2l"/>
                         <constraint firstItem="9dV-eM-03e" firstAttribute="leading" secondItem="4C4-fK-ICh" secondAttribute="leading" constant="20" id="YD6-pA-Swa"/>
                         <constraint firstItem="qdi-gp-2Yk" firstAttribute="top" secondItem="9dV-eM-03e" secondAttribute="bottom" constant="5" id="YgK-mb-Dr5"/>
                         <constraint firstItem="9dV-eM-03e" firstAttribute="top" secondItem="4C4-fK-ICh" secondAttribute="top" constant="20" id="ZAj-Ru-A9F"/>
+                        <constraint firstItem="CK8-6K-QW3" firstAttribute="top" secondItem="4C4-fK-ICh" secondAttribute="top" constant="4.5" id="aV9-IP-GRQ"/>
+                        <constraint firstAttribute="trailing" secondItem="od6-un-p2w" secondAttribute="trailing" constant="8" id="b9J-73-5LN"/>
+                        <constraint firstItem="CK8-6K-QW3" firstAttribute="width" secondItem="4C4-fK-ICh" secondAttribute="width" multiplier="0.1135" id="iuo-Nn-BDf"/>
+                        <constraint firstItem="od6-un-p2w" firstAttribute="width" secondItem="4C4-fK-ICh" secondAttribute="width" multiplier="0.10628" id="ksQ-Ty-FLH"/>
                         <constraint firstItem="qdi-gp-2Yk" firstAttribute="leading" secondItem="9dV-eM-03e" secondAttribute="leading" id="ocE-gC-dIF"/>
                         <constraint firstAttribute="height" constant="80" id="pOZ-Qw-S0r"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,4 +89,8 @@
             <point key="canvasLocation" x="116.66666666666667" y="115.17857142857142"/>
         </view>
     </objects>
+    <resources>
+        <image name="cardDrag" width="36.333332061767578" height="5.3333334922790527"/>
+        <image name="grayDismiss" width="30" height="30"/>
+    </resources>
 </document>
