@@ -2,23 +2,29 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JdF-2O-hbJ">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Bold.otf">
+            <string>SFProText-Bold</string>
+        </array>
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
         </array>
         <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Breeding Site Detail View Controller-->
         <scene sceneID="cMY-Nh-spR">
             <objects>
-                <viewController id="ce2-nM-obN" customClass="BreedingSiteDetailViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ce2-nM-obN" customClass="BreedingSiteDetailViewController" customModule="Vizoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="imw-Bm-PCE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfosCell" rowHeight="603" id="09Y-46-d1T" customClass="InfosCell" customModule="Nosso_Bairro" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfosCell" rowHeight="603" id="09Y-46-d1T" customClass="InfosCell" customModule="Vizoom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="603"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="09Y-46-d1T" id="9h7-5T-e2F">
@@ -234,7 +240,7 @@
         <!--Explorar-->
         <scene sceneID="AZE-K5-10K">
             <objects>
-                <viewController id="JdF-2O-hbJ" customClass="NavigatorController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JdF-2O-hbJ" customClass="NavigatorController" customModule="Vizoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SAi-lF-gRQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -248,29 +254,29 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="E3R-WE-UtM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="20"/>
                                 <state key="normal" title="Colaborar">
                                     <color key="titleColor" red="0.08449531347" green="0.19317728279999999" blue="0.32601839300000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aguaParadaAlert" translatesAutoresizingMaskIntoConstraints="NO" id="j5S-Os-5Z1">
-                                <rect key="frame" x="16" y="60" width="382" height="76"/>
+                                <rect key="frame" x="16" y="60" width="382" height="81"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fullButtonFilled" translatesAutoresizingMaskIntoConstraints="NO" id="CYc-DV-Lux">
-                                <rect key="frame" x="348" y="152" width="50" height="100"/>
+                                <rect key="frame" x="348" y="157" width="50" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="OAf-IT-qB2"/>
                                     <constraint firstAttribute="height" constant="100" id="Tcz-wI-1te"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jt1-a0-MXB" userLabel="locationButton">
-                                <rect key="frame" x="348" y="202" width="50" height="50"/>
+                                <rect key="frame" x="348" y="207" width="50" height="50"/>
                                 <connections>
                                     <action selector="recenterClick:" destination="JdF-2O-hbJ" eventType="touchUpInside" id="E5W-Ca-1OO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEs-GK-Fk6" userLabel="refreshButton">
-                                <rect key="frame" x="348" y="152" width="50" height="50"/>
+                                <rect key="frame" x="348" y="157" width="50" height="50"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -308,6 +314,7 @@
                     <navigationItem key="navigationItem" id="36M-sP-VJQ"/>
                     <connections>
                         <outlet property="collaborateButton" destination="tzk-Ps-XnA" id="3RC-wM-DJr"/>
+                        <outlet property="locationBtn" destination="jt1-a0-MXB" id="KoT-ba-gt8"/>
                         <outlet property="locationIcon" destination="CYc-DV-Lux" id="KDL-Io-EaT"/>
                         <outlet property="mapView" destination="GVV-ei-tgV" id="OKd-Ni-nhj"/>
                         <segue destination="JPh-Hv-GQB" kind="presentation" identifier="newOccurrence" modalPresentationStyle="automatic" id="nD0-PT-5QW"/>
@@ -322,7 +329,7 @@
         <!--New Breeding Site View Controller-->
         <scene sceneID="SMh-DQ-JJe">
             <objects>
-                <viewController id="Ab3-ze-rfa" customClass="NewBreedingSiteViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ab3-ze-rfa" customClass="NewBreedingSiteViewController" customModule="Vizoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L1j-6Z-Yfe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -389,34 +396,47 @@
         <!--New Comment View Controller-->
         <scene sceneID="igP-vo-Fdc">
             <objects>
-                <viewController id="C2X-lz-6c0" customClass="NewCommentViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C2X-lz-6c0" customClass="NewCommentViewController" customModule="Vizoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ad-Od-CDb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y2A-7p-IWG">
-                                <rect key="frame" x="16" y="54" width="374" height="699"/>
+                                <rect key="frame" x="16" y="78.333333333333314" width="374" height="674.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que mais você sabe sobre o foco?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-Aj-XsP">
-                                <rect key="frame" x="20" y="20" width="374" height="26"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que mais você sabe sobre o foco?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-Aj-XsP">
+                                <rect key="frame" x="20" y="20.000000000000004" width="322" height="50.333333333333343"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zk1-az-Mpp">
+                                <rect key="frame" x="362" y="8" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Zk1-az-Mpp" secondAttribute="height" multiplier="1:1" id="b8l-vh-0wa"/>
+                                </constraints>
+                                <state key="normal" image="grayDismiss"/>
+                                <connections>
+                                    <action selector="dismissBtn:" destination="C2X-lz-6c0" eventType="touchUpInside" id="7kp-Qj-dbO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Zk1-az-Mpp" firstAttribute="top" secondItem="3GI-Mt-ATB" secondAttribute="top" constant="8" id="1dm-gh-ylc"/>
+                            <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="Zk1-az-Mpp" secondAttribute="trailing" constant="8" id="74a-sm-Efw"/>
+                            <constraint firstItem="Zk1-az-Mpp" firstAttribute="width" secondItem="7ad-Od-CDb" secondAttribute="width" multiplier="0.10628" id="MUO-ey-QDX"/>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="top" secondItem="V2T-Aj-XsP" secondAttribute="bottom" constant="8" id="Rq3-z9-8CC"/>
                             <constraint firstItem="Y2A-7p-IWG" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="16" id="VK1-3t-UdB"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="leading" secondItem="3GI-Mt-ATB" secondAttribute="leading" constant="20" id="Vpf-QF-aLw"/>
-                            <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="V2T-Aj-XsP" secondAttribute="trailing" constant="20" id="YDM-rU-kA6"/>
                             <constraint firstItem="V2T-Aj-XsP" firstAttribute="top" secondItem="3GI-Mt-ATB" secondAttribute="top" constant="20" id="Ydo-kw-aeW"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="trailing" secondItem="Y2A-7p-IWG" secondAttribute="trailing" constant="24" id="jch-UK-KSK"/>
                             <constraint firstItem="3GI-Mt-ATB" firstAttribute="bottom" secondItem="Y2A-7p-IWG" secondAttribute="bottom" constant="55" id="r2U-Fu-M5r"/>
+                            <constraint firstItem="Zk1-az-Mpp" firstAttribute="leading" secondItem="V2T-Aj-XsP" secondAttribute="trailing" constant="20" id="zpx-ZP-rRm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3GI-Mt-ATB"/>
                     </view>
@@ -434,7 +454,7 @@
         <!--New Occurrence View Controller-->
         <scene sceneID="sLj-BY-5jE">
             <objects>
-                <viewController id="sqi-EX-XfJ" customClass="NewOccurrenceViewController" customModule="Nosso_Bairro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sqi-EX-XfJ" customClass="NewOccurrenceViewController" customModule="Vizoom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HLq-Rn-QfY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,8 +512,9 @@
         <image name="AddComment" width="182" height="52"/>
         <image name="ReportComment" width="182" height="52"/>
         <image name="Separator" width="359" height="0.66666668653488159"/>
-        <image name="aguaParadaAlert" width="245" height="75.666664123535156"/>
+        <image name="aguaParadaAlert" width="296.33334350585938" height="81"/>
         <image name="fullButtonFilled" width="42" height="83"/>
+        <image name="grayDismiss" width="30" height="30"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>
         <image name="photo" catalog="system" width="64" height="46"/>
     </resources>

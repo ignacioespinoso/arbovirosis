@@ -8,6 +8,10 @@ Header for Detail
 
 import UIKit
 
+protocol DismissBtnDelegate: NSObjectProtocol {
+    func dissmissViewController()
+}
+
 class DetailHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - Outlets
@@ -15,12 +19,18 @@ class DetailHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak private var siteTitle: UILabel!
     @IBOutlet weak private var siteCreatedTime: UILabel!
 
+    weak var dismissDelegate: DismissBtnDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         // This should make cell proper for auto-layout
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.translatesAutoresizingMaskIntoConstraints = true
+    }
+
+    @IBAction func dismissAction(_ sender: Any) {
+        dismissDelegate?.dissmissViewController()
     }
 
     // MARK: - SetUps

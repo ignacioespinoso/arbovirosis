@@ -13,6 +13,7 @@ class NavigatorController: UIViewController {
 // MARK: Attributescode .git
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collaborateButton: UIButton!
+    @IBOutlet weak var locationBtn: UIButton!
     @IBOutlet weak var locationIcon: UIImageView!
     fileprivate var diseaseMarkers: [DiseaseAnnotation]?
     fileprivate var breedingMarkers: [BreedingAnnotation]?
@@ -198,6 +199,14 @@ extension NavigatorController: CLLocationManagerDelegate {
                 latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         self.mapView.setRegion(coordinateRegion, animated: true)
     }
+
+    // If the user denied location, image will show location with a slash
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .denied {
+            locationIcon.image = UIImage(named: "fullButtonNotAllowedLocation")
+            locationBtn.isEnabled = false
+        }
+    }
 }
 
 // MARK: Action Sheet Configuration
@@ -221,6 +230,17 @@ extension NavigatorController {
                 self.performSegue(withIdentifier: option.segueIdentifier, sender: self)
             }
             actionSheet.addAction(currentOption)
+        }
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if let popoverController = actionSheet.popoverPresentationController {
+                popoverController.sourceView = self.collaborateButton
+                popoverController.sourceRect = CGRect(x: self.collaborateButton.bounds.midX,
+                                                      y: self.collaborateButton.bounds.minY,
+                                                      width: 0,
+                                                      height: 0)
+                popoverController.permittedArrowDirections = []
+            }
         }
         self.present(actionSheet, animated: true, completion: nil)
     }
