@@ -69,7 +69,7 @@ class NewBreedingSiteViewController: FormViewController {
             }
             <<< LocationRow("location") {
                 $0.title = "Localização"
-                $0.value = defaultLocation
+                $0.value = defaultLocation ?? locationManager.location
             }
 
         +++ Section("O que está acontecendo nesse local? (opcional)")
