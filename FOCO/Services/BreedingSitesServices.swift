@@ -97,6 +97,7 @@ class BreedingSitesServices {
                     completion(nil)
                 } else {
                     print("No image was uploaded.")
+                    completion(nil)
                 }
             }
         })

@@ -160,29 +160,32 @@ class NewOccurrenceViewController: FormViewController {
     }
 
     private func showFeedbackAndUnwind(successful: Bool) {
-        let successMessage = "Parabéns! O caso foi adicionado e vai contribuir no combate ao vírus!"
-        let failMessage = "Desculpe! Não conseguimos acessar os dados. Por favor, tente novamente."
         if successful {
            DispatchQueue.main.async {
-               Utils.setupAlertController(viewController: self,
-                                          message: successMessage,
-                                          systemImage: "checkmark.circle",
-                                          timer: nil,
-                                          completion: {
-                    self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
-               })
+                Utils.setupAlertControllerWithTitle(viewController: self,
+                                            title: Messages.createdAssetTitleSuccess,
+                                            message: Messages.newDiseaseOccurrenceMessageSuccess,
+                                            systemImage: "checkmark.circle",
+                                            color: .appDarkImperialBlue,
+                                            timer: nil,
+                                            completion: {
+                                            self.performSegue(withIdentifier: "unwindToMapFromOccurrence",
+                                                              sender: self)
+                })
            }
            print("Created disease occurrence successfully.")
         } else {
            DispatchQueue.main.async {
-               Utils.setupAlertController(viewController: self,
-                                           message: failMessage,
+                Utils.setupAlertControllerWithTitle(viewController: self,
+                                           title: Messages.failTitle,
+                                           message: Messages.failMessage,
                                            systemImage: "xmark.octagon",
                                            color: .appCoral,
                                            timer: nil,
                                            completion: {
-                    self.performSegue(withIdentifier: "unwindToMapFromOccurrence", sender: self)
-               })
+                                            self.performSegue(withIdentifier: "unwindToMapFromOccurrence",
+                                                              sender: self)
+                })
            }
         }
     }
