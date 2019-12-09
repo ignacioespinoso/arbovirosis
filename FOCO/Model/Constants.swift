@@ -16,3 +16,12 @@ let devUrlDiseaseOccurrences: String = "https://arbovirosis-dev.herokuapp.com/di
 
 let devFirebaseFilename: String = "devFile.jpg"
 let prodFirebaseFilename: String = "file.jpg"
+
+
+struct Messages {
+    static let titleSucess = "Agradecemos o aviso"
+    static let messageSucess = "Seu feedback melhora as nossas informações."
+
+    static let failTitle = "Desculpe!"
+    static let failMessage = "Não foi possível acessar os dados. Por favor, tente novamente."
+}

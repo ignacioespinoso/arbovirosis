@@ -52,6 +52,87 @@ class Utils: NSObject {
 
     }
 
+    // Alert Controller with 2 actions, needed for destructive actions (report)
+    static func setupReportAlertController(viewController: UIViewController,
+                                           isComment: Bool,
+                                           completion: @escaping () -> Void) {
+
+        // 2 use cases from this funcion
+        let title: String = (isComment) ? "Reportar este comentário?" : "Reportar este foco?"
+
+        let alert = UIAlertController(title: title,
+                                      message: "Esta ação pode apagar esta informação. Deseja continuar?\n\n\n\n",
+                                      // \n is for Symbol layout
+                                      preferredStyle: .alert)
+
+        if let image = UIImage(systemName: "exclamationmark.bubble.fill") {
+            let coloredImage = image.withTintColor(.appDarkImperialBlue, renderingMode: .alwaysOriginal)
+
+            let iconView = UIImageView(image: coloredImage)
+            iconView.contentMode = .scaleAspectFit
+            alert.view.addSubview(iconView)
+
+            setupAlertControllerConstraints(alert: alert, image: iconView, bottomConstraint: -48)
+
+            let reportAction = UIAlertAction(title: "Reportar", style: .destructive) { (_: UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+                completion()
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { (_: UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+
+            alert.addAction(reportAction)
+            alert.addAction(cancelAction)
+
+            viewController.present(alert, animated: true, completion: nil)
+        } else {
+            print("Invalid systemImage name")
+        }
+    }
+
+    // Sets up an alert controller at given view, showing a message and a system image below it
+    // The alert is automatically dismissed after the timer passes
+    static func setupAlertControllerWithTitle(viewController: UIViewController,
+                                              title: String,
+                                              message: String,
+                                              systemImage: String,
+                                              color: UIColor,
+                                              timer: Double?,
+                                              completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: title,
+                                      message: message + "\n\n\n\n",
+                                      preferredStyle: .alert)
+
+        if let image = UIImage(systemName: systemImage) {
+            let coloredImage = image.withTintColor(color, renderingMode: .alwaysOriginal)
+
+            let iconView = UIImageView(image: coloredImage)
+            iconView.contentMode = .scaleAspectFit
+            alert.view.addSubview(iconView)
+
+            if let countdown = timer {
+                setupAlertControllerConstraints(alert: alert, image: iconView, bottomConstraint: -8)
+                DispatchQueue.main.asyncAfter(deadline: .now() + countdown, execute: {
+                               alert.dismiss(animated: true, completion: nil)
+                               completion()
+                           })
+            } else {
+                setupAlertControllerConstraints(alert: alert, image: iconView, bottomConstraint: -48)
+                let okAction = UIAlertAction(title: "Ok", style: .default) { (_: UIAlertAction) in
+                    alert.dismiss(animated: true, completion: nil)
+                    completion()
+                }
+
+                alert.addAction(okAction)
+            }
+            viewController.present(alert, animated: true, completion: nil)
+        } else {
+            print("Invalid systemImage name")
+        }
+    }
+
     // Sets up an alert controller at given view, showing a message and a system image below it
     // The alert is automatically dismissed after the timer passes
     static func setupAlertController(viewController: UIViewController,
