@@ -231,6 +231,17 @@ extension NavigatorController {
             }
             actionSheet.addAction(currentOption)
         }
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if let popoverController = actionSheet.popoverPresentationController {
+                popoverController.sourceView = self.collaborateButton
+                popoverController.sourceRect = CGRect(x: self.collaborateButton.bounds.midX,
+                                                      y: self.collaborateButton.bounds.minY,
+                                                      width: 0,
+                                                      height: 0)
+                popoverController.permittedArrowDirections = []
+            }
+        }
         self.present(actionSheet, animated: true, completion: nil)
     }
 
