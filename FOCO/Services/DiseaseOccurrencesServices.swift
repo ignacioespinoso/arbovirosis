@@ -24,6 +24,7 @@ class DiseaseOccurrencesServices {
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
                 print(error.debugDescription)
+                completion(error, nil)
             } else {
                 completion(nil, ocurrence)
             }
