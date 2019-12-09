@@ -270,7 +270,7 @@ extension NavigatorController {
                 self.diseaseMarkers = data.map { (diseaseOccurrence) -> DiseaseAnnotation in
                     // The magic happens here
                     let annotation = DiseaseAnnotation(disease: diseaseOccurrence)
-                    self.dangerousAreas.append(MKCircle(center: annotation.coordinate, radius: 100))
+                    self.dangerousAreas.append(MKCircle(center: annotation.coordinate, radius: 250))
                     return annotation
                 }
 

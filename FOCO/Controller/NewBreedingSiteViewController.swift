@@ -69,7 +69,7 @@ class NewBreedingSiteViewController: FormViewController {
             }
             <<< LocationRow("location") {
                 $0.title = "Localização"
-                $0.value = defaultLocation
+                $0.value = defaultLocation ?? locationManager.location
             }
 
         +++ Section("O que está acontecendo nesse local? (opcional)")
@@ -153,13 +153,13 @@ class NewBreedingSiteViewController: FormViewController {
                 print("No access type was set")
             }
 
-            let message = "Oops! Alguns campos obrigatórios não foram preenchidos."
-            Utils.setupAlertController(viewController: self,
-                                       message: message,
-                                       systemImage: "xmark.octagon",
-                                       color: .appCoral,
-                                       timer: nil,
-                                       completion: { })
+            Utils.setupAlertControllerWithTitle(viewController: self,
+                                                title: Messages.formsFailTitle,
+                                                message: Messages.formsFailMessage,
+                                                systemImage: "xmark.octagon",
+                                                color: .appCoral,
+                                                timer: nil,
+                                                completion: { })
         }
     }
 
