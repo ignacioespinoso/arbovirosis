@@ -28,6 +28,7 @@ struct Messages {
     static let formsFailMessage = "Alguns campos obrigatórios não foram preenchidos."
 
     static let createdAssetTitleSuccess = "Parabéns!"
+    static let createdAssetTitleSuccess2 = "Obrigado"
     static let newBreedingSiteMessageSuccess = "O foco foi adicionado e vai cotnribuir no combate ao vírus."
     static let newDiseaseOccurrenceMessageSuccess = "O caso foi adicionado e vai contribuir no combate ao vírus."
 }
