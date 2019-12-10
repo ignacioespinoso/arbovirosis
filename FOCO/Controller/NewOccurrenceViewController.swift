@@ -163,7 +163,7 @@ class NewOccurrenceViewController: FormViewController {
         if successful {
            DispatchQueue.main.async {
                 Utils.setupAlertControllerWithTitle(viewController: self,
-                                            title: Messages.createdAssetTitleSuccess,
+                                            title: Messages.createdAssetTitleSuccess2,
                                             message: Messages.newDiseaseOccurrenceMessageSuccess,
                                             systemImage: "checkmark.circle",
                                             color: .appDarkImperialBlue,
