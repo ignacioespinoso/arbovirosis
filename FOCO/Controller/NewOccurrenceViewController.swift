@@ -51,6 +51,14 @@ class NewOccurrenceViewController: FormViewController {
 
         +++ Section(header: "Informações do Caso",
                     footer: "Informe para diferenciarmos suspeitas de casos confirmados.")
+            <<< LocationRow("location") {
+                $0.title = "Localização"
+                $0.value = defaultLocation ?? locationManager.location
+            }.cellUpdate { cell, row in
+                if row.value != nil {
+                    cell.textLabel?.textColor = .black
+                }
+            }
             <<< PickerInputRow<String>("diseaseName") {
                 // Sets disease options
                 $0.title = "Doença"
@@ -60,14 +68,6 @@ class NewOccurrenceViewController: FormViewController {
                 $0.options.append("Zika")
                 $0.options.append("Outra")
 //                $0.value = $0.options.first
-            }.cellUpdate { cell, row in
-                if row.value != nil {
-                    cell.textLabel?.textColor = .black
-                }
-            }
-            <<< LocationRow("location") {
-                $0.title = "Localização"
-                $0.value = defaultLocation ?? locationManager.location
             }.cellUpdate { cell, row in
                 if row.value != nil {
                     cell.textLabel?.textColor = .black
