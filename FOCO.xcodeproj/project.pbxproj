@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8032ED5B2379927E00357465 /* DiseaseOccurrencesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */; };
 		8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */; };
+		8048B7E323CCB8460063A957 /* Acha_MosquitoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8048B7E223CCB8460063A957 /* Acha_MosquitoTests.swift */; };
+		8048B7EB23CCB88D0063A957 /* DiseaseOccurrenceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8048B7EA23CCB88D0063A957 /* DiseaseOccurrenceTest.swift */; };
 		804A2E612384410500214A90 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E602384410500214A90 /* CustomCells.swift */; };
 		804A2E66238460FE00214A90 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E65238460FE00214A90 /* FloatLabelTextField.swift */; };
 		809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809369E323841DD300C794BB /* NewOccurrenceViewController.swift */; };
@@ -48,11 +50,25 @@
 		F2776A034AE436BDAEE62BF2 /* Pods_FOCO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 206A6212520C8711925DF2CB /* Pods_FOCO.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8048B7E523CCB8460063A957 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5CAD6F02375B21C00B5BBA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5CAD6F72375B21C00B5BBA2;
+			remoteInfo = FOCO;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		206A6212520C8711925DF2CB /* Pods_FOCO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FOCO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8032ED5A2379927E00357465 /* DiseaseOccurrencesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesServices.swift; sourceTree = "<group>"; };
 		8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrencesDAO.swift; sourceTree = "<group>"; };
 		80448A3A4B8F0EB1181A3478 /* Pods-FOCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOCO.release.xcconfig"; path = "Target Support Files/Pods-FOCO/Pods-FOCO.release.xcconfig"; sourceTree = "<group>"; };
+		8048B7E023CCB8460063A957 /* Acha MosquitoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Acha MosquitoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8048B7E223CCB8460063A957 /* Acha_MosquitoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acha_MosquitoTests.swift; sourceTree = "<group>"; };
+		8048B7E423CCB8460063A957 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8048B7EA23CCB88D0063A957 /* DiseaseOccurrenceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrenceTest.swift; sourceTree = "<group>"; };
 		804A2E602384410500214A90 /* CustomCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		804A2E65238460FE00214A90 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		805FCF332396B08200B295B4 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
@@ -97,6 +113,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8048B7DD23CCB8460063A957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5CAD6F52375B21C00B5BBA2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +147,16 @@
 				B3BF54BB239804780055BC7E /* CommentDAO.swift */,
 			);
 			path = DAO;
+			sourceTree = "<group>";
+		};
+		8048B7E123CCB8460063A957 /* Acha MosquitoTests */ = {
+			isa = PBXGroup;
+			children = (
+				8048B7E223CCB8460063A957 /* Acha_MosquitoTests.swift */,
+				8048B7E423CCB8460063A957 /* Info.plist */,
+				8048B7EA23CCB88D0063A957 /* DiseaseOccurrenceTest.swift */,
+			);
+			path = "Acha MosquitoTests";
 			sourceTree = "<group>";
 		};
 		80CFFB532397FCAF00BB3A7C /* Extensions */ = {
@@ -181,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				C5CAD6FA2375B21C00B5BBA2 /* FOCO */,
+				8048B7E123CCB8460063A957 /* Acha MosquitoTests */,
 				C5CAD6F92375B21C00B5BBA2 /* Products */,
 				05CE0FCE9F84AE5EF6B34799 /* Frameworks */,
 				B0F824AA7E1FD6791CF8DC79 /* Pods */,
@@ -191,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				C5CAD6F82375B21C00B5BBA2 /* Acha Mosquito!.app */,
+				8048B7E023CCB8460063A957 /* Acha MosquitoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,6 +299,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8048B7DF23CCB8460063A957 /* Acha MosquitoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8048B7E923CCB8460063A957 /* Build configuration list for PBXNativeTarget "Acha MosquitoTests" */;
+			buildPhases = (
+				8048B7DC23CCB8460063A957 /* Sources */,
+				8048B7DD23CCB8460063A957 /* Frameworks */,
+				8048B7DE23CCB8460063A957 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8048B7E623CCB8460063A957 /* PBXTargetDependency */,
+			);
+			name = "Acha MosquitoTests";
+			productName = "Acha MosquitoTests";
+			productReference = 8048B7E023CCB8460063A957 /* Acha MosquitoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C5CAD6F72375B21C00B5BBA2 /* FOCO */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5CAD70C2375B21E00B5BBA2 /* Build configuration list for PBXNativeTarget "FOCO" */;
@@ -290,10 +343,14 @@
 		C5CAD6F02375B21C00B5BBA2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = arbovirosis;
 				TargetAttributes = {
+					8048B7DF23CCB8460063A957 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = C5CAD6F72375B21C00B5BBA2;
+					};
 					C5CAD6F72375B21C00B5BBA2 = {
 						CreatedOnToolsVersion = 11.2;
 					};
@@ -314,11 +371,19 @@
 			projectRoot = "";
 			targets = (
 				C5CAD6F72375B21C00B5BBA2 /* FOCO */,
+				8048B7DF23CCB8460063A957 /* Acha MosquitoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8048B7DE23CCB8460063A957 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5CAD6F62375B21C00B5BBA2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +463,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8048B7DC23CCB8460063A957 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8048B7E323CCB8460063A957 /* Acha_MosquitoTests.swift in Sources */,
+				8048B7EB23CCB88D0063A957 /* DiseaseOccurrenceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5CAD6F42375B21C00B5BBA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +510,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8048B7E623CCB8460063A957 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5CAD6F72375B21C00B5BBA2 /* FOCO */;
+			targetProxy = 8048B7E523CCB8460063A957 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C5CAD7012375B21C00B5BBA2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -458,6 +540,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8048B7E723CCB8460063A957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B73YH55T95;
+				INFOPLIST_FILE = "Acha MosquitoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ignacioespinoso.Acha-MosquitoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Acha Mosquito!.app/Acha Mosquito!";
+			};
+			name = Debug;
+		};
+		8048B7E823CCB8460063A957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B73YH55T95;
+				INFOPLIST_FILE = "Acha MosquitoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ignacioespinoso.Acha-MosquitoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Acha Mosquito!.app/Acha Mosquito!";
+			};
+			name = Release;
+		};
 		C5CAD70A2375B21E00B5BBA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -621,6 +743,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8048B7E923CCB8460063A957 /* Build configuration list for PBXNativeTarget "Acha MosquitoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8048B7E723CCB8460063A957 /* Debug */,
+				8048B7E823CCB8460063A957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C5CAD6F32375B21C00B5BBA2 /* Build configuration list for PBXProject "FOCO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
