@@ -1,14 +1,14 @@
 //
-//  Acha_MosquitoTests.swift
-//  Acha MosquitoTests
+//  AchaMosquitoTests.swift
+//  AchaMosquitoTests
 //
-//  Created by Ignácio Espinoso Ribeiro on 13/01/20.
+//  Created by Ignácio Espinoso Ribeiro on 14/01/20.
 //  Copyright © 2020 arbovirosis. All rights reserved.
 //
 
 import XCTest
 
-class Acha_MosquitoTests: XCTestCase {
+class AchaMosquitoTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,6 +21,7 @@ class Acha_MosquitoTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+       // XCTAssertEqual("a", "b")
     }
 
     func testPerformanceExample() {

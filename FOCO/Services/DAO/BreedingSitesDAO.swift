@@ -10,7 +10,12 @@ import Foundation
 import UIKit
 import Alamofire
 
-class BreedingSitesDAO {
+protocol BreedingSitesDAO {
+    func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?, _ siteId: Int?) -> Void)
+
+}
+
+class BreedingSitesWebDAO: BreedingSitesDAO {
 
     static let address = URL(string: devUrlBreedingSites)
 
@@ -114,10 +119,10 @@ class BreedingSitesDAO {
     }
     // MARK: - Create
 
-    static func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?,
+    func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?,
                                                                             _ siteId: Int?) -> Void) {
 
-        if let url = address {
+        if let url = BreedingSitesWebDAO.address {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.httpBody = jsonData

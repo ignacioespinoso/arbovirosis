@@ -39,6 +39,16 @@
                ReferencedContainer = "container:FOCO.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "807B9B5E23CDEDF6001061EA"
+               BuildableName = "AchaMosquitoTests.xctest"
+               BlueprintName = "AchaMosquitoTests"
+               ReferencedContainer = "container:FOCO.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

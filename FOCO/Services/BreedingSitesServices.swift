@@ -12,6 +12,7 @@ import Foundation
 import UIKit
 
 class BreedingSitesServices {
+    var beedingSitesDAO: BreedingSitesDAO = BreedingSitesWebDAO()
 
     // MARK: - Get
 
@@ -19,7 +20,7 @@ class BreedingSitesServices {
                                                      _ site: [BreedingSite]?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesDAO.findAll { (error, site) in
+        BreedingSitesWebDAO.findAll { (error, site) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
@@ -35,7 +36,7 @@ class BreedingSitesServices {
                                                      _ site: BreedingSite?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesDAO.findById(breedingId: breedingId, { (error, site) in
+        BreedingSitesWebDAO.findById(breedingId: breedingId, { (error, site) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
@@ -52,7 +53,7 @@ class BreedingSitesServices {
                                                         _ image: [UInt8]?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesDAO.getImageById(breedingId: breedingId, { (error, image) in
+        BreedingSitesWebDAO.getImageById(breedingId: breedingId, { (error, image) in
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
                 print("Unable to retrieve breeding site image.")
@@ -67,9 +68,9 @@ class BreedingSitesServices {
 
     // Apenas precisa checar erro, o objeto retornado é o próprio enviado.
     // Checar http status
-    static func createSite (breedingSite: BreedingSite,
-                            image: UIImage?,
-                            _ completion: @escaping (_ error: Error?) -> Void) {
+    func createSite (breedingSite: BreedingSite,
+                     image: UIImage?,
+                     _ completion: @escaping (_ error: Error?) -> Void) {
         var jsonData: Data?
         do {
              jsonData = try JSONEncoder().encode(breedingSite)
@@ -77,7 +78,7 @@ class BreedingSitesServices {
              print(myJSONError)
         }
 
-        BreedingSitesDAO.createBreedingSite(jsonData: jsonData, { (error, siteId) in
+        beedingSitesDAO.createBreedingSite(jsonData: jsonData, { (error, siteId) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
@@ -108,7 +109,7 @@ class BreedingSitesServices {
                             _ completion: @escaping (_ error: Error?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesDAO.uploadImageById(breedingId: toBreedingSiteId, image: image, { (error) in
+        BreedingSitesWebDAO.uploadImageById(breedingId: toBreedingSiteId, image: image, { (error) in
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
                 print("Unable to upload breeding site image.")
@@ -123,7 +124,7 @@ class BreedingSitesServices {
     static func reportSite (breedingSiteId: Int,
                             completion: @escaping (_ error: Error?) -> Void ) {
 
-        BreedingSitesDAO.reportSite(breedingSiteId: breedingSiteId) { (error, reports) in
+        BreedingSitesWebDAO.reportSite(breedingSiteId: breedingSiteId) { (error, reports) in
 
             if error != nil {
                 // Handle errors
