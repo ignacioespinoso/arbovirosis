@@ -11,8 +11,14 @@ import Foundation
 
 import UIKit
 
+enum BreedingSitesServiceError: Error {
+    case invalidCoordinate
+    case decodingError
+    case invalidTitleLength
+}
+
 class BreedingSitesServices {
-    var beedingSitesDAO: BreedingSitesDAO = BreedingSitesWebDAO()
+    var breedingSitesDAO: BreedingSitesDAO = BreedingSitesWebDAO()
 
     // MARK: - Get
 
@@ -71,6 +77,22 @@ class BreedingSitesServices {
     func createSite (breedingSite: BreedingSite,
                      image: UIImage?,
                      _ completion: @escaping (_ error: Error?) -> Void) {
+        // Attributes validation
+        if breedingSite.latitude > 90 || breedingSite.latitude < -90 {
+            completion(BreedingSitesServiceError.invalidCoordinate)
+            return
+        }
+
+        if breedingSite.longitude > 180 || breedingSite.longitude < -180 {
+            completion(BreedingSitesServiceError.invalidCoordinate)
+            return
+        }
+
+        if breedingSite.title.count > 60 || breedingSite.title.count < 3 {
+            completion(BreedingSitesServiceError.invalidTitleLength)
+            return
+        }
+
         var jsonData: Data?
         do {
              jsonData = try JSONEncoder().encode(breedingSite)
@@ -78,7 +100,12 @@ class BreedingSitesServices {
              print(myJSONError)
         }
 
-        beedingSitesDAO.createBreedingSite(jsonData: jsonData, { (error, siteId) in
+        guard jsonData != nil else {
+            completion(BreedingSitesServiceError.decodingError)
+            return
+        }
+
+        breedingSitesDAO.createBreedingSite(jsonData: jsonData, { (error, siteId) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário

@@ -11,12 +11,18 @@ import XCTest
 
 @testable import Acha_Mosquito_
 
-class BreedingSiteMockDAO: BreedingSitesDAO {
+class BreedingSiteErrorMockDAO: BreedingSitesDAO {
     func createBreedingSite(jsonData: Data?, _ completion: @escaping (Error?, Int?) -> Void) {
 
         let error = URLError(URLError.Code.badURL)
 
         completion(error, nil)
+    }
+}
+
+class BreedingSiteMockDAO: BreedingSitesDAO {
+    func createBreedingSite(jsonData: Data?, _ completion: @escaping (Error?, Int?) -> Void) {
+        completion(nil, nil)
     }
 }
 
@@ -61,7 +67,7 @@ class BreedingSitesTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testCreatingBreedingSiteSuccessfully() {
         let expectation = XCTestExpectation(description: "Expect an error, as both error and info are nil on Mock DAO")
 
         // This is an example of a functional test case.
@@ -70,7 +76,7 @@ class BreedingSitesTest: XCTestCase {
 
         let breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 2.33, longitude: 4.45)
 
-        breedingSiteService.beedingSitesDAO = BreedingSiteMockDAO()
+        breedingSiteService.breedingSitesDAO = BreedingSiteErrorMockDAO()
 
         breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
             XCTAssertNotNil(error)
@@ -78,6 +84,182 @@ class BreedingSitesTest: XCTestCase {
         }
 
          wait(for: [expectation], timeout: 5.0)
+    }
+
+    func testCreateBreedingSiteLongitudeBoundaries() {
+        let errorExpectation = XCTestExpectation(description: "Expect an error, as longitude value exceeded boundaries")
+
+        let breedingSiteService = BreedingSitesServices()
+        breedingSiteService.breedingSitesDAO = BreedingSiteMockDAO()
+
+        // Test superior limit exceeding
+        var breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: 180.1)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNotNil(error)
+            errorExpectation.fulfill()
+        }
+
+        // Test inferior limit exceeding
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: -180.1)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNotNil(error)
+            errorExpectation.fulfill()
+        }
+
+        let successExpectation = XCTestExpectation(description: "Expect no error, as longitude value is within boundaries")
+        // Test superior limit correct
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: 179.9)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test exact superior limit
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: 180.0)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test inferior limit correct
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: -179.9)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test exact inferior superior limit
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: -180.0)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test with 0
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+         wait(for: [errorExpectation, successExpectation], timeout: 5.0)
+    }
+
+    func testCreateBreedingSiteLatitudeBoundaries() {
+        let errorExpectation = XCTestExpectation(description: "Expect an error, as latitude value exceeded boundaries")
+
+        let breedingSiteService = BreedingSitesServices()
+        breedingSiteService.breedingSitesDAO = BreedingSiteMockDAO()
+
+        // Test superior limit exceeding
+        var breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 90.1, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNotNil(error)
+            errorExpectation.fulfill()
+        }
+
+        // Test inferior limit exceeding
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: -90.1, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNotNil(error)
+            errorExpectation.fulfill()
+        }
+
+        let successExpectation = XCTestExpectation(description: "Expect no error, as latitude value is within boundaries")
+
+        // Test superior limit correct
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 89.9, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test exact superior limit
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 90, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test inferior limit correct
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: -89.9, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test exact inferior superior limit
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: -90, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test with 0
+        breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+         wait(for: [errorExpectation, successExpectation], timeout: 5.0)
+    }
+
+    func testTitleBoundaries() {
+        let errorExpectation = XCTestExpectation(description: "Expect an error, as title violated boundaries")
+        let successExpectation = XCTestExpectation(description: "Expect success, as title length was within boundaries")
+
+        let breedingSiteService = BreedingSitesServices()
+        breedingSiteService.breedingSitesDAO = BreedingSiteMockDAO()
+
+        // Test superior limit exceeding (61)
+        var titleString = "Teste teste teste teste teste teste teste teste teste teste t"
+        var breedingSite = BreedingSite(title: titleString, description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNotNil(error)
+            errorExpectation.fulfill()
+        }
+
+        // Test superior limit (60)
+        titleString = "Teste teste teste teste teste teste teste teste teste teste "
+        breedingSite = BreedingSite(title: titleString, description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test superior limit (59)
+        titleString = "Teste teste teste teste teste teste teste teste teste teste "
+        breedingSite = BreedingSite(title: titleString, description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test inferior limit exceeding (2)
+        titleString = "Te"
+        breedingSite = BreedingSite(title: titleString, description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNotNil(error)
+            errorExpectation.fulfill()
+        }
+
+        // Test superior limit (3)
+        titleString = "Tes"
+        breedingSite = BreedingSite(title: titleString, description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        // Test superior limit (4)
+        titleString = "Test"
+        breedingSite = BreedingSite(title: titleString, description: nil, type: "Publico", latitude: 0.00, longitude: 0.00)
+        breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
+            XCTAssertNil(error)
+            successExpectation.fulfill()
+        }
+
+        wait(for: [errorExpectation, successExpectation], timeout: 5.0)
     }
 
     func testPassingDataToDAO() {
@@ -89,7 +271,7 @@ class BreedingSitesTest: XCTestCase {
 
         let breedingSite = BreedingSite(title: "Site de Teste", description: nil, type: "Publico", latitude: 2.33, longitude: 4.45)
 
-        breedingSiteService.beedingSitesDAO = BreedingSitePassingDataMockDAO(expectation)
+        breedingSiteService.breedingSitesDAO = BreedingSitePassingDataMockDAO(expectation)
 
         breedingSiteService.createSite(breedingSite: breedingSite, image: nil) { (error) in
             XCTAssertNil(error)
@@ -97,12 +279,5 @@ class BreedingSitesTest: XCTestCase {
         }
 
          wait(for: [expectation], timeout: 5.0)
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 }

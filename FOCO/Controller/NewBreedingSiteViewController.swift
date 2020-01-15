@@ -153,7 +153,7 @@ class NewBreedingSiteViewController: FormViewController {
     }
 
     // MARK: - Private Methods
-    private func showFeedback(_ locationForm: LocationRow?, _ titleForm: TextRow?, _ accessTypeForm: PickerInputRow<String>?) {
+     private func checkLocation(_ locationForm: LocationRow?) {
         // Shows user feedback that not every mandatory field was filled.
         if locationForm?.value == nil {
             locationForm?.cellUpdate { (cell, row) in
@@ -164,6 +164,10 @@ class NewBreedingSiteViewController: FormViewController {
             locationForm?.reload()
             print("No location was set")
         }
+    }
+    
+    private func showFeedback(_ locationForm: LocationRow?, _ titleForm: TextRow?, _ accessTypeForm: PickerInputRow<String>?) {
+        checkLocation(locationForm)
         if titleForm?.value == nil {
             titleForm?.cellUpdate { (cell, row) in
                 if row.value == nil {
