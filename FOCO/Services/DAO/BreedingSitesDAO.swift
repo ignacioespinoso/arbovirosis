@@ -10,13 +10,29 @@ import Foundation
 import UIKit
 import Alamofire
 
-class BreedingSitesDAO {
+protocol BreedingSitesDAO {
+    func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?, _ siteId: Int?) -> Void)
+    func findAll (_ completion: @escaping (_ error: Error?,
+                                            _ site: [BreedingSite]?) -> Void)
+    func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+                                                            _ site: BreedingSite?) -> Void)
+    func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+                                                                _ image: [UInt8]?) -> Void)
+    func uploadImageById (breedingId: Int,
+                          image: UIImage,
+                          _ completion: @escaping (_ error: Error?) -> Void)
 
-    static let address = URL(string: productionUrlBreedingSites)
+    func reportSite (breedingSiteId: Int, completion: @escaping (_ error: Error?,
+                                                                    _ reports: Int?) -> Void)
+}
+    
+
+class BreedingSitesWebDAO: BreedingSitesDAO {
+    let address = URL(string: productionUrlBreedingSites)
 
     // MARK: - Find
 
-    static func findAll (_ completion: @escaping (_ error: Error?,
+    func findAll (_ completion: @escaping (_ error: Error?,
                                                   _ site: [BreedingSite]?) -> Void) {
 
         if let url = address {
@@ -38,7 +54,7 @@ class BreedingSitesDAO {
         }
     }
 
-    static func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+    func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ site: BreedingSite?) -> Void) {
         if let url = URL(string: productionUrlBreedingSites + "\(breedingId)") {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -61,7 +77,7 @@ class BreedingSitesDAO {
 
     // MARK: - Find Image By Id
 
-    static func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+    func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ image: [UInt8]?) -> Void) {
 
         if let url = URL(string: productionUrlBreedingSites +  "\(breedingId)/pic") {
@@ -81,7 +97,7 @@ class BreedingSitesDAO {
     }
 
     // MARK: - Upload Image
-    static func uploadImageById (breedingId: Int,
+    func uploadImageById (breedingId: Int,
                                  image: UIImage,
                                  _ completion: @escaping (_ error: Error?) -> Void) {
         if let url = URL(string: productionUrlBreedingSites + "\(breedingId)") {
@@ -114,10 +130,10 @@ class BreedingSitesDAO {
     }
     // MARK: - Create
 
-    static func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?,
+    func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?,
                                                                             _ siteId: Int?) -> Void) {
 
-        if let url = address {
+        if let url = self.address {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.httpBody = jsonData
@@ -157,9 +173,9 @@ class BreedingSitesDAO {
 
     // MARK: - Report Breeding Site
 
-    static func reportSite (breedingSiteId: Int,
-                            completion: @escaping (_ error: Error?,
-                                                        _ reports: Int?) -> Void) {
+    func reportSite (breedingSiteId: Int,
+                     completion: @escaping (_ error: Error?,
+                                            _ reports: Int?) -> Void) {
 
         let urlString = productionUrlBreedingSites + "\(breedingSiteId)/report"
 
