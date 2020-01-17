@@ -13,9 +13,10 @@ import Alamofire
 import AlamofireImage
 
 class NewBreedingSiteViewController: FormViewController {
-
     let locationManager = CLLocationManager()
     var defaultLocation: CLLocation?
+
+    var beedingSiteService = BreedingSitesServices()
 
     @IBOutlet weak var breedingSiteImage: UIImageView!
     var imagePicker: ImagePicker!
@@ -37,9 +38,9 @@ class NewBreedingSiteViewController: FormViewController {
 
         // Sets table view form below the image picker view.
         tableView?.frame = CGRect(x: (self.tableView?.frame.origin.x)!,
-                                 y: (self.tableView?.frame.origin.y)!,
-                                 width: (self.tableView?.frame.size.width)!,
-                                 height: (self.tableView?.frame.size.height)! - 40)
+                                  y: (self.tableView?.frame.origin.y)!,
+                                  width: (self.tableView?.frame.size.width)!,
+                                  height: (self.tableView?.frame.size.height)! - 40)
 
         // Adds done button
         let doneButton = UIBarButtonItem(title: "Pronto",
@@ -72,11 +73,11 @@ class NewBreedingSiteViewController: FormViewController {
                 $0.value = defaultLocation ?? locationManager.location
             }
 
-        +++ Section("O que está acontecendo nesse local? (opcional)")
+            +++ Section("O que está acontecendo nesse local? (opcional)")
             <<< TextAreaRow("description") { row in
                 row.title = "Descrição"
                 row.placeholder = "Ex. Vi esses pneus jogados na praça e estão com muita água parada por conta da chuva."
-            }
+        }
     }
 
     // Show image picker when button is pressed.
@@ -104,54 +105,10 @@ class NewBreedingSiteViewController: FormViewController {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
 
-            // Instantiate new breeding site
-            let newBreedingSite = BreedingSite(title: title,
-                                               description: self.form.rowBy(tag: "description")?.value,
-                                               type: accessType,
-                                               latitude: latitude,
-                                               longitude: longitude)
-
-            // Upload breeding site to the API
-            BreedingSitesServices.createSite(breedingSite: newBreedingSite,
-                                             image: self.breedingSiteImage.image, { (error) in
-                 if error == nil {
-                    self.showFeedbackAndUnwind(successful: true)
-                    print("Created breeding site successfully.")
-                 } else {
-                    self.showFeedbackAndUnwind(successful: false)
-                    print(error!)
-                 }
-            })
+            createBreedingSite(title, accessType, latitude, longitude)
 
         } else {
-            // Shows user feedback that not every mandatory field was filled.
-            if locationForm?.value == nil {
-                locationForm?.cellUpdate { (cell, row) in
-                    if row.value == nil {
-                        cell.textLabel?.textColor = .appCoral
-                    }
-                }
-                locationForm?.reload()
-                print("No location was set")
-            }
-            if titleForm?.value == nil {
-                titleForm?.cellUpdate { (cell, row) in
-                    if row.value == nil {
-                        cell.textLabel?.textColor = .appCoral
-                    }
-                }
-                titleForm?.reload()
-                print("No symptoms start was set")
-            }
-            if accessTypeForm?.value == nil {
-                accessTypeForm?.cellUpdate { (cell, row) in
-                    if row.value == nil {
-                        cell.textLabel?.textColor = .appCoral
-                    }
-                }
-                accessTypeForm?.reload()
-                print("No access type was set")
-            }
+            showFeedback(locationForm, titleForm, accessTypeForm)
 
             Utils.setupAlertControllerWithTitle(viewController: self,
                                                 title: Messages.formsFailTitle,
@@ -168,30 +125,87 @@ class NewBreedingSiteViewController: FormViewController {
         if successful {
             DispatchQueue.main.async {
                 Utils.setupAlertControllerWithTitle(viewController: self,
-                                            title: Messages.createdAssetTitleSuccess,
-                                            message: Messages.newBreedingSiteMessageSuccess,
-                                            systemImage: "checkmark.circle",
-                                            color: .appDarkImperialBlue,
-                                            timer: nil,
-                                            completion: {
-                                            self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
-                                                              sender: self)
+                                                    title: Messages.createdAssetTitleSuccess,
+                                                    message: Messages.newBreedingSiteMessageSuccess,
+                                                    systemImage: "checkmark.circle",
+                                                    color: .appDarkImperialBlue,
+                                                    timer: nil,
+                                                    completion: {
+                                                        self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
+                                                                          sender: self)
                 })
             }
             print("Created breeding site successfully.")
         } else {
-           DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 Utils.setupAlertControllerWithTitle(viewController: self,
-                                           title: Messages.failTitle,
-                                           message: Messages.failMessage,
-                                           systemImage: "xmark.octagon",
-                                           color: .appCoral,
-                                           timer: nil,
-                                           completion: {
-                                            self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
-                                                              sender: self)
+                                                    title: Messages.failTitle,
+                                                    message: Messages.failMessage,
+                                                    systemImage: "xmark.octagon",
+                                                    color: .appCoral,
+                                                    timer: nil,
+                                                    completion: {
+                                                        self.performSegue(withIdentifier: "unwindToMapFromBreedingSite",
+                                                                          sender: self)
                 })
-           }
+            }
+        }
+    }
+
+    // MARK: - Private Methods
+     private func checkLocation(_ locationForm: LocationRow?) {
+        // Shows user feedback that not every mandatory field was filled.
+        if locationForm?.value == nil {
+            locationForm?.cellUpdate { (cell, row) in
+                if row.value == nil {
+                    cell.textLabel?.textColor = .appCoral
+                }
+            }
+            locationForm?.reload()
+            print("No location was set")
+        }
+    }
+
+    private func showFeedback(_ locationForm: LocationRow?, _ titleForm: TextRow?, _ accessTypeForm: PickerInputRow<String>?) {
+        checkLocation(locationForm)
+        if titleForm?.value == nil {
+            titleForm?.cellUpdate { (cell, row) in
+                if row.value == nil {
+                    cell.textLabel?.textColor = .appCoral
+                }
+            }
+            titleForm?.reload()
+            print("No symptoms start was set")
+        }
+        if accessTypeForm?.value == nil {
+            accessTypeForm?.cellUpdate { (cell, row) in
+                if row.value == nil {
+                    cell.textLabel?.textColor = .appCoral
+                }
+            }
+            accessTypeForm?.reload()
+            print("No access type was set")
+        }
+    }
+
+    private func createBreedingSite(_ title: String, _ accessType: String, _ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees) {
+        // Instantiate new breeding site
+        let newBreedingSite = BreedingSite(title: title,
+                                           description: self.form.rowBy(tag: "description")?.value,
+                                           type: accessType,
+                                           latitude: latitude,
+                                           longitude: longitude)
+
+        // Upload breeding site to the API
+        beedingSiteService.createSite(breedingSite: newBreedingSite,
+                                         image: self.breedingSiteImage.image) { (error) in
+                                            if error == nil {
+                                                self.showFeedbackAndUnwind(successful: true)
+                                                print("Created breeding site successfully.")
+                                            } else {
+                                                self.showFeedbackAndUnwind(successful: false)
+                                                print(error!)
+                                            }
         }
     }
 }

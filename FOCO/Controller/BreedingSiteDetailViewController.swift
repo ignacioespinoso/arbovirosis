@@ -19,7 +19,7 @@ class BreedingSiteDetailViewController: UIViewController {
     // Populated from perfomSegue
     var site: BreedingSite?
     var comments: [Comment] = []
-
+    let breedingSiteServices = BreedingSitesServices()
     // MARK: - ViewController Life Cycle
 
     override func viewDidLoad() {
@@ -206,7 +206,7 @@ extension BreedingSiteDetailViewController: ReportBtnDelegate {
         Utils.setupReportAlertController(viewController: self,
                                          isComment: false,
                                          completion: {
-            BreedingSitesServices.reportSite(breedingSiteId: id) { (error) in
+                self.breedingSiteServices.reportSite(breedingSiteId: id) { (error) in
                 if error == nil {
                     DispatchQueue.main.async {
                         Utils.setupAlertControllerWithTitle(viewController: self,
