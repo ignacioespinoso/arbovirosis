@@ -22,11 +22,11 @@ class BreedingSitesServices {
 
     // MARK: - Get
 
-    static func getAllSites(_ completion: @escaping (_ errorMessage: Error?,
+    func getAllSites(_ completion: @escaping (_ errorMessage: Error?,
                                                      _ site: [BreedingSite]?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesWebDAO.findAll { (error, site) in
+        breedingSitesDAO.findAll { (error, site) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
@@ -38,11 +38,11 @@ class BreedingSitesServices {
         }
     }
 
-    static func getSiteById(breedingId: Int, _ completion: @escaping (_ errorMessage: Error?,
+    func getSiteById(breedingId: Int, _ completion: @escaping (_ errorMessage: Error?,
                                                      _ site: BreedingSite?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesWebDAO.findById(breedingId: breedingId, { (error, site) in
+        breedingSitesDAO.findById(breedingId: breedingId, { (error, site) in
 
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
@@ -55,11 +55,11 @@ class BreedingSitesServices {
     }
 
     // MARK: - Get Breeding Image
-    static func getImageById(breedingId: Int, _ completion: @escaping (_ error: Error?,
+    func getImageById(breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                         _ image: [UInt8]?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesWebDAO.getImageById(breedingId: breedingId, { (error, image) in
+        breedingSitesDAO.getImageById(breedingId: breedingId, { (error, image) in
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
                 print("Unable to retrieve breeding site image.")
@@ -114,7 +114,7 @@ class BreedingSitesServices {
                 completion(error)
             } else {
                 if let id = siteId, let image = image {
-                    BreedingSitesServices.uploadImage(toBreedingSiteId: id, image: image, { (uploadError) in
+                    self.uploadImage(toBreedingSiteId: id, image: image, { (uploadError) in
                         if let uploadImageError = uploadError {
                             print("Error uploading image.")
                             print(uploadImageError)
@@ -132,11 +132,11 @@ class BreedingSitesServices {
     }
 
     // MARK: - Patch
-    static func uploadImage(toBreedingSiteId: Int, image: UIImage,
-                            _ completion: @escaping (_ error: Error?) -> Void) {
+    func uploadImage(toBreedingSiteId: Int, image: UIImage,
+                     _ completion: @escaping (_ error: Error?) -> Void) {
 
         // Falta fazer tratamento de erros - baixa prioridade
-        BreedingSitesWebDAO.uploadImageById(breedingId: toBreedingSiteId, image: image, { (error) in
+        breedingSitesDAO.uploadImageById(breedingId: toBreedingSiteId, image: image, { (error) in
             if error != nil {
                 // Handle errors - mensagem mais amigável para usuário
                 print("Unable to upload breeding site image.")
@@ -148,10 +148,10 @@ class BreedingSitesServices {
     }
 
     // MARK: - Report Site
-    static func reportSite (breedingSiteId: Int,
-                            completion: @escaping (_ error: Error?) -> Void ) {
+    func reportSite (breedingSiteId: Int,
+                     completion: @escaping (_ error: Error?) -> Void ) {
 
-        BreedingSitesWebDAO.reportSite(breedingSiteId: breedingSiteId) { (error, reports) in
+        breedingSitesDAO.reportSite(breedingSiteId: breedingSiteId) { (error, reports) in
 
             if error != nil {
                 // Handle errors

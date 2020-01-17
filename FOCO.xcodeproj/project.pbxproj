@@ -12,7 +12,7 @@
 		8032ED5D237992EF00357465 /* DiseaseOccurrencesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032ED5C237992EF00357465 /* DiseaseOccurrencesDAO.swift */; };
 		804A2E612384410500214A90 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E602384410500214A90 /* CustomCells.swift */; };
 		804A2E66238460FE00214A90 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804A2E65238460FE00214A90 /* FloatLabelTextField.swift */; };
-		807B9B6223CDEDF6001061EA /* AchaMosquitoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807B9B6123CDEDF6001061EA /* AchaMosquitoTests.swift */; };
+		805B74C623CF74F500082475 /* BreedingSitesMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B74C523CF74F500082475 /* BreedingSitesMocks.swift */; };
 		809369E423841DD300C794BB /* NewOccurrenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809369E323841DD300C794BB /* NewOccurrenceViewController.swift */; };
 		80973082238C0C0A007D6419 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80973081238C0C0A007D6419 /* ImagePicker.swift */; };
 		80C240B323CDF08C0033D4B4 /* BreedingSitesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C240B223CDF08C0033D4B4 /* BreedingSitesTest.swift */; };
@@ -70,10 +70,10 @@
 		80448A3A4B8F0EB1181A3478 /* Pods-FOCO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOCO.release.xcconfig"; path = "Target Support Files/Pods-FOCO/Pods-FOCO.release.xcconfig"; sourceTree = "<group>"; };
 		804A2E602384410500214A90 /* CustomCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		804A2E65238460FE00214A90 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
+		805B74C523CF74F500082475 /* BreedingSitesMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesMocks.swift; sourceTree = "<group>"; };
 		805FCF332396B08200B295B4 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Main.strings; sourceTree = "<group>"; };
 		805FCF342396B08200B295B4 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		807B9B5F23CDEDF6001061EA /* AchaMosquitoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AchaMosquitoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		807B9B6123CDEDF6001061EA /* AchaMosquitoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchaMosquitoTests.swift; sourceTree = "<group>"; };
 		807B9B6323CDEDF7001061EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		809369E323841DD300C794BB /* NewOccurrenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOccurrenceViewController.swift; sourceTree = "<group>"; };
 		80973081238C0C0A007D6419 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		C577DD55237DAB13007E8C6B /* BreedingSitesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedingSitesServices.swift; sourceTree = "<group>"; };
 		C578223823976C210057F015 /* InfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosCell.swift; sourceTree = "<group>"; };
 		C5AF7D8323776E4400635447 /* DiseaseOccurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseOccurrence.swift; sourceTree = "<group>"; };
-		C5CAD6F82375B21C00B5BBA2 /* Acha Mosquito!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Acha Mosquito!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5CAD6F82375B21C00B5BBA2 /* Protedes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Protedes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5CAD6FB2375B21C00B5BBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5CAD6FD2375B21C00B5BBA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C5CAD7022375B21C00B5BBA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,10 +155,18 @@
 			path = DAO;
 			sourceTree = "<group>";
 		};
+		805B74C423CF74C900082475 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				805B74C523CF74F500082475 /* BreedingSitesMocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		807B9B6023CDEDF6001061EA /* AchaMosquitoTests */ = {
 			isa = PBXGroup;
 			children = (
-				807B9B6123CDEDF6001061EA /* AchaMosquitoTests.swift */,
+				805B74C423CF74C900082475 /* Mocks */,
 				807B9B6323CDEDF7001061EA /* Info.plist */,
 				80C240B223CDF08C0033D4B4 /* BreedingSitesTest.swift */,
 			);
@@ -232,7 +240,7 @@
 		C5CAD6F92375B21C00B5BBA2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5CAD6F82375B21C00B5BBA2 /* Acha Mosquito!.app */,
+				C5CAD6F82375B21C00B5BBA2 /* Protedes.app */,
 				807B9B5F23CDEDF6001061EA /* AchaMosquitoTests.xctest */,
 			);
 			name = Products;
@@ -344,7 +352,7 @@
 			);
 			name = FOCO;
 			productName = FOCO;
-			productReference = C5CAD6F82375B21C00B5BBA2 /* Acha Mosquito!.app */;
+			productReference = C5CAD6F82375B21C00B5BBA2 /* Protedes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -516,7 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				807B9B6223CDEDF6001061EA /* AchaMosquitoTests.swift in Sources */,
+				805B74C623CF74F500082475 /* BreedingSitesMocks.swift in Sources */,
 				80C240B323CDF08C0033D4B4 /* BreedingSitesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -764,7 +772,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ignacioespinoso.FOCO;
-				PRODUCT_NAME = "Acha Mosquito!";
+				PRODUCT_NAME = Protedes;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -785,7 +793,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ignacioespinoso.FOCO;
-				PRODUCT_NAME = "Acha Mosquito!";
+				PRODUCT_NAME = Protedes;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

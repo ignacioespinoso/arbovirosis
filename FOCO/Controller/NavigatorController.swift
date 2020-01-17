@@ -24,7 +24,7 @@ class NavigatorController: UIViewController {
     let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     var selectedBreeedingSite: BreedingSite?
     var selectedLocation: CLLocation?
-
+    let breedingSitesServices = BreedingSitesServices()
 // MARK: Initial Setup
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -287,7 +287,7 @@ extension NavigatorController {
         }
 
         // Loads breeding sites
-        BreedingSitesServices.getAllSites { (errorMessage, points) in
+        breedingSitesServices.getAllSites { (errorMessage, points) in
             if let data = points {
                 self.breedingMarkers = data.map { (breedingSite) -> BreedingAnnotation in
                     let annotation = BreedingAnnotation(breeding: breedingSite)

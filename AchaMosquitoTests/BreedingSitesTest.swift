@@ -11,53 +11,6 @@ import XCTest
 
 @testable import Acha_Mosquito_
 
-class BreedingSiteErrorMockDAO: BreedingSitesDAO {
-    func createBreedingSite(jsonData: Data?, _ completion: @escaping (Error?, Int?) -> Void) {
-
-        let error = URLError(URLError.Code.badURL)
-
-        completion(error, nil)
-    }
-}
-
-class BreedingSiteMockDAO: BreedingSitesDAO {
-    func createBreedingSite(jsonData: Data?, _ completion: @escaping (Error?, Int?) -> Void) {
-        completion(nil, nil)
-    }
-}
-
-class BreedingSitePassingDataMockDAO: BreedingSitesDAO {
-    var expectation: XCTestExpectation
-
-    init(_ expectation: XCTestExpectation) {
-        self.expectation = expectation
-    }
-
-    func createBreedingSite(jsonData: Data?, _ completion: @escaping (Error?, Int?) -> Void) {
-
-        // Test if JSON comes from Service
-        XCTAssertNotNil(jsonData)
-
-        guard let data = jsonData else {
-            completion(nil, nil)
-            return
-        }
-
-        let decoded = try? JSONDecoder().decode(BreedingSite.self, from: data)
-
-        // Check if data is a valid Breeding Site
-        XCTAssertNotNil(decoded)
-
-        // Test information was properly encoded
-        XCTAssertEqual(decoded?.title, "Site de Teste")
-        XCTAssertNil(decoded?.description)
-        XCTAssertEqual(decoded?.type, "Publico")
-        XCTAssertEqual(decoded?.latitude, 2.33)
-        XCTAssertEqual(decoded?.longitude, 4.45)
-        completion(nil, nil)
-    }
-}
-
 class BreedingSitesTest: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

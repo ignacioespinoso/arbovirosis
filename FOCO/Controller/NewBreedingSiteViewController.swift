@@ -165,7 +165,7 @@ class NewBreedingSiteViewController: FormViewController {
             print("No location was set")
         }
     }
-    
+
     private func showFeedback(_ locationForm: LocationRow?, _ titleForm: TextRow?, _ accessTypeForm: PickerInputRow<String>?) {
         checkLocation(locationForm)
         if titleForm?.value == nil {

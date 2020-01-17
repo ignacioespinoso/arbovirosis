@@ -12,16 +12,27 @@ import Alamofire
 
 protocol BreedingSitesDAO {
     func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?, _ siteId: Int?) -> Void)
+    func findAll (_ completion: @escaping (_ error: Error?,
+                                            _ site: [BreedingSite]?) -> Void)
+    func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+                                                            _ site: BreedingSite?) -> Void)
+    func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+                                                                _ image: [UInt8]?) -> Void)
+    func uploadImageById (breedingId: Int,
+                          image: UIImage,
+                          _ completion: @escaping (_ error: Error?) -> Void)
 
+    func reportSite (breedingSiteId: Int, completion: @escaping (_ error: Error?,
+                                                                    _ reports: Int?) -> Void)
 }
 
 class BreedingSitesWebDAO: BreedingSitesDAO {
 
-    static let address = URL(string: devUrlBreedingSites)
+    let address = URL(string: devUrlBreedingSites)
 
     // MARK: - Find
 
-    static func findAll (_ completion: @escaping (_ error: Error?,
+    func findAll (_ completion: @escaping (_ error: Error?,
                                                   _ site: [BreedingSite]?) -> Void) {
 
         if let url = address {
@@ -43,7 +54,7 @@ class BreedingSitesWebDAO: BreedingSitesDAO {
         }
     }
 
-    static func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+    func findById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ site: BreedingSite?) -> Void) {
         if let url = URL(string: devUrlBreedingSites + "\(breedingId)") {
             let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -66,7 +77,7 @@ class BreedingSitesWebDAO: BreedingSitesDAO {
 
     // MARK: - Find Image By Id
 
-    static func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
+    func getImageById (breedingId: Int, _ completion: @escaping (_ error: Error?,
                                                   _ image: [UInt8]?) -> Void) {
 
         if let url = URL(string: devUrlBreedingSites +  "\(breedingId)/pic") {
@@ -86,9 +97,9 @@ class BreedingSitesWebDAO: BreedingSitesDAO {
     }
 
     // MARK: - Upload Image
-    static func uploadImageById (breedingId: Int,
-                                 image: UIImage,
-                                 _ completion: @escaping (_ error: Error?) -> Void) {
+    func uploadImageById (breedingId: Int,
+                          image: UIImage,
+                          _ completion: @escaping (_ error: Error?) -> Void) {
         if let url = URL(string: devUrlBreedingSites + "\(breedingId)") {
             Alamofire.upload(multipartFormData: { MultipartFormData in
                 if let imageData = image.jpegData(compressionQuality: 1.0) {
@@ -122,7 +133,7 @@ class BreedingSitesWebDAO: BreedingSitesDAO {
     func createBreedingSite (jsonData: Data?, _ completion: @escaping (_ error: Error?,
                                                                             _ siteId: Int?) -> Void) {
 
-        if let url = BreedingSitesWebDAO.address {
+        if let url = self.address {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.httpBody = jsonData
@@ -162,9 +173,9 @@ class BreedingSitesWebDAO: BreedingSitesDAO {
 
     // MARK: - Report Breeding Site
 
-    static func reportSite (breedingSiteId: Int,
-                            completion: @escaping (_ error: Error?,
-                                                        _ reports: Int?) -> Void) {
+    func reportSite (breedingSiteId: Int,
+                     completion: @escaping (_ error: Error?,
+                                            _ reports: Int?) -> Void) {
 
         let urlString = devUrlBreedingSites + "\(breedingSiteId)/report"
 
