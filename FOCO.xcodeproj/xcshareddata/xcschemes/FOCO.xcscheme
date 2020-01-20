@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C5CAD6F72375B21C00B5BBA2"
-               BuildableName = "Acha Mosquito!.app"
+               BuildableName = "Protedes.app"
                BlueprintName = "FOCO"
                ReferencedContainer = "container:FOCO.xcodeproj">
             </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5CAD6F72375B21C00B5BBA2"
-            BuildableName = "Acha Mosquito!.app"
+            BuildableName = "Protedes.app"
             BlueprintName = "FOCO"
             ReferencedContainer = "container:FOCO.xcodeproj">
          </BuildableReference>
@@ -87,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5CAD6F72375B21C00B5BBA2"
-            BuildableName = "Acha Mosquito!.app"
+            BuildableName = "Protedes.app"
             BlueprintName = "FOCO"
             ReferencedContainer = "container:FOCO.xcodeproj">
          </BuildableReference>

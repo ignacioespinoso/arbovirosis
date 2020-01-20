@@ -21,11 +21,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Precisamos de acesso à camera para tirar fotos.</string>
+	<string>Precisamos de acesso à camera para tirar fotos de locais com focos de mosquito.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Vamos usar a sua localização para mostrar os casos e focos mais próximos de você!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Precisamos de acesso à galeria.</string>
+	<string>Precisamos de acesso à galeria para escolher uma foto de um local com foco de mosquito.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Text-Bold.otf</string>
